@@ -1,0 +1,123 @@
+#startDraft {
+  margin-top: 1.5rem;
+}
+
+Form {
+  margin-left: 2.5rem;
+  width: 80%;
+}
+
+/* title */
+#start-title {
+  margin-right: 5.5rem;
+  color: lightgray;
+}
+
+#start-input-title {
+  font-size: 14px;
+}
+
+/* name of philosopher */
+#start-name {
+  margin-right: 1rem;
+  color: lightgray;
+}
+
+#start-input-name {
+  font-size: 16px;
+  max-width: 20rem;
+  word-wrap: break-word;
+  margin-left: 10rem;
+}
+
+/* remove name link */
+.start-name-remove {
+  font-size: 1.2rem;
+  text-align: left;
+  color: dodgerblue;
+  margin-left: 4rem;
+}
+
+.start-name-remove:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  color: white;
+}
+
+/* add new name */
+#start-add-name {
+  color: lightgray;
+}
+
+#start-add-input-name {
+  min-width: 8rem;
+  font-size: 14px;
+}
+
+/* select color */
+.start-name-color-select {
+  font-size: 10px;
+  width: 9rem;
+  height: 2rem;
+  cursor: pointer;
+  margin-left: 9.5rem;
+}
+
+/* link add name */
+.start-add-name-link {
+  font-size: 1.2rem;
+  margin-left: -1rem;
+  margin-top: 0.5rem;
+  text-align: left;
+  color: white;
+  text-decoration: underline;
+}
+
+.start-add-name-link:hover {
+  cursor: pointer;
+  color: dodgerblue;
+}
+
+/* actions */
+.start-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+#start-btn {
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  margin-right: 1.5rem;
+  background-color: silver;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+#start-btn:active {
+  background-color: dodgerblue;
+}
+
+#start-btn-clear {
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  background-color: silver;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+#save-btn-clear:active {
+  background-color: dodgerblue;
+}
+
+/* border-line */
+.start-border1 {
+  border-top-style: groove;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.start-border2 {
+  border-top-style: groove;
+  width: 100%;
+}

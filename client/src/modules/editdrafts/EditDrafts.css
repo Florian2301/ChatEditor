@@ -1,0 +1,211 @@
+#edit-draft-panel {
+  margin-top: 1.5rem;
+  max-height: 75vh;
+}
+
+.edit-draft-form {
+  width: 80%;
+}
+
+/* title */
+.edit-draft-title {
+  margin-right: 5rem;
+  color: lightgray;
+  margin-left: 1.5rem;
+}
+
+.edit-draft-title-input {
+  font-size: 14px;
+  margin-left: 0.6rem;
+  height: 2.5rem;
+}
+
+/* name of philosopher */
+.edit-draft-name {
+  margin-right: 0rem;
+  color: lightgray;
+  margin-left: 1.5rem;
+}
+
+.edit-draft-name-input-1 {
+  font-size: 14px;
+  width: 50%;
+  margin-left: 0.1rem;
+  height: 2.5rem;
+}
+
+.edit-draft-name-input-2 {
+  font-size: 14px;
+  width: 37%;
+  margin-left: 9rem;
+  height: 2.5rem;
+}
+
+/* add new name */
+.edit-draft-add-name {
+  color: lightgray;
+  margin-right: 0.7rem;
+  margin-left: 1.5rem;
+}
+
+.edit-draft-add-name-input {
+  width: 50%;
+  font-size: 14px;
+  margin-left: 0.6rem;
+  height: 2.5rem;
+}
+
+.edit-draft-add-name-link {
+  font-size: 1.2rem;
+  color: white;
+  margin-top: 0.5rem;
+  text-decoration: underline;
+}
+
+.edit-draft-add-name-link:hover {
+  color: dodgerblue;
+  cursor: pointer;
+}
+
+/* select color */
+.edit-draft-name-color-select {
+  font-size: 10px;
+  width: 9rem;
+  height: 2rem;
+  cursor: pointer;
+  margin-left: 10.5rem;
+}
+
+/* tags */
+.edit-draft-tags {
+  margin-right: 4.6rem;
+  color: lightgray;
+  margin-left: 1.5rem;
+}
+
+.edit-draft-tags-input {
+  font-size: 14px;
+  margin-left: 0.6rem;
+  height: 2.5rem;
+}
+
+/* description */
+.edit-draft-description {
+  color: lightgray;
+  margin-right: 0rem;
+  margin-left: 1.5rem;
+}
+
+.edit-draft-description-input {
+  font-size: 14px;
+  margin-left: 0.6rem;
+}
+
+/* author */
+.edit-draft-author {
+  margin-right: 0rem;
+  color: lightgray;
+  margin-left: 1.5rem;
+}
+
+.edit-draft-author-input {
+  font-size: 14px;
+  width: 50%;
+  margin-left: 4rem;
+  height: 2.5rem;
+}
+
+/* admin */
+.edit-draft-admin {
+  margin-right: 0.2rem;
+  color: lightgray;
+  margin-left: 1.5rem;
+}
+
+.edit-draft-admin-toggle {
+  font-size: 12px;
+  margin-left: 4.5rem;
+  margin-top: 0.5rem;
+}
+
+.edit-draft-user-toggle {
+  font-size: 12px;
+  margin-left: 5.7rem;
+  margin-top: 0.5rem;
+}
+
+/* select language */
+.edit-draft-language {
+  margin-right: 0rem;
+  color: lightgray;
+  margin-left: 1.5rem;
+}
+
+.edit-draft-language-select {
+  font-size: 10px;
+  width: 9rem;
+  height: 2rem;
+  cursor: pointer;
+  margin-left: 1.5rem;
+}
+
+/* draft details only read mode */
+.draft-details {
+  color: lightgray;
+  font-size: 1.5rem;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: auto;
+}
+
+.draft-info {
+  word-wrap: break-word;
+  margin-left: 5rem;
+  color: white;
+}
+
+#draft-messages {
+  font-size: 1.5rem;
+}
+
+#draft-date {
+  font-size: 1.5rem;
+}
+
+/* border-line */
+.draft-details-border {
+  border-top-style: groove;
+  width: 100%;
+}
+
+/* actions */
+.draft-details-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.draft-details-btn {
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  margin-right: 1.5rem;
+  background-color: silver;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.draft-details-btn:active {
+  background-color: dodgerblue;
+}
+
+.draft-details-btn-clear {
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  background-color: silver;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.draft-details-btn-clear:active {
+  background-color: dodgerblue;
+}

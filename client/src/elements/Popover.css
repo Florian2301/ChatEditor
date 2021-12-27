@@ -1,0 +1,75 @@
+#popover {
+  border-style: solid;
+  border-color: dodgerblue;
+  border-radius: 1rem;
+  background-color: transparent;
+}
+
+#popover-title {
+  color: white;
+  background-color: rgb(53, 53, 53);
+  font-size: 1.2rem;
+  border-color: dodgerblue;
+  font-weight: bold;
+  border-radius: 1rem 1rem 0rem 0rem;
+}
+
+#popover-content {
+  color: white;
+  background-color: rgb(53, 53, 53);
+  font-size: 1.2rem;
+  border-radius: 0rem 0rem 1rem 1rem;
+}
+
+.fade-in-popover {
+  animation: fadeIn ease 1s;
+  -webkit-animation: fadeIn ease 1s;
+  -moz-animation: fadeIn ease 1s;
+  -o-animation: fadeIn ease 1s;
+  -ms-animation: fadeIn ease 1s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

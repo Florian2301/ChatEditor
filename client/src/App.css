@@ -1,0 +1,41 @@
+/* Tabletchatbox */
+#flexTablet {
+  margin-top: 0rem;
+  display: flex;
+  justify-content: center;
+  max-height: 100%;
+}
+
+#tablet-header {
+  display: flex;
+  justify-content: center;
+}
+
+#viewtablet {
+  margin-right: 15rem;
+  margin-top: 1rem;
+}
+
+#tablet-advice {
+  font-size: 1.2rem;
+  margin-right: 10rem;
+  margin-top: 1rem;
+  margin-left: 5rem;
+}
+
+#tablet-language {
+  margin-top: 1rem;
+}
+
+/* MobileChatbox */
+#flexMobile {
+  display: grid;
+  justify-content: center;
+}
+
+#menu-advice {
+  font-size: 1.2rem;
+  text-align: right;
+  margin-right: 2rem;
+  margin-top: 0.5rem;
+}

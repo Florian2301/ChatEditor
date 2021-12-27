@@ -1,0 +1,68 @@
+.comments {
+  border-color: black;
+  border-width: thin;
+  border-style: solid;
+  border-radius: 1rem;
+  color: #2f4858;
+  position: relative;
+  width: fit-content;
+  min-width: 50%;
+  max-width: 80%;
+  background-color: #2f4858;
+  background-image: url('/img/message_background.jpg');
+  /*Bild von <a href="https://pixabay.com/de/users/chrisfiedler-935884/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1074131">ChrisFiedler</a> auf <a href="https://pixabay.com/de/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1074131">Pixabay</a>*/
+}
+
+.comments:nth-child(even) {
+  border-color: green;
+  border-width: thick;
+}
+
+.comments-header {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  border-width: thin;
+  border-bottom-style: dotted;
+  margin-top: 0.5rem;
+}
+
+.comments-name {
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 1.5rem;
+  color: blue;
+  margin-bottom: 0rem;
+}
+
+.comments-date {
+  font-size: 12px;
+  font-weight: bold;
+  text-align: end;
+  margin-right: 2rem;
+  color: blue;
+  margin-bottom: 0rem;
+}
+
+.comments-body {
+  margin-left: 1.5rem;
+}
+
+.comments-text {
+  word-wrap: break-word;
+  font-size: 20px;
+  color: #2f4858;
+  margin-right: 1rem;
+  white-space: pre-wrap;
+}
+
+.comments-delete {
+  text-align: center;
+  color: black;
+  text-decoration: underline;
+  font-size: small;
+}
+
+.comments-delete:hover {
+  color: red;
+  cursor: pointer;
+}

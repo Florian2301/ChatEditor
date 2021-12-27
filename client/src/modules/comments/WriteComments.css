@@ -1,0 +1,70 @@
+.write-comments {
+  background-color: rgba(0, 0, 0, 0.3);
+  position: relative;
+  border: groove;
+  border-radius: 0.5rem;
+  border-color: dodgerblue;
+  border-width: thick;
+  overflow: auto;
+  max-height: 35vh;
+  width: 100%;
+  min-width: 30vw;
+  max-width: 35vw;
+}
+
+#write-comments-collapse {
+  margin-left: 1.5rem;
+  margin-top: 0.5rem;
+  font-size: 14px;
+  color: lightgray;
+}
+
+#write-comments-collapse:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  color: dodgerblue;
+}
+
+/* input and textarea for comment */
+.section-write-comment {
+  position: relative;
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 25% 75%;
+}
+
+.input-write-comment {
+  background-color: lightyellow;
+  border-radius: 0.5rem;
+  border-color: dodgerblue;
+  height: 3rem;
+  width: 80%;
+  margin-left: 1.5rem;
+  margin-right: 1rem;
+}
+
+.btn-write-comment {
+  margin-left: 1.5rem;
+  margin-right: 1rem;
+  margin-top: 2rem;
+  border-radius: 0.5rem;
+  background-color: silver;
+  font-size: 12px;
+  width: 80%;
+}
+
+.btn-write-comment:hover {
+  cursor: pointer;
+  border-color: dodgerblue;
+}
+
+.textarea-write-comment {
+  font-size: 20px;
+  min-height: 10vh;
+  background-color: lightyellow;
+  border-radius: 0.5rem;
+  border-color: dodgerblue;
+  width: 95%;
+  margin-right: 1.5rem;
+  margin-bottom: 0rem;
+}

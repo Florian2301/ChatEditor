@@ -1,0 +1,105 @@
+.write-message {
+  background-color: rgba(0, 0, 0, 0.3);
+  position: relative;
+  border: groove;
+  border-radius: 0.5rem;
+  border-color: dodgerblue;
+  border-width: thick;
+  overflow: auto;
+  max-height: 35vh;
+  width: 100%;
+  min-width: 30vw;
+  max-width: 35vw;
+}
+
+/* collapse link */
+#write-message-collapse {
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+  font-size: 14px;
+  color: lightgray;
+}
+
+#write-message-collapse:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  color: dodgerblue;
+}
+
+/* label and input for set number */
+.number-textarea {
+  position: relative;
+  display: grid;
+  margin-top: -2rem;
+}
+
+.label-select-number {
+  display: flex;
+  margin-right: 3rem;
+  margin-bottom: 1rem;
+  justify-content: flex-end;
+  align-items: flex-end;
+  font-size: 14px;
+  font-weight: bold;
+  color: lightgray;
+}
+
+.span-select-number {
+  font-weight: normal;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  color: white;
+}
+
+.write-message-select-number:hover {
+  cursor: pointer;
+  border-color: dodgerblue;
+  border-radius: 0.5rem;
+}
+
+/* link reply to message */
+#replytomessage {
+  margin-right: 6rem;
+  text-decoration: underline;
+  color: lightgray;
+  font-weight: normal;
+}
+
+#replytomessage:hover {
+  color: dodgerblue;
+  cursor: pointer;
+}
+
+/* textarea for writing */
+.textarea-write-message {
+  margin: auto;
+  font-size: 20px;
+  min-height: 20vh;
+  width: 90%;
+  background-color: lightyellow;
+  border-radius: 0.5rem;
+  border-color: dodgerblue;
+  font-family: 'Segoe UI Emoji', 'Segoe UI Symbol', 'Segoe UI',
+    'Apple Color Emoji', 'Twemoji Mozilla', 'Noto Color Emoji', 'Android Emoji';
+}
+
+/* buttons phil */
+.writemessage-btn {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  justify-items: right;
+  margin-bottom: 1rem;
+}
+
+.button-chat-Phil {
+  border-radius: 0.5rem;
+  margin-top: 0rem;
+  background-color: silver;
+  word-wrap: break-word;
+  font-size: 12px;
+}
+
+.button-chat-Phil:hover {
+  cursor: pointer;
+  border-color: dodgerblue;
+}

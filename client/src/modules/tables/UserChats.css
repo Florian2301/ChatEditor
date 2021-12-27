@@ -1,0 +1,102 @@
+.table-userchats {
+  border-collapse: collapse;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-style: groove;
+  border-width: thick;
+  border-color: dodgerblue;
+  border-radius: 0.6rem;
+  width: 100%;
+  margin-top: 1.5rem;
+  max-height: 80vh;
+  overflow: auto;
+}
+
+.data-columns-userchats {
+  display: grid;
+  grid-template-columns: 25% 12% 33% 30%;
+}
+.thead-userchats-1 {
+  color: darkgray;
+  font-size: 1.5rem;
+  border: 1px solid #999999;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.thead-userchats-2 {
+  color: darkgray;
+  font-size: 1.5rem;
+  border: 1px solid #999999;
+  padding: 0.5rem;
+  text-align: left;
+}
+.thead-userchats-3 {
+  color: darkgray;
+  font-size: 1.5rem;
+  border: 1px solid #999999;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.thead-userchats-4 {
+  color: darkgray;
+  font-size: 1.5rem;
+  border: 1px solid #999999;
+  padding: 0.5rem;
+  text-align: left;
+}
+.data-rows-userchats {
+  display: grid;
+  grid-template-columns: 25% 12% 33% 30%;
+}
+
+.userchats-column-1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: silver;
+  border: 1px solid #999999;
+  padding: 0.5rem;
+  text-align: left;
+  word-wrap: break-word;
+}
+.userchats-column-2 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: 1px solid #999999;
+  padding: 0.5rem;
+  text-align: center;
+  color: dodgerblue;
+}
+
+.userchats-column-3 {
+  border: 1px solid #999999;
+  padding: 0.5rem;
+  text-align: left;
+  word-wrap: break-word;
+}
+
+.userchats-column-3:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.userchats-column-4 {
+  font-size: 1.2rem;
+  border: 1px solid #999999;
+  padding: 0.5rem;
+  text-align: left;
+  word-wrap: break-word;
+}
+.link-download-userchat {
+  font-size: 1.2rem;
+  color: white;
+  position: relative;
+  width: fit-content;
+  word-wrap: break-word;
+}
+
+.link-download-userchat:hover {
+  text-decoration: underline;
+  color: white;
+}

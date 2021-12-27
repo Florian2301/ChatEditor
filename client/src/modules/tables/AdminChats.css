@@ -1,0 +1,85 @@
+.table-adminchats {
+  border-collapse: collapse;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-style: groove;
+  border-width: thick;
+  border-color: dodgerblue;
+  border-radius: 0.6rem;
+  margin-top: 1.5rem;
+  max-height: 80vh;
+  overflow: auto;
+}
+
+.data-columns-adminchats {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr 8rem;
+}
+
+.thead-adminchats-1 {
+  color: darkgray;
+  font-size: 1.5rem;
+  border: 1px solid #999999;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.thead-adminchats-2 {
+  color: darkgray;
+  font-size: 1.5rem;
+  border: 1px solid #999999;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.thead-adminchats-3 {
+  color: darkgray;
+  font-size: 1.5rem;
+  border: 1px solid #999999;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.data-rows-adminchats {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr 8rem;
+}
+
+.adminchats-column-1 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: dodgerblue;
+  border: 1px solid #999999;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.adminchats-column-2 {
+  border: 1px solid #999999;
+  padding: 0.5rem;
+  text-align: left;
+  word-wrap: break-word;
+}
+
+.adminchats-column-2:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.adminchats-column-3 {
+  font-size: 1.2rem;
+  border: 1px solid #999999;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.link-download-dbChat {
+  font-size: 1.2rem;
+  color: white;
+  position: relative;
+}
+
+.link-download-dbChat:hover {
+  text-decoration: underline;
+  color: white;
+  cursor: pointer;
+}

@@ -1,0 +1,236 @@
+.message {
+  border-color: black;
+  border-width: thin;
+  border-style: solid;
+  border-radius: 1rem;
+  color: #2f4858;
+  position: relative;
+  width: fit-content;
+  min-width: 15rem;
+  max-width: 80%;
+  background-color: #2f4858;
+  background-image: url('/img/message_background.jpg');
+  /*Bild von <a href="https://pixabay.com/de/users/chrisfiedler-935884/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1074131">ChrisFiedler</a> auf <a href="https://pixabay.com/de/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1074131">Pixabay</a>*/
+}
+
+.message-header {
+  border-color: black;
+  border-width: thin;
+  border-bottom-style: dotted;
+  padding: 0rem 0.6rem 0rem 0.6rem;
+  display: flex;
+  justify-content: space-between;
+  height: 3rem;
+}
+
+.message-name {
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  position: relative;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.message-number {
+  margin-top: 0.5rem;
+  margin-right: 1rem;
+  position: relative;
+  font-size: 14px;
+  font-weight: bold;
+  color: black;
+}
+
+.message-text {
+  padding: 0rem 0.6rem 0.2rem 0.6rem;
+  word-wrap: break-word;
+  font-size: 20px;
+  margin-left: 0.5rem;
+  white-space: pre-wrap;
+}
+
+/* index of name of phil-array is its position */
+.position-1 {
+  margin-right: auto;
+}
+
+.position-2 {
+  margin-left: auto;
+  margin-right: -0.5rem;
+}
+
+/*user logged In => adjust margin-top */
+.position-1-edit {
+  margin-top: 1rem;
+}
+
+.position-2-edit {
+  margin-left: auto;
+  margin-right: -0.5rem;
+  margin-top: 1rem;
+}
+
+/* index of name of phil-array is its color */
+.color-blue {
+  color: blue;
+}
+
+.color-pink {
+  color: #cc66ff;
+}
+
+.color-orangered {
+  color: orangered;
+}
+
+.color-brown {
+  color: brown;
+}
+
+.color-darkorange {
+  color: darkorange;
+}
+
+.color-green {
+  color: green;
+}
+
+/*user logged In => adjust margin-top */
+.color-blue-edit {
+  color: blue;
+}
+
+.color-pink-edit {
+  color: #cc66ff;
+}
+
+.color-orangered-edit {
+  color: orangered;
+}
+
+.color-brown-edit {
+  color: brown;
+}
+
+.color-darkorange-edit {
+  color: darkorange;
+}
+
+.color-green-edit {
+  color: green;
+}
+
+/*edit message */
+.edit-message-dropdown {
+  color: black;
+  text-decoration: underline;
+  background: none;
+  font-weight: bold;
+  font-size: 14px;
+  margin-top: 0.4rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+.edit-message-dropdown:hover {
+  color: blue;
+}
+
+.edit-message-dropdown-active {
+  color: blue;
+}
+
+.edit-message-delete {
+  color: black;
+  text-decoration: underline;
+  background: none;
+  font-weight: bold;
+  font-size: 14px;
+  margin-top: 0.4rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+.edit-message-delete:hover {
+  color: red;
+}
+
+.edit-message {
+  background-color: rgba(0, 0, 0, 0.1);
+  width: 100%;
+  height: fit-content;
+  display: grid;
+}
+
+.edit-number {
+  margin-top: 0.5rem;
+  margin-right: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.label-edit-number {
+  margin-right: 0.5rem;
+}
+
+.select-edit-number {
+  margin-bottom: 0.5rem;
+}
+
+.edit-message-textarea {
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+  height: 20rem;
+  border-color: dodgerblue;
+  border-radius: 0.5rem;
+  border-width: medium;
+  background-color: lightyellow;
+  min-width: 95%;
+}
+
+.edit-message-textarea:focus {
+  border-width: thin;
+}
+
+/* replied message */
+.repliedmessage {
+  border-bottom-style: ridge;
+  border-color: black;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin: auto;
+}
+
+.replydetails {
+  font-size: smaller;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  border-bottom-style: double;
+  border-color: black;
+  margin-bottom: 0rem;
+}
+
+.replyspan {
+  font-weight: bold;
+}
+
+#replyspan-number {
+  color: mediumblue;
+  text-decoration: underline;
+}
+
+#replyspan-number:hover {
+  color: dodgerblue;
+  cursor: pointer;
+}
+
+.replytext {
+  font-size: smaller;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  overflow: auto;
+  max-height: 6rem;
+  margin-bottom: 0rem;
+}

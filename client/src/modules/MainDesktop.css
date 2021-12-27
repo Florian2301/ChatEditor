@@ -1,0 +1,300 @@
+/* Main view */
+.flexContainer-main {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  max-height: 100%;
+}
+
+#item-1 {
+  max-width: 25vw;
+  min-width: 280px;
+  height: fit-content;
+  margin-left: 2rem;
+  margin-top: -1rem;
+}
+
+#item-2 {
+  max-width: 40vw;
+  min-width: 280px;
+  justify-self: center;
+  margin-top: -1rem;
+}
+
+#item-3 {
+  width: 25vw;
+  min-width: 280px;
+  justify-self: center;
+  height: fit-content;
+  margin-right: 4rem;
+  margin-top: -1rem;
+}
+
+/* Tabs */
+
+/* Edit-Container */
+.container-fluid {
+  margin-top: initial;
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;
+  width: 100%;
+}
+
+/* Adminchats */
+#uncontrolled-tab-adminchats {
+  background: none;
+  color: lightgray;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#uncontrolled-tab-adminchats:hover {
+  border-color: dodgerblue;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+#uncontrolled-tab-adminchats[aria-selected='true'] {
+  border-color: dodgerblue;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Userchats */
+#uncontrolled-tab-userchats {
+  background: none;
+  color: lightgray;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#uncontrolled-tab-userchats:hover {
+  border-color: dodgerblue;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+#uncontrolled-tab-userchats[aria-selected='true'] {
+  border-color: dodgerblue;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Title */
+#uncontrolled-tab-title {
+  background: none;
+  color: lightgray;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#uncontrolled-tab-title:hover {
+  border-color: dodgerblue;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+#uncontrolled-tab-title[aria-selected='true'] {
+  border-color: dodgerblue;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Login */
+#uncontrolled-tab-login {
+  background: none;
+  color: lightgray;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#uncontrolled-tab-login:hover {
+  border-color: dodgerblue;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+#uncontrolled-tab-login[aria-selected='true'] {
+  border-color: dodgerblue;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* About */
+#uncontrolled-tab-about {
+  background: none;
+  color: lightgray;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#uncontrolled-tab-about:hover {
+  border-color: dodgerblue;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+#uncontrolled-tab-about[aria-selected='true'] {
+  border-color: dodgerblue;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Draftlist */
+#uncontrolled-tab-draftlist {
+  background: none;
+  color: lightgray;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#uncontrolled-tab-draftlist:hover {
+  border-color: dodgerblue;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+#uncontrolled-tab-draftlist[aria-selected='true'] {
+  border-color: dodgerblue;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Chatlist */
+#uncontrolled-tab-chatlist {
+  background: none;
+  color: lightgray;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#uncontrolled-tab-chatlist:hover {
+  border-color: dodgerblue;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+#uncontrolled-tab-chatlist[aria-selected='true'] {
+  border-color: dodgerblue;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* editchats */
+#uncontrolled-tab-editchats {
+  background: none;
+  color: lightgray;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#uncontrolled-tab-editchats:hover {
+  border-color: dodgerblue;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+#uncontrolled-tab-editchats[aria-selected='true'] {
+  border-color: dodgerblue;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Chatbox */
+#uncontrolled-tab-chatbox {
+  background: none;
+  color: lightgray;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#uncontrolled-tab-chatbox:hover {
+  border-color: dodgerblue;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+#uncontrolled-tab-chatbox[aria-selected='true'] {
+  border-color: dodgerblue;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Comments */
+#uncontrolled-tab-comments {
+  background: none;
+  color: lightgray;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#uncontrolled-tab-comments:hover {
+  border-color: dodgerblue;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+#uncontrolled-tab-comments[aria-selected='true'] {
+  border-color: dodgerblue;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* edit chat */
+#uncontrolled-tab-chats {
+  background: none;
+  color: lightgray;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#uncontrolled-tab-chats:hover {
+  border-color: dodgerblue;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+#uncontrolled-tab-chats[aria-selected='true'] {
+  border-color: dodgerblue;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* drafts */
+#uncontrolled-tab-drafts {
+  background: none;
+  color: lightgray;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#uncontrolled-tab-drafts:hover {
+  border-color: dodgerblue;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+#uncontrolled-tab-drafts[aria-selected='true'] {
+  border-color: dodgerblue;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* menu */
+#uncontrolled-tab-menu {
+  background: none;
+  color: lightgray;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#uncontrolled-tab-menu:hover {
+  border-color: dodgerblue;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+#uncontrolled-tab-menu[aria-selected='true'] {
+  border-color: dodgerblue;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}

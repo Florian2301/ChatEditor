@@ -1,0 +1,19 @@
+.panel {
+  border-color: dodgerblue;
+  border-width: thick;
+  border-style: groove;
+  border-radius: 0.6rem;
+  margin-bottom: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.panel-title {
+  border-color: dodgerblue;
+  border-bottom-width: thin;
+  border-bottom-style: solid;
+  border-radius: 0.6rem;
+  border-bottom-left-radius: 0rem;
+  border-bottom-right-radius: 0rem;
+  padding: 0.5rem;
+  color: darkgray;
+}

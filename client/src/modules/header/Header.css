@@ -1,0 +1,37 @@
+.flexContainer-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  margin-bottom: -1rem;
+}
+
+.flexItem-header {
+  margin-top: 1rem;
+}
+
+#item-language {
+  margin-left: 5vw;
+}
+
+#item-select {
+  margin-left: 10vw;
+}
+
+.header-language-select {
+  width: fit-content;
+  background-color: lightgray;
+  border-radius: 1rem;
+  border-color: dodgerblue;
+  font-size: 1.2rem;
+}
+
+#header-link-clear {
+  font-size: 1.5rem;
+  text-decoration: underline;
+  margin-left: 20vw;
+}
+
+#header-link-clear:hover {
+  cursor: pointer;
+  color: dodgerblue;
+}

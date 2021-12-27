@@ -1,0 +1,202 @@
+#panel-edit-chat {
+  margin-top: 1.5rem;
+  max-height: 75vh;
+}
+
+.form-edit-chat {
+  width: 80%;
+}
+
+/* Chatnumber */
+.edit-chat-number {
+  margin-right: 0.1rem;
+  margin-left: 1.5rem;
+  color: lightgray;
+}
+
+.edit-chat-input-number {
+  max-width: 5rem;
+  font-size: 14px;
+  height: 2.5rem;
+}
+
+/* title */
+.edit-chat-title {
+  margin-right: 6rem;
+  margin-left: 1.5rem;
+  color: lightgray;
+}
+
+.edit-chat-input-title {
+  font-size: 14px;
+  height: 2.5rem;
+}
+
+/* description */
+.edit-chat-description {
+  margin-right: 1rem;
+  margin-left: 1.5rem;
+  color: lightgray;
+}
+
+.edit-chat-input-description {
+  font-size: 14px;
+}
+
+/* tags */
+.edit-chat-tags {
+  margin-right: 5.6rem;
+  margin-left: 1.5rem;
+  color: lightgray;
+}
+
+.edit-chat-input-tags {
+  font-size: 14px;
+  height: 2.5rem;
+}
+
+/* author */
+.edit-chat-author {
+  margin-right: 0.2rem;
+  color: lightgray;
+  margin-left: 1.5rem;
+}
+
+.edit-chat-input-author {
+  font-size: 14px;
+  width: 50%;
+  margin-left: 4rem;
+  height: 2.5rem;
+}
+
+/* admin */
+.edit-chat-admin {
+  margin-right: 0.2rem;
+  color: lightgray;
+  margin-left: 1.5rem;
+}
+
+.edit-chat-toggle-admin {
+  font-size: 12px;
+  margin-left: 4.5rem;
+  margin-top: 0.5rem;
+}
+
+.edit-chat-toggle-user {
+  font-size: 12px;
+  margin-left: 5.7rem;
+  margin-top: 0.5rem;
+}
+
+/* language */
+.edit-chat-language {
+  margin-right: 0rem;
+  color: lightgray;
+  margin-left: 1.5rem;
+}
+
+.edit-chat-language-select {
+  font-size: 10px;
+  width: 50%;
+  margin-left: 1.8rem;
+}
+
+/* date publish */
+.edit-chat-date {
+  margin-right: 1.9rem;
+  margin-left: 1.5rem;
+  color: lightgray;
+}
+
+.edit-chat-input-date {
+  max-width: 12rem;
+  font-size: 14px;
+  height: 2rem;
+}
+/* name of philosophers */
+.edit-chat-name {
+  margin-right: 0.5rem;
+  margin-left: 1.5rem;
+  color: lightgray;
+}
+
+.edit-chat-name-list {
+  list-style-type: none;
+  margin-left: -4rem;
+}
+
+/* count messages */
+.edit-chat-last {
+  margin-top: -2rem;
+}
+.edit-chat-messages {
+  margin-right: 1.8rem;
+  margin-left: 1.5rem;
+  color: lightgray;
+}
+
+/* chat details only read mode */
+.chat-details {
+  color: lightgray;
+  font-size: 1.5rem;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: auto;
+  margin-left: 0rem;
+}
+
+.chat-info {
+  word-wrap: break-word;
+  margin-left: 5rem;
+  color: white;
+}
+
+#chat-number {
+  font-size: 1.5rem;
+}
+
+#chat-date {
+  font-size: 1.5rem;
+}
+
+#chat-messages {
+  font-size: 1.5rem;
+}
+
+/* border-line */
+.edit-chat-border {
+  border-top-style: groove;
+  width: 100%;
+}
+
+/* actions */
+.edit-chat-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.edit-chat-btn {
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  margin-right: 1.5rem;
+  background-color: silver;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.edit-chat-btn:active {
+  background-color: dodgerblue;
+}
+
+.edit-chat-btn-clear {
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  background-color: silver;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.edit-chat-btn-clear:active {
+  background-color: dodgerblue;
+}

@@ -1,0 +1,47 @@
+#title-panel {
+  margin-top: 1.5rem;
+  max-height: 75vh;
+  overflow: auto;
+}
+
+#title-download {
+  margin-bottom: 1rem;
+}
+
+#title-date {
+  font-size: 1.5rem;
+}
+
+#title-messages {
+  font-size: 1.5rem;
+}
+
+#title-number {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
+
+.title-details {
+  color: lightgray;
+  font-size: 1.5rem;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: auto;
+  margin-left: 2.5rem;
+}
+
+.title-info {
+  word-wrap: break-word;
+  margin-left: 5rem;
+  color: white;
+}
+
+.link-download-title {
+  text-decoration: underline;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.link-download-title:hover {
+  color: dodgerblue;
+}

@@ -1,0 +1,130 @@
+/* box where the chat does appear*/
+.chatbox {
+  height: 80vh;
+  width: 100%;
+  min-width: 30vw;
+  max-width: 35vw;
+  border-width: thick;
+  border-style: groove;
+  border-color: dodgerblue;
+  background-color: rgba(0, 0, 0, 0.3);
+  overflow: auto;
+  border-radius: 0.6rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5rem;
+}
+
+.editchatbox {
+  height: 55vh;
+  width: 100%;
+  min-width: 30vw;
+  max-width: 35vw;
+  border-width: thick;
+  border-style: groove;
+  border-color: dodgerblue;
+  background-color: rgba(0, 0, 0, 0.3);
+  overflow: auto;
+  border-radius: 0.6rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5rem;
+}
+
+/* ul of chatmessages */
+.listgroup-edit {
+  margin-left: -4rem;
+}
+
+.messages-editmode {
+  margin-top: 1rem;
+}
+
+.listgroup-chat {
+  background-color: transparent;
+  border-style: none;
+}
+
+.listgroup-chat-comments {
+  background-color: transparent;
+  border-style: none;
+  justify-content: flex-start;
+}
+
+.listgroup-chat-comments:nth-child(2n) {
+  justify-content: flex-end;
+}
+
+/*box where names and clear button appear*/
+.flexContainer-chat {
+  display: grid;
+  grid-template-columns: 1fr 12rem;
+  margin-bottom: 1rem;
+}
+
+#link-back {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#link-back-chat {
+  margin: 1rem;
+}
+
+#link-back-chat:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#link-clear {
+  margin: 1rem;
+  text-align: right;
+  color: lightgray;
+}
+
+#link-clear:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  color: dodgerblue;
+}
+
+/*transition of messages*/
+.transition-message-enter {
+  opacity: 0;
+}
+.transition-message-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+.transition-message-exit {
+  opacity: 1;
+}
+.transition-message-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
+}
+
+/* Public */
+.commentchatbox {
+  margin-top: 1.5rem;
+  height: 70vh;
+  width: 100%;
+  min-width: 30vw;
+  max-width: 35vw;
+  border-width: thick;
+  border-style: groove;
+  border-color: dodgerblue;
+  background-color: rgba(0, 0, 0, 0.3);
+  overflow: auto;
+  border-radius: 0.6rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.comments-info {
+  text-align: center;
+  margin-top: 10%;
+}
