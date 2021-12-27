@@ -91,7 +91,7 @@ export function EditChats(props) {
       if (!author) {
         return setError('Please name an author')
       }
-      /*
+
       props.updateTitle(
         titleId,
         chatnumber,
@@ -113,7 +113,7 @@ export function EditChats(props) {
         tags,
         description,
         admin
-      )*/
+      )
       setTimeout(() => {
         props.getOneChat(chatId)
         props.getUserTitles(userId)

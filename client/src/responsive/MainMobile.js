@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Container, Tab, Tabs } from 'react-bootstrap'
 import AdminChats from '../modules/tables/AdminChats'
@@ -13,10 +13,11 @@ import Authorization from '../authorization/Authorization'
 import About from '../modules/about/About'
 import Title from '../modules/title/Title'
 import { getUser, setKeyL, setKeyR } from '../redux/actions/user'
+import { getAllTitles } from '../redux/actions/title'
 import MobileMenu from './MobileMenu'
 import SelectView from '../modules/header/SelectView'
 import Language from '../modules/header/Language'
-import firebase from 'firebase/app'
+//import firebase from 'firebase/app'
 import 'firebase/auth'
 import './Responsive.css'
 
@@ -35,11 +36,18 @@ export function MainMobile(props) {
     }
   }
 
+  /*
   firebase.auth().onAuthStateChanged((user) => {
     if (user && !props.user.loggedIn) {
       props.getUser(user.displayName)
     }
-  })
+  })*/
+
+  useEffect(() => {
+    if (props.title.allTitles.length === 0) {
+      props.getAllTitles()
+    }
+  }, [props.title.allTitles, props])
 
   // ------------------------------ RETURN -----------------------------------------------------------------------------
   return (
@@ -130,6 +138,7 @@ let mapStateToProps = (state) => {
   return {
     user: state.user,
     draft: state.draft,
+    title: state.title,
   }
 }
 
@@ -137,6 +146,7 @@ let mapDispatchToProps = {
   getUser: getUser,
   setKeyL: setKeyL,
   setKeyR: setKeyR,
+  getAllTitles: getAllTitles,
 }
 
 let MainMobileConnected = connect(
