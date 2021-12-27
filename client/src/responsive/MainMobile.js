@@ -36,13 +36,6 @@ export function MainMobile(props) {
     }
   }
 
-  /*
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user && !props.user.loggedIn) {
-      props.getUser(user.displayName)
-    }
-  })*/
-
   useEffect(() => {
     if (props.title.allTitles.length === 0) {
       props.getAllTitles()
