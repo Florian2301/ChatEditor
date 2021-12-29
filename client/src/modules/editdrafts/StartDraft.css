@@ -121,3 +121,11 @@ Form {
   border-top-style: groove;
   width: 100%;
 }
+
+/* Spinner */
+.start-spinner {
+  text-align: center;
+  margin-top: 1rem;
+  color: dodgerblue;
+  margin-bottom: 0.5rem;
+}

@@ -1,8 +1,6 @@
 import React from 'react'
 import './AdminChats.css'
 import { connect } from 'react-redux'
-import PDF from '../../elements/PDF'
-import { PDFDownloadLink } from '@react-pdf/renderer'
 import { v4 as uuidv4 } from 'uuid'
 import { clearDisplay, setKeyL, setKeyR } from '../../redux/actions/user'
 import { getOneChat } from '../../redux/actions/chat'
@@ -20,14 +18,14 @@ export function AdminChatsTable(props) {
     props.writeMessage(false)
   }
 
-  let admintitles
-
   //--------------------- return -----------------------------------------------------------
+
+  let admintitles
 
   return (
     <div className="table-adminchats">
       <div className="data-columns-adminchats">
-        <div className="thead-adminchats-1">No.</div>
+        <div className="thead-adminchats-1">#</div>
         <div className="thead-adminchats-2">Title</div>
         <div className="thead-adminchats-3">Date</div>
       </div>
@@ -35,7 +33,7 @@ export function AdminChatsTable(props) {
         (admintitles = props.title.allTitles.map((title) => {
           if (title.admin && props.user.language === title.language) {
             return (
-              <div key={uuidv4()} className="data-rows-adminchats">
+              <div key={uuidv4()} className="data-columns-adminchats">
                 <div className="adminchats-column-1">{title.chatnumber}</div>
                 <div
                   className="adminchats-column-2"
@@ -47,27 +45,11 @@ export function AdminChatsTable(props) {
                     description={title.description}
                   />
                 </div>
-                <div className="adminchats-column-3">
-                  {title.chatnumber === props.chat.chatnumber &&
-                  title.user === props.chat.user &&
-                  !props.user.loggedIn ? (
-                    <PDFDownloadLink
-                      document={
-                        <PDF
-                          title={title.title}
-                          data={props.chat.messages}
-                          author={title.author}
-                          date={title.date}
-                        />
-                      }
-                      fileName={title.chatnumber + '. ' + title.title + '.pdf'}
-                      className="link-download-dbChat"
-                    >
-                      download
-                    </PDFDownloadLink>
-                  ) : (
-                    title.date
-                  )}
+                <div
+                  className="adminchats-column-3"
+                  onClick={() => displayChat(title._id, title.chatId)}
+                >
+                  {title.date}
                 </div>
               </div>
             )

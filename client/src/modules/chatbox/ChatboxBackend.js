@@ -80,7 +80,7 @@ export function ChatboxBackend(props) {
         // clear
         props.title.publish = false
         props.publishTitle(false)
-      }, 1000)
+      }, 500)
     }
   }, [
     props.draft.messages,
@@ -103,8 +103,6 @@ export function ChatboxBackend(props) {
     chatnumber = props.chat.chatnumber
     userId = props.chat.userId
   }
-
-  console.log('lang', props.chat.language)
 
   //---- return ---------------------------------------------------------------------------------------------------
 

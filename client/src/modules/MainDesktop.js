@@ -19,17 +19,67 @@ import { setKeyR } from '../redux/actions/user'
 import { getAllTitles } from '../redux/actions/title'
 
 export function FlexMain(props) {
+  // function to select menu (tablet/mobile)
   function handleSelect(key) {
     props.setKeyR(key)
   }
 
+  // get all titles when page is loading for the first time
   useEffect(() => {
     if (props.title.allTitles.length === 0) {
       props.getAllTitles()
     }
   }, [props.title.allTitles, props])
 
+  // filter number of drafts by language
+  let draftList = []
+  props.draft.userDrafts.map((draft) => {
+    if (draft.language === props.user.language) {
+      draftList.push(draft)
+    }
+    return draftList
+  })
+
+  // filter number of chats by language
+  let chatList = []
+  props.chat.userChats.map((chat) => {
+    if (chat.language === props.user.language) {
+      chatList.push(chat)
+    }
+    return chatList
+  })
+
+  // filter number of chats from admin/users
+  let adminTitle = []
+  let userTitle = []
+  props.title.allTitles.map((title) => {
+    if (title.admin) {
+      adminTitle.push(title)
+    } else userTitle.push(title)
+    return { adminTitle, userTitle }
+  })
+
+  // filter chats by language from admin/users
+  let adminTitleNumber = []
+  let userTitleNumber = []
+  if (adminTitle) {
+    adminTitle.map((title) => {
+      if (title.language === props.user.language) {
+        adminTitleNumber.push(title)
+      }
+      return adminTitleNumber
+    })
+
+    userTitle.map((title) => {
+      if (title.language === props.user.language) {
+        userTitleNumber.push(title)
+      }
+      return userTitleNumber
+    })
+  }
+
   //---------------------- RETURN ------------------------------------------------------------------------------------
+
   return (
     <section className="flexContainer-main">
       <div id="item-1">
@@ -40,21 +90,27 @@ export function FlexMain(props) {
             style={{ borderBottom: 0 }}
           >
             {!props.user.loggedIn ? (
-              <Tab eventKey="adminchats" title="Flokrates.Online">
+              <Tab
+                eventKey="adminchats"
+                title={`Flokrates.Online (${adminTitleNumber.length})`}
+              >
                 <AdminChats />
               </Tab>
             ) : (
-              <Tab eventKey="adminchats" title="Drafts">
+              <Tab eventKey="adminchats" title={`Drafts (${draftList.length})`}>
                 <DraftList />
               </Tab>
             )}
 
             {!props.user.loggedIn ? (
-              <Tab eventKey="userchats" title={'Know thyself'}>
+              <Tab
+                eventKey="userchats"
+                title={`Know thyself (${userTitleNumber.length})`}
+              >
                 <UserChats />
               </Tab>
             ) : (
-              <Tab eventKey="userchats" title="Chats">
+              <Tab eventKey="userchats" title={`Chats (${chatList.length})`}>
                 <ChatList />
               </Tab>
             )}
@@ -69,7 +125,14 @@ export function FlexMain(props) {
             id="uncontrolled"
             style={{ borderBottom: 0 }}
           >
-            <Tab eventKey="chatbox" title={'Chatbox'}>
+            <Tab
+              eventKey="chatbox"
+              title={`Chatbox (${
+                props.draft.draftEditmode
+                  ? props.draft.messages.length
+                  : props.chat.messages.length
+              })`}
+            >
               {props.user.loggedIn ? <ChatboxBackend /> : <ChatboxPublic />}
             </Tab>
             <Tab
@@ -92,7 +155,10 @@ export function FlexMain(props) {
           >
             {props.user.loggedIn ? (
               /* eventKey = about because initial state is "about", when page gets refreshed */
-              <Tab eventKey="about" title={'Edit Draft'}>
+              <Tab
+                eventKey="about"
+                title={props.draft.draftEditmode ? 'Edit Draft' : 'Start Chat'}
+              >
                 {props.draft.draftEditmode ? <EditDrafts /> : <StartDraft />}
               </Tab>
             ) : (

@@ -163,10 +163,29 @@
   font-size: 1.5rem;
 }
 
+.link-download-chat {
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: white;
+}
+
+.link-download-chat:hover {
+  font-size: 1.5rem;
+  text-decoration: underline;
+  color: white;
+}
+
 /* border-line */
 .edit-chat-border {
   border-top-style: groove;
   width: 100%;
+}
+
+/* Spinner */
+.edit-chat-spinner {
+  text-align: center;
+  margin-top: 1rem;
+  color: dodgerblue;
 }
 
 /* actions */
@@ -185,6 +204,10 @@
   font-weight: bold;
 }
 
+.edit-chat-btn:hover {
+  border-color: dodgerblue;
+}
+
 .edit-chat-btn:active {
   background-color: dodgerblue;
 }
@@ -192,11 +215,32 @@
 .edit-chat-btn-clear {
   border-radius: 0.5rem;
   margin-bottom: 1.5rem;
+  margin-right: 1.5rem;
   background-color: silver;
   font-size: 1.2rem;
   font-weight: bold;
 }
 
+.edit-chat-btn-clear:hover {
+  border-color: dodgerblue;
+}
+
 .edit-chat-btn-clear:active {
+  background-color: dodgerblue;
+}
+
+.edit-chat-btn-delete {
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  background-color: silver;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.edit-chat-btn-delete:hover {
+  border-color: dodgerblue;
+}
+
+.edit-chat-btn-delete:active {
   background-color: dodgerblue;
 }

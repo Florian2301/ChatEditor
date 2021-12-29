@@ -12,7 +12,7 @@
 
 .data-rows-chats {
   display: grid;
-  grid-template-columns: 60% 20% 20%;
+  grid-template-columns: 10% 65% 25%;
 }
 
 .thead-chats {
@@ -23,6 +23,10 @@
   text-align: left;
 }
 
+#thead-chats-number {
+  text-align: center;
+}
+
 .data-columns-chats {
   border: 1px solid #999999;
   padding: 0.5rem;
@@ -30,23 +34,21 @@
   word-wrap: break-word;
 }
 
+#data-columns-chats-number {
+  text-align: center;
+  color: dodgerblue;
+}
+
 #data-columns-chats-title:hover {
   cursor: pointer;
   text-decoration: underline;
 }
 
-.link-download-chat {
+#data-columns-chats-date {
   font-size: 1.2rem;
+}
+
+#data-columns-chats-date:hover {
   cursor: pointer;
-}
-
-.link-download-chat:hover {
-  font-size: 1.2rem;
   text-decoration: underline;
-}
-
-.link-download-chat-active {
-  font-size: 1.2rem;
-  color: darkgray;
-  text-decoration: none;
 }

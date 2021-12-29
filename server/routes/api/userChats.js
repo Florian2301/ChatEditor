@@ -74,6 +74,9 @@ router.patch('/:id', getChat, async (req, res) => {
   if (req.body.description !== res.chat.description) {
     res.chat.description = req.body.description
   }
+  if (req.body.admin !== res.chat.admin) {
+    res.chat.admin = req.body.admin
+  }
   if (req.body.comments !== res.chat.comments) {
     res.chat.comments = req.body.comments
   }

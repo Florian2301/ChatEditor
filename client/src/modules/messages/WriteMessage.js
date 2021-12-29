@@ -156,6 +156,7 @@ export function WriteMessage(props) {
       props.draft.draftId,
       props.draft.title,
       props.draft.author,
+      props.draft.published,
       props.draft.date,
       props.draft.language,
       props.draft.tags,

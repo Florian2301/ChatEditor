@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react'
-import { Form, Alert, Col, Row } from 'react-bootstrap'
+import { Form, Alert, Col, Row, Spinner } from 'react-bootstrap'
 import { v4 as uuidv4 } from 'uuid'
+import PDF from '../../elements/PDF'
+import { PDFDownloadLink } from '@react-pdf/renderer'
 import Panel from '../../elements/Panel'
 import Button from '../../elements/Button'
 import './EditChats.css'
@@ -10,11 +12,13 @@ import {
   saveTitle,
   updateTitle,
   getUserTitles,
+  deleteTitle,
 } from '../../redux/actions/title'
 import {
   getOneChat,
   updateChatDetails,
   getUserChats,
+  deleteChat,
 } from '../../redux/actions/chat'
 import { clearDisplay } from '../../redux/actions/user'
 
@@ -26,10 +30,12 @@ export function EditChats(props) {
   const tagsRef = useRef()
   const descriptionRef = useRef()
   const [error, setError] = useState('')
+  const [spinner, setSpinner] = useState(false)
   const [edit, setEdit] = useState(false)
   const [save, setSave] = useState(false)
-  const [chatLanguage, setChatLanguage] = useState(props.chat.language)
+  const [chatLanguage, setChatLanguage] = useState(false)
   const [toggleAdmin, setToggleAdmin] = useState(true)
+  const [download, setDownload] = useState(false)
 
   // for select language
   function handleChange(event) {
@@ -39,6 +45,17 @@ export function EditChats(props) {
   // if user = admin then he can save chat as "admin" or "user"
   function toggleAdminChat() {
     setToggleAdmin(!toggleAdmin)
+  }
+
+  // prepare download as pdf and get drafts with last changes (messages)
+  function pdfdownload(id) {
+    setDownload(id)
+    props.getOneChat(id)
+    // spinner
+    setSpinner(true)
+    setTimeout(() => {
+      setSpinner(false)
+    }, 1000)
   }
 
   // function for form
@@ -58,7 +75,7 @@ export function EditChats(props) {
       }
 
       let language = props.chat.language
-      if (chatLanguage !== language) {
+      if (chatLanguage && chatLanguage !== language) {
         language = chatLanguage
       }
       const userId = props.chat.userId
@@ -66,13 +83,15 @@ export function EditChats(props) {
       const chatId = props.chat.chatId
       const chatnumber = parseInt(numberRef.current.value)
       const title = titleRef.current.value
-      const author = authorRef.current.value
+      const author = props.user.admin
+        ? authorRef.current.value
+        : props.user.username
       const date = dateRef.current.value
       const tagsValue = tagsRef.current.value
       const tags = tagsValue.split(',')
       const description = descriptionRef.current.value
+      const comments = props.chat.comments
 
-      console.log('edit', title, chatLanguage, language)
       if (!chatnumber) {
         return setError('Please insert a chatnumber')
       }
@@ -98,7 +117,7 @@ export function EditChats(props) {
         title,
         author,
         date,
-        chatLanguage,
+        language,
         tags,
         description,
         admin
@@ -109,22 +128,28 @@ export function EditChats(props) {
         title,
         author,
         date,
-        chatLanguage,
+        language,
         tags,
         description,
-        admin
+        admin,
+        comments
       )
+
+      // clear data and get chat/title
       setTimeout(() => {
         props.getOneChat(chatId)
         props.getUserTitles(userId)
       }, 500)
       setError('')
       e.target.reset()
-    }
-
-    if (save) {
       setEdit(false)
       setSave(false)
+
+      // spinner
+      setSpinner(true)
+      setTimeout(() => {
+        setSpinner(false)
+      }, 1000)
     }
   }
 
@@ -134,6 +159,29 @@ export function EditChats(props) {
     setError('')
     setEdit(false)
     setSave(false)
+    setDownload(false)
+  }
+
+  // delete one title + chat
+  function deleteChat(chatId) {
+    let answer = window.confirm('Delete this message?')
+    if (answer) {
+      let titleId = ''
+      props.deleteChat(chatId)
+      props.title.allTitles.map((title) => {
+        if (title.chatId === chatId) {
+          titleId = title._id
+        }
+        return titleId
+      })
+      props.deleteTitle(titleId)
+      setTimeout(() => {
+        props.getUserChats(props.user.userId)
+        props.getUserTitles(props.user.userId)
+      }, 500)
+    } else {
+      return
+    }
   }
 
   // save chat as draft
@@ -167,10 +215,18 @@ export function EditChats(props) {
       messages,
       admin
     )
+
+    // clear data and get drafts
     clear()
     setTimeout(() => {
       props.getDrafts(userId, admin)
     }, 500)
+
+    // spinner
+    setSpinner(true)
+    setTimeout(() => {
+      setSpinner(false)
+    }, 1000)
   }
 
   // ------------------------------------- RETURN --------------------------------------------------------
@@ -267,17 +323,19 @@ export function EditChats(props) {
               </Col>
             </Form.Group>
 
-            <Form.Group as={Row}>
-              <Form.Label className="edit-chat-author">Author:</Form.Label>
-              <Col>
-                <Form.Control
-                  className="edit-chat-input-author"
-                  type="text"
-                  ref={authorRef}
-                  defaultValue={props.chat.author}
-                />
-              </Col>
-            </Form.Group>
+            {props.user.admin ? (
+              <Form.Group as={Row}>
+                <Form.Label className="edit-chat-author">Author:</Form.Label>
+                <Col>
+                  <Form.Control
+                    className="edit-chat-input-author"
+                    type="text"
+                    ref={authorRef}
+                    defaultValue={props.chat.author}
+                  />
+                </Col>
+              </Form.Group>
+            ) : null}
 
             {props.user.admin ? (
               <Form.Group as={Row}>
@@ -385,7 +443,7 @@ export function EditChats(props) {
 
             {props.user.admin ? (
               <div className="chat-details">
-                <p>Admin:</p>
+                <p>Status:</p>
                 <p className="chat-info">
                   {props.chat.chatEditmode
                     ? props.chat.admin
@@ -402,60 +460,86 @@ export function EditChats(props) {
             </div>
 
             <div className="chat-details">
-              <p>Published:</p>
-              <p className="chat-info" id="chat-date">
-                {props.chat.date}
-              </p>
+              <p>Download:</p>
+              <div className="chat-info">
+                {download ? (
+                  <PDFDownloadLink
+                    document={
+                      <PDF
+                        title={props.chat.title}
+                        data={props.chat.messages}
+                        author={props.chat.author}
+                        date={props.chat.date}
+                      />
+                    }
+                    fileName={props.chat.title + '.pdf'}
+                    className="link-download-chat"
+                  >
+                    {({ blob, url, loading, error }) =>
+                      loading ? 'loading...' : 'download'
+                    }
+                  </PDFDownloadLink>
+                ) : (
+                  <p
+                    className={'link-download-chat'}
+                    onClick={() => pdfdownload(props.chat.chatId)}
+                  >
+                    {props.chat.title ? props.chat.title + '.pdf' : null}
+                  </p>
+                )}
+              </div>
             </div>
           </div>
         )}
         <div className="edit-chat-border">{''}</div>
-        {props.user.username === props.chat.user ? (
-          <div className="edit-chat-actions">
-            {!edit ? (
-              <Button
-                label="Edit details"
-                className="edit-chat-btn"
-                handleClick={() => setEdit(true)}
-              ></Button>
-            ) : (
-              <Button
-                label="Save changes"
-                className="edit-chat-btn"
-                type="submit"
-                handleClick={() => setSave(true)}
-              ></Button>
-            )}
-            {!edit ? (
-              <Button
-                label="Save as draft"
-                className="edit-chat-btn"
-                handleClick={() => saveAsDraft()}
-              ></Button>
-            ) : null}
-            {!edit ? (
-              <Button
-                label="Clear"
-                className="edit-chat-btn-clear"
-                handleClick={() => clear()}
-              ></Button>
-            ) : (
-              <Button
-                label="Back"
-                className="edit-chat-btn-clear"
-                handleClick={() => setEdit(false)}
-              ></Button>
-            )}
-          </div>
-        ) : (
-          <div className="edit-chat-actions">
+        <div className="edit-chat-spinner">
+          {spinner ? (
+            <Spinner animation="border" role="status"></Spinner>
+          ) : null}
+        </div>
+        <div className="edit-chat-actions">
+          {!edit ? (
+            <Button
+              label="Edit details"
+              className="edit-chat-btn"
+              handleClick={() => setEdit(true)}
+            ></Button>
+          ) : (
+            <Button
+              label="Save changes"
+              className="edit-chat-btn"
+              type="submit"
+              handleClick={() => setSave(true)}
+            ></Button>
+          )}
+          {!edit ? (
+            <Button
+              label="Save as draft"
+              className="edit-chat-btn"
+              handleClick={() => saveAsDraft()}
+            ></Button>
+          ) : null}
+          {!edit ? (
             <Button
               label="Clear"
               className="edit-chat-btn-clear"
               handleClick={() => clear()}
             ></Button>
-          </div>
-        )}
+          ) : (
+            <Button
+              label="Back"
+              className="edit-chat-btn-clear"
+              handleClick={() => setEdit(false)}
+            ></Button>
+          )}
+          {!edit ? (
+            <Button
+              label="Delete"
+              className="edit-chat-btn-delete"
+              handleClick={() => deleteChat(props.chat.chatId)}
+            ></Button>
+          ) : null}
+        </div>
       </Form>
     </Panel>
   )
@@ -480,6 +564,8 @@ const mapActionsToProps = {
   getOneChat: getOneChat,
   getDrafts: getDrafts,
   saveDraft: saveDraft,
+  deleteTitle: deleteTitle,
+  deleteChat: deleteChat,
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(EditChats)

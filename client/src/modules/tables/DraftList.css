@@ -12,7 +12,7 @@
 
 .data-rows-drafts {
   display: grid;
-  grid-template-columns: 60% 20% 20%;
+  grid-template-columns: 75% 25%;
 }
 
 .thead-drafts {
@@ -30,23 +30,22 @@
   word-wrap: break-word;
 }
 
-#data-columns-drafts-title:hover {
+#data-columns-draft-date {
+  font-size: 1.2rem;
+}
+
+#data-columns-draft-date:hover {
   cursor: pointer;
   text-decoration: underline;
 }
 
-.link-download-draft {
-  font-size: 1.2rem;
+#draft-title:hover {
   cursor: pointer;
-}
-
-.link-download-draft:hover {
-  font-size: 1.2rem;
   text-decoration: underline;
 }
 
-.link-download-draft-active {
+#draft-published {
   font-size: 1.2rem;
   color: darkgray;
-  text-decoration: none;
+  margin-left: 0.5rem;
 }

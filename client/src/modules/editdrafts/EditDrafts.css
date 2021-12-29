@@ -34,7 +34,7 @@
   height: 2.5rem;
 }
 
-.edit-draft-name-input-2 {
+.edit-draft-input-name-2 {
   font-size: 14px;
   width: 37%;
   margin-left: 9rem;
@@ -172,10 +172,29 @@
   font-size: 1.5rem;
 }
 
+.link-download-draft {
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: white;
+}
+
+.link-download-draft:hover {
+  font-size: 1.5rem;
+  text-decoration: underline;
+  color: white;
+}
+
 /* border-line */
 .draft-details-border {
   border-top-style: groove;
   width: 100%;
+}
+
+/* Spinner */
+.draft-details-spinner {
+  text-align: center;
+  margin-top: 1rem;
+  color: dodgerblue;
 }
 
 /* actions */
@@ -194,6 +213,10 @@
   font-weight: bold;
 }
 
+.draft-details-btn:hover {
+  border-color: dodgerblue;
+}
+
 .draft-details-btn:active {
   background-color: dodgerblue;
 }
@@ -201,11 +224,32 @@
 .draft-details-btn-clear {
   border-radius: 0.5rem;
   margin-bottom: 1.5rem;
+  margin-right: 1.5rem;
   background-color: silver;
   font-size: 1.2rem;
   font-weight: bold;
 }
 
+.draft-details-btn-clear:hover {
+  border-color: dodgerblue;
+}
+
 .draft-details-btn-clear:active {
+  background-color: dodgerblue;
+}
+
+.draft-details-btn-delete {
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  background-color: silver;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.draft-details-btn-delete:hover {
+  border-color: dodgerblue;
+}
+
+.draft-details-btn-delete:active {
   background-color: dodgerblue;
 }

@@ -51,7 +51,7 @@ export function ChatboxComments(props) {
           </ListGroup>
         ) : (
           <div className="comments-info">
-            ~ comments: only when chat is published ~
+            ~ comments: only available when a chat is published ~
           </div>
         )}
       </Container>

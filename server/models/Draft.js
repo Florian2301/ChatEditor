@@ -23,6 +23,10 @@ const DraftSchema = new Schema({
     type: String,
     required: true,
   },
+  published: {
+    type: Boolean,
+    default: false,
+  },
   date: {
     type: String,
     required: false,

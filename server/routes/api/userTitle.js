@@ -77,6 +77,9 @@ router.patch('/:id', getTitle, async (req, res) => {
   if (req.body.description !== res.title.description) {
     res.title.description = req.body.description
   }
+  if (req.body.admin !== res.title.admin) {
+    res.title.admin = req.body.admin
+  }
   try {
     const updatedTitle = await res.title.save()
     res.json(updatedTitle)

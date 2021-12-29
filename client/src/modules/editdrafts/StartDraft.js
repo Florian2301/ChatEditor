@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { Form, Alert, Col, Row } from 'react-bootstrap'
+import { Form, Alert, Col, Row, Spinner } from 'react-bootstrap'
 import { v4 as uuidv4 } from 'uuid'
 import Panel from '../../elements/Panel'
 import Button from '../../elements/Button'
@@ -22,6 +22,7 @@ export function StartDraft(props) {
   const philRef = useRef()
   const colorRef = useRef()
   const [error, setError] = useState('')
+  const [spinner, setSpinner] = useState(false)
   const [reset, setReset] = useState(false)
 
   // catches key-event (esc/enter)
@@ -62,6 +63,11 @@ export function StartDraft(props) {
         setError('')
       }, 5000)
     }
+    // spinner
+    setSpinner(true)
+    setTimeout(() => {
+      setSpinner(false)
+    }, 500)
   }
 
   function removeName(name) {
@@ -69,10 +75,17 @@ export function StartDraft(props) {
     let names = props.draft.philosopher
     names.splice(names.indexOf(name), 1)
     props.addPhil(names)
+
     // add removed color to array
     let colors = props.draft.colors
     colors.push(name.color)
     props.addColor(colors)
+
+    // spinner
+    setSpinner(true)
+    setTimeout(() => {
+      setSpinner(false)
+    }, 500)
   }
 
   function handleSubmit(e) {
@@ -110,6 +123,7 @@ export function StartDraft(props) {
         messages,
         admin
       )
+      // clear data and get updated draftlist
       props.clearDisplay()
       setTimeout(() => {
         props.getDrafts(userId)
@@ -126,7 +140,7 @@ export function StartDraft(props) {
   // ----------------------------------- RETURN --------------------------------------------------------------------------
 
   return (
-    <Panel id="startDraft" title="Draft details">
+    <Panel id="startDraft" title="Start your draft of a new chat">
       <div className="text-center mb-4">
         {error && <Alert variant="danger">{error}</Alert>}
       </div>
@@ -152,7 +166,7 @@ export function StartDraft(props) {
               id="start-add-input-name"
               type="name"
               ref={philRef}
-              placeholder="Name of participant"
+              placeholder="Name of philosopher"
               onKeyDown={keyEventInput}
             />
           </Col>
@@ -180,6 +194,12 @@ export function StartDraft(props) {
             </p>
           </Col>
         </Form.Group>
+
+        <div className="start-spinner">
+          {spinner ? (
+            <Spinner animation="border" role="status"></Spinner>
+          ) : null}
+        </div>
 
         {props.draft.philosopher[0] ? (
           <div className="start-border1">{''}</div>

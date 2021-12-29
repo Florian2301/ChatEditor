@@ -12,7 +12,7 @@
 
 .data-columns-adminchats {
   display: grid;
-  grid-template-columns: 3.5rem 1fr 8rem;
+  grid-template-columns: 10% 70% 20%;
 }
 
 .thead-adminchats-1 {
@@ -20,7 +20,7 @@
   font-size: 1.5rem;
   border: 1px solid #999999;
   padding: 0.5rem;
-  text-align: left;
+  text-align: center;
 }
 
 .thead-adminchats-2 {
@@ -39,14 +39,7 @@
   text-align: left;
 }
 
-.data-rows-adminchats {
-  display: grid;
-  grid-template-columns: 3.5rem 1fr 8rem;
-}
-
 .adminchats-column-1 {
-  font-size: 1.2rem;
-  font-weight: bold;
   color: dodgerblue;
   border: 1px solid #999999;
   padding: 0.5rem;
@@ -70,16 +63,10 @@
   border: 1px solid #999999;
   padding: 0.5rem;
   text-align: left;
+  word-wrap: break-word;
 }
 
-.link-download-dbChat {
-  font-size: 1.2rem;
-  color: white;
-  position: relative;
-}
-
-.link-download-dbChat:hover {
-  text-decoration: underline;
-  color: white;
+.adminchats-column-3:hover {
   cursor: pointer;
+  text-decoration: underline;
 }

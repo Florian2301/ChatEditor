@@ -14,7 +14,8 @@ export const saveChat =
     description,
     philosopher,
     messages,
-    admin
+    admin,
+    comments
   ) =>
   (dispatch) => {
     axios
@@ -31,6 +32,7 @@ export const saveChat =
         description,
         philosopher,
         messages,
+        comments,
       })
       .then((res) =>
         dispatch({

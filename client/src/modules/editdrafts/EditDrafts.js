@@ -1,6 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react'
-import { Form, Alert, Col, Row } from 'react-bootstrap'
+import { Form, Alert, Col, Row, Spinner } from 'react-bootstrap'
 import { v4 as uuidv4 } from 'uuid'
+import PDF from '../../elements/PDF'
+import { PDFDownloadLink } from '@react-pdf/renderer'
 import Panel from '../../elements/Panel'
 import Button from '../../elements/Button'
 import './EditDrafts.css'
@@ -10,6 +12,7 @@ import {
   getDrafts,
   updateDraft,
   selectColor,
+  deleteDraft,
 } from '../../redux/actions/draft'
 import { clearDisplay } from '../../redux/actions/user'
 import { saveChat, getUserChats } from '../../redux/actions/chat'
@@ -26,10 +29,12 @@ export function EditDrafts(props) {
   const phil5 = props.draft.philosopher[4]
   const phil6 = props.draft.philosopher[5]
   const [error, setError] = useState('')
+  const [spinner, setSpinner] = useState(false)
   const [edit, setEdit] = useState(false)
   const [save, setSave] = useState(false)
   const [draftLanguage, setDraftLanguage] = useState(props.draft.language)
   const [toggleAdmin, setToggleAdmin] = useState(true)
+  const [download, setDownload] = useState(false)
   const titleRef = useRef()
   const addPhilRef = useRef()
   const colorRef = useRef()
@@ -68,6 +73,17 @@ export function EditDrafts(props) {
   // if user = admin then he can save draft as "admin" or "user"
   function toggleAdminDraft() {
     setToggleAdmin(!toggleAdmin)
+  }
+
+  // prepare download as pdf and get drafts with last changes (messages)
+  function pdfdownload(id) {
+    setDownload(id)
+    props.getDrafts(props.draft.userId)
+    // spinner
+    setSpinner(true)
+    setTimeout(() => {
+      setSpinner(false)
+    }, 1000)
   }
 
   // for updating list of colors to select for new name
@@ -306,8 +322,12 @@ export function EditDrafts(props) {
 
       // save author
       let author
-      if (authorRef.current.value !== '') {
-        author = authorRef.current.value
+      if (props.user.admin) {
+        if (authorRef.current.value !== '') {
+          author = authorRef.current.value
+        }
+      } else {
+        author = props.user.username
       }
 
       // save admin
@@ -329,10 +349,12 @@ export function EditDrafts(props) {
       //update draft
       const draftId = props.draft.draftId
       const userId = props.user.userId
+      const published = props.draft.published
       props.updateDraft(
         draftId,
         title,
         author,
+        published,
         updateDraft,
         draftLanguage,
         tags,
@@ -341,15 +363,21 @@ export function EditDrafts(props) {
         messages,
         admin
       )
+
+      // clear data and get saved drafts
       setTimeout(() => {
         props.getDrafts(userId)
       }, 500)
       setError('')
       e.target.reset()
-    }
-    if (save) {
       setEdit(false)
       setSave(false)
+
+      // spinner
+      setSpinner(true)
+      setTimeout(() => {
+        setSpinner(false)
+      }, 1000)
     }
   }
 
@@ -359,9 +387,10 @@ export function EditDrafts(props) {
     setError('')
     setEdit(false)
     setSave(false)
+    setDownload(false)
   }
 
-  // publish draft
+  // publish draft as chat
   function publish() {
     const admin = props.user.admin
     const userId = props.user.userId
@@ -373,6 +402,7 @@ export function EditDrafts(props) {
     const description = props.draft.description
     const philosopher = props.draft.philosopher
     const messages = props.draft.messages
+    const comments = []
 
     // tags and description must be set before publish (save as chat)
     if (!tags.length) {
@@ -386,14 +416,14 @@ export function EditDrafts(props) {
 
     // set new chatnumber
     let chatnumber
-    let language = []
+    let numberOfChats = []
     props.chat.userChats.map((chat) => {
       if (chat.language === chatLanguage) {
-        language.push(chat)
+        numberOfChats.push(chat)
       }
-      return language
+      return numberOfChats
     })
-    chatnumber = language.length + 1
+    chatnumber = numberOfChats.length + 1
 
     // date of publish
     let publishdate = date.toLocaleDateString('en-CA', {
@@ -415,14 +445,50 @@ export function EditDrafts(props) {
       description,
       philosopher,
       messages,
+      admin,
+      comments
+    )
+
+    // set draft as "published"
+    props.updateDraft(
+      props.draft.draftId,
+      title,
+      author,
+      true,
+      publishdate,
+      chatLanguage,
+      tags,
+      description,
+      philosopher,
+      messages,
       admin
     )
-    // clear screen, update chatlist and set boolean for update new title in ChatboxBackend
-    clear()
+
+    // update chatlist and set boolean for update new title in ChatboxBackend
     setTimeout(() => {
       props.getUserChats(userId)
     }, 500)
     props.publishTitle(props.chat.userChats.length)
+
+    // spinner
+    setSpinner(true)
+    setTimeout(() => {
+      setSpinner(false)
+    }, 1000)
+  }
+
+  // delete draft, get all drafts after one draft is deleted and clear display
+  function deleteDraft() {
+    let answer = window.confirm('Delete this message?')
+    if (answer) {
+      props.deleteDraft(props.draft.draftId)
+      setTimeout(() => {
+        props.getDrafts(props.user.userId)
+      }, 500)
+      props.clearDisplay()
+    } else {
+      return
+    }
   }
 
   // ----------------------------------- RETURN --------------------------------------------------------------------------
@@ -471,7 +537,7 @@ export function EditDrafts(props) {
                 <Form.Label className="edit-draft-name">{''}</Form.Label>
                 <Col>
                   <Form.Control
-                    className="edit-draft-name-input-2"
+                    className="edit-draft-input-name-2"
                     type="name"
                     ref={editPhilRef2}
                     defaultValue={phil2.name}
@@ -611,17 +677,19 @@ export function EditDrafts(props) {
               </Col>
             </Form.Group>
 
-            <Form.Group as={Row}>
-              <Form.Label className="edit-draft-author">Author:</Form.Label>
-              <Col>
-                <Form.Control
-                  className="edit-draft-author-input"
-                  type="text"
-                  ref={authorRef}
-                  defaultValue={props.draft.author}
-                />
-              </Col>
-            </Form.Group>
+            {props.user.admin ? (
+              <Form.Group as={Row}>
+                <Form.Label className="edit-draft-author">Author:</Form.Label>
+                <Col>
+                  <Form.Control
+                    className="edit-draft-author-input"
+                    type="text"
+                    ref={authorRef}
+                    defaultValue={props.draft.author}
+                  />
+                </Col>
+              </Form.Group>
+            ) : null}
 
             {props.user.admin ? (
               <Form.Group as={Row}>
@@ -709,7 +777,7 @@ export function EditDrafts(props) {
 
             {props.user.admin ? (
               <div className="draft-details">
-                <p>Admin:</p>
+                <p>Status:</p>
                 <p className="draft-info" id="draft-admin">
                   {props.draft.admin ? 'Admin' : 'User'}
                 </p>
@@ -729,10 +797,53 @@ export function EditDrafts(props) {
                 {props.draft.date}
               </p>
             </div>
+
+            <div className="draft-details">
+              <p>Published:</p>
+              <p className="draft-info" id="draft-date">
+                {props.draft.published ? 'Yes' : 'No'}
+              </p>
+            </div>
+
+            <div className="draft-details">
+              <p>Download:</p>
+              <div className="draft-info" id="draft-download">
+                {download ? (
+                  <PDFDownloadLink
+                    document={
+                      <PDF
+                        title={props.draft.title}
+                        data={props.draft.messages}
+                        author={props.draft.author}
+                        date={props.draft.date}
+                      />
+                    }
+                    fileName={props.draft.title + '.pdf'}
+                    className="link-download-draft"
+                  >
+                    {({ blob, url, loading, error }) =>
+                      loading ? 'loading...' : 'download'
+                    }
+                  </PDFDownloadLink>
+                ) : (
+                  <p
+                    className={'link-download-draft'}
+                    onClick={() => pdfdownload(props.draft.draftId)}
+                  >
+                    {props.draft.title + '.pdf'}
+                  </p>
+                )}
+              </div>
+            </div>
           </div>
         )}
 
         <div className="draft-details-border">{''}</div>
+        <div className="draft-details-spinner">
+          {spinner ? (
+            <Spinner animation="border" role="status"></Spinner>
+          ) : null}
+        </div>
 
         <div className="draft-details-actions">
           {!edit ? (
@@ -770,6 +881,13 @@ export function EditDrafts(props) {
               handleClick={() => setEdit(false)}
             ></Button>
           )}
+          {!edit ? (
+            <Button
+              label="Delete"
+              className="draft-details-btn-delete"
+              handleClick={() => deleteDraft()}
+            ></Button>
+          ) : null}
         </div>
       </Form>
     </Panel>
@@ -794,6 +912,7 @@ const mapActionsToProps = {
   getUserChats: getUserChats,
   selectColor: selectColor,
   publishTitle: publishTitle,
+  deleteDraft: deleteDraft,
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(EditDrafts)

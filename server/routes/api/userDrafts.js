@@ -85,6 +85,9 @@ router.patch('/:id', getDrafts, async (req, res) => {
   if (req.body.date !== res.draft.date) {
     res.draft.date = req.body.date
   }
+  if (req.body.published !== res.draft.published) {
+    res.draft.published = req.body.published
+  }
   if (req.body.language !== res.draft.language) {
     res.draft.language = req.body.language
   }

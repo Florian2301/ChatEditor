@@ -2,18 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import './ChatList.css'
 import { v4 as uuidv4 } from 'uuid'
-import { PDFDownloadLink } from '@react-pdf/renderer'
-import PDF from '../../elements/PDF'
-import { getUserChats, getOneChat, deleteChat } from '../../redux/actions/chat'
-import {
-  getUserTitles,
-  getOneTitle,
-  deleteTitle,
-} from '../../redux/actions/title'
+import { getUserChats, getOneChat } from '../../redux/actions/chat'
+import { getUserTitles, getOneTitle } from '../../redux/actions/title'
 import { clearDisplay, setKeyL, setKeyR } from '../../redux/actions/user'
 
 export function Chats(props) {
-  const [download, setDownload] = useState(false)
   const [list, setList] = useState(false)
   const userId = props.user.userId
   const userChats = props.chat.userChats
@@ -46,99 +39,50 @@ export function Chats(props) {
     props.getOneTitle(titleId)
   }
 
-  // prepare download as pdf and get chats with last changes
-  function pdfdownload(id) {
-    props.getUserChats(userId)
-    setDownload(id)
-  }
-
-  // delete one title + chat
-  function deleteChat(chatId) {
-    let answer = window.confirm('Delete this message?')
-    if (answer) {
-      let titleId = ''
-      props.deleteChat(chatId)
-      props.title.allTitles.map((title) => {
-        // adminTitle has own state
-        if (title.chatId === chatId) {
-          titleId = title._id
-        }
-        return titleId
-      })
-      props.deleteTitle(titleId)
-      setTimeout(() => {
-        props.getUserChats(userId)
-        props.getUserTitles(userId)
-      }, 500)
-    } else {
-      return
-    }
-  }
-
   // -------------------- return --------------------------------------------------
+
+  let chats
+
   return (
     <div className="table-chats">
       <div className="data-rows-chats">
+        <div className="thead-chats" id="thead-chats-number">
+          #
+        </div>
         <div className="thead-chats">Your published chats</div>
-        <div className="thead-chats">Delete</div>
-        <div className="thead-chats">Download</div>
+        <div className="thead-chats">Date</div>
       </div>
-      {userChats.map(({ _id, chatnumber, title, author, date, messages }) => {
-        return (
-          <div key={uuidv4()} className="data-rows-chats">
-            <div
-              className="data-columns-drafts"
-              id="data-columns-chats-title"
-              onClick={() => getOneChat(_id)}
-            >
-              {chatnumber + ' ' + title}
-            </div>
-            <div className="data-columns-chats">
-              {props.chat.chatId !== _id ? (
-                <p
-                  className="link-download-chat"
-                  onClick={() => deleteChat(_id)}
+      {
+        (chats = userChats.map((chat) => {
+          if (chat.language === props.user.language) {
+            return (
+              <div key={uuidv4()} className="data-rows-chats">
+                <div
+                  className="data-columns-chats"
+                  id="data-columns-chats-number"
                 >
-                  delete
-                </p>
-              ) : (
-                <p className="link-download-chat-active">delete</p>
-              )}
-            </div>
-            <div className="data-columns-chats">
-              {download === _id && props.chat.chatId !== _id ? (
-                <PDFDownloadLink
-                  document={
-                    <PDF
-                      title={title}
-                      data={messages}
-                      author={author}
-                      date={date}
-                    />
-                  }
-                  fileName={title + '.pdf'}
-                  className="link-download-chat"
+                  {chat.chatnumber}
+                </div>
+                <div
+                  className="data-columns-chats"
+                  id="data-columns-chats-title"
+                  onClick={() => getOneChat(chat._id)}
                 >
-                  {({ blob, url, loading, error }) =>
-                    loading ? 'loading...' : 'download'
-                  }
-                </PDFDownloadLink>
-              ) : (
-                <p
-                  className={
-                    props.chat.chatId !== _id
-                      ? 'link-download-chat'
-                      : 'link-download-chat-active'
-                  }
-                  onClick={() => pdfdownload(_id)}
+                  {chat.title}
+                </div>
+                <div
+                  className="data-columns-chats"
+                  id="data-columns-chats-date"
+                  onClick={() => getOneChat(chat._id)}
                 >
-                  pdf
-                </p>
-              )}
-            </div>
-          </div>
-        )
-      })}
+                  {chat.date}
+                </div>
+              </div>
+            )
+          }
+          return chats
+        }))
+      }
     </div>
   )
 }
@@ -157,10 +101,8 @@ let mapDispatchToProps = {
   clearDisplay: clearDisplay,
   getUserChats: getUserChats,
   getOneChat: getOneChat,
-  deleteChat: deleteChat,
   getUserTitles: getUserTitles,
   getOneTitle: getOneTitle,
-  deleteTitle: deleteTitle,
   setKeyL: setKeyL,
   setKeyR: setKeyR,
 }
