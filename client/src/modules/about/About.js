@@ -38,7 +38,7 @@ export default function About() {
 
         <br></br>
 
-        <a id="git" href="https://github.com/Florian2301/flokrates.online">
+        <a id="git" href="https://github.com/Florian2301/ChatEditor">
           See code on Github
         </a>
         <p id="about-update">Last update: 2021-11-07</p>
