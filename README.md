@@ -4,9 +4,9 @@ Its a MERN stack app, means I use MongoDB as my database, express as middleware,
 
 For React hooks and refs you can find examples in:
 
-    client/src/main/publish/publish.js
+    client/src/modules/editchats/EditChats.js
 
-or for general usage of javascript within react: -/publish/Draftlist.js
+or for general usage of javascript within react: -/tables/Chatlist.js
 
 For my state management you find examples in:
 
@@ -22,12 +22,11 @@ An example for the firebase authorization you find in:
 
 Routes for the database you can find in:
 
-    server/routes/api/adminChats.js
+    server/routes/api/userChats.js
 
 Models for the database are in e.g.:
 
     server/models/Chat.js
-
 
 This is a demoversion for a free online chat editor for writing texts/dialogues in form of a chat and same time a platform to publish those texts. I always wanted to write down my own philosophical ideas, but couldn't find the right way to bring them on paper. Finally in 2019 I thought about writing in form of dialogues to express my thoughts. So I decided to create my own online chat editor and a platform to publish the chats.
 
@@ -37,4 +36,4 @@ I do not follow any commercial purposes with this app.
 
 See live demo on heroku (might take a few seconds to load, its free hosting on heroku):
 
-http://philomessenger.herokuapp.com/login
+http://flokrates-online.herokuapp.com/login
