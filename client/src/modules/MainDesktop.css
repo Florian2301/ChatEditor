@@ -55,6 +55,7 @@
 
 #uncontrolled-tab-adminchats[aria-selected='true'] {
   border-color: dodgerblue;
+  border-width: thin;
   border-radius: 0.5rem;
   background-color: rgba(0, 0, 0, 0.3);
 }

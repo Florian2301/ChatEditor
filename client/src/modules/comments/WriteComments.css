@@ -1,10 +1,10 @@
 .write-comments {
   background-color: rgba(0, 0, 0, 0.3);
   position: relative;
-  border: groove;
+  border-top-style: solid;
   border-radius: 0.5rem;
-  border-color: dodgerblue;
-  border-width: thick;
+  border-top-color: dodgerblue;
+  border-top-width: thin;
   overflow: auto;
   max-height: 35vh;
   width: 100%;
@@ -17,11 +17,11 @@
   margin-top: 0.5rem;
   font-size: 14px;
   color: lightgray;
+  text-decoration: underline;
 }
 
 #write-comments-collapse:hover {
   cursor: pointer;
-  text-decoration: underline;
   color: dodgerblue;
 }
 

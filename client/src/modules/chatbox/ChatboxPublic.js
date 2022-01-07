@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react'
 import useDynamicRefs from 'use-dynamic-refs'
 import Message from '../messages/Message'
+import Panel from '../../elements/Panel'
 import { connect } from 'react-redux'
 import './Chatbox.css'
 import { v4 as uuidv4 } from 'uuid'
@@ -63,7 +64,7 @@ export function ChatboxPublic(props) {
   //---- return ---------------------------------------------------------------------------------------------------
 
   return (
-    <div>
+    <Panel title={'Title: ' + props.chat.title} id="chatbox">
       <Container className="chatbox">
         <ListGroup>
           <TransitionGroup>
@@ -110,7 +111,7 @@ export function ChatboxPublic(props) {
           </TransitionGroup>
         </ListGroup>
       </Container>
-    </div>
+    </Panel>
   )
 }
 
