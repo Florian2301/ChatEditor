@@ -30,31 +30,33 @@ export function UserChatsTable(props) {
         <div className="thead-userchats-3">Title</div>
         <div className="thead-userchats-4">Date</div>
       </div>
-      {
-        (usertitles = props.title.allTitles.map((title) => {
-          if (!title.admin && props.user.language === title.language) {
-            return (
-              <div
-                key={uuidv4()}
-                className="data-columns-userchats-2"
-                onClick={() => displayChat(title._id, title.chatId)}
-              >
-                <div className="userchats-column-1">{title.author}</div>
-                <div className="userchats-column-2">{title.chatnumber}</div>
-                <div className="userchats-column-3">
-                  <Popover
-                    title={title.title}
-                    tags={title.tags}
-                    description={title.description}
-                  />
+      <div className="userchats-scroll">
+        {
+          (usertitles = props.title.allTitles.map((title) => {
+            if (!title.admin && props.user.language === title.language) {
+              return (
+                <div
+                  key={uuidv4()}
+                  className="data-columns-userchats-2"
+                  onClick={() => displayChat(title._id, title.chatId)}
+                >
+                  <div className="userchats-column-1">{title.author}</div>
+                  <div className="userchats-column-2">{title.chatnumber}</div>
+                  <div className="userchats-column-3">
+                    <Popover
+                      title={title.title}
+                      tags={title.tags}
+                      description={title.description}
+                    />
+                  </div>
+                  <div className="userchats-column-4">{title.date}</div>
                 </div>
-                <div className="userchats-column-4">{title.date}</div>
-              </div>
-            )
-          }
-          return usertitles
-        }))
-      }
+              )
+            }
+            return usertitles
+          }))
+        }
+      </div>
     </div>
   )
 }

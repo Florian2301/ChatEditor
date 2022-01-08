@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react'
 import useDynamicRefs from 'use-dynamic-refs'
+import Panel from '../../elements/Panel'
 import Message from '../messages/Message'
 import WriteMessage from '../messages/WriteMessage'
 import { connect } from 'react-redux'
@@ -95,6 +96,7 @@ export function ChatboxBackend(props) {
   let chatId = props.draft.draftId
   let chatnumber = ''
   let userId = props.draft.userId
+  let title = props.draft.title
 
   // get data for display saved chat
   if (props.chat.chatEditmode) {
@@ -102,12 +104,13 @@ export function ChatboxBackend(props) {
     chatId = props.chat.chatId
     chatnumber = props.chat.chatnumber
     userId = props.chat.userId
+    title = props.chat.title
   }
 
   //---- return ---------------------------------------------------------------------------------------------------
 
   return (
-    <div>
+    <Panel title={'Title: ' + title} id="chatbox">
       <Container
         className={
           props.draft.write && props.draft.draftEditmode
@@ -157,7 +160,7 @@ export function ChatboxBackend(props) {
           defaultScroll={() => setScroll(false)}
         />
       ) : null}
-    </div>
+    </Panel>
   )
 }
 

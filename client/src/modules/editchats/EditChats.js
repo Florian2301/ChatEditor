@@ -193,7 +193,7 @@ export function EditChats(props) {
     }
     const admin = props.chat.admin
     const userId = props.chat.userId
-    const user = props.chat.username
+    const user = props.chat.user
     const title = props.chat.title
     const author = props.chat.author
     const draftLanguage = props.chat.language

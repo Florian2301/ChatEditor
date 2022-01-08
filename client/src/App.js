@@ -59,13 +59,7 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <div
-        style={{
-          backgroundImage: 'url(/img/red_curtain.jpg)',
-          width: '100%',
-          height: '100vh',
-        }}
-      >
+      <div>
         <DesktopScreen>
           <Header
             auto={viewAuto}

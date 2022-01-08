@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import WriteComments from '../comments/WriteComments'
 import Comments from '../comments/Comments'
+import Panel from '../../elements/Panel'
 import { writeMessage } from '../../redux/actions/draft'
 import { connect } from 'react-redux'
 import './Chatbox.css'
@@ -22,10 +23,16 @@ export function ChatboxComments(props) {
     }
   }, [props.chat.messages, props.draft.write, props, props.user.loggedIn])
 
+  // show title
+  let title = props.draft.title
+  if (props.chat.chatEditmode) {
+    title = props.chat.title
+  }
+
   //---- return ---------------------------------------------------------------------------------------------------
 
   return (
-    <div>
+    <Panel title={'Title: ' + title} id="chatbox">
       <Container
         className={props.user.writeComment ? 'commentchatbox' : 'chatbox'}
       >
@@ -51,13 +58,13 @@ export function ChatboxComments(props) {
           </ListGroup>
         ) : (
           <div className="comments-info">
-            ~ comments: only available when a chat is published ~
+            ~ comments only available when a chat is published ~
           </div>
         )}
       </Container>
 
       {props.chat.chatEditmode ? <WriteComments /> : null}
-    </div>
+    </Panel>
   )
 }
 

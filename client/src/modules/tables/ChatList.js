@@ -45,44 +45,48 @@ export function Chats(props) {
 
   return (
     <div className="table-chats">
-      <div className="data-rows-chats">
+      <div className="data-rows-chats-1">
         <div className="thead-chats" id="thead-chats-number">
           #
         </div>
         <div className="thead-chats">Your published chats</div>
         <div className="thead-chats">Date</div>
       </div>
-      {
-        (chats = userChats.map((chat) => {
-          if (chat.language === props.user.language) {
-            return (
-              <div key={uuidv4()} className="data-rows-chats">
+      <div className="chatlist-scroll">
+        {
+          (chats = userChats.map((chat) => {
+            if (chat.language === props.user.language) {
+              return (
                 <div
-                  className="data-columns-chats"
-                  id="data-columns-chats-number"
-                >
-                  {chat.chatnumber}
-                </div>
-                <div
-                  className="data-columns-chats"
-                  id="data-columns-chats-title"
+                  key={uuidv4()}
+                  className="data-rows-chats-2"
                   onClick={() => getOneChat(chat._id)}
                 >
-                  {chat.title}
+                  <div
+                    className="data-columns-chats"
+                    id="data-columns-chats-number"
+                  >
+                    {chat.chatnumber}
+                  </div>
+                  <div
+                    className="data-columns-chats"
+                    id="data-columns-chats-title"
+                  >
+                    {chat.title}
+                  </div>
+                  <div
+                    className="data-columns-chats"
+                    id="data-columns-chats-date"
+                  >
+                    {chat.date}
+                  </div>
                 </div>
-                <div
-                  className="data-columns-chats"
-                  id="data-columns-chats-date"
-                  onClick={() => getOneChat(chat._id)}
-                >
-                  {chat.date}
-                </div>
-              </div>
-            )
-          }
-          return chats
-        }))
-      }
+              )
+            }
+            return chats
+          }))
+        }
+      </div>
     </div>
   )
 }

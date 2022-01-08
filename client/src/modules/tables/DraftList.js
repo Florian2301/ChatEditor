@@ -34,38 +34,42 @@ export function Drafts(props) {
 
   return (
     <div className="table-drafts">
-      <div className="data-rows-drafts">
+      <div className="data-rows-drafts-1">
         <div className="thead-drafts">Your drafts</div>
         <div className="thead-drafts">Date</div>
       </div>
-      {
-        (drafts = userDrafts.map((draft) => {
-          if (draft.language === props.user.language) {
-            return (
-              <div key={uuidv4()} className="data-rows-drafts">
+      <div className="draftlist-scroll">
+        {
+          (drafts = userDrafts.map((draft) => {
+            if (draft.language === props.user.language) {
+              return (
                 <div
-                  className="data-columns-drafts"
-                  id="data-columns-drafts-title"
+                  key={uuidv4()}
+                  className="data-rows-drafts-2"
                   onClick={() => showDraft(draft._id)}
                 >
-                  <span id="draft-title">{draft.title}</span>
-                  <span id="draft-published">
-                    {draft.published ? ' (published)' : ''}
-                  </span>
+                  <div
+                    className="data-columns-drafts"
+                    id="data-columns-drafts-title"
+                  >
+                    <span id="draft-title">{draft.title}</span>
+                    <span id="draft-published">
+                      {draft.published ? ' (published)' : ''}
+                    </span>
+                  </div>
+                  <div
+                    className="data-columns-drafts"
+                    id="data-columns-draft-date"
+                  >
+                    {draft.date}
+                  </div>
                 </div>
-                <div
-                  className="data-columns-drafts"
-                  id="data-columns-draft-date"
-                  onClick={() => showDraft(draft._id)}
-                >
-                  {draft.date}
-                </div>
-              </div>
-            )
-          }
-          return drafts
-        }))
-      }
+              )
+            }
+            return drafts
+          }))
+        }
+      </div>
     </div>
   )
 }

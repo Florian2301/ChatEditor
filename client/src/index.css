@@ -2,6 +2,8 @@
 body {
   background-color: black;
   color: white;
+  background-image: url('/img/red_curtain.jpg');
+  background-repeat: repeat-x;
 }
 
 html {
@@ -26,3 +28,26 @@ a {
   font-size: 2rem;
   font-family: sans-serif;
 } /*u.a. für die Nav-Edit */
+
+/* color of scrollbar */
+
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: blue rgba(0, 0, 0, 0.3);
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: blue;
+  border-radius: 20px;
+  border: 3px solid rgba(0, 0, 0, 0.3);
+}

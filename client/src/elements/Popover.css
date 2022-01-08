@@ -7,7 +7,7 @@
 
 #popover-title {
   color: white;
-  background-color: rgb(53, 53, 53);
+  background-color: rgba(0, 0, 0, 0.7);
   font-size: 1.2rem;
   border-color: dodgerblue;
   font-weight: bold;
@@ -16,7 +16,7 @@
 
 #popover-content {
   color: white;
-  background-color: rgb(53, 53, 53);
+  background-color: rgba(0, 0, 0, 0.7);
   font-size: 1.2rem;
   border-radius: 0rem 0rem 1rem 1rem;
 }

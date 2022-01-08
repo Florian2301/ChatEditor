@@ -1,12 +1,12 @@
 .write-message {
   background-color: rgba(0, 0, 0, 0.3);
   position: relative;
-  border: groove;
-  border-radius: 0.5rem;
-  border-color: dodgerblue;
-  border-width: thick;
+  border-top-style: solid;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border-top-color: dodgerblue;
+  border-top-width: thin;
   overflow: auto;
-  max-height: 35vh;
   width: 100%;
   min-width: 30vw;
   max-width: 35vw;
@@ -18,11 +18,11 @@
   margin-top: 0.5rem;
   font-size: 14px;
   color: lightgray;
+  text-decoration: underline;
 }
 
 #write-message-collapse:hover {
   cursor: pointer;
-  text-decoration: underline;
   color: dodgerblue;
 }
 
@@ -74,7 +74,7 @@
 .textarea-write-message {
   margin: auto;
   font-size: 20px;
-  min-height: 20vh;
+  min-height: 15vh;
   width: 90%;
   background-color: lightyellow;
   border-radius: 0.5rem;
