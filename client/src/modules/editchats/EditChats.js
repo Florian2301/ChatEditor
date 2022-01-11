@@ -239,7 +239,7 @@ export function EditChats(props) {
 
       <Form className="form-edit-chat" onSubmit={handleSubmit}>
         {edit ? (
-          <div>
+          <div className="edit-chat-scroll">
             <Form.Group className="edit-chat" as={Row}>
               <Form.Label className="edit-chat-number">Chatnumber:</Form.Label>
               <Col>
@@ -268,33 +268,6 @@ export function EditChats(props) {
             </Form.Group>
 
             <Form.Group className="edit-chat" as={Row}>
-              <Form.Label className="edit-chat-name">Philosopher:</Form.Label>
-
-              <Col>
-                <ul>
-                  {props.chat.philosopher.map((phil) => {
-                    return (
-                      <li className="edit-chat-name-list" key={uuidv4()}>
-                        <Form.Label>{phil.name}</Form.Label>
-                      </li>
-                    )
-                  })}
-                </ul>
-              </Col>
-            </Form.Group>
-
-            <Form.Group className="edit-chat-last" as={Row}>
-              <Form.Label className="edit-chat-messages">Messages:</Form.Label>
-              <Col>
-                <Form.Label id="chat-messages">
-                  {props.chat.messages.length !== 0
-                    ? props.chat.messages.length
-                    : null}
-                </Form.Label>
-              </Col>
-            </Form.Group>
-
-            <Form.Group className="edit-chat" as={Row}>
               <Form.Label className="edit-chat-description">
                 Description:
               </Form.Label>
@@ -306,6 +279,7 @@ export function EditChats(props) {
                   ref={descriptionRef}
                   placeholder="Give a brief summary or description of your chat"
                   defaultValue={props.chat.description}
+                  rows="5"
                 />
               </Col>
             </Form.Group>
@@ -395,7 +369,7 @@ export function EditChats(props) {
             </Form.Group>
           </div>
         ) : (
-          <div>
+          <div className="edit-chat-scroll">
             <div className="chat-details">
               <p>Chatnumber:</p>
               <p className="chat-info" id="chat-number">
@@ -409,34 +383,33 @@ export function EditChats(props) {
             </div>
 
             <div className="chat-details">
-              <p>Philosopher:</p>
-              <div className="chat-info">
-                {props.chat.philosopher.map((phil) => {
-                  return <p key={uuidv4()}>{phil.name}</p>
-                })}
-              </div>
-            </div>
-
-            <div className="chat-details">
-              <p>Messages:</p>
-              <p className="chat-info" id="chat-messages">
-                {props.chat.messages.length !== 0
-                  ? props.chat.messages.length
-                  : null}
+              <p>Description:</p>
+              <p className="chat-info" id="chat-info-description">
+                {props.chat.description}
               </p>
             </div>
 
             <div className="chat-details">
-              <p>Description:</p>
-              <p className="chat-info">{props.chat.description}</p>
-            </div>
-
-            <div className="chat-details">
               <p>Tags:</p>
-              <p className="chat-info">{props.chat.tags}</p>
+              <p className="chat-info" id="chat-info-tags">
+                {props.chat.tags}
+              </p>
             </div>
 
             <div className="chat-details">
+              <p>Philosopher:</p>
+              <div className="chat-info">
+                {props.chat.philosopher.map((phil) => {
+                  return (
+                    <p key={uuidv4()} id="chat-info-phil">
+                      {phil.name}
+                    </p>
+                  )
+                })}
+              </div>
+            </div>
+
+            <div className="chat-details" id="chat-info-description-margin">
               <p>Author:</p>
               <p className="chat-info">{props.chat.author}</p>
             </div>
@@ -457,6 +430,22 @@ export function EditChats(props) {
             <div className="chat-details">
               <p>Language:</p>
               <p className="chat-info">{props.chat.language}</p>
+            </div>
+
+            <div className="chat-details">
+              <p>Messages:</p>
+              <p className="chat-info" id="chat-messages">
+                {props.chat.messages.length !== 0
+                  ? props.chat.messages.length
+                  : null}
+              </p>
+            </div>
+
+            <div className="chat-details">
+              <p>Published:</p>
+              <p className="chat-info" id="chat-messages">
+                {props.chat.messages.length !== 0 ? props.chat.date : null}
+              </p>
             </div>
 
             <div className="chat-details">

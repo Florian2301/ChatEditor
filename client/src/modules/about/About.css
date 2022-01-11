@@ -4,15 +4,20 @@
   text-decoration: underline;
 }
 
+#git:hover {
+  color: dodgerblue;
+  cursor: pointer;
+}
+
 .about {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+  max-height: 83vh;
+  overflow: auto;
 }
 
 #about {
   margin-top: 1.5rem;
-  max-height: 70vh;
-  overflow: auto;
 }
 
 #about-update {

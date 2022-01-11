@@ -6,9 +6,7 @@
 
 .chatbox {
   height: 80vh;
-  width: 100%;
-  min-width: 30vw;
-  max-width: 35vw;
+  width: 30vw;
   overflow: auto;
   border-radius: 0.6rem;
   position: relative;
@@ -18,14 +16,27 @@
 
 .editchatbox {
   height: 57vh;
-  width: 100%;
-  min-width: 30vw;
-  max-width: 35vw;
+  width: 30vw;
   overflow: auto;
   border-radius: 0.6rem;
   position: relative;
   display: flex;
   flex-direction: column;
+}
+
+.commentchatbox {
+  height: 61.7vh;
+  width: 30vw;
+  overflow: auto;
+  border-radius: 0.6rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.comments-info {
+  text-align: center;
+  margin-top: 10%;
 }
 
 /* ul of chatmessages */
@@ -99,22 +110,4 @@
 .transition-message-exit-active {
   opacity: 0;
   transition: opacity 500ms ease-in;
-}
-
-/* Public */
-.commentchatbox {
-  height: 60vh;
-  width: 100%;
-  min-width: 30vw;
-  max-width: 35vw;
-  overflow: auto;
-  border-radius: 0.6rem;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
-
-.comments-info {
-  text-align: center;
-  margin-top: 10%;
 }

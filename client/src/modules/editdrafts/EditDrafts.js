@@ -501,7 +501,7 @@ export function EditDrafts(props) {
 
       <Form className="edit-draft-form" onSubmit={handleSubmit}>
         {edit ? (
-          <div>
+          <div className="edit-draft-scroll">
             <Form.Group as={Row}>
               <Form.Label className="edit-draft-title">Title:</Form.Label>
               <Col>
@@ -660,6 +660,7 @@ export function EditDrafts(props) {
                   ref={descriptionRef}
                   placeholder="Take notes for your chat"
                   defaultValue={props.draft.description}
+                  rows="5"
                 />
               </Col>
             </Form.Group>
@@ -736,39 +737,40 @@ export function EditDrafts(props) {
             </Form.Group>
           </div>
         ) : (
-          <div>
+          <div className="edit-draft-scroll">
             <div className="draft-details">
               <p>Title:</p>
               <p className="draft-info">{props.draft.title}</p>
             </div>
 
             <div className="draft-details">
-              <p>Philosopher:</p>
-              <div className="draft-info">
-                {props.draft.philosopher.map((phil) => {
-                  return <p key={uuidv4()}>{phil.name}</p>
-                })}
-              </div>
-            </div>
-
-            <div className="draft-details">
-              <p>Messages:</p>
-              <p className="draft-info" id="draft-messages">
-                {props.draft.messages.length}
+              <p>Description:</p>
+              <p className="draft-info" id="draft-info-description">
+                {props.draft.description}
               </p>
             </div>
 
             <div className="draft-details">
-              <p>Description:</p>
-              <p className="draft-info">{props.draft.description}</p>
-            </div>
-
-            <div className="draft-details">
               <p>Tags:</p>
-              <p className="draft-info">{props.draft.tags}</p>
+              <p className="draft-info" id="draft-info-tags">
+                {props.draft.tags}
+              </p>
             </div>
 
             <div className="draft-details">
+              <p>Philosopher:</p>
+              <div className="draft-info">
+                {props.draft.philosopher.map((phil) => {
+                  return (
+                    <p key={uuidv4()} id="draft-info-phil">
+                      {phil.name}
+                    </p>
+                  )
+                })}
+              </div>
+            </div>
+
+            <div className="draft-details" id="draft-info-description-margin">
               <p>Author:</p>
               <p className="draft-info" id="draft-author">
                 {props.draft.author}
@@ -792,16 +794,23 @@ export function EditDrafts(props) {
             </div>
 
             <div className="draft-details">
-              <p>Updated:</p>
-              <p className="draft-info" id="draft-date">
-                {props.draft.date}
+              <p>Messages:</p>
+              <p className="draft-info" id="draft-messages">
+                {props.draft.messages.length}
               </p>
             </div>
 
             <div className="draft-details">
               <p>Published:</p>
               <p className="draft-info" id="draft-date">
-                {props.draft.published ? 'Yes' : 'No'}
+                {props.draft.published ? 'Yes' : 'Nope'}
+              </p>
+            </div>
+
+            <div className="draft-details">
+              <p>Updated:</p>
+              <p className="draft-info" id="draft-date">
+                {props.draft.date}
               </p>
             </div>
 

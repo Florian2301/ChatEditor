@@ -1,6 +1,9 @@
 #title-panel {
   margin-top: 1.5rem;
-  max-height: 75vh;
+}
+
+.title-scroll {
+  max-height: 83vh;
   overflow: auto;
 }
 

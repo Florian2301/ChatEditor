@@ -34,7 +34,7 @@ a {
 /* Works on Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: blue rgba(0, 0, 0, 0.3);
+  scrollbar-color: darkgray rgba(0, 0, 0, 0.3);
 }
 
 /* Works on Chrome, Edge, and Safari */
@@ -47,7 +47,7 @@ a {
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: blue;
+  background-color: darkgray;
   border-radius: 20px;
   border: 3px solid rgba(0, 0, 0, 0.3);
 }

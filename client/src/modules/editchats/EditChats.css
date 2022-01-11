@@ -1,10 +1,13 @@
 #panel-edit-chat {
   margin-top: 1.5rem;
-  max-height: 75vh;
 }
 
 .form-edit-chat {
-  width: 80%;
+  width: 90%;
+}
+
+.edit-chat-scroll {
+  max-height: 74.5vh;
 }
 
 /* Chatnumber */
@@ -30,6 +33,7 @@
 .edit-chat-input-title {
   font-size: 14px;
   height: 2.5rem;
+  width: 95%;
 }
 
 /* description */
@@ -41,6 +45,10 @@
 
 .edit-chat-input-description {
   font-size: 14px;
+  width: 95%;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  height: 50px;
 }
 
 /* tags */
@@ -53,6 +61,7 @@
 .edit-chat-input-tags {
   font-size: 14px;
   height: 2.5rem;
+  width: 95%;
 }
 
 /* author */
@@ -113,22 +122,12 @@
   font-size: 14px;
   height: 2rem;
 }
-/* name of philosophers */
-.edit-chat-name {
-  margin-right: 0.5rem;
-  margin-left: 1.5rem;
-  color: lightgray;
-}
-
-.edit-chat-name-list {
-  list-style-type: none;
-  margin-left: -4rem;
-}
 
 /* count messages */
 .edit-chat-last {
   margin-top: -2rem;
 }
+
 .edit-chat-messages {
   margin-right: 1.8rem;
   margin-left: 1.5rem;
@@ -149,6 +148,24 @@
   word-wrap: break-word;
   margin-left: 5rem;
   color: white;
+}
+
+#chat-info-phil {
+  margin: 0rem;
+}
+
+#chat-info-description {
+  overflow: auto;
+  max-height: 12rem;
+}
+
+#chat-info-description-margin {
+  margin-top: 0.5rem;
+}
+
+#chat-info-tags {
+  overflow: auto;
+  max-height: 5rem;
 }
 
 #chat-number {

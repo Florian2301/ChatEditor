@@ -84,7 +84,9 @@ export function MainMobile(props) {
             /* eventKey = adminchats because initial state is adminchats when page is refreshed */
             <Tab eventKey="adminchats" title="Edit drafts">
               {props.draft.draftEditmode ? <EditDrafts /> : <StartDraft />}
-              <DraftList />
+              <div id="mainmobile-draftlist">
+                <DraftList />
+              </div>
             </Tab>
           ) : null}
 

@@ -24,8 +24,9 @@
 }
 
 .data-columns-adminchats-2:hover {
-  background-color: blue;
+  background-color: rgba(0, 0, 0, 0.3);
   cursor: pointer;
+  text-decoration: underline;
 }
 
 .thead-adminchats-1 {

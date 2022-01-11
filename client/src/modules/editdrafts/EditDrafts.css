@@ -1,10 +1,13 @@
 #edit-draft-panel {
   margin-top: 1.5rem;
-  max-height: 75vh;
 }
 
 .edit-draft-form {
-  width: 80%;
+  width: 90%;
+}
+
+.edit-draft-scroll {
+  max-height: 74.5vh;
 }
 
 /* title */
@@ -18,6 +21,7 @@
   font-size: 14px;
   margin-left: 0.6rem;
   height: 2.5rem;
+  width: 95%;
 }
 
 /* name of philosopher */
@@ -36,7 +40,7 @@
 
 .edit-draft-input-name-2 {
   font-size: 14px;
-  width: 37%;
+  width: 38.5%;
   margin-left: 9rem;
   height: 2.5rem;
 }
@@ -87,6 +91,7 @@
   font-size: 14px;
   margin-left: 0.6rem;
   height: 2.5rem;
+  width: 95%;
 }
 
 /* description */
@@ -99,6 +104,9 @@
 .edit-draft-description-input {
   font-size: 14px;
   margin-left: 0.6rem;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  width: 95%;
 }
 
 /* author */
@@ -149,7 +157,7 @@
   margin-left: 1.5rem;
 }
 
-/* draft details only read mode */
+/* draft details read only mode */
 .draft-details {
   color: lightgray;
   font-size: 1.5rem;
@@ -162,6 +170,24 @@
   word-wrap: break-word;
   margin-left: 5rem;
   color: white;
+}
+
+#draft-info-description {
+  overflow: auto;
+  max-height: 12rem;
+}
+
+#draft-info-description-margin {
+  margin-top: 0.5rem;
+}
+
+#draft-info-tags {
+  overflow: auto;
+  max-height: 5rem;
+}
+
+#draft-info-phil {
+  margin: 0rem;
 }
 
 #draft-messages {

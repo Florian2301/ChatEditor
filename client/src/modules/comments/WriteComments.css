@@ -7,9 +7,7 @@
   border-top-color: dodgerblue;
   border-top-width: thin;
   overflow: auto;
-  width: 100%;
-  min-width: 30vw;
-  max-width: 35vw;
+  max-width: 30vw;
 }
 
 #write-comments-collapse {

@@ -87,7 +87,7 @@
 .writemessage-btn {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  justify-items: right;
+  justify-items: center;
   margin-bottom: 1rem;
 }
 
