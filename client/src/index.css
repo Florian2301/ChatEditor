@@ -3,7 +3,7 @@ body {
   background-color: black;
   color: white;
   background-image: url('/img/red_curtain.jpg');
-  background-repeat: repeat-x;
+  background-repeat: repeat-y;
 }
 
 html {
