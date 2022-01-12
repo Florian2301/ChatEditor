@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import './MainDesktop.css'
+import './Main.css'
 import { Container, Tab, Tabs } from 'react-bootstrap'
 import ChatboxBackend from './chatbox/ChatboxBackend'
 import ChatboxPublic from './chatbox/ChatboxPublic'

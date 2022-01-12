@@ -1,0 +1,65 @@
+/* mobile menu */
+.menu {
+  text-decoration: underline;
+  color: dodgerblue;
+  cursor: pointer;
+}
+
+.menu-panel {
+  margin-left: 1rem;
+}
+
+.menu-inside {
+  color: dodgerblue;
+  cursor: pointer;
+}
+
+.menu-inside:hover {
+  text-decoration: underline;
+}
+
+#menu-advice-mobile {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+#panel-mobile-menu {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+}
+
+.menu-details {
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.menu-panel {
+  display: grid;
+  grid-template-columns: 14rem 1fr;
+}
+
+.menu-link {
+  margin-left: 1rem;
+  font-size: 1.2rem;
+  font-style: italic;
+  cursor: pointer;
+}
+
+/* Transition */
+.transition-menu-enter {
+  opacity: 0;
+}
+.transition-menu-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms ease-in;
+}
+.transition-menu-exit {
+  opacity: 1;
+}
+.transition-menu-exit-active {
+  opacity: 0;
+  transition: opacity 1000ms ease-in;
+}

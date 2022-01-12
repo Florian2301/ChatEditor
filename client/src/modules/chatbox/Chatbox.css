@@ -24,6 +24,7 @@
   flex-direction: column;
 }
 
+/* comments */
 .commentchatbox {
   height: 61.7vh;
   width: 30vw;
@@ -37,6 +38,27 @@
 .comments-info {
   text-align: center;
   margin-top: 10%;
+}
+
+/* mobile/tablet */
+.chatbox-resp {
+  height: 75.5vh;
+  width: 100%;
+  overflow: auto;
+  border-radius: 0.6rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.editchatbox-resp {
+  height: 52.5vh;
+  width: 100%;
+  overflow: auto;
+  border-radius: 0.6rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ul of chatmessages */

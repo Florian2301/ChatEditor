@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { Collapse } from 'react-bootstrap'
-import Panel from '../elements/Panel'
-import { setKeyL, setKeyR } from '../redux/actions/user'
+import Panel from '../../elements/Panel'
+import { setKeyL, setKeyR } from '../../redux/actions/user'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { v4 as uuidv4 } from 'uuid'
-import './Responsive.css'
+import './MobileMenu.css'
 
 export function MobileMenu(props) {
   const [about, setAbout] = useState(false)

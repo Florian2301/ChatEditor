@@ -1,15 +1,15 @@
 import React, { useRef, useEffect, useState } from 'react'
-import Message from '../modules/messages/Message'
-import WriteMessage from '../modules/messages/WriteMessage'
-import Panel from '../elements/Panel'
+import Message from '../messages/Message'
+import WriteMessage from '../messages/WriteMessage'
+import Panel from '../../elements/Panel'
 import { connect } from 'react-redux'
-import '../modules/chatbox/Chatbox.css'
+import './Chatbox.css'
 import { v4 as uuidv4 } from 'uuid'
 import { Container, ListGroup } from 'react-bootstrap'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import useDynamicRefs from 'use-dynamic-refs'
-import { saveTitle, publishTitle } from '../redux/actions/title'
-import { getUserChats } from '../redux/actions/chat'
+import { saveTitle, publishTitle } from '../../redux/actions/title'
+import { getUserChats } from '../../redux/actions/chat'
 
 export function ChatboxResp(props) {
   const scrollRef = useRef()
