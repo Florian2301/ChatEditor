@@ -7,7 +7,7 @@
 }
 
 .edit-chat-scroll {
-  max-height: 74.5vh;
+  overflow: auto;
 }
 
 /* Chatnumber */
