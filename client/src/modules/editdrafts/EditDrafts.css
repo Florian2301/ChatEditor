@@ -7,7 +7,7 @@
 }
 
 .edit-draft-scroll {
-  max-height: 74.5vh;
+  overflow: auto;
 }
 
 /* title */
@@ -175,7 +175,7 @@
 
 #draft-info-description {
   overflow: auto;
-  max-height: 12rem;
+  max-height: 10rem;
 }
 
 #draft-info-description-margin {
