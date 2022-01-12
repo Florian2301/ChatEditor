@@ -17,25 +17,11 @@ import { getAllTitles } from '../redux/actions/title'
 import MobileMenu from './mobile/MobileMenu'
 import SelectView from './header/SelectView'
 import Language from './header/Language'
-//import firebase from 'firebase/app'
 import 'firebase/auth'
 import './Main.css'
 
 // mobile version
 export function MainMobile(props) {
-  function handleSelect(key) {
-    props.setKeyL(key)
-    if (key === 'adminchats') {
-      props.setKeyR('title')
-    }
-    if (key === 'userchats') {
-      props.setKeyR('title')
-    }
-    if (key === 'menu') {
-      props.setKeyR('about')
-    }
-  }
-
   // get all titles when page is loading for the first time
   useEffect(() => {
     if (props.title.allTitles.length === 0) {
@@ -90,6 +76,21 @@ export function MainMobile(props) {
     })
   }
 
+  function handleSelect(key) {
+    props.setKeyL(key)
+    if (key === 'adminchats') {
+      props.setKeyR('title')
+    }
+    if (key === 'userchats') {
+      props.setKeyR('title')
+    }
+    if (key === 'menu') {
+      props.setKeyR('adminchats')
+    }
+  }
+
+  console.log('keyL', props.user.keyL)
+  console.log('keyR', props.user.keyR)
   // ------------------------------ RETURN -----------------------------------------------------------------------------
   return (
     <Container id="responsive-container-mobile">
@@ -113,20 +114,25 @@ export function MainMobile(props) {
           <MobileMenu />
         </Tab>
 
-        {!props.user.loggedIn && props.user.keyL !== 'userchats' ? (
+        {!props.user.loggedIn ? (
           <Tab
             eventKey="adminchats"
             title={`Flokrates.Online (${adminTitleNumber.length})`}
           >
             <AdminChats />
           </Tab>
-        ) : (
-          <Tab eventKey="userchats" title="Know thyself">
+        ) : null}
+
+        {!props.user.loggedIn ? (
+          <Tab
+            eventKey="userchats"
+            title={`Know thyself (${userTitleNumber.length})`}
+          >
             <UserChats />
           </Tab>
-        )}
+        ) : null}
 
-        {props.user.loggedIn && props.user.keyL !== 'chats' ? (
+        {props.user.loggedIn ? (
           /* eventKey = adminchats because initial state is adminchats when page is refreshed */
           <Tab eventKey="adminchats" title="Edit drafts">
             {props.draft.draftEditmode ? <EditDrafts /> : <StartDraft />}
@@ -134,8 +140,8 @@ export function MainMobile(props) {
           </Tab>
         ) : null}
 
-        {props.user.loggedIn && props.user.keyL === 'chats' ? (
-          <Tab eventKey="chats" title="Edit chats">
+        {props.user.loggedIn ? (
+          <Tab eventKey="userchats" title="Edit chats">
             <EditChats />
             <ChatList />
           </Tab>
@@ -145,26 +151,21 @@ export function MainMobile(props) {
           <ChatboxResp />
         </Tab>
 
-        {!props.user.loggedIn && props.user.keyR === 'title' ? (
+        {!props.user.loggedIn ? (
           <Tab eventKey="title" title="Title">
             <Title />
           </Tab>
         ) : null}
 
-        {!props.user.loggedIn && props.user.keyR === 'about' ? (
+        {!props.user.loggedIn ? (
           <Tab eventKey="about" title="About">
             <About />
           </Tab>
         ) : null}
 
-        {props.user.keyR === 'login' ? (
-          <Tab
-            eventKey="login"
-            title={props.user.loggedIn ? 'Profile' : 'Login'}
-          >
-            <Authorization />
-          </Tab>
-        ) : null}
+        <Tab eventKey="login" title={props.user.loggedIn ? 'Profile' : 'Login'}>
+          <Authorization />
+        </Tab>
       </Tabs>
     </Container>
   )
