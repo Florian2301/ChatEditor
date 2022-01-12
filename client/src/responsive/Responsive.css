@@ -4,8 +4,8 @@
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
   overflow: auto;
-  max-height: 100vh;
-  width: 65rem;
+  height: 100%;
+  width: 100%;
 }
 
 .menu-details {
@@ -82,8 +82,7 @@
 #responsive-container-mobile {
   border-radius: 0.6rem;
   height: 100vh;
-  width: 100%;
-  min-width: 65rem;
+  max-width: 50rem;
 }
 
 #mobile-header {
