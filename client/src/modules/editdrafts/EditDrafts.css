@@ -162,13 +162,14 @@
   color: lightgray;
   font-size: 1.5rem;
   display: grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 22% 78%;
   grid-template-rows: auto;
+  word-wrap: break-word;
 }
 
 .draft-info {
   word-wrap: break-word;
-  margin-left: 5rem;
+  margin-left: 3.5rem;
   color: white;
 }
 
@@ -178,6 +179,10 @@
 }
 
 #draft-info-description-margin {
+  margin-top: 0.5rem;
+}
+
+#draft-details-tags {
   margin-top: 0.5rem;
 }
 
@@ -196,6 +201,10 @@
 
 #draft-date {
   font-size: 1.5rem;
+}
+
+#draft-details-download {
+  margin-bottom: 1rem;
 }
 
 .link-download-draft {

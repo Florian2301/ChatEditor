@@ -750,7 +750,7 @@ export function EditDrafts(props) {
               </p>
             </div>
 
-            <div className="draft-details">
+            <div className="draft-details" id="draft-details-tags">
               <p>Tags:</p>
               <p className="draft-info" id="draft-info-tags">
                 {props.draft.tags}
@@ -814,9 +814,9 @@ export function EditDrafts(props) {
               </p>
             </div>
 
-            <div className="draft-details">
+            <div className="draft-details" id="draft-details-download">
               <p>Download:</p>
-              <div className="draft-info" id="draft-download">
+              <div className="draft-info">
                 {download ? (
                   <PDFDownloadLink
                     document={

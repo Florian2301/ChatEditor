@@ -140,7 +140,7 @@ export function StartDraft(props) {
   // ----------------------------------- RETURN --------------------------------------------------------------------------
 
   return (
-    <Panel id="startDraft" title="Start your draft of a new chat">
+    <Panel id="startDraft" title="Start a draft for a new chat">
       <div className="text-center mb-4">
         {error && <Alert variant="danger">{error}</Alert>}
       </div>
@@ -160,7 +160,7 @@ export function StartDraft(props) {
         </Form.Group>
 
         <Form.Group as={Row}>
-          <Form.Label id="start-add-name"> Philosopher*:</Form.Label>
+          <Form.Label id="start-add-name"> Philosopher:*</Form.Label>
           <Col>
             <Form.Control
               id="start-add-input-name"
@@ -209,7 +209,7 @@ export function StartDraft(props) {
           return (
             <Form.Group as={Row} key={uuidv4()}>
               <Col>
-                <Form.Label id="start-input-name">{phil.name}</Form.Label>
+                <p id="start-input-name">{phil.name}</p>
               </Col>
 
               <Col>

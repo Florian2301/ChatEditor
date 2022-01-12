@@ -26,7 +26,7 @@ export function MobileMenu(props) {
     setLogin(false)
     setDrafts(false)
     setChats(false)
-    SVGTextPositioningElement(false)
+    setTitle(false)
     if (key === 'about') setAbout(!about)
     if (key === 'adminchats') setAdminchats(!adminchats)
     if (key === 'userchats') setUserchats(!userchats)

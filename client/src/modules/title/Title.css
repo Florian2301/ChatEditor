@@ -1,5 +1,6 @@
 #title-panel {
   margin-top: 1.5rem;
+  max-height: 86.5vh;
 }
 
 .title-scroll {
@@ -36,7 +37,32 @@
 .title-info {
   word-wrap: break-word;
   margin-left: 5rem;
+  margin-right: 2rem;
   color: white;
+}
+
+#title-info-description {
+  height: 18.5rem;
+  overflow: auto;
+  word-wrap: break-word;
+}
+
+#title-details-tags {
+  margin-top: 0.5rem;
+}
+
+#title-info-tags {
+  height: 7.5rem;
+  overflow: auto;
+  word-wrap: break-word;
+}
+
+#title-info-phil {
+  margin: 0rem;
+}
+
+#title-details-author {
+  margin-top: 1rem;
 }
 
 .link-download-title {

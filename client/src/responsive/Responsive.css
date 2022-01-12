@@ -4,7 +4,8 @@
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
   overflow: auto;
-  max-height: 650px;
+  max-height: 100vh;
+  width: 65rem;
 }
 
 .menu-details {
@@ -80,15 +81,9 @@
 
 #responsive-container-mobile {
   border-radius: 0.6rem;
-  height: fit-content;
+  height: 100vh;
   width: 100%;
-  max-width: 50rem;
-}
-
-.responsive-border-mobile {
-  border-radius: 0.6rem;
-  width: 100vw;
-  max-width: 50rem;
+  min-width: 65rem;
 }
 
 #mobile-header {
@@ -98,12 +93,6 @@
 
 #mobile-language {
   margin-top: 1rem;
-}
-
-/* mobile flokrates.online and userchats */
-.table-border-color-mobile {
-  margin-top: 0.5rem;
-  margin-bottom: 1.5rem;
 }
 
 /* mobile menu */

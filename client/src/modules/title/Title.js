@@ -21,12 +21,40 @@ export function Title(props) {
         </div>
 
         <div className="title-details">
+          <p>Description:</p>
+          <p className="title-info" id="title-info-description">
+            {props.title.description}
+          </p>
+        </div>
+
+        <div className="title-details" id="title-details-tags">
+          <p>Tags:</p>
+          <p className="title-info" id="title-info-tags">
+            {props.title.tags}
+          </p>
+        </div>
+
+        <div className="title-details">
           <p>Philosopher:</p>
           <div className="title-info">
             {props.chat.philosopher.map((phil) => {
-              return <p key={uuidv4()}>{phil.name}</p>
+              return (
+                <p key={uuidv4()} id="title-info-phil">
+                  {phil.name}
+                </p>
+              )
             })}
           </div>
+        </div>
+
+        <div className="title-details" id="title-details-author">
+          <p>Author:</p>
+          <p className="title-info">{props.title.author}</p>
+        </div>
+
+        <div className="title-details">
+          <p>Language:</p>
+          <p className="title-info">{props.title.language}</p>
         </div>
 
         <div className="title-details">
@@ -36,26 +64,6 @@ export function Title(props) {
               ? props.chat.messages.length
               : null}
           </p>
-        </div>
-
-        <div className="title-details">
-          <p>Description:</p>
-          <p className="title-info">{props.title.description}</p>
-        </div>
-
-        <div className="title-details">
-          <p>Tags:</p>
-          <p className="title-info">{props.title.tags}</p>
-        </div>
-
-        <div className="title-details">
-          <p>Author:</p>
-          <p className="title-info">{props.title.author}</p>
-        </div>
-
-        <div className="title-details">
-          <p>Language:</p>
-          <p className="title-info">{props.title.language}</p>
         </div>
 
         <div className="title-details">

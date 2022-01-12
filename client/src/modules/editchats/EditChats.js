@@ -448,7 +448,7 @@ export function EditChats(props) {
               </p>
             </div>
 
-            <div className="chat-details">
+            <div className="chat-details" id="chat-details-download">
               <p>Download:</p>
               <div className="chat-info">
                 {download ? (

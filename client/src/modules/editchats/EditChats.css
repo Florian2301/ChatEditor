@@ -146,7 +146,7 @@
 
 .chat-info {
   word-wrap: break-word;
-  margin-left: 5rem;
+  margin-left: 4.5rem;
   color: white;
 }
 
@@ -178,6 +178,10 @@
 
 #chat-messages {
   font-size: 1.5rem;
+}
+
+#chat-details-download {
+  margin-bottom: 1rem;
 }
 
 .link-download-chat {

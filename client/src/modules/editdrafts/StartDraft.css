@@ -4,7 +4,7 @@
 
 Form {
   margin-left: 2.5rem;
-  width: 80%;
+  width: 90%;
 }
 
 /* title */
@@ -15,9 +15,10 @@ Form {
 
 #start-input-title {
   font-size: 14px;
+  width: 90%;
 }
 
-/* name of philosopher */
+/* list of philosopher */
 #start-name {
   margin-right: 1rem;
   color: lightgray;
@@ -25,7 +26,7 @@ Form {
 
 #start-input-name {
   font-size: 16px;
-  max-width: 20rem;
+  width: 12rem;
   word-wrap: break-word;
   margin-left: 10rem;
 }
@@ -35,7 +36,7 @@ Form {
   font-size: 1.2rem;
   text-align: left;
   color: dodgerblue;
-  margin-left: 4rem;
+  margin-left: 1.5rem;
 }
 
 .start-name-remove:hover {
@@ -50,7 +51,7 @@ Form {
 }
 
 #start-add-input-name {
-  min-width: 8rem;
+  width: 90%;
   font-size: 14px;
 }
 
@@ -66,7 +67,7 @@ Form {
 /* link add name */
 .start-add-name-link {
   font-size: 1.2rem;
-  margin-left: -1rem;
+  margin-left: 3rem;
   margin-top: 0.5rem;
   text-align: left;
   color: white;
