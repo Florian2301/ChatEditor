@@ -42,7 +42,7 @@
 }
 
 #title-info-description {
-  height: 18.5rem;
+  max-height: 18.5rem;
   overflow: auto;
   word-wrap: break-word;
 }
@@ -52,7 +52,7 @@
 }
 
 #title-info-tags {
-  height: 7.5rem;
+  max-height: 7.5rem;
   overflow: auto;
   word-wrap: break-word;
 }

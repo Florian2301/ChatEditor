@@ -27,6 +27,7 @@
 .data-columns-userchats-2:hover {
   background-color: rgba(0, 0, 0, 0.3);
   cursor: pointer;
+  text-decoration: underline;
 }
 
 .thead-userchats-1 {
@@ -60,7 +61,7 @@
 .userchats-column-1 {
   font-size: 1.5rem;
   font-weight: bold;
-  color: darkgray;
+  color: lightgray;
   padding: 0.5rem;
   text-align: left;
   word-wrap: break-word;

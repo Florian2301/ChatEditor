@@ -26,6 +26,7 @@
 .data-rows-drafts-2:hover {
   background-color: rgba(0, 0, 0, 0.3);
   cursor: pointer;
+  text-decoration: underline;
 }
 
 .thead-drafts {

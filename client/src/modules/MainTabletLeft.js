@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Container, Tab, Tabs } from 'react-bootstrap'
 import AdminChats from '../modules/tables/AdminChats'
@@ -14,6 +14,61 @@ export function MainTabletLeft(props) {
     props.setKeyL(key)
   }
 
+  // get all titles when page is loading for the first time
+  useEffect(() => {
+    if (props.title.allTitles.length === 0) {
+      props.getAllTitles()
+    }
+  }, [props.title.allTitles, props])
+
+  // filter number of drafts by language
+  let draftList = []
+  props.draft.userDrafts.map((draft) => {
+    if (draft.language === props.user.language) {
+      draftList.push(draft)
+    }
+    return draftList
+  })
+
+  // filter number of chats by language
+  let chatList = []
+  props.chat.userChats.map((chat) => {
+    if (chat.language === props.user.language) {
+      chatList.push(chat)
+    }
+    return chatList
+  })
+
+  // filter number of chats from admin/users
+  let adminTitle = []
+  let userTitle = []
+  props.title.allTitles.map((title) => {
+    if (title.admin) {
+      adminTitle.push(title)
+    } else userTitle.push(title)
+    return { adminTitle, userTitle }
+  })
+
+  // filter chats by language from admin/users
+  let adminTitleNumber = []
+  let userTitleNumber = []
+  if (adminTitle) {
+    adminTitle.map((title) => {
+      if (title.language === props.user.language) {
+        adminTitleNumber.push(title)
+      }
+      return adminTitleNumber
+    })
+
+    userTitle.map((title) => {
+      if (title.language === props.user.language) {
+        userTitleNumber.push(title)
+      }
+      return userTitleNumber
+    })
+  }
+
+  //------------------------------------------------------- return ------------------------------------------------------------
   return (
     <div id="responsive-border-tablet-left">
       <Container fluid id="responsive-container-tablet">
@@ -26,30 +81,43 @@ export function MainTabletLeft(props) {
           onSelect={handleSelect}
         >
           {!props.user.loggedIn ? (
-            <Tab eventKey="adminchats" title="Flokrates.Online">
+            <Tab
+              eventKey="adminchats"
+              title={`Flokrates.Online (${adminTitleNumber.length})`}
+            >
               <div className="table-border-color">
                 <AdminChats />
               </div>
             </Tab>
           ) : (
-            <Tab eventKey="adminchats" title="Drafts">
+            <Tab eventKey="adminchats" title={`Drafts (${draftList.length})`}>
               <DraftList />
             </Tab>
           )}
 
           {!props.user.loggedIn ? (
-            <Tab eventKey="userchats" title="Know thyself">
+            <Tab
+              eventKey="userchats"
+              title={`Know thyself (${userTitleNumber.length})`}
+            >
               <div className="table-border-color">
                 <UserChats />
               </div>
             </Tab>
           ) : (
-            <Tab eventKey="userchats" title="Chats">
+            <Tab eventKey="userchats" title={`Chats (${chatList.length})`}>
               <ChatList />
             </Tab>
           )}
 
-          <Tab eventKey="chatbox" title="Chat">
+          <Tab
+            eventKey="chatbox"
+            title={`Chatbox (${
+              props.draft.draftEditmode
+                ? props.draft.messages.length
+                : props.chat.messages.length
+            })`}
+          >
             <ChatboxResp />
           </Tab>
         </Tabs>
@@ -63,6 +131,9 @@ export function MainTabletLeft(props) {
 let mapStateToProps = (state) => {
   return {
     user: state.user,
+    draft: state.draft,
+    title: state.title,
+    chat: state.chat,
   }
 }
 

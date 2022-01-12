@@ -36,11 +36,59 @@ export function MainMobile(props) {
     }
   }
 
+  // get all titles when page is loading for the first time
   useEffect(() => {
     if (props.title.allTitles.length === 0) {
       props.getAllTitles()
     }
   }, [props.title.allTitles, props])
+
+  // filter number of drafts by language
+  let draftList = []
+  props.draft.userDrafts.map((draft) => {
+    if (draft.language === props.user.language) {
+      draftList.push(draft)
+    }
+    return draftList
+  })
+
+  // filter number of chats by language
+  let chatList = []
+  props.chat.userChats.map((chat) => {
+    if (chat.language === props.user.language) {
+      chatList.push(chat)
+    }
+    return chatList
+  })
+
+  // filter number of chats from admin/users
+  let adminTitle = []
+  let userTitle = []
+  props.title.allTitles.map((title) => {
+    if (title.admin) {
+      adminTitle.push(title)
+    } else userTitle.push(title)
+    return { adminTitle, userTitle }
+  })
+
+  // filter chats by language from admin/users
+  let adminTitleNumber = []
+  let userTitleNumber = []
+  if (adminTitle) {
+    adminTitle.map((title) => {
+      if (title.language === props.user.language) {
+        adminTitleNumber.push(title)
+      }
+      return adminTitleNumber
+    })
+
+    userTitle.map((title) => {
+      if (title.language === props.user.language) {
+        userTitleNumber.push(title)
+      }
+      return userTitleNumber
+    })
+  }
 
   // ------------------------------ RETURN -----------------------------------------------------------------------------
   return (
@@ -66,7 +114,10 @@ export function MainMobile(props) {
         </Tab>
 
         {!props.user.loggedIn && props.user.keyL !== 'userchats' ? (
-          <Tab eventKey="adminchats" title="Flokrates.Online">
+          <Tab
+            eventKey="adminchats"
+            title={`Flokrates.Online (${adminTitleNumber.length})`}
+          >
             <AdminChats />
           </Tab>
         ) : (
@@ -126,6 +177,7 @@ let mapStateToProps = (state) => {
     user: state.user,
     draft: state.draft,
     title: state.title,
+    chat: state.chat,
   }
 }
 
