@@ -4,6 +4,7 @@ import { Container, Tab, Tabs } from 'react-bootstrap'
 import Authorization from '../authorization/Authorization'
 import EditChats from '../modules/edit/EditChats'
 import EditDrafts from '../modules/edit/EditDrafts'
+import ChatboxCommentsTablet from './chatbox/ChatboxCommentsTablet'
 import About from '../modules/about/About'
 import Title from '../modules/title/Title'
 import { setKeyR } from '../redux/actions/user'
@@ -15,47 +16,54 @@ export function MainTabletRight(props) {
   }
 
   return (
-    <div id="responsive-border-tablet-right">
-      <Container fluid id="responsive-container-tablet">
-        <Tabs
-          activeKey={props.user.keyR === 'chatbox' ? 'about' : props.user.keyR}
-          id="uncontrolled"
-          style={{ borderBottom: 0 }}
-          onSelect={handleSelect}
-        >
-          {props.user.loggedIn ? (
-            /* eventKey = about because initial state is about when page is refreshed */
-            <Tab eventKey="about" title="Edit Draft">
-              <EditDrafts />
-            </Tab>
-          ) : (
-            <Tab eventKey="title" title="Title">
-              <Title />
-            </Tab>
-          )}
+    <Container fluid id="responsive-container-tablet">
+      <Tabs
+        activeKey={props.user.keyR === 'chatbox' ? 'about' : props.user.keyR}
+        id="uncontrolled"
+        style={{ borderBottom: 0 }}
+        onSelect={handleSelect}
+      >
+        {props.user.loggedIn ? (
+          /* eventKey = about because initial state is about when page is refreshed */
+          <Tab eventKey="about" title="Edit Draft">
+            <EditDrafts />
+          </Tab>
+        ) : (
+          <Tab eventKey="title" title="Title">
+            <Title />
+          </Tab>
+        )}
 
-          {props.user.loggedIn ? (
-            <Tab eventKey="chats" title="Edit Chat">
-              <EditChats />
-            </Tab>
-          ) : (
-            <Tab eventKey="about" title="About">
-              <About />
-            </Tab>
-          )}
+        {!props.user.loggedIn ? (
+          <Tab
+            eventKey="comments"
+            title={`Comments (${props.chat.comments.length})`}
+          >
+            <ChatboxCommentsTablet />
+          </Tab>
+        ) : null}
 
-          {props.user.loggedIn ? (
-            <Tab eventKey="login" title="Profile">
-              <Authorization />
-            </Tab>
-          ) : (
-            <Tab eventKey="login" title="Login">
-              <Authorization />
-            </Tab>
-          )}
-        </Tabs>
-      </Container>
-    </div>
+        {props.user.loggedIn ? (
+          <Tab eventKey="chats" title="Edit Chat">
+            <EditChats />
+          </Tab>
+        ) : (
+          <Tab eventKey="about" title="About">
+            <About />
+          </Tab>
+        )}
+
+        {props.user.loggedIn ? (
+          <Tab eventKey="login" title="Profile">
+            <Authorization />
+          </Tab>
+        ) : (
+          <Tab eventKey="login" title="Login">
+            <Authorization />
+          </Tab>
+        )}
+      </Tabs>
+    </Container>
   )
 }
 
@@ -64,6 +72,7 @@ export function MainTabletRight(props) {
 let mapStateToProps = (state) => {
   return {
     user: state.user,
+    chat: state.chat,
   }
 }
 

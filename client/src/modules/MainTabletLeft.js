@@ -3,10 +3,12 @@ import { connect } from 'react-redux'
 import { Container, Tab, Tabs } from 'react-bootstrap'
 import AdminChats from '../modules/tables/AdminChats'
 import UserChats from '../modules/tables/UserChats'
-import ChatboxResp from './chatbox/ChatboxResp'
+import ChatboxTablet from './chatbox/ChatboxTablet'
+import ChatboxCommentsTablet from './chatbox/ChatboxCommentsTablet'
 import DraftList from '../modules/tables/DraftList'
 import ChatList from '../modules/tables/ChatList'
 import { setKeyL } from '../redux/actions/user'
+import { getAllTitles } from '../redux/actions/title'
 // CSS in App.css/FlexMain
 
 export function MainTabletLeft(props) {
@@ -70,59 +72,64 @@ export function MainTabletLeft(props) {
 
   //------------------------------------------------------- return ------------------------------------------------------------
   return (
-    <div id="responsive-border-tablet-left">
-      <Container fluid id="responsive-container-tablet">
-        <Tabs
-          activeKey={
-            props.user.keyL === 'menu' ? 'adminchats' : props.user.keyL
-          }
-          id="uncontrolled"
-          style={{ borderBottom: 0 }}
-          onSelect={handleSelect}
-        >
-          {!props.user.loggedIn ? (
-            <Tab
-              eventKey="adminchats"
-              title={`Flokrates.Online (${adminTitleNumber.length})`}
-            >
-              <div className="table-border-color">
-                <AdminChats />
-              </div>
-            </Tab>
-          ) : (
-            <Tab eventKey="adminchats" title={`Drafts (${draftList.length})`}>
-              <DraftList />
-            </Tab>
-          )}
-
-          {!props.user.loggedIn ? (
-            <Tab
-              eventKey="userchats"
-              title={`Know thyself (${userTitleNumber.length})`}
-            >
-              <div className="table-border-color">
-                <UserChats />
-              </div>
-            </Tab>
-          ) : (
-            <Tab eventKey="userchats" title={`Chats (${chatList.length})`}>
-              <ChatList />
-            </Tab>
-          )}
-
+    <Container fluid id="responsive-container-tablet">
+      <Tabs
+        activeKey={props.user.keyL}
+        id="uncontrolled"
+        style={{ borderBottom: 0 }}
+        onSelect={handleSelect}
+      >
+        {!props.user.loggedIn ? (
           <Tab
-            eventKey="chatbox"
-            title={`Chatbox (${
-              props.draft.draftEditmode
-                ? props.draft.messages.length
-                : props.chat.messages.length
-            })`}
+            eventKey="adminchats"
+            title={`Flokrates.Online (${adminTitleNumber.length})`}
           >
-            <ChatboxResp />
+            <div className="table-border-color">
+              <AdminChats />
+            </div>
           </Tab>
-        </Tabs>
-      </Container>
-    </div>
+        ) : (
+          <Tab eventKey="adminchats" title={`Draftlist (${draftList.length})`}>
+            <DraftList />
+          </Tab>
+        )}
+
+        {!props.user.loggedIn ? (
+          <Tab
+            eventKey="userchats"
+            title={`Know thyself (${userTitleNumber.length})`}
+          >
+            <div className="table-border-color">
+              <UserChats />
+            </div>
+          </Tab>
+        ) : (
+          <Tab eventKey="userchats" title={`Chatlist (${chatList.length})`}>
+            <ChatList />
+          </Tab>
+        )}
+
+        <Tab
+          eventKey="chatbox"
+          title={`Chatbox (${
+            props.draft.draftEditmode
+              ? props.draft.messages.length
+              : props.chat.messages.length
+          })`}
+        >
+          <ChatboxTablet />
+        </Tab>
+
+        {props.user.loggedIn ? (
+          <Tab
+            eventKey="comments"
+            title={`Comments (${props.chat.comments.length})`}
+          >
+            <ChatboxCommentsTablet />
+          </Tab>
+        ) : null}
+      </Tabs>
+    </Container>
   )
 }
 
@@ -139,6 +146,7 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = {
   setKeyL: setKeyL,
+  getAllTitles: getAllTitles,
 }
 
 let ContainerMainTabletL = connect(

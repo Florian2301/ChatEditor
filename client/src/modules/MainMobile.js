@@ -2,7 +2,8 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Container, Tab, Tabs } from 'react-bootstrap'
 import AdminChats from './tables/AdminChats'
-import ChatboxResp from './chatbox/ChatboxResp'
+import ChatboxMobile from './chatbox/ChatboxMobile'
+import ChatboxCommentsMobile from './chatbox/ChatboxCommentsMobile'
 import UserChats from './tables/UserChats'
 import EditChats from './edit/EditChats'
 import ChatList from './tables/ChatList'
@@ -14,7 +15,6 @@ import About from './about/About'
 import Title from './title/Title'
 import { getUser, setKeyL, setKeyR } from '../redux/actions/user'
 import { getAllTitles } from '../redux/actions/title'
-import MobileMenu from './mobile/MobileMenu'
 import SelectView from './header/SelectView'
 import Language from './header/Language'
 import 'firebase/auth'
@@ -78,19 +78,8 @@ export function MainMobile(props) {
 
   function handleSelect(key) {
     props.setKeyL(key)
-    if (key === 'adminchats') {
-      props.setKeyR('title')
-    }
-    if (key === 'userchats') {
-      props.setKeyR('title')
-    }
-    if (key === 'menu') {
-      props.setKeyR('adminchats')
-    }
   }
 
-  console.log('keyL', props.user.keyL)
-  console.log('keyR', props.user.keyR)
   // ------------------------------ RETURN -----------------------------------------------------------------------------
   return (
     <Container id="responsive-container-mobile">
@@ -110,10 +99,6 @@ export function MainMobile(props) {
         activeKey={props.user.keyL}
         onSelect={handleSelect}
       >
-        <Tab eventKey="menu" title="Menu">
-          <MobileMenu />
-        </Tab>
-
         {!props.user.loggedIn ? (
           <Tab
             eventKey="adminchats"
@@ -136,6 +121,11 @@ export function MainMobile(props) {
           /* eventKey = adminchats because initial state is adminchats when page is refreshed */
           <Tab eventKey="adminchats" title="Edit drafts">
             {props.draft.draftEditmode ? <EditDrafts /> : <StartDraft />}
+          </Tab>
+        ) : null}
+
+        {props.user.loggedIn ? (
+          <Tab eventKey="draftlist" title={`Draftlist (${draftList.length})`}>
             <DraftList />
           </Tab>
         ) : null}
@@ -143,12 +133,31 @@ export function MainMobile(props) {
         {props.user.loggedIn ? (
           <Tab eventKey="userchats" title="Edit chats">
             <EditChats />
+          </Tab>
+        ) : null}
+
+        {props.user.loggedIn ? (
+          <Tab eventKey="chatlist" title={`Chatlist (${chatList.length})`}>
             <ChatList />
           </Tab>
         ) : null}
 
-        <Tab eventKey="chatbox" title="Chatbox">
-          <ChatboxResp />
+        <Tab
+          eventKey="chatbox"
+          title={`Chatbox (${
+            props.draft.draftEditmode
+              ? props.draft.messages.length
+              : props.chat.messages.length
+          })`}
+        >
+          <ChatboxMobile />
+        </Tab>
+
+        <Tab
+          eventKey="comments"
+          title={`Comments (${props.chat.comments.length})`}
+        >
+          <ChatboxCommentsMobile />
         </Tab>
 
         {!props.user.loggedIn ? (

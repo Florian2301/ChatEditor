@@ -9,18 +9,12 @@
 #tablet-header {
   display: flex;
   justify-content: center;
+  margin-bottom: -1.5rem;
 }
 
 #viewtablet {
-  margin-right: 15rem;
   margin-top: 1rem;
-}
-
-#tablet-advice {
-  font-size: 1.2rem;
-  margin-right: 10rem;
-  margin-top: 1rem;
-  margin-left: 5rem;
+  margin-left: 20rem;
 }
 
 #tablet-language {
@@ -33,9 +27,11 @@
   justify-content: center;
 }
 
-#menu-advice {
-  font-size: 1.2rem;
-  text-align: right;
-  margin-right: 2rem;
-  margin-top: 0.5rem;
+#mobile-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+#mobile-language {
+  margin-top: 1rem;
 }

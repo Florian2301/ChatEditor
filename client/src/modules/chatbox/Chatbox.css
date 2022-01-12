@@ -40,8 +40,44 @@
   margin-top: 10%;
 }
 
-/* mobile/tablet */
-.chatbox-resp {
+/* tablet */
+.chatbox-tablet {
+  height: 77vh;
+  width: 100%;
+  overflow: auto;
+  border-radius: 0.6rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.editchatbox-tablet {
+  height: 54vh;
+  width: 100%;
+  overflow: auto;
+  border-radius: 0.6rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.commentchatbox-tablet {
+  height: 59vh;
+  width: 100%;
+  overflow: auto;
+  border-radius: 0.6rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.comments-info-tablet {
+  text-align: center;
+  margin-top: 10%;
+}
+
+/* mobile */
+.chatbox-mobile {
   height: 75.5vh;
   width: 100%;
   overflow: auto;
@@ -51,7 +87,7 @@
   flex-direction: column;
 }
 
-.editchatbox-resp {
+.editchatbox-mobile {
   height: 52.5vh;
   width: 100%;
   overflow: auto;
@@ -59,6 +95,21 @@
   position: relative;
   display: flex;
   flex-direction: column;
+}
+
+.commentchatbox-mobile {
+  height: 57.5vh;
+  width: 100%;
+  overflow: auto;
+  border-radius: 0.6rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.comments-info-mobile {
+  text-align: center;
+  margin-top: 10%;
 }
 
 /* ul of chatmessages */
@@ -78,11 +129,10 @@
 .listgroup-chat-comments {
   background-color: transparent;
   border-style: none;
-  justify-content: flex-start;
 }
 
-.listgroup-chat-comments:nth-child(2n) {
-  justify-content: flex-end;
+.listgroup-chat-comments:nth-child(even) {
+  margin-left: 20%;
 }
 
 /*box where names and clear button appear*/

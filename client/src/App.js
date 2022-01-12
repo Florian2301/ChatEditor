@@ -74,9 +74,6 @@ export default function App() {
         <TabletScreen>
           <div id="tablet-header">
             <Language id="tablet-language" />
-            <p className="start-para" id="tablet-advice">
-              - recommended view is on a laptop/desktop screen -
-            </p>
             <SelectView
               auto={viewAuto}
               desktop={viewDesktop}

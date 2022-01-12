@@ -11,7 +11,7 @@ import useDynamicRefs from 'use-dynamic-refs'
 import { saveTitle, publishTitle } from '../../redux/actions/title'
 import { getUserChats } from '../../redux/actions/chat'
 
-export function ChatboxResp(props) {
+export function ChatboxMobile(props) {
   const scrollRef = useRef()
   const [getRef, setRef] = useDynamicRefs()
   const [scroll, setScroll] = useState(false)
@@ -115,8 +115,8 @@ export function ChatboxResp(props) {
       <Container
         className={
           props.draft.write && props.draft.draftEditmode
-            ? 'editchatbox-resp'
-            : 'chatbox-resp'
+            ? 'editchatbox-mobile'
+            : 'chatbox-mobile'
         }
       >
         {!props.user.loggedIn ? (
@@ -228,4 +228,4 @@ const mapActionsToProps = {
   getUserChats: getUserChats,
 }
 
-export default connect(mapStateToProps, mapActionsToProps)(ChatboxResp)
+export default connect(mapStateToProps, mapActionsToProps)(ChatboxMobile)

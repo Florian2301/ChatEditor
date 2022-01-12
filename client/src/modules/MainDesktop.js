@@ -97,7 +97,10 @@ export function FlexMain(props) {
                 <AdminChats />
               </Tab>
             ) : (
-              <Tab eventKey="adminchats" title={`Drafts (${draftList.length})`}>
+              <Tab
+                eventKey="adminchats"
+                title={`Draftlist (${draftList.length})`}
+              >
                 <DraftList />
               </Tab>
             )}
@@ -110,7 +113,7 @@ export function FlexMain(props) {
                 <UserChats />
               </Tab>
             ) : (
-              <Tab eventKey="userchats" title={`Chats (${chatList.length})`}>
+              <Tab eventKey="userchats" title={`Chatlist (${chatList.length})`}>
                 <ChatList />
               </Tab>
             )}
