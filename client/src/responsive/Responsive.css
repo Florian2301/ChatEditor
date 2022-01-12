@@ -82,7 +82,8 @@
 #responsive-container-mobile {
   border-radius: 0.6rem;
   height: 100vh;
-  max-width: 50rem;
+  width: 100vw;
+  max-width: 65rem;
 }
 
 #mobile-header {
