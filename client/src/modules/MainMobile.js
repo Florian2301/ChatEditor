@@ -124,15 +124,15 @@ export function MainMobile(props) {
         ) : null}
 
         {props.user.loggedIn ? (
-          /* eventKey = adminchats because initial state is adminchats when page is refreshed */
-          <Tab eventKey="adminchats" title="Edit drafts">
-            {props.draft.draftEditmode ? <EditDrafts /> : <StartDraft />}
+          <Tab eventKey="chatlist" title={`Chatlist (${chatList.length})`}>
+            <ChatList />
           </Tab>
         ) : null}
 
         {props.user.loggedIn ? (
-          <Tab eventKey="chatlist" title={`Chatlist (${chatList.length})`}>
-            <ChatList />
+          /* eventKey = adminchats because initial state is adminchats when page is refreshed */
+          <Tab eventKey="adminchats" title="Edit drafts">
+            {props.draft.draftEditmode ? <EditDrafts /> : <StartDraft />}
           </Tab>
         ) : null}
 
