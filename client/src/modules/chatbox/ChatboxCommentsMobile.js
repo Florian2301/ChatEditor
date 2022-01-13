@@ -60,9 +60,12 @@ export function ChatboxComments(props) {
           </ListGroup>
         ) : (
           <div className="comments-info-mobile">
-            ~ comments only available when a chat is published ~
+            ~ chose a chat and write a comment ~
           </div>
         )}
+        {props.chat.chatEditmode && !props.chat.comments[0] ? (
+          <div className="comments-info">~ write a comment here ~</div>
+        ) : null}
       </Container>
 
       {props.chat.chatEditmode ? <WriteComments /> : null}
