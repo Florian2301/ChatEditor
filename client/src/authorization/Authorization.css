@@ -1,157 +1,148 @@
 /* --- general CSS for auth components ---- */
 #auth {
-    margin-top: 1.5rem;
-    margin-left: -1.5rem;
-    margin-right: -1.5rem;
-    min-width: 35rem;
+  margin-top: 1.5rem;
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
+  min-width: 35rem;
 }
 
 .auth-btn {
-    border-radius: 0.5rem;
-    background-color: silver;
-    max-width: 13rem;
-    width: 100%;
-    margin: 1rem 1rem 0rem 1rem;
+  border-radius: 0.5rem;
+  background-color: silver;
+  max-width: 13rem;
+  width: 100%;
+  margin: 1rem 1rem 0rem 1rem;
 }
 
 .auth-btn:active {
-    background-color: dodgerblue;
+  background-color: dodgerblue;
 }
 
 .auth-link {
-    font-size: 1.2rem;
-    color: white;
-    margin-left: 1rem;
-    margin-right: 1rem;
+  font-size: 1.2rem;
+  color: white;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .auth-link:hover {
-    text-decoration: underline;
-    color: dodgerblue;
+  text-decoration: underline;
+  color: dodgerblue;
 }
 
 .auth-actions {
-    margin-top: 1rem;
-    text-align: center;
+  margin-top: 1rem;
+  text-align: center;
 }
 
 .auth-alert {
-    font-size: 1.5rem;
-    width: 90%;
-    margin-left: 5%;
-    border-radius: 1.5rem;
+  font-size: 1.5rem;
+  width: 90%;
+  margin-left: 5%;
+  border-radius: 1.5rem;
 }
 
 /* -- login updateProfile signUp forgotPassword -- */
 #auth-input {
-    max-width: 25rem;
+  max-width: 25rem;
 }
-
 
 /* --- Login signUp updateProfile ---- */
 #auth-email {
-    margin-left: 2.5rem;
-    margin-right: 3rem;
+  margin-left: 2.5rem;
+  margin-right: 3rem;
 }
 
 #auth-password {
-    margin-left: 2.5rem;
+  margin-left: 2.5rem;
 }
 
 #email {
-    margin-right: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 #password {
-    margin-right: 0.5rem;
+  margin-right: 0.5rem;
 }
-
 
 /* ---- updateProfile signUp -------- */
 #password-confirm {
-    margin-right: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 #auth-username {
-    margin-left: 2.5rem;
-    margin-right: -0.5rem;
+  margin-left: 2.5rem;
+  margin-right: -0.5rem;
 }
 
 #auth-password-confirm {
-    margin-left: 2.5rem;
-    margin-right: 1.5rem;
+  margin-left: 2.5rem;
+  margin-right: 1.5rem;
 }
 
 #username {
-    margin-right: 0.5rem;
+  margin-right: 0.5rem;
 }
-
 
 /* -------------- Dashboard --------------- */
 .auth-user {
-    margin: 1rem 1rem 1rem 1rem
+  margin: 1rem 1rem 1rem 1rem;
 }
 
 #update-link {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+  padding-bottom: 2rem;
 }
 
 #auth-actions-logout {
-    margin-top: 2rem;
+  margin-top: 2rem;
 }
 
 #auth-strong-username {
-    color: darkgray;
-    margin-right: 1.5rem;
+  color: darkgray;
+  margin-right: 1.5rem;
 }
 
 #auth-strong-email {
-    color: darkgray;
-    margin-right: 1rem;
+  color: darkgray;
+  margin-right: 1rem;
 }
-
 
 /* ------ login -------------------- */
 #forgotpassword-link {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
-
 
 /* ------ signUp ----------------- */
 #login-link {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
-
 
 /* ------ updateProfile --------- */
 #cancel {
-    margin-bottom: 1rem;
+  padding-bottom: 2rem;
 }
-
 
 /* ------- forgotPassword ------------- */
 .auth-actions-signup {
-    text-align: center;
-    margin-top: -1rem;
+  text-align: center;
+  margin-top: -1rem;
 }
 
 #auth-btn-reset {
-    max-width: 15rem;
-    width: 100%;
-    margin-top: 1rem;
+  max-width: 15rem;
+  width: 100%;
+  margin-top: 1rem;
 }
 
 #auth-btn-reset:active {
-    background-color: dodgerblue;
+  background-color: dodgerblue;
 }
 
 #auth-email-reset {
-    margin-left: 2.5rem;
-    margin-right: 1rem;
+  margin-left: 2.5rem;
+  margin-right: 1rem;
 }
 
 #signup-link {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
-

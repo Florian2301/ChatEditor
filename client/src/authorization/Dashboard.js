@@ -79,9 +79,7 @@ export function Dashboard(props) {
           </Alert>
         )}
         {welcome && props.user.welcome ? (
-          <Alert className="auth-alert" variant="success">
-            {welcomeMessage}
-          </Alert>
+          <p className="auth-alert">{welcomeMessage}</p>
         ) : null}
         {updateProfile && props.user.update ? (
           <Alert className="auth-alert" variant="success">
