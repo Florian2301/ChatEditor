@@ -82,9 +82,7 @@ export function Dashboard(props) {
           <p className="auth-alert">{welcomeMessage}</p>
         ) : null}
         {updateProfile && props.user.update ? (
-          <Alert className="auth-alert" variant="success">
-            {update}
-          </Alert>
+          <p className="auth-alert">{update}</p>
         ) : null}
       </div>
 

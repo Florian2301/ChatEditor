@@ -15,6 +15,7 @@ import EditChats from './edit/EditChats'
 import ChatList from './tables/ChatList'
 import Authorization from '../authorization/Authorization'
 import About from './about/About'
+import AboutEdit from './about/AboutEdit'
 import { setKeyR } from '../redux/actions/user'
 import { getAllTitles } from '../redux/actions/title'
 
@@ -151,7 +152,7 @@ export function FlexMain(props) {
       <div id="item-3">
         <Container fluid>
           <Tabs
-            activeKey={props.user.keyL === 'menu' ? 'about' : props.user.keyR}
+            activeKey={props.user.keyR}
             id="uncontrolled"
             style={{ borderBottom: 0 }}
             onSelect={handleSelect}
@@ -185,6 +186,10 @@ export function FlexMain(props) {
               title={props.user.loggedIn ? 'Profile' : 'Login'}
             >
               <Authorization />
+            </Tab>
+
+            <Tab eventKey="aboutedit" title="AboutEdit">
+              <AboutEdit />
             </Tab>
           </Tabs>
         </Container>

@@ -40,6 +40,27 @@ export function Login(props) {
     }
   }
 
+  // submit data to login through firebase + get userdata from database
+  async function handleSubmitTestuser(e) {
+    e.preventDefault()
+    try {
+      setError('')
+      setLoading(true)
+      await login('bigsoul@gmx.de', 'test123') // log in firebase
+    } catch {
+      setError('Failed to log in')
+    }
+    setLoading(false)
+    props.welcome() // for welcome-message
+    var user = firebase.auth().currentUser // get currentUser from firebase
+    if (user) {
+      user.emailVerified ? history.push('/') : history.push('/login') // check if mailaddress is verified
+      props.getUser(user.displayName) // get currentUser from database
+    } else {
+      history.push('/login')
+    }
+  }
+
   // get all users when "sign up" is clicked
   // to check during sign up process if username/email already exists
   function getUsers() {
@@ -114,6 +135,24 @@ export function Login(props) {
           </Link>
         </div>
       </Form>
+      <div className="login-border">{''}</div>
+
+      <Form onSubmit={handleSubmitTestuser}>
+        <p className="testuser-info">
+          You can also log in as a testuser and try out how this app works!
+        </p>
+        <p className="testuser-info">Just click on the button below:</p>
+
+        <div className="auth-actions">
+          <Button
+            disabled={loading}
+            label="Testuser"
+            className="auth-btn"
+            type="submit"
+          ></Button>
+        </div>
+      </Form>
+      <br />
     </Panel>
   )
 }
