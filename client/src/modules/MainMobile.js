@@ -118,21 +118,15 @@ export function MainMobile(props) {
         ) : null}
 
         {props.user.loggedIn ? (
-          /* eventKey = adminchats because initial state is adminchats when page is refreshed */
-          <Tab eventKey="adminchats" title="Edit drafts">
-            {props.draft.draftEditmode ? <EditDrafts /> : <StartDraft />}
-          </Tab>
-        ) : null}
-
-        {props.user.loggedIn ? (
           <Tab eventKey="draftlist" title={`Draftlist (${draftList.length})`}>
             <DraftList />
           </Tab>
         ) : null}
 
         {props.user.loggedIn ? (
-          <Tab eventKey="userchats" title="Edit chats">
-            <EditChats />
+          /* eventKey = adminchats because initial state is adminchats when page is refreshed */
+          <Tab eventKey="adminchats" title="Edit drafts">
+            {props.draft.draftEditmode ? <EditDrafts /> : <StartDraft />}
           </Tab>
         ) : null}
 
@@ -142,21 +136,17 @@ export function MainMobile(props) {
           </Tab>
         ) : null}
 
-        <Tab
-          eventKey="chatbox"
-          title={`Chatbox (${
-            props.draft.draftEditmode
-              ? props.draft.messages.length
-              : props.chat.messages.length
-          })`}
-        >
+        {props.user.loggedIn ? (
+          <Tab eventKey="userchats" title="Edit chats">
+            <EditChats />
+          </Tab>
+        ) : null}
+
+        <Tab eventKey="chatbox" title="Chatbox">
           <ChatboxMobile />
         </Tab>
 
-        <Tab
-          eventKey="comments"
-          title={`Comments (${props.chat.comments.length})`}
-        >
+        <Tab eventKey="comments" title="Comments">
           <ChatboxCommentsMobile />
         </Tab>
 
