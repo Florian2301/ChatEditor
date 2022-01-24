@@ -1,11 +1,11 @@
 import React, { useRef, useState } from 'react'
 import { Form, Alert, Col, Row } from 'react-bootstrap'
 import { useAuth } from './AuthContext'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Panel from '../elements/Panel'
 import Button from '../elements/Button'
-import firebase from 'firebase/app'
-import 'firebase/auth'
+import firebase from 'firebase/compat/app'
+import 'firebase/compat/auth'
 import { connect } from 'react-redux'
 import { getUser, welcome } from '../redux/actions/user'
 
@@ -15,7 +15,7 @@ export function Login(props) {
   const { login } = useAuth()
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
-  const history = useHistory()
+  const history = useNavigate()
   const verify = 'Please check your inbox to verify your email address'
   const goodbye = 'Your profile has been deleted successfully'
 
@@ -33,10 +33,10 @@ export function Login(props) {
     props.welcome() // for welcome-message
     var user = firebase.auth().currentUser // get currentUser from firebase
     if (user) {
-      user.emailVerified ? history.push('/') : history.push('/login') // check if mailaddress is verified
+      user.emailVerified ? history('/') : history('/login') // check if mailaddress is verified
       props.getUser(user.displayName) // get currentUser from database
     } else {
-      history.push('/login')
+      history('/login')
     }
   }
 
@@ -54,10 +54,10 @@ export function Login(props) {
     props.welcome() // for welcome-message
     var user = firebase.auth().currentUser // get currentUser from firebase
     if (user) {
-      user.emailVerified ? history.push('/') : history.push('/login') // check if mailaddress is verified
+      user.emailVerified ? history('/') : history('/login') // check if mailaddress is verified
       props.getUser(user.displayName) // get currentUser from database
     } else {
-      history.push('/login')
+      history('/login')
     }
   }
 
@@ -86,8 +86,11 @@ export function Login(props) {
       </div>
 
       <Form onSubmit={handleSubmit}>
-        <Form.Group id="email" as={Row}>
-          <Form.Label id="auth-email">Email: </Form.Label>
+        <Form.Group id="email-login" as={Row}>
+          <Form.Label id="auth-email" column sm="3">
+            Email:{' '}
+          </Form.Label>
+
           <Col>
             <Form.Control
               id="auth-input"
@@ -100,8 +103,10 @@ export function Login(props) {
           </Col>
         </Form.Group>
 
-        <Form.Group id="password" as={Row}>
-          <Form.Label id="auth-password">Password:</Form.Label>
+        <Form.Group as={Row}>
+          <Form.Label column sm="3">
+            Password:
+          </Form.Label>
           <Col>
             <Form.Control
               id="auth-input"
@@ -135,11 +140,11 @@ export function Login(props) {
           </Link>
         </div>
       </Form>
-      <div className="login-border">{''}</div>
+      <div className="testuser-border">{''}</div>
 
       <Form onSubmit={handleSubmitTestuser}>
         <p className="testuser-info">
-          You can also log in as a testuser and try out how this app works!
+          You can also log in as a testuser and try out to write a chat!
         </p>
         <p className="testuser-info">Just click on the button below:</p>
 

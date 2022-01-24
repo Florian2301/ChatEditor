@@ -13,12 +13,7 @@ const db = process.env.mongoURI || require('./config/keys').mongoURI
 
 // Connect to MongoDB
 mongoose
-  .connect(db, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true,
-  })
+  .connect(db)
   .then(() => console.log('MongoDB connected'))
   .catch((err) => console.log(err))
 

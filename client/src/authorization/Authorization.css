@@ -48,25 +48,18 @@
 
 /* -- login updateProfile signUp forgotPassword -- */
 #auth-input {
-  max-width: 25rem;
+  max-width: 20rem;
 }
 
 /* --- Login signUp updateProfile ---- */
+
+#email-login {
+  margin-top: 2rem;
+  margin-right: 0.5rem;
+}
+
 #auth-email {
-  margin-left: 2.5rem;
-  margin-right: 3rem;
-}
-
-#auth-password {
-  margin-left: 2.5rem;
-}
-
-#email {
-  margin-right: 0.5rem;
-}
-
-#password {
-  margin-right: 0.5rem;
+  margin-right: 0.2rem;
 }
 
 /* ---- updateProfile signUp -------- */
@@ -74,23 +67,9 @@
   margin-right: 0.5rem;
 }
 
-#auth-username {
-  margin-left: 2.5rem;
-  margin-right: -0.5rem;
-}
-
-#auth-password-confirm {
-  margin-left: 2.5rem;
-  margin-right: 1.5rem;
-}
-
-#username {
-  margin-right: 0.5rem;
-}
-
 /* -------------- Dashboard --------------- */
 .auth-user {
-  margin: 1rem 1rem 1rem 1rem;
+  margin: 2rem 1rem 0rem 3rem;
 }
 
 #update-link {
@@ -98,27 +77,57 @@
 }
 
 #auth-actions-logout {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }
 
 #auth-strong-username {
-  color: darkgray;
-  margin-right: 1.5rem;
+  color: lightgray;
+  margin-right: 2rem;
 }
 
 #auth-strong-email {
-  color: darkgray;
-  margin-right: 1rem;
+  color: lightgray;
+  margin-right: 1.5rem;
 }
 
+.dasboard-border {
+  border-top-style: groove;
+  border-color: dodgerblue;
+  border-width: thin;
+  width: 100%;
+  margin-top: 2.5rem;
+}
 /* ------ login -------------------- */
+
 #forgotpassword-link {
   padding-bottom: 1rem;
 }
 
+.testuser-info {
+  text-align: center;
+  font-size: small;
+}
+
+.testuser-border {
+  border-top-style: solid;
+  border-color: dodgerblue;
+  border-width: thin;
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
 /* ------ signUp ----------------- */
+#signup {
+  margin-top: 2rem;
+}
+
 #login-link {
-  margin-bottom: 1rem;
+  padding-bottom: 2rem;
+}
+
+.auth-actions-signup {
+  text-align: center;
 }
 
 /* ------ updateProfile --------- */
@@ -126,10 +135,14 @@
   padding-bottom: 2rem;
 }
 
+#auth-link-delete:hover {
+  color: red;
+}
 /* ------- forgotPassword ------------- */
-.auth-actions-signup {
-  text-align: center;
-  margin-top: -1rem;
+
+#email-forgot {
+  margin-top: 2rem;
+  margin-left: 3rem;
 }
 
 #auth-btn-reset {
@@ -142,25 +155,10 @@
   background-color: dodgerblue;
 }
 
-#auth-email-reset {
-  margin-left: 2.5rem;
-  margin-right: 1rem;
-}
-
 #signup-link {
-  margin-bottom: 1rem;
+  padding-bottom: 2rem;
 }
 
-.testuser-info {
+.auth-actions-forgot {
   text-align: center;
-  font-size: small;
-}
-
-.login-border {
-  border-top-style: groove;
-  border-color: dodgerblue;
-  border-width: thin;
-  width: 100%;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
 }

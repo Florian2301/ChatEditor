@@ -1,18 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import './AboutEdit.css'
+import './EditAbout.css'
 import Panel from '../../elements/Panel'
 import Accordion from 'react-bootstrap/Accordion'
 
-export function AboutEdit() {
+export function EditAbout() {
   //---------------------- RETURN ------------------------------------------------------------------------------------
   return (
     <Panel title="Demo-Version" id="about">
-      <p>hallo welt</p>
       <Accordion defaultActiveKey="0">
         <Accordion.Item eventKey="0">
           <Accordion.Header>Accordion Item #1</Accordion.Header>
-          <Accordion.Body>
+          <Accordion.Body className="edit-about-acc-body">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -24,7 +23,7 @@ export function AboutEdit() {
         </Accordion.Item>
         <Accordion.Item eventKey="1">
           <Accordion.Header>Accordion Item #2</Accordion.Header>
-          <Accordion.Body>
+          <Accordion.Body className="edit-about-acc-body">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -49,6 +48,6 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = {}
 
-let AboutEditComponent = connect(mapStateToProps, mapDispatchToProps)(AboutEdit)
+let AboutEditComponent = connect(mapStateToProps, mapDispatchToProps)(EditAbout)
 
 export default AboutEditComponent

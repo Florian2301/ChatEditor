@@ -13,9 +13,9 @@ export function EmojiPicker(props) {
 
   const popover = (
     <Popover className="fade-in-picker" id="emoji-picker">
-      <Popover.Content>
+      <Popover.Body>
         <Picker onSelect={addEmoji} showPreview={false} showSkinTones={false} />
-      </Popover.Content>
+      </Popover.Body>
     </Popover>
   )
 

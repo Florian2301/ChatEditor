@@ -32,7 +32,7 @@ export function ChatboxComments(props) {
   //---- return ---------------------------------------------------------------------------------------------------
 
   return (
-    <Panel title={'Title: ' + title} id="chatbox-mobile">
+    <Panel title={title} id="chatbox-mobile">
       <Container
         className={
           props.user.writeComment ? 'commentchatbox-tablet' : 'chatbox-tablet'

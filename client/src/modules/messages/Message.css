@@ -9,7 +9,7 @@
   min-width: 15rem;
   max-width: 80%;
   background-color: #2f4858;
-  background-image: url('/img/message_background.jpg');
+  background-image: url('/public/img/message_background.jpg');
   /*Bild von <a href="https://pixabay.com/de/users/chrisfiedler-935884/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1074131">ChrisFiedler</a> auf <a href="https://pixabay.com/de/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1074131">Pixabay</a>*/
 }
 
@@ -61,11 +61,12 @@
 /*user logged In => adjust margin-top */
 .position-1-edit {
   margin-top: 1rem;
+  margin-left: 3rem;
 }
 
 .position-2-edit {
   margin-left: auto;
-  margin-right: -0.5rem;
+  margin-right: 1rem;
   margin-top: 1rem;
 }
 

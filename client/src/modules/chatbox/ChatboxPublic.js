@@ -64,7 +64,7 @@ export function ChatboxPublic(props) {
   //---- return ---------------------------------------------------------------------------------------------------
 
   return (
-    <Panel title={'Title: ' + props.chat.title} id="chatbox">
+    <Panel title={props.chat.title} id="chatbox">
       <Container className="chatbox">
         <ListGroup>
           <TransitionGroup>

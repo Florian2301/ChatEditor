@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { Alert } from 'react-bootstrap'
 import { useAuth } from './AuthContext'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Panel from '../elements/Panel'
 import Button from '../elements/Button'
-import firebase from 'firebase/app'
-import 'firebase/auth'
+import firebase from 'firebase/compat/app'
+import 'firebase/compat/auth'
 import { connect } from 'react-redux'
 import { getUser, clearDisplay, logout } from '../redux/actions/user'
 
@@ -14,7 +14,7 @@ export function Dashboard(props) {
   const [welcome, setWelcome] = useState(true)
   const [updateProfile, setUpdateProfile] = useState(true)
   const { currentUser, logout } = useAuth()
-  const history = useHistory()
+  const history = useNavigate()
   const update = 'Your profile has been updated successfully'
   let welcomeMessage = ''
 
@@ -30,7 +30,7 @@ export function Dashboard(props) {
     setError('')
     try {
       await logout()
-      history.push('/login')
+      history('/login')
     } catch {
       setError('Log out failed')
     }
@@ -41,12 +41,6 @@ export function Dashboard(props) {
   if (user) {
     welcomeMessage = 'Welcome ' + user.displayName + '!'
   }
-
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user && !props.user.loggedIn) {
-      props.getUser(user.displayName)
-    }
-  })
 
   // set welcome message and timout after 10 sec
   useEffect(() => {
@@ -96,6 +90,7 @@ export function Dashboard(props) {
         {currentUser.email}
       </div>
 
+      <div className="dasboard-border">{''}</div>
       <div className="auth-actions" id="auth-actions-logout">
         <Button
           handleClick={handleLogout}

@@ -499,31 +499,35 @@ export function EditDrafts(props) {
         {error && <Alert variant="danger">{error}</Alert>}
       </div>
 
-      <Form className="edit-draft-form" onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         {edit ? (
-          <div className="edit-draft-scroll">
-            <Form.Group as={Row}>
-              <Form.Label className="edit-draft-title">Title:</Form.Label>
+          <div>
+            <Form.Group as={Row} className="edit-draft-top">
+              <Form.Label className="edit-draft-title" column sm="3">
+                Title:
+              </Form.Label>
               <Col>
                 <Form.Control
                   className="edit-draft-title-input"
                   type="name"
                   ref={titleRef}
+                  as="textarea"
                   autoFocus
                   placeholder="Choose a title for your chat"
                   defaultValue={props.draft.title}
+                  rows="2"
                 />
               </Col>
             </Form.Group>
 
             {phil1 ? (
-              <Form.Group as={Row}>
-                <Form.Label className="edit-draft-name">
+              <Form.Group as={Row} className="edit-draft-top">
+                <Form.Label className="edit-draft-name" column sm="3">
                   Philosopher:
                 </Form.Label>
                 <Col>
                   <Form.Control
-                    className="edit-draft-name-input-1"
+                    className="edit-draft-input-name"
                     type="name"
                     ref={editPhilRef1}
                     defaultValue={phil1.name}
@@ -533,11 +537,13 @@ export function EditDrafts(props) {
             ) : null}
 
             {phil2 ? (
-              <Form.Group as={Row}>
-                <Form.Label className="edit-draft-name">{''}</Form.Label>
+              <Form.Group as={Row} className="edit-draft-top">
+                <Form.Label className="edit-draft-name" column sm="3">
+                  {''}
+                </Form.Label>
                 <Col>
                   <Form.Control
-                    className="edit-draft-input-name-2"
+                    className="edit-draft-input-name"
                     type="name"
                     ref={editPhilRef2}
                     defaultValue={phil2.name}
@@ -547,11 +553,13 @@ export function EditDrafts(props) {
             ) : null}
 
             {phil3 ? (
-              <Form.Group as={Row}>
-                <Form.Label className="edit-draft-name">{''}</Form.Label>
+              <Form.Group as={Row} className="edit-draft-top-2">
+                <Form.Label className="edit-draft-name" column sm="3">
+                  {''}
+                </Form.Label>
                 <Col>
                   <Form.Control
-                    className="edit-draft-input-name-2"
+                    className="edit-draft-input-name"
                     type="name"
                     ref={editPhilRef3}
                     defaultValue={phil3.name}
@@ -561,11 +569,13 @@ export function EditDrafts(props) {
             ) : null}
 
             {phil4 ? (
-              <Form.Group as={Row}>
-                <Form.Label className="edit-draft-name">{''}</Form.Label>
+              <Form.Group as={Row} className="edit-draft-top-2">
+                <Form.Label className="edit-draft-name" column sm="3">
+                  {''}
+                </Form.Label>
                 <Col>
                   <Form.Control
-                    className="edit-draft-input-name-2"
+                    className="edit-draft-input-name"
                     type="name"
                     ref={editPhilRef4}
                     defaultValue={phil4.name}
@@ -575,11 +585,13 @@ export function EditDrafts(props) {
             ) : null}
 
             {phil5 ? (
-              <Form.Group as={Row}>
-                <Form.Label className="edit-draft-name">{''}</Form.Label>
+              <Form.Group as={Row} className="edit-draft-top-2">
+                <Form.Label className="edit-draft-name" column sm="3">
+                  {''}
+                </Form.Label>
                 <Col>
                   <Form.Control
-                    className="edit-draft-input-name-2"
+                    className="edit-draft-input-name"
                     type="name"
                     ref={editPhilRef5}
                     defaultValue={phil5.name}
@@ -589,11 +601,13 @@ export function EditDrafts(props) {
             ) : null}
 
             {phil6 ? (
-              <Form.Group as={Row}>
-                <Form.Label className="edit-draft-name">{''}</Form.Label>
+              <Form.Group as={Row} className="edit-draft-top-2">
+                <Form.Label className="edit-draft-name" column sm="3">
+                  {''}
+                </Form.Label>
                 <Col>
                   <Form.Control
-                    className="edit-draft-input-name-2"
+                    className="edit-draft-input-name"
                     type="name"
                     ref={editPhilRef6}
                     defaultValue={phil6.name}
@@ -603,8 +617,8 @@ export function EditDrafts(props) {
             ) : null}
 
             {phil6 ? null : (
-              <Form.Group as={Row} key={uuidv4()}>
-                <Form.Label className="edit-draft-add-name">
+              <Form.Group as={Row} className="edit-draft-top-2">
+                <Form.Label className="edit-draft-add-name" column sm="3">
                   {' '}
                   Add name:
                 </Form.Label>
@@ -620,7 +634,7 @@ export function EditDrafts(props) {
             )}
 
             {phil6 ? null : (
-              <Form.Group as={Row}>
+              <Form.Group as={Row} className="edit-draft-top">
                 <Col>
                   <select
                     className="edit-draft-name-color-select"
@@ -648,8 +662,8 @@ export function EditDrafts(props) {
               </Form.Group>
             )}
 
-            <Form.Group as={Row}>
-              <Form.Label className="edit-draft-description">
+            <Form.Group as={Row} className="edit-draft-top-2">
+              <Form.Label className="edit-draft-description" column sm="3">
                 Description:
               </Form.Label>
               <Col>
@@ -665,22 +679,28 @@ export function EditDrafts(props) {
               </Col>
             </Form.Group>
 
-            <Form.Group as={Row}>
-              <Form.Label className="edit-draft-tags">Tags: </Form.Label>
+            <Form.Group as={Row} className="edit-draft-top-2">
+              <Form.Label className="edit-draft-tags" column sm="3">
+                Tags:{' '}
+              </Form.Label>
               <Col>
                 <Form.Control
                   className="edit-draft-tags-input"
                   type="text"
                   ref={tagsRef}
+                  as="textarea"
                   placeholder="E.g. philosophy, theory of mind etc."
                   defaultValue={props.draft.tags}
+                  rows="2"
                 />
               </Col>
             </Form.Group>
 
             {props.user.admin ? (
-              <Form.Group as={Row}>
-                <Form.Label className="edit-draft-author">Author:</Form.Label>
+              <Form.Group as={Row} className="edit-draft-top">
+                <Form.Label className="edit-draft-author" column sm="3">
+                  Author:
+                </Form.Label>
                 <Col>
                   <Form.Control
                     className="edit-draft-author-input"
@@ -694,7 +714,7 @@ export function EditDrafts(props) {
 
             {props.user.admin ? (
               <Form.Group as={Row}>
-                <Form.Label className="edit-draft-admin">
+                <Form.Label className="edit-draft-admin" column sm="3">
                   {toggleAdmin ? 'Admin' : 'User'}:
                 </Form.Label>
                 <Col>
@@ -716,8 +736,10 @@ export function EditDrafts(props) {
               </Form.Group>
             ) : null}
 
-            <Form.Group as={Row}>
-              <Form.Label className="edit-draft-language">Language:</Form.Label>
+            <Form.Group as={Row} className="edit-draft-top-3">
+              <Form.Label className="edit-draft-language" column sm="3">
+                Language:
+              </Form.Label>
               <Col>
                 <select
                   className="edit-draft-language-select"
@@ -737,7 +759,7 @@ export function EditDrafts(props) {
             </Form.Group>
           </div>
         ) : (
-          <div className="edit-draft-scroll">
+          <div>
             <div className="draft-details">
               <p>Title:</p>
               <p className="draft-info">{props.draft.title}</p>

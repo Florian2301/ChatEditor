@@ -7,6 +7,7 @@
   border-top-color: dodgerblue;
   border-top-width: thin;
   overflow: auto;
+  width: 30vw;
 }
 
 #write-comments-collapse {
@@ -57,7 +58,6 @@
 
 .textarea-write-comment {
   font-size: 20px;
-  min-height: 15vh;
   background-color: lightyellow;
   border-radius: 0.5rem;
   border-color: dodgerblue;

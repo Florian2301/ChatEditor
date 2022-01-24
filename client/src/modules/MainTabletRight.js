@@ -4,6 +4,7 @@ import { Container, Tab, Tabs } from 'react-bootstrap'
 import Authorization from '../authorization/Authorization'
 import EditChats from '../modules/edit/EditChats'
 import EditDrafts from '../modules/edit/EditDrafts'
+import StartDraft from '../modules/edit/StartDraft'
 import ChatboxCommentsTablet from './chatbox/ChatboxCommentsTablet'
 import About from '../modules/about/About'
 import Title from '../modules/title/Title'
@@ -25,8 +26,11 @@ export function MainTabletRight(props) {
       >
         {props.user.loggedIn ? (
           /* eventKey = about because initial state is about when page is refreshed */
-          <Tab eventKey="about" title="Edit Draft">
-            <EditDrafts />
+          <Tab
+            eventKey="about"
+            title={props.draft.draftEditmode ? 'Edit Draft' : 'Start Draft'}
+          >
+            {props.draft.draftEditmode ? <EditDrafts /> : <StartDraft />}
           </Tab>
         ) : (
           <Tab eventKey="title" title="Title">
@@ -73,6 +77,7 @@ let mapStateToProps = (state) => {
   return {
     user: state.user,
     chat: state.chat,
+    draft: state.draft,
   }
 }
 

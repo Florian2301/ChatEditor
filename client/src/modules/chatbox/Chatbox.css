@@ -11,7 +11,7 @@
 }
 
 .chatbox {
-  height: 80vh;
+  height: 75vh;
   width: 30vw;
   overflow: auto;
   border-radius: 0.6rem;
@@ -21,7 +21,7 @@
 }
 
 .editchatbox {
-  height: 57vh;
+  height: 48.5vh;
   width: 30vw;
   overflow: auto;
   border-radius: 0.6rem;
@@ -32,7 +32,7 @@
 
 /* comments */
 .commentchatbox {
-  height: 61.7vh;
+  height: 53.5vh;
   width: 30vw;
   overflow: auto;
   border-radius: 0.6rem;
@@ -49,7 +49,7 @@
 /* tablet */
 .chatbox-tablet {
   height: 77vh;
-  width: 100%;
+  width: 30vw;
   overflow: auto;
   border-radius: 0.6rem;
   position: relative;
@@ -58,7 +58,7 @@
 }
 
 .editchatbox-tablet {
-  height: 54vh;
+  height: 50.5vh;
   width: 100%;
   overflow: auto;
   border-radius: 0.6rem;
@@ -68,7 +68,7 @@
 }
 
 .commentchatbox-tablet {
-  height: 59vh;
+  height: 55.5vh;
   width: 100%;
   overflow: auto;
   border-radius: 0.6rem;
@@ -94,7 +94,7 @@
 }
 
 .editchatbox-mobile {
-  height: 52.5vh;
+  height: 49vh;
   width: 100%;
   overflow: auto;
   border-radius: 0.6rem;
@@ -104,7 +104,7 @@
 }
 
 .commentchatbox-mobile {
-  height: 57.5vh;
+  height: 54vh;
   width: 100%;
   overflow: auto;
   border-radius: 0.6rem;
@@ -139,39 +139,6 @@
 
 .listgroup-chat-comments:nth-child(even) {
   margin-left: 20%;
-}
-
-/*box where names and clear button appear*/
-.flexContainer-chat {
-  display: grid;
-  grid-template-columns: 1fr 12rem;
-  margin-bottom: 1rem;
-}
-
-#link-back {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-#link-back-chat {
-  margin: 1rem;
-}
-
-#link-back-chat:hover {
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-#link-clear {
-  margin: 1rem;
-  text-align: right;
-  color: lightgray;
-}
-
-#link-clear:hover {
-  text-decoration: underline;
-  cursor: pointer;
-  color: dodgerblue;
 }
 
 /*transition of messages*/

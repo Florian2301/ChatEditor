@@ -12,7 +12,7 @@ export default function About() {
           This is a demoversion for a free online chat editor for writing
           texts/dialogues in form of a chat and same time a platform to publish
           those texts. I always wanted to write down my own philosophical ideas,
-          but couldn't find the right way to bring them on paper. Finally in
+          but could not find the right way to bring them on paper. Finally in
           2019 I thought about writing in form of dialogues to express my
           thoughts. So I decided to create my own online chat editor.
         </p>

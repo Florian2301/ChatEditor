@@ -110,7 +110,7 @@ export function ChatboxBackend(props) {
   //---- return ---------------------------------------------------------------------------------------------------
 
   return (
-    <Panel title={'Title: ' + title} id="chatbox">
+    <Panel title={title} id="chatbox">
       <Container
         className={
           props.draft.write && props.draft.draftEditmode

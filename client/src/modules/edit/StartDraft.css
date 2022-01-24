@@ -9,7 +9,6 @@ Form {
 
 /* title */
 #start-title {
-  margin-right: 5.5rem;
   color: lightgray;
 }
 
@@ -61,7 +60,7 @@ Form {
   width: 9rem;
   height: 2rem;
   cursor: pointer;
-  margin-left: 9.5rem;
+  margin-left: 11rem;
 }
 
 /* link add name */

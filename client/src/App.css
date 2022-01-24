@@ -1,4 +1,4 @@
-/* Tabletchatbox */
+/* Tabletcontainer + header */
 #flexTablet {
   margin-top: 0rem;
   display: flex;
@@ -7,31 +7,39 @@
 }
 
 #tablet-header {
-  display: flex;
-  justify-content: center;
-  margin-bottom: -1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
 }
 
 #viewtablet {
   margin-top: 1rem;
-  margin-left: 20rem;
+  margin-left: 30%;
 }
 
 #tablet-language {
   margin-top: 1rem;
 }
 
-/* MobileChatbox */
+/* Mobilecontainer + header*/
 #flexMobile {
   display: grid;
   justify-content: center;
 }
 
 #mobile-header {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
 }
 
 #mobile-language {
   margin-top: 1rem;
+  margin-right: 5rem;
+}
+
+#viewmobile {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  margin-left: 1rem;
 }

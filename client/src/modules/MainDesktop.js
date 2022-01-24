@@ -15,7 +15,7 @@ import EditChats from './edit/EditChats'
 import ChatList from './tables/ChatList'
 import Authorization from '../authorization/Authorization'
 import About from './about/About'
-import AboutEdit from './about/AboutEdit'
+import EditAbout from './about/EditAbout'
 import { setKeyR } from '../redux/actions/user'
 import { getAllTitles } from '../redux/actions/title'
 
@@ -131,11 +131,15 @@ export function FlexMain(props) {
           >
             <Tab
               eventKey="chatbox"
-              title={`Chatbox (${
-                props.draft.draftEditmode
-                  ? props.draft.messages.length
-                  : props.chat.messages.length
-              })`}
+              title={
+                !props.user.loggedIn
+                  ? 'Chatbox'
+                  : `Chatbox (${
+                      props.draft.draftEditmode
+                        ? props.draft.messages.length
+                        : props.chat.messages.length
+                    })`
+              }
             >
               {props.user.loggedIn ? <ChatboxBackend /> : <ChatboxPublic />}
             </Tab>
@@ -161,7 +165,7 @@ export function FlexMain(props) {
               /* eventKey = about because initial state is "about", when page gets refreshed */
               <Tab
                 eventKey="about"
-                title={props.draft.draftEditmode ? 'Edit Draft' : 'Start Chat'}
+                title={props.draft.draftEditmode ? 'Edit Draft' : 'Start Draft'}
               >
                 {props.draft.draftEditmode ? <EditDrafts /> : <StartDraft />}
               </Tab>
@@ -188,8 +192,8 @@ export function FlexMain(props) {
               <Authorization />
             </Tab>
 
-            <Tab eventKey="aboutedit" title="AboutEdit">
-              <AboutEdit />
+            <Tab eventKey="editabout" title="EditAbout">
+              <EditAbout />
             </Tab>
           </Tabs>
         </Container>

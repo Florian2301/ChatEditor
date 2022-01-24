@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { Form, Alert, Col, Row } from 'react-bootstrap'
 import { useAuth } from './AuthContext'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Panel from '../elements/Panel'
 import Button from '../elements/Button'
 import { connect } from 'react-redux'
@@ -26,7 +26,7 @@ export function UpdateProfile(props) {
   } = useAuth()
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
-  const history = useHistory()
+  const history = useNavigate()
 
   // check if username or useremail already exist in database
   let checkName
@@ -123,7 +123,10 @@ export function UpdateProfile(props) {
   }
 
   function deleteProfile() {
-    if (currentUser.email !== 'philomessenger@gmail.com') {
+    let answer = window.confirm(
+      'Are you sure you want to delete your profile and all your drafts and published chats?'
+    )
+    if (answer && currentUser.email !== 'bigsoul@gmx.de') {
       deleteUser(currentUser) // delete user from firebase
       const currentUserId = props.user.userId // get current user-id from database
       props.deleteUserDB(currentUserId) // delete user from database
@@ -150,8 +153,10 @@ export function UpdateProfile(props) {
       </div>
 
       <Form onSubmit={handleSubmit}>
-        <Form.Group id="username" as={Row}>
-          <Form.Label id="auth-username">Username:</Form.Label>
+        <Form.Group as={Row}>
+          <Form.Label column sm="3">
+            Username:
+          </Form.Label>
           <Col>
             <Form.Control
               id="auth-input"
@@ -164,8 +169,10 @@ export function UpdateProfile(props) {
           </Col>
         </Form.Group>
 
-        <Form.Group id="email" as={Row}>
-          <Form.Label id="auth-email">Email:</Form.Label>
+        <Form.Group as={Row}>
+          <Form.Label column sm="3">
+            Email:
+          </Form.Label>
           <Col>
             <Form.Control
               id="auth-input"
@@ -177,8 +184,10 @@ export function UpdateProfile(props) {
           </Col>
         </Form.Group>
 
-        <Form.Group id="password" as={Row}>
-          <Form.Label id="auth-password">Password:</Form.Label>
+        <Form.Group as={Row}>
+          <Form.Label column sm="3">
+            Password:
+          </Form.Label>
           <Col>
             <Form.Control
               id="auth-input"
@@ -189,8 +198,10 @@ export function UpdateProfile(props) {
           </Col>
         </Form.Group>
 
-        <Form.Group id="password-confirm" as={Row}>
-          <Form.Label id="auth-password-confirm">Confirm:</Form.Label>
+        <Form.Group as={Row}>
+          <Form.Label column sm="3">
+            Confirm:
+          </Form.Label>
           <Col>
             <Form.Control
               id="auth-input"
@@ -210,10 +221,10 @@ export function UpdateProfile(props) {
           ></Button>
         </div>
 
-        <div className="auth-actions" id="delete">
+        <div className="auth-actions">
           <Link
             className="auth-link"
-            id="auth-link"
+            id="auth-link-delete"
             to="/login"
             onClick={deleteProfile}
             disabled={loading}

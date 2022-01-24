@@ -111,7 +111,7 @@ export function ChatboxTablet(props) {
   //---- return ---------------------------------------------------------------------------------------------------
 
   return (
-    <Panel title={'Title: ' + title} id="chatbox-mobile">
+    <Panel title={title} id="chatbox-mobile">
       <Container
         className={
           props.draft.write && props.draft.draftEditmode

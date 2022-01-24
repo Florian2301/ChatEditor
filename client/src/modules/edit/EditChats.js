@@ -237,11 +237,13 @@ export function EditChats(props) {
         {error && <Alert variant="danger">{error}</Alert>}
       </div>
 
-      <Form className="form-edit-chat" onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         {edit ? (
-          <div className="edit-chat-scroll">
-            <Form.Group className="edit-chat" as={Row}>
-              <Form.Label className="edit-chat-number">Chatnumber:</Form.Label>
+          <div>
+            <Form.Group as={Row}>
+              <Form.Label className="edit-chat-number" column sm="3">
+                Chatnumber:
+              </Form.Label>
               <Col>
                 <Form.Control
                   className="edit-chat-input-number"
@@ -254,21 +256,25 @@ export function EditChats(props) {
               </Col>
             </Form.Group>
 
-            <Form.Group className="edit-chat" as={Row}>
-              <Form.Label className="edit-chat-title">Title:</Form.Label>
+            <Form.Group as={Row}>
+              <Form.Label className="edit-chat-title" column sm="3">
+                Title:
+              </Form.Label>
               <Col>
                 <Form.Control
                   className="edit-chat-input-title"
                   type="text"
                   ref={titleRef}
+                  as="textarea"
                   placeholder="Insert a title"
                   defaultValue={props.chat.title}
+                  rows="2"
                 />
               </Col>
             </Form.Group>
 
-            <Form.Group className="edit-chat" as={Row}>
-              <Form.Label className="edit-chat-description">
+            <Form.Group className="edit-chat-top" as={Row}>
+              <Form.Label className="edit-chat-description" column sm="3">
                 Description:
               </Form.Label>
               <Col>
@@ -284,13 +290,17 @@ export function EditChats(props) {
               </Col>
             </Form.Group>
 
-            <Form.Group className="edit-chat" as={Row}>
-              <Form.Label className="edit-chat-tags">Tags: </Form.Label>
+            <Form.Group className="edit-chat-top" as={Row}>
+              <Form.Label className="edit-chat-tags" column sm="3">
+                Tags:{' '}
+              </Form.Label>
               <Col>
                 <Form.Control
                   className="edit-chat-input-tags"
                   type="text"
                   ref={tagsRef}
+                  as="textarea"
+                  row="2"
                   placeholder="E.g. philosophy, theory of mind etc."
                   defaultValue={props.chat.tags}
                 />
@@ -298,8 +308,10 @@ export function EditChats(props) {
             </Form.Group>
 
             {props.user.admin ? (
-              <Form.Group as={Row}>
-                <Form.Label className="edit-chat-author">Author:</Form.Label>
+              <Form.Group className="edit-chat-top" as={Row}>
+                <Form.Label className="edit-chat-author" column sm="3">
+                  Author:
+                </Form.Label>
                 <Col>
                   <Form.Control
                     className="edit-chat-input-author"
@@ -313,7 +325,7 @@ export function EditChats(props) {
 
             {props.user.admin ? (
               <Form.Group as={Row}>
-                <Form.Label className="edit-chat-admin">
+                <Form.Label className="edit-chat-admin" column sm="3">
                   {toggleAdmin ? 'Admin' : 'User'}:
                 </Form.Label>
                 <Col>
@@ -336,7 +348,9 @@ export function EditChats(props) {
             ) : null}
 
             <Form.Group as={Row}>
-              <Form.Label className="edit-chat-language">Language:</Form.Label>
+              <Form.Label className="edit-chat-language" column sm="3">
+                Language:
+              </Form.Label>
               <Col>
                 <select
                   className="edit-chat-language-select"
@@ -355,8 +369,10 @@ export function EditChats(props) {
               </Col>
             </Form.Group>
 
-            <Form.Group className="edit-chat" as={Row}>
-              <Form.Label className="edit-chat-date">Published:</Form.Label>
+            <Form.Group as={Row}>
+              <Form.Label className="edit-chat-date" column sm="3">
+                Published:
+              </Form.Label>
               <Col>
                 <Form.Control
                   className="edit-chat-input-date"
@@ -369,7 +385,7 @@ export function EditChats(props) {
             </Form.Group>
           </div>
         ) : (
-          <div className="edit-chat-scroll">
+          <div>
             <div className="chat-details">
               <p>Chatnumber:</p>
               <p className="chat-info" id="chat-number">

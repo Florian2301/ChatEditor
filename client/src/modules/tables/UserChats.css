@@ -8,7 +8,7 @@
 
 .userchats-scroll {
   overflow: auto;
-  max-height: 77vh;
+  height: 77vh;
 }
 
 .data-columns-userchats-1 {

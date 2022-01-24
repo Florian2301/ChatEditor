@@ -147,7 +147,9 @@ export function StartDraft(props) {
 
       <Form onSubmit={handleSubmit}>
         <Form.Group as={Row}>
-          <Form.Label id="start-title">Title:*</Form.Label>
+          <Form.Label id="start-title" column sm="3">
+            Title:*
+          </Form.Label>
           <Col>
             <Form.Control
               id="start-input-title"
@@ -160,7 +162,10 @@ export function StartDraft(props) {
         </Form.Group>
 
         <Form.Group as={Row}>
-          <Form.Label id="start-add-name"> Philosopher:*</Form.Label>
+          <Form.Label id="start-add-name" column sm="3">
+            {' '}
+            Philosopher:*
+          </Form.Label>
           <Col>
             <Form.Control
               id="start-add-input-name"

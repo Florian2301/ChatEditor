@@ -303,7 +303,7 @@
 /* ---------------- Tablet --------------------------- */
 
 #responsive-container-tablet {
-  max-width: 50rem;
+  width: 45%;
   margin-top: 0rem;
 }
 
@@ -317,20 +317,20 @@
 }
 
 /* AboutEdit */
-#uncontrolled-tab-aboutedit {
+#uncontrolled-tab-editabout {
   background: none;
   color: lightgray;
   font-size: 1.5rem;
   font-weight: bold;
 }
 
-#uncontrolled-tab-aboutedit:hover {
+#uncontrolled-tab-editabout:hover {
   border-color: dodgerblue;
   border-radius: 0.5rem;
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-#uncontrolled-tab-aboutedit[aria-selected='true'] {
+#uncontrolled-tab-editabout[aria-selected='true'] {
   border-color: dodgerblue;
   border-radius: 0.5rem;
   background-color: rgba(0, 0, 0, 0.3);
