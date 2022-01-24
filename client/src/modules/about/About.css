@@ -1,5 +1,35 @@
-#git {
+#about {
+  margin-top: 1.5rem;
+}
+
+.about {
+  margin-left: 2rem;
+  margin-right: 2rem;
+  height: 77vh;
+  overflow: auto;
+  margin-top: 1.5rem;
+}
+
+.about-menu {
   color: lightgray;
+  text-decoration: underline;
+}
+
+.about-menu:hover {
+  cursor: pointer;
+  color: white;
+}
+
+.about-details {
+  margin-top: 1.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+/* Git Link */
+
+#git {
+  color: white;
   font-size: 1.5rem;
   text-decoration: underline;
 }
@@ -9,17 +39,22 @@
   cursor: pointer;
 }
 
-.about {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  height: 77vh;
-  overflow: auto;
-}
-
-#about {
-  margin-top: 1.5rem;
-}
-
 #about-update {
   font-size: 1.2rem;
+}
+
+/* Transition */
+.transition-menu-enter {
+  opacity: 0;
+}
+.transition-menu-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms ease-in;
+}
+.transition-menu-exit {
+  opacity: 1;
+}
+.transition-menu-exit-active {
+  opacity: 0;
+  transition: opacity 1000ms ease-in;
 }

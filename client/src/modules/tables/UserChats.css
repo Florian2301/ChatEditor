@@ -13,7 +13,7 @@
 
 .data-columns-userchats-1 {
   display: grid;
-  grid-template-columns: 20% 10% 50% 20%;
+  grid-template-columns: 20% 10% 45% 25%;
   border-bottom-color: dodgerblue;
   border-bottom-width: thin;
   border-bottom-style: solid;
@@ -21,7 +21,7 @@
 
 .data-columns-userchats-2 {
   display: grid;
-  grid-template-columns: 20% 10% 50% 20%;
+  grid-template-columns: 20% 10% 45% 25%;
 }
 
 .data-columns-userchats-2:hover {

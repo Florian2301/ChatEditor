@@ -15,7 +15,6 @@ import EditChats from './edit/EditChats'
 import ChatList from './tables/ChatList'
 import Authorization from '../authorization/Authorization'
 import About from './about/About'
-import EditAbout from './about/EditAbout'
 import { setKeyR } from '../redux/actions/user'
 import { getAllTitles } from '../redux/actions/title'
 
@@ -190,10 +189,6 @@ export function FlexMain(props) {
               title={props.user.loggedIn ? 'Profile' : 'Login'}
             >
               <Authorization />
-            </Tab>
-
-            <Tab eventKey="editabout" title="EditAbout">
-              <EditAbout />
             </Tab>
           </Tabs>
         </Container>

@@ -13,7 +13,7 @@
 
 .data-columns-adminchats-1 {
   display: grid;
-  grid-template-columns: 10% 70% 20%;
+  grid-template-columns: 10% 65% 25%;
   border-bottom-color: dodgerblue;
   border-bottom-width: thin;
   border-bottom-style: solid;
@@ -21,7 +21,7 @@
 
 .data-columns-adminchats-2 {
   display: grid;
-  grid-template-columns: 10% 70% 20%;
+  grid-template-columns: 10% 65% 25%;
 }
 
 .data-columns-adminchats-2:hover {

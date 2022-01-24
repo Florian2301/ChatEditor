@@ -1,53 +1,264 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './About.css'
+import { v4 as uuidv4 } from 'uuid'
 import Panel from '../../elements/Panel'
+import { Collapse } from 'react-bootstrap'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 export default function About() {
+  const [about, setAbout] = useState(true)
+  const [tech, setTech] = useState(false)
+  const [background, setBackground] = useState(false)
+  const [concept, setConcept] = useState(false)
+  const [future, setFuture] = useState(false)
+
+  function toggleDetails(key) {
+    key === 'about' ? setAbout(!about) : setAbout(false)
+    key === 'tech' ? setTech(!tech) : setTech(false)
+    key === 'background' ? setBackground(!background) : setBackground(false)
+    key === 'concept' ? setConcept(!concept) : setConcept(false)
+    key === 'future' ? setFuture(!future) : setFuture(false)
+  }
+
   return (
-    <Panel title="Demo-Version" id="about">
+    <Panel title="Demo-Version Chat-Editor" id="about">
       <div className="about">
-        <br></br>
+        <div>
+          <div
+            className="about-menu"
+            onClick={() => toggleDetails('about')}
+            aria-controls="example-collapse-text"
+            aria-expanded={about}
+          >
+            Über diese App
+          </div>
+          <TransitionGroup>
+            <CSSTransition
+              key={uuidv4()}
+              timeout={1}
+              classNames="transition-menu"
+            >
+              <Collapse in={about}>
+                <div className="about-details" id="example-collapse-text">
+                  <p>
+                    Diese App ist eine Demo-Version meines selbst entwickelten
+                    Chat-Editors. Mit diesem Editor kann jeder Dialoge in Form
+                    eines Chats schreiben und hier veröffentlichen. Dialoge sind
+                    eine literarische Kunstform, die ich mit diesem Editor in
+                    eine digitale Form überführen möchte. In Zeiten von
+                    Messengern und Social Media ist die „Chatform“ eine
+                    geläufige Art, sich zu auszudrücken. Jedoch ist es bei
+                    bisherigen Online-Diensten nicht möglich bzw. nicht
+                    vorgesehen, mehr als eine Sprecherrolle einzunehmen, da
+                    diese vornehmlich zur sozialen Kommunikation und Interaktion
+                    entwickelt wurden.
+                  </p>
+                  <p>
+                    Dieser Chat-Editor ist daher eine Möglichkeit, mit „sich
+                    selbst zu chatten“, oder in anderen Worten: einen digitalen
+                    Dialog zu schreiben.
+                  </p>
+                </div>
+              </Collapse>
+            </CSSTransition>
+          </TransitionGroup>
+        </div>
+        <br />
 
-        <p>
-          This is a demoversion for a free online chat editor for writing
-          texts/dialogues in form of a chat and same time a platform to publish
-          those texts. I always wanted to write down my own philosophical ideas,
-          but could not find the right way to bring them on paper. Finally in
-          2019 I thought about writing in form of dialogues to express my
-          thoughts. So I decided to create my own online chat editor.
-        </p>
+        <div>
+          <div
+            className="about-menu"
+            onClick={() => toggleDetails('background')}
+            aria-controls="example-collapse-text"
+            aria-expanded={background}
+          >
+            Hintergrund
+          </div>
+          <TransitionGroup>
+            <CSSTransition
+              key={uuidv4()}
+              timeout={1}
+              classNames="transition-menu"
+            >
+              <Collapse in={background}>
+                <div className="about-details" id="example-collapse-text">
+                  <p>
+                    Seit vielen Jahren möchte ich meine philosophischen Gedanken
+                    über das Leben, das Selbst und die Wirklichkeit
+                    niederschreiben, habe aber nie die richtige Form gefunden,
+                    in der ich mich ausdrücken kann. In meinen Gedanken waren es
+                    schon immer Dialoge, die stattgefunden haben, mal mit mir
+                    selber, mal mit realen oder erfundenen Personen. Mir ist
+                    bewusst, dass dies meine eigene spezielle Weise des Denkens
+                    ist, an der ich jetzt andere teilhaben lassen möchte.
+                  </p>
+                  <p>
+                    Mein Studium der Philosophie an der Universität hat mich in
+                    meinem Denken und meiner Persönlichkeit sehr geprägt, wobei
+                    ich hier aber nicht den Anspruch vertrete, eine rein
+                    akademische Philosophie zu betreiben. Ich möchte auch von
+                    Nicht-Akademikern verstanden werden und wende mich an alle
+                    diejenigen, die an Philosophie, Selbstreflexion und einem
+                    Gedankenaustausch Interesse und ihre Freude haben.
+                  </p>
+                </div>
+              </Collapse>
+            </CSSTransition>
+          </TransitionGroup>
+        </div>
 
-        <br></br>
+        <br />
 
-        <p>
-          At the beginning of 2020 I started to teach myself programming to
-          become a web developer. This MERN stack single page application is my
-          first project I have launched. I am using this one as a part of my job
-          applications.
-        </p>
+        <div>
+          <div
+            className="about-menu"
+            onClick={() => toggleDetails('concept')}
+            aria-controls="example-collapse-text"
+            aria-expanded={concept}
+          >
+            Konzeption und Entwicklung
+          </div>
+          <TransitionGroup>
+            <CSSTransition
+              key={uuidv4()}
+              timeout={1}
+              classNames="transition-menu"
+            >
+              <Collapse in={concept}>
+                <div className="about-details" id="example-collapse-text">
+                  <p>
+                    Die Konzeptionierung und Entwicklung des Chat-Editors hat
+                    sich laufend mit meinem Lernfortschritt verändert und
+                    angepasst. Eine grobe Idee davon, wie der Editor am Ende
+                    aussehen soll, hatte ich bereits von Anfang an. Jedoch ergab
+                    sich im Laufe der Entwicklung der App eine immer größer
+                    werdende Ausdifferenzierung der einzelnen Schritte zum
+                    Schreiben eines Chats.
+                  </p>
+                  <p>
+                    Darunter waren zum Beispiel die getrennte Behandlung von
+                    Entwürfen (drafts) und veröffentlichten Chats (chats). Aber
+                    auch die Frage, inwieweit können oder sollen veröffentlichte
+                    Chats noch verändert werden? Rechtschreibfehler korrigieren
+                    ist ok, aber keine weiteren Texte schreiben bzw.
+                    Protagonisten hinzufügen. Für diesen Fall gibt es die
+                    Möglichkeit, den Chat wieder als Entwurf zu speichern und
+                    dann nach erfolgter Bearbeitung wieder zu veröffentlichen.
+                  </p>
+                  <p>
+                    Die App ist ein gewachsenes Projekt, welches immer wieder zu
+                    Umstrukturierungen, Veränderungen und Anpassungen führte.
+                    Zum Beispiel war das Statemanangement nach einigen Monaten
+                    sehr aufgebläht und unübersichtlich geworden. Dies führte zu
+                    einem wichtigen Prozess bei der Entwicklung, nämlich der
+                    Vereinfachung und Zusammenfassung von Funktionen und
+                    Prozessen.
+                  </p>
+                </div>
+              </Collapse>
+            </CSSTransition>
+          </TransitionGroup>
+        </div>
 
-        <br></br>
+        <br />
 
-        <p>
-          Its a MERN stack app, means I use MongoDB as my database, express as
-          middleware, React as framework library and node.js as runtime
-          environment for javascript. Additionally I use Redux for state
-          management, firebase for authentification, react-bootstrap for styling
-          some parts (e.g. for forms) and react hooks.
-        </p>
+        <div>
+          <div
+            className="about-menu"
+            onClick={() => toggleDetails('future')}
+            aria-controls="example-collapse-text"
+            aria-expanded={future}
+          >
+            Ausblick
+          </div>
+          <TransitionGroup>
+            <CSSTransition
+              key={uuidv4()}
+              timeout={1}
+              classNames="transition-menu"
+            >
+              <Collapse in={future}>
+                <div className="about-details" id="example-collapse-text">
+                  <p>
+                    Der Editor ist vom Umfang her so weit entwickelt, um Chats
+                    schreiben können, zu bearbeiten und dauerhaft zu
+                    veröffentlichen. Jedoch fehlen mir noch weiterführende
+                    Funktionen. Hier sind ein paar Beispiele, um die ich den
+                    Editor in Zukunft noch ergänzen möchte:
+                  </p>
 
-        <br></br>
+                  <p>- eine Suchfunktion (Themen, Stichworte) </p>
+                  <p>
+                    - eine Verlinkung der Chats untereinander (um thematische
+                    Bezüge herzustellen)
+                  </p>
+                  <p>
+                    - externe Kommentare zu einzelnen Nachrichten bzw.
+                    Verlinkung zu den Nachrichten
+                  </p>
+                  <p>
+                    - einen Algorithmus entwickeln, mit dem ein Chat in
+                    „Echtzeit“ abgespielt werden kann, also als ob man anderen
+                    beim Chatten zusehen würde
+                  </p>
+                </div>
+              </Collapse>
+            </CSSTransition>
+          </TransitionGroup>
+        </div>
 
-        <a id="git" href="https://github.com/Florian2301/ChatEditor">
-          See code on Github
-        </a>
-        <p id="about-update">Last update: 2021-11-07</p>
+        <br />
 
-        <br></br>
+        <div>
+          <div
+            className="about-menu"
+            onClick={() => toggleDetails('tech')}
+            aria-controls="example-collapse-text"
+            aria-expanded={tech}
+          >
+            Technische Details
+          </div>
+          <TransitionGroup>
+            <CSSTransition
+              key={uuidv4()}
+              timeout={1}
+              classNames="transition-menu"
+            >
+              <Collapse in={tech}>
+                <div className="about-details" id="example-collapse-text">
+                  <p>
+                    Der Chat-Editor ist mit dem MERN-Stack entwickelt worden,
+                    d.h. MongoDB als Datenbank, Express als Backend, React als
+                    Frontend und Nodejs als Entwicklungsumgebung. Die
+                    zugrundeliegende Sprache ist Javascript. Als Statemanagement
+                    habe ich REDUX verwendet und das Design mit CSS und
+                    React-Bootstrap umgesetzt.
+                  </p>
+                  <p>- MERN (MongoDB, Express, React, Nodejs)</p>
+                  <p>- Javascript</p>
+                  <p>- Redux</p>
+                  <p>- React-Bootstrap und CSS</p>
+                  <br />
+                  <p>
+                    Der gesamte Code kann hier auf{' '}
+                    <a
+                      id="git"
+                      href="https://github.com/Florian2301/ChatEditor"
+                      target="_blank"
+                    >
+                      Github
+                    </a>{' '}
+                    eingesehen werden.
+                  </p>
+                </div>
+              </Collapse>
+            </CSSTransition>
+          </TransitionGroup>
+        </div>
 
-        <p>I do not follow any commercial purposes with this app.</p>
-
-        <br></br>
+        <br />
+        <p id="about-update">~ Last update: 2022-01-23 ~</p>
+        <br />
       </div>
     </Panel>
   )
