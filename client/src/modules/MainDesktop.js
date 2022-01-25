@@ -78,6 +78,8 @@ export function FlexMain(props) {
     })
   }
 
+  console.log('user', props.user.loggedIn)
+
   //---------------------- RETURN ------------------------------------------------------------------------------------
 
   return (

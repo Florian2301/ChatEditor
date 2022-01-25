@@ -300,7 +300,7 @@ export function EditChats(props) {
                   type="text"
                   ref={tagsRef}
                   as="textarea"
-                  row="2"
+                  row="4"
                   placeholder="E.g. philosophy, theory of mind etc."
                   defaultValue={props.chat.tags}
                 />
@@ -383,6 +383,7 @@ export function EditChats(props) {
                 />
               </Col>
             </Form.Group>
+            <br />
           </div>
         ) : (
           <div>

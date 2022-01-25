@@ -258,9 +258,9 @@
 }
 
 .draft-details-btn-delete:hover {
-  border-color: dodgerblue;
+  border-color: red;
 }
 
 .draft-details-btn-delete:active {
-  background-color: dodgerblue;
+  background-color: red;
 }

@@ -11,6 +11,8 @@ export default function About() {
   const [background, setBackground] = useState(false)
   const [concept, setConcept] = useState(false)
   const [future, setFuture] = useState(false)
+  const [contact, setContact] = useState(false)
+  const [email, setEmail] = useState(false)
 
   function toggleDetails(key) {
     key === 'about' ? setAbout(!about) : setAbout(false)
@@ -18,8 +20,21 @@ export default function About() {
     key === 'background' ? setBackground(!background) : setBackground(false)
     key === 'concept' ? setConcept(!concept) : setConcept(false)
     key === 'future' ? setFuture(!future) : setFuture(false)
+    key === 'contact' ? setContact(!contact) : setContact(false)
   }
 
+  function createEmail() {
+    let email1 = 'flokrates'
+    let email2 = 'online'
+    let email3 = 'gmail.com'
+    setEmail(email1 + '.' + email2 + '@' + email3)
+
+    setTimeout(() => {
+      setEmail(false)
+    }, 10000)
+  }
+
+  //-------------------------- RETURN -----------------------------------------------------------------------
   return (
     <Panel title="Demo-Version Chat-Editor" id="about">
       <div className="about">
@@ -165,53 +180,6 @@ export default function About() {
         <div>
           <div
             className="about-menu"
-            onClick={() => toggleDetails('future')}
-            aria-controls="example-collapse-text"
-            aria-expanded={future}
-          >
-            Ausblick
-          </div>
-          <TransitionGroup>
-            <CSSTransition
-              key={uuidv4()}
-              timeout={1}
-              classNames="transition-menu"
-            >
-              <Collapse in={future}>
-                <div className="about-details" id="example-collapse-text">
-                  <p>
-                    Der Editor ist vom Umfang her so weit entwickelt, um Chats
-                    schreiben können, zu bearbeiten und dauerhaft zu
-                    veröffentlichen. Jedoch fehlen mir noch weiterführende
-                    Funktionen. Hier sind ein paar Beispiele, um die ich den
-                    Editor in Zukunft noch ergänzen möchte:
-                  </p>
-
-                  <p>- eine Suchfunktion (Themen, Stichworte) </p>
-                  <p>
-                    - eine Verlinkung der Chats untereinander (um thematische
-                    Bezüge herzustellen)
-                  </p>
-                  <p>
-                    - externe Kommentare zu einzelnen Nachrichten bzw.
-                    Verlinkung zu den Nachrichten
-                  </p>
-                  <p>
-                    - einen Algorithmus entwickeln, mit dem ein Chat in
-                    „Echtzeit“ abgespielt werden kann, also als ob man anderen
-                    beim Chatten zusehen würde
-                  </p>
-                </div>
-              </Collapse>
-            </CSSTransition>
-          </TransitionGroup>
-        </div>
-
-        <br />
-
-        <div>
-          <div
-            className="about-menu"
             onClick={() => toggleDetails('tech')}
             aria-controls="example-collapse-text"
             aria-expanded={tech}
@@ -234,21 +202,73 @@ export default function About() {
                     habe ich REDUX verwendet und das Design mit CSS und
                     React-Bootstrap umgesetzt.
                   </p>
-                  <p>- MERN (MongoDB, Express, React, Nodejs)</p>
-                  <p>- Javascript</p>
-                  <p>- Redux</p>
-                  <p>- React-Bootstrap und CSS</p>
-                  <br />
                   <p>
-                    Der gesamte Code kann hier auf{' '}
+                    Der gesamte Code kann{' '}
                     <a
                       id="git"
                       href="https://github.com/Florian2301/ChatEditor"
                       target="_blank"
                     >
-                      Github
+                      hier auf Github
                     </a>{' '}
                     eingesehen werden.
+                  </p>
+                  <br />
+                  <p>- MERN (MongoDB, Express, React, Nodejs)</p>
+                  <p>- Javascript</p>
+                  <p>- Redux</p>
+                  <p>- React-Bootstrap und CSS</p>
+                </div>
+              </Collapse>
+            </CSSTransition>
+          </TransitionGroup>
+        </div>
+
+        <br />
+
+        <div>
+          <div
+            className="about-menu"
+            onClick={() => toggleDetails('future')}
+            aria-controls="example-collapse-text"
+            aria-expanded={future}
+          >
+            Ausblick
+          </div>
+          <TransitionGroup>
+            <CSSTransition
+              key={uuidv4()}
+              timeout={1}
+              classNames="transition-menu"
+            >
+              <Collapse in={future}>
+                <div className="about-details" id="example-collapse-text">
+                  <p>
+                    Der Editor ist vom Umfang her so weit entwickelt, um Chats
+                    schreiben können, zu bearbeiten und dauerhaft zu
+                    veröffentlichen. Jedoch fehlen mir noch weiterführende
+                    Funktionen. Hier sind ein paar Beispiele, um die ich den
+                    Editor in Zukunft noch ergänzen möchte:
+                  </p>
+
+                  <p>
+                    - weitere Funktionen beim Schreiben von Nachrichten (fett,
+                    kursiv, Bilder einfügen){' '}
+                  </p>
+                  <p>- Schriftgröße, Hintergrund etc. anpassen</p>
+                  <p>- eine Suchfunktion (Themen, Stichworte) </p>
+                  <p>
+                    - eine Verlinkung der Chats untereinander (um thematische
+                    Bezüge herzustellen)
+                  </p>
+                  <p>
+                    - externe Kommentare zu einzelnen Nachrichten bzw.
+                    Verlinkung zu den Nachrichten
+                  </p>
+                  <p>
+                    - einen Algorithmus entwickeln, mit dem ein Chat in
+                    „Echtzeit“ abgespielt werden kann, also als ob man anderen
+                    beim Chatten zusehen würde
                   </p>
                 </div>
               </Collapse>
@@ -257,8 +277,42 @@ export default function About() {
         </div>
 
         <br />
-        <p id="about-update">~ Last update: 2022-01-23 ~</p>
+        <div>
+          <div
+            className="about-menu"
+            onClick={() => toggleDetails('contact')}
+            aria-controls="example-collapse-text"
+            aria-expanded={contact}
+          >
+            Kontakt
+          </div>
+          <TransitionGroup>
+            <CSSTransition
+              key={uuidv4()}
+              timeout={1}
+              classNames="transition-menu"
+            >
+              <Collapse in={contact}>
+                <div className="about-details" id="example-collapse-text">
+                  <p
+                    id={!email ? 'about-email' : null}
+                    onClick={() => createEmail()}
+                  >
+                    {email
+                      ? email
+                      : 'Klicke hier, um die Email-Adresse anzuzeigen'}
+                  </p>
+                </div>
+              </Collapse>
+            </CSSTransition>
+          </TransitionGroup>
+        </div>
+
         <br />
+        <div id="about-border"></div>
+        <p id="about-update">
+          ~ Alle hier veröffentlichten Werke sind urheberrechtlich geschützt ~
+        </p>
       </div>
     </Panel>
   )

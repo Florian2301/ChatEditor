@@ -38,7 +38,6 @@
   width: 90%;
   white-space: pre-wrap;
   word-wrap: break-word;
-  height: 50px;
 }
 
 /* tags */
@@ -48,7 +47,6 @@
 
 .edit-chat-input-tags {
   font-size: 14px;
-  height: 2.5rem;
   width: 90%;
 }
 
@@ -98,6 +96,7 @@
   max-width: 30%;
   font-size: 14px;
   height: 2rem;
+  margin-top: 0.5rem;
 }
 
 /* count messages */
@@ -235,9 +234,9 @@
 }
 
 .edit-chat-btn-delete:hover {
-  border-color: dodgerblue;
+  border-color: red;
 }
 
 .edit-chat-btn-delete:active {
-  background-color: dodgerblue;
+  background-color: red;
 }

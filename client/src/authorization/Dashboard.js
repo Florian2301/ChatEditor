@@ -13,6 +13,7 @@ export function Dashboard(props) {
   const [error, setError] = useState('')
   const [welcome, setWelcome] = useState(true)
   const [updateProfile, setUpdateProfile] = useState(true)
+  const [userLoggedOut, setUserLoggedOut] = useState(false)
   const { currentUser, logout } = useAuth()
   const history = useNavigate()
   const update = 'Your profile has been updated successfully'
@@ -27,6 +28,7 @@ export function Dashboard(props) {
   async function handleLogout() {
     props.clearDisplay()
     props.logout() // reset state.user
+    setUserLoggedOut(true)
     setError('')
     try {
       await logout()
@@ -41,6 +43,14 @@ export function Dashboard(props) {
   if (user) {
     welcomeMessage = 'Welcome ' + user.displayName + '!'
   }
+
+  // if page reloads, user still logged in
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user && !props.user.loggedIn & !userLoggedOut) {
+      props.getUser(user.displayName)
+      console.log('get user')
+    }
+  })
 
   // set welcome message and timout after 10 sec
   useEffect(() => {
