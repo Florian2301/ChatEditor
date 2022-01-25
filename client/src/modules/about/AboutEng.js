@@ -45,7 +45,7 @@ export default function About() {
             aria-controls="example-collapse-text"
             aria-expanded={about}
           >
-            Über diese App
+            About this app
           </div>
           <TransitionGroup>
             <CSSTransition
@@ -56,22 +56,19 @@ export default function About() {
               <Collapse in={about}>
                 <div className="about-details" id="example-collapse-text">
                   <p>
-                    Diese App ist eine Demo-Version meines selbst entwickelten
-                    Chat-Editors. Mit diesem Editor kann jeder Dialoge in Form
-                    eines Chats schreiben und hier veröffentlichen. Dialoge sind
-                    eine literarische Kunstform, die ich mit diesem Editor in
-                    eine digitale Form überführen möchte. In Zeiten von
-                    Messengern und Social Media ist die „Chatform“ eine
-                    geläufige Art, sich zu auszudrücken. Jedoch ist es bei
-                    bisherigen Online-Diensten nicht möglich bzw. nicht
-                    vorgesehen, mehr als eine Sprecherrolle einzunehmen, da
-                    diese vornehmlich zur sozialen Kommunikation und Interaktion
-                    entwickelt wurden.
+                    This app is a demo version of a chat editor, which I
+                    developed by myself. Through this app everyone is able to
+                    write dialogues in form of a chat und publish those.
+                    Dialogues are form literary form of art, which I transfer to
+                    a digital form with this editor. In time of messengers and
+                    social media a “chat” is a common way to express yourself.
+                    Though it is not possible or not intended on previous online
+                    chat services to be more than one speaker. Online chats are
+                    mainly there for social communication and interaction.
                   </p>
                   <p>
-                    Dieser Chat-Editor ist daher eine Möglichkeit, mit „sich
-                    selbst zu chatten“, oder in anderen Worten: einen digitalen
-                    Dialog zu schreiben.
+                    This chat editor enables you to “chat with yourself”, or in
+                    other words: to write a digital dialogue.
                   </p>
                 </div>
               </Collapse>
@@ -87,7 +84,7 @@ export default function About() {
             aria-controls="example-collapse-text"
             aria-expanded={background}
           >
-            Hintergrund
+            Background
           </div>
           <TransitionGroup>
             <CSSTransition
@@ -98,23 +95,21 @@ export default function About() {
               <Collapse in={background}>
                 <div className="about-details" id="example-collapse-text">
                   <p>
-                    Seit vielen Jahren möchte ich meine philosophischen Gedanken
-                    über das Leben, das Selbst und die Wirklichkeit
-                    niederschreiben, habe aber nie die richtige Form gefunden,
-                    in der ich mich ausdrücken kann. In meinen Gedanken waren es
-                    schon immer Dialoge, die stattgefunden haben, mal mit mir
-                    selber, mal mit realen oder erfundenen Personen. Mir ist
-                    bewusst, dass dies meine eigene spezielle Weise des Denkens
-                    ist, an der ich jetzt andere teilhaben lassen möchte.
+                    Since many years I want to write down my philosophical
+                    thoughts about life, the self and the reality, but I never
+                    found the right way to express myself. In my mind I always
+                    had internal dialogues, some with myself, some with real or
+                    others with fictional people. I am aware that this is my
+                    special way of thinking, which I would like to let other
+                    people take part of.
                   </p>
                   <p>
-                    Mein Studium der Philosophie an der Universität hat mich in
-                    meinem Denken und meiner Persönlichkeit sehr geprägt, wobei
-                    ich hier aber nicht den Anspruch vertrete, eine rein
-                    akademische Philosophie zu betreiben. Ich möchte auch von
-                    Nicht-Akademikern verstanden werden und wende mich an alle
-                    diejenigen, die an Philosophie, Selbstreflexion und einem
-                    Gedankenaustausch Interesse und ihre Freude haben.
+                    My studies of philosophy at the university had a strong
+                    influence to my way of thinking and on my personality. Even
+                    though I do not intend to write an academic philosophy here.
+                    I rather like to be understood also from non-academic people
+                    and so I reach out for anyone who is interested in and enjoy
+                    philosophy, self-reflexion and the exchange of thoughts.
                   </p>
                 </div>
               </Collapse>
@@ -131,7 +126,7 @@ export default function About() {
             aria-controls="example-collapse-text"
             aria-expanded={concept}
           >
-            Konzeption und Entwicklung
+            concept and development
           </div>
           <TransitionGroup>
             <CSSTransition
@@ -142,32 +137,28 @@ export default function About() {
               <Collapse in={concept}>
                 <div className="about-details" id="example-collapse-text">
                   <p>
-                    Die Konzeptionierung und Entwicklung des Chat-Editors hat
-                    sich laufend mit meinem Lernfortschritt verändert und
-                    angepasst. Eine grobe Idee davon, wie der Editor am Ende
-                    aussehen soll, hatte ich bereits von Anfang an. Jedoch ergab
-                    sich im Laufe der Entwicklung der App eine immer größer
-                    werdende Ausdifferenzierung der einzelnen Schritte zum
-                    Schreiben eines Chats.
+                    The concept and development of this chat editor changed and
+                    adjusted during my process about learning webdevelopment.
+                    From the beginning I had a rough idea of how the chat editor
+                    should look like. However during the development of the app
+                    the differentiation of the single steps to write a chat was
+                    growing on and on.
                   </p>
                   <p>
-                    Darunter waren zum Beispiel die getrennte Behandlung von
-                    Entwürfen (drafts) und veröffentlichten Chats (chats). Aber
-                    auch die Frage, inwieweit können oder sollen veröffentlichte
-                    Chats noch verändert werden? Rechtschreibfehler korrigieren
-                    ist ok, aber keine weiteren Texte schreiben bzw.
-                    Protagonisten hinzufügen. Für diesen Fall gibt es die
-                    Möglichkeit, den Chat wieder als Entwurf zu speichern und
-                    dann nach erfolgter Bearbeitung wieder zu veröffentlichen.
+                    For example the different treatment of drafts and published
+                    chats. Also the question if and how published chats are able
+                    to be changed? To correct mistyping yes, but not adding new
+                    messages or new protagonists. In this case you have the
+                    option to safe the published chat as a draft and then upload
+                    it again as a chat.
                   </p>
                   <p>
-                    Die App ist ein gewachsenes Projekt, welches immer wieder zu
-                    Umstrukturierungen, Veränderungen und Anpassungen führte.
-                    Zum Beispiel war das Statemanangement nach einigen Monaten
-                    sehr aufgebläht und unübersichtlich geworden. Dies führte zu
-                    einem wichtigen Prozess bei der Entwicklung, nämlich der
-                    Vereinfachung und Zusammenfassung von Funktionen und
-                    Prozessen.
+                    This app is a grown project, which means there were plenty
+                    restructuring, changing and adjustments. For example the
+                    state management was grown so far so I lost the overview
+                    about it. That was leading to an important insight about
+                    developing: to simplify and unification of functions and
+                    processes.
                   </p>
                 </div>
               </Collapse>
@@ -184,7 +175,7 @@ export default function About() {
             aria-controls="example-collapse-text"
             aria-expanded={tech}
           >
-            Technische Details
+            Technical details
           </div>
           <TransitionGroup>
             <CSSTransition
@@ -195,29 +186,29 @@ export default function About() {
               <Collapse in={tech}>
                 <div className="about-details" id="example-collapse-text">
                   <p>
-                    Der Chat-Editor ist mit dem MERN-Stack entwickelt worden,
-                    d.h. MongoDB als Datenbank, Express als Backend, React als
-                    Frontend und Nodejs als Entwicklungsumgebung. Die
-                    zugrundeliegende Sprache ist Javascript. Als Statemanagement
-                    habe ich REDUX verwendet und das Design mit CSS und
-                    React-Bootstrap umgesetzt.
+                    I developed this chat editor with the MEARN stack. MERN
+                    stands for MongoDb as database, Express as backend, React as
+                    Frontend and Nodejs as environment for developing. The
+                    programming language is javascript and as state management I
+                    am using Redux. The design is composed with CSS and
+                    React-Bootstrap.
                   </p>
                   <p>
-                    Der gesamte Code kann{' '}
+                    You can see the whole code{' '}
                     <a
                       id="git"
                       href="https://github.com/Florian2301/ChatEditor"
                       target="_blank"
                     >
-                      hier auf Github
+                      here on Github
                     </a>{' '}
-                    eingesehen werden.
+                    .
                   </p>
                   <br />
                   <p>- MERN (MongoDB, Express, React, Nodejs)</p>
                   <p>- Javascript</p>
                   <p>- Redux</p>
-                  <p>- React-Bootstrap und CSS</p>
+                  <p>- React-Bootstrap and CSS</p>
                 </div>
               </Collapse>
             </CSSTransition>
@@ -233,7 +224,7 @@ export default function About() {
             aria-controls="example-collapse-text"
             aria-expanded={future}
           >
-            Ausblick
+            Upcoming features
           </div>
           <TransitionGroup>
             <CSSTransition
@@ -244,31 +235,26 @@ export default function About() {
               <Collapse in={future}>
                 <div className="about-details" id="example-collapse-text">
                   <p>
-                    Der Editor ist vom Umfang her so weit entwickelt, um Chats
-                    schreiben können, zu bearbeiten und dauerhaft zu
-                    veröffentlichen. Jedoch fehlen mir noch weiterführende
-                    Funktionen. Hier sind ein paar Beispiele, um die ich den
-                    Editor in Zukunft noch ergänzen möchte:
+                    The editor is as far developed that you can already write,
+                    edit and publish chats. However there are more features I am
+                    missing and which I will develop in the future:
                   </p>
 
                   <p>
-                    - weitere Funktionen beim Schreiben von Nachrichten (fett,
-                    kursiv, Bilder einfügen){' '}
-                  </p>
-                  <p>- Schriftgröße, Hintergrund etc. anpassen</p>
-                  <p>- eine Suchfunktion (Themen, Stichworte) </p>
-                  <p>
-                    - eine Verlinkung der Chats untereinander (um thematische
-                    Bezüge herzustellen)
+                    - more functions for writing and editing messages (bold,
+                    italic, add pictures)
                   </p>
                   <p>
-                    - externe Kommentare zu einzelnen Nachrichten bzw.
-                    Verlinkung zu den Nachrichten
+                    - to change the font-size, background etc. for usability
+                  </p>
+                  <p>- a search tool (topics, tags) </p>
+                  <p>- to create links between chats (to refer to them)</p>
+                  <p>
+                    - external comments on single messages/links to messages
                   </p>
                   <p>
-                    - einen Algorithmus entwickeln, mit dem ein Chat in
-                    „Echtzeit“ abgespielt werden kann, also als ob man anderen
-                    beim Chatten zusehen würde
+                    - to develop an algorithm to “play” a chat in real time (as
+                    you would watch the protagonists while chatting)
                   </p>
                 </div>
               </Collapse>
@@ -298,9 +284,7 @@ export default function About() {
                     id={!email ? 'about-email' : null}
                     onClick={() => createEmail()}
                   >
-                    {email
-                      ? email
-                      : 'Klicke hier, um die Email-Adresse anzuzeigen'}
+                    {email ? email : 'click here to show the email-address'}
                   </p>
                 </div>
               </Collapse>
@@ -310,9 +294,7 @@ export default function About() {
 
         <br />
         <div id="about-border"></div>
-        <p id="about-update">
-          ~ Alle hier veröffentlichten Werke sind urheberrechtlich geschützt ~
-        </p>
+        <p id="about-update">~ All works are protected by copyright ~</p>
       </div>
     </Panel>
   )

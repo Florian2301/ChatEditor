@@ -11,7 +11,8 @@ import StartDraft from './edit/StartDraft'
 import EditDrafts from './edit/EditDrafts'
 import DraftList from './tables/DraftList'
 import Authorization from '../authorization/Authorization'
-import About from './about/About'
+import AboutGer from './about/AboutGer'
+import AboutEng from './about/AboutEng'
 import Title from './title/Title'
 import { getUser, setKeyL, setKeyR } from '../redux/actions/user'
 import { getAllTitles } from '../redux/actions/title'
@@ -161,7 +162,7 @@ export function MainMobile(props) {
 
         {!props.user.loggedIn ? (
           <Tab eventKey="about" title="About">
-            <About />
+            {props.user.language === 'deutsch' ? <AboutGer /> : <AboutEng />}
           </Tab>
         ) : null}
 

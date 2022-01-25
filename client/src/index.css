@@ -4,6 +4,7 @@ body {
   color: white;
   background-image: url('/public/img/red_curtain.jpg');
   background-repeat: repeat-y;
+  overflow: hidden;
 }
 
 html {

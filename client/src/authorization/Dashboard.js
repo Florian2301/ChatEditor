@@ -48,7 +48,6 @@ export function Dashboard(props) {
   firebase.auth().onAuthStateChanged((user) => {
     if (user && !props.user.loggedIn & !userLoggedOut) {
       props.getUser(user.displayName)
-      console.log('get user')
     }
   })
 

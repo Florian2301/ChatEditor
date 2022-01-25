@@ -14,7 +14,8 @@ import DraftList from './tables/DraftList'
 import EditChats from './edit/EditChats'
 import ChatList from './tables/ChatList'
 import Authorization from '../authorization/Authorization'
-import About from './about/About'
+import AboutGer from './about/AboutGer'
+import AboutEng from './about/AboutEng'
 import { setKeyR } from '../redux/actions/user'
 import { getAllTitles } from '../redux/actions/title'
 
@@ -77,8 +78,6 @@ export function FlexMain(props) {
       return userTitleNumber
     })
   }
-
-  console.log('user', props.user.loggedIn)
 
   //---------------------- RETURN ------------------------------------------------------------------------------------
 
@@ -182,7 +181,11 @@ export function FlexMain(props) {
               </Tab>
             ) : (
               <Tab eventKey="about" title="About">
-                <About />
+                {props.user.language === 'deutsch' ? (
+                  <AboutGer />
+                ) : (
+                  <AboutEng />
+                )}
               </Tab>
             )}
 

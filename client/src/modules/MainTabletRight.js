@@ -6,7 +6,8 @@ import EditChats from '../modules/edit/EditChats'
 import EditDrafts from '../modules/edit/EditDrafts'
 import StartDraft from '../modules/edit/StartDraft'
 import ChatboxCommentsTablet from './chatbox/ChatboxCommentsTablet'
-import About from '../modules/about/About'
+import AboutGer from './about/AboutGer'
+import AboutEng from './about/AboutEng'
 import Title from '../modules/title/Title'
 import { setKeyR } from '../redux/actions/user'
 // CSS in App.css/FlexMain
@@ -53,7 +54,7 @@ export function MainTabletRight(props) {
           </Tab>
         ) : (
           <Tab eventKey="about" title="About">
-            <About />
+            {props.user.language === 'deutsch' ? <AboutGer /> : <AboutEng />}
           </Tab>
         )}
 
