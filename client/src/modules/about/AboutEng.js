@@ -126,7 +126,7 @@ export default function About() {
             aria-controls="example-collapse-text"
             aria-expanded={concept}
           >
-            concept and development
+            Concept and development
           </div>
           <TransitionGroup>
             <CSSTransition

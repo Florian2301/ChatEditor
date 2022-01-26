@@ -232,7 +232,12 @@ export function EditChats(props) {
   // ------------------------------------- RETURN --------------------------------------------------------
 
   return (
-    <Panel id="panel-edit-chat" title="Edit your chat">
+    <Panel
+      id={
+        window.innerWidth <= 979 ? 'panel-edit-chat-mobile' : 'panel-edit-chat'
+      }
+      title="Edit your chat"
+    >
       <div className="text-center mb-4">
         {error && <Alert variant="danger">{error}</Alert>}
       </div>

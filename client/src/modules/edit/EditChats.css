@@ -2,6 +2,12 @@
   margin-top: 1.5rem;
 }
 
+#panel-edit-chat-mobile {
+  margin-top: 1.5rem;
+  overflow: auto;
+  height: 65vh;
+}
+
 .edit-chat-top {
   margin-top: 1rem;
 }

@@ -30,7 +30,13 @@ export function UserChatsTable(props) {
         <div className="thead-userchats-3">Title</div>
         <div className="thead-userchats-4">Date</div>
       </div>
-      <div className="userchats-scroll">
+      <div
+        className={
+          window.innerWidth <= 979
+            ? 'userchats-scroll-mobile'
+            : 'userchats-scroll'
+        }
+      >
         {
           (usertitles = props.title.allTitles.map((title) => {
             if (!title.admin && props.user.language === title.language) {

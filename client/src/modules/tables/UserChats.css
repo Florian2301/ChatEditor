@@ -11,6 +11,11 @@
   height: 77vh;
 }
 
+.userchats-scroll-mobile {
+  overflow: auto;
+  height: 60vh;
+}
+
 .data-columns-userchats-1 {
   display: grid;
   grid-template-columns: 20% 10% 45% 25%;

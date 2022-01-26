@@ -11,6 +11,11 @@
   max-height: 77vh;
 }
 
+.adminchats-scroll-mobile {
+  overflow: auto;
+  max-height: 65vh;
+}
+
 .data-columns-adminchats-1 {
   display: grid;
   grid-template-columns: 10% 65% 25%;
