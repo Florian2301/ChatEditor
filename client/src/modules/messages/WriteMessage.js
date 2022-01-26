@@ -297,7 +297,7 @@ export function WriteMessage(props) {
               ref={messageRef}
               placeholder={'write your message here'}
               onKeyDown={keyEventTextarea}
-              rows="5"
+              rows={window.innerWidth <= 979 ? '3' : '5'}
             />
             <EmojiPicker getEmoji={addEmoji} />
 
