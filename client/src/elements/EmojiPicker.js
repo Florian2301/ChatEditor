@@ -22,7 +22,7 @@ export function EmojiPicker(props) {
   const InfoPopover = () => (
     <OverlayTrigger
       trigger={['click']}
-      placement={window.innerWidth <= 767 ? 'bottom' : 'right'}
+      placement={window.innerWidth <= 767 ? 'top' : 'right'}
       overlay={popover}
     >
       <p className="emojipicker">Add emoji</p>
