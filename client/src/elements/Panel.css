@@ -14,5 +14,6 @@
   font-size: 1.5rem;
   padding: 0.8rem;
   color: lightgray;
-  height: 3rem;
+  min-height: 3rem;
+  max-height: 6rem;
 }

@@ -84,7 +84,7 @@
 
 /* mobile */
 .chatbox-mobile {
-  height: 75.5vh;
+  height: 70vh;
   width: 100%;
   overflow: auto;
   border-radius: 0.6rem;
@@ -94,7 +94,7 @@
 }
 
 .editchatbox-mobile {
-  height: 49vh;
+  height: 30vh;
   width: 100%;
   overflow: auto;
   border-radius: 0.6rem;
