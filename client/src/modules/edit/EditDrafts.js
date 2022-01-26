@@ -501,7 +501,9 @@ export function EditDrafts(props) {
 
       <Form onSubmit={handleSubmit}>
         {edit ? (
-          <div>
+          <div
+            className={window.innerWidth <= 979 ? 'edit-draft-scroll' : null}
+          >
             <Form.Group as={Row} className="edit-draft-top">
               <Form.Label className="edit-draft-title" column sm="3">
                 Title:
