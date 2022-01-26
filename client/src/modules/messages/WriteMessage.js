@@ -219,6 +219,7 @@ export function WriteMessage(props) {
       props.draft.draftId,
       props.draft.title,
       props.draft.author,
+      props.draft.published,
       props.draft.date,
       props.draft.language,
       props.draft.tags,
@@ -243,7 +244,11 @@ export function WriteMessage(props) {
 
   // ----------------------------------- RETURN --------------------------------------------------------------------------
   return (
-    <div className="write-message">
+    <div
+      className={
+        window.innerWidth <= 979 ? 'write-message-mobile' : 'write-message'
+      }
+    >
       <div>
         <p id="write-message-collapse" onClick={() => writeMessage()}>
           {write ? 'view full chatbox' : 'write a message'}
@@ -255,10 +260,11 @@ export function WriteMessage(props) {
             {reply ? (
               <label className="label-select-number">
                 <span id="replytomessage" onClick={() => setReply(!reply)}>
-                  go back
+                  insert as #
                 </span>
-                reply to message #
+                reply to #
                 <select
+                  className="write-message-select-number"
                   defaultValue={props.draft.messages.length}
                   ref={numberRef}
                 >
@@ -274,9 +280,9 @@ export function WriteMessage(props) {
             ) : (
               <label className="label-select-number">
                 <span id="replytomessage" onClick={() => setReply(!reply)}>
-                  reply to a message
+                  reply to #
                 </span>
-                select: <span className="span-select-number">insert as #</span>
+                insert as #
                 <select ref={numberRef} className="write-message-select-number">
                   {props.draft.messages.map((message) => {
                     return (

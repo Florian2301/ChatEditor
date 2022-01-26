@@ -95,8 +95,12 @@ export function WriteComments(props) {
 
   // ----------------------------------- RETURN --------------------------------------------------------------------------
   return (
-    <div className="write-comments">
-      <div className="write-comments-link-section">
+    <div
+      className={
+        window.innerWidth <= 979 ? 'write-comments-mobile' : 'write-comments'
+      }
+    >
+      <div>
         <p id="write-comments-collapse" onClick={() => writeComment()}>
           {write ? 'view full chatbox' : 'write a comment'}
         </p>

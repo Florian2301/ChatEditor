@@ -7,6 +7,18 @@
   border-top-color: dodgerblue;
   border-top-width: thin;
   overflow: auto;
+  width: 30vw;
+}
+
+.write-message-mobile {
+  background-color: rgba(0, 0, 0, 0.3);
+  position: relative;
+  border-top-style: solid;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border-top-color: dodgerblue;
+  border-top-width: thin;
+  overflow: auto;
   width: 100%;
 }
 
@@ -43,11 +55,8 @@
   color: lightgray;
 }
 
-.span-select-number {
-  font-weight: normal;
+.write-message-select-number {
   margin-left: 0.5rem;
-  margin-right: 0.5rem;
-  color: white;
 }
 
 .write-message-select-number:hover {
@@ -58,7 +67,7 @@
 
 /* link reply to message */
 #replytomessage {
-  margin-right: 6rem;
+  margin-right: 3rem;
   text-decoration: underline;
   color: lightgray;
   font-weight: normal;

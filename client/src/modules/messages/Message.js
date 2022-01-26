@@ -36,7 +36,9 @@ export function Message(props) {
     if (event.keyCode === KEY_ESC) {
       // clear data
       messageRef.current.value = null
-      numberRef.current.value = null
+      if (props.draft.draftEditMode) {
+        numberRef.current.value = null
+      }
       setEditmode(!editmode)
     }
   }
@@ -205,6 +207,7 @@ export function Message(props) {
       props.draft.draftId,
       props.draft.title,
       props.draft.author,
+      props.draft.published,
       props.draft.date,
       props.draft.language,
       props.draft.tags,

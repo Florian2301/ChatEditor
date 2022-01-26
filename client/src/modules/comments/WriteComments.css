@@ -7,6 +7,18 @@
   border-top-color: dodgerblue;
   border-top-width: thin;
   overflow: auto;
+  width: 30vw;
+}
+
+.write-comments-mobile {
+  background-color: rgba(0, 0, 0, 0.3);
+  position: relative;
+  border-top-style: solid;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border-top-color: dodgerblue;
+  border-top-width: thin;
+  overflow: auto;
   width: 100%;
 }
 
