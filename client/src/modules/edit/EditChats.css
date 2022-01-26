@@ -2,10 +2,9 @@
   margin-top: 1.5rem;
 }
 
-#panel-edit-chat-mobile {
-  margin-top: 1.5rem;
+.edit-chat-scroll-mobile {
   overflow: auto;
-  height: 65vh;
+  height: 60vh;
 }
 
 .edit-chat-top {

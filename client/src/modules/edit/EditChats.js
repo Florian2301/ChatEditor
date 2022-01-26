@@ -232,326 +232,325 @@ export function EditChats(props) {
   // ------------------------------------- RETURN --------------------------------------------------------
 
   return (
-    <Panel
-      id={
-        window.innerWidth <= 979 ? 'panel-edit-chat-mobile' : 'panel-edit-chat'
-      }
-      title="Edit your chat"
-    >
-      <div className="text-center mb-4">
-        {error && <Alert variant="danger">{error}</Alert>}
-      </div>
+    <Panel id="panel-edit-chat" title="Edit your chat">
+      <div
+        className={window.innerWidth <= 979 ? 'edit-chat-scroll-mobile' : null}
+      >
+        <div className="text-center mb-4">
+          {error && <Alert variant="danger">{error}</Alert>}
+        </div>
 
-      <Form onSubmit={handleSubmit}>
-        {edit ? (
-          <div>
-            <Form.Group as={Row}>
-              <Form.Label className="edit-chat-number" column sm="3">
-                Chatnumber:
-              </Form.Label>
-              <Col>
-                <Form.Control
-                  className="edit-chat-input-number"
-                  type="text"
-                  ref={numberRef}
-                  autoFocus
-                  placeholder="0-99"
-                  defaultValue={props.chat.chatnumber}
-                />
-              </Col>
-            </Form.Group>
-
-            <Form.Group as={Row}>
-              <Form.Label className="edit-chat-title" column sm="3">
-                Title:
-              </Form.Label>
-              <Col>
-                <Form.Control
-                  className="edit-chat-input-title"
-                  type="text"
-                  ref={titleRef}
-                  as="textarea"
-                  placeholder="Insert a title"
-                  defaultValue={props.chat.title}
-                  rows="2"
-                />
-              </Col>
-            </Form.Group>
-
-            <Form.Group className="edit-chat-top" as={Row}>
-              <Form.Label className="edit-chat-description" column sm="3">
-                Description:
-              </Form.Label>
-              <Col>
-                <Form.Control
-                  className="edit-chat-input-description"
-                  type="text"
-                  as="textarea"
-                  ref={descriptionRef}
-                  placeholder="Give a brief summary or description of your chat"
-                  defaultValue={props.chat.description}
-                  rows="5"
-                />
-              </Col>
-            </Form.Group>
-
-            <Form.Group className="edit-chat-top" as={Row}>
-              <Form.Label className="edit-chat-tags" column sm="3">
-                Tags:{' '}
-              </Form.Label>
-              <Col>
-                <Form.Control
-                  className="edit-chat-input-tags"
-                  type="text"
-                  ref={tagsRef}
-                  as="textarea"
-                  row="4"
-                  placeholder="E.g. philosophy, theory of mind etc."
-                  defaultValue={props.chat.tags}
-                />
-              </Col>
-            </Form.Group>
-
-            {props.user.admin ? (
-              <Form.Group className="edit-chat-top" as={Row}>
-                <Form.Label className="edit-chat-author" column sm="3">
-                  Author:
+        <Form onSubmit={handleSubmit}>
+          {edit ? (
+            <div>
+              <Form.Group as={Row}>
+                <Form.Label className="edit-chat-number" column sm="3">
+                  Chatnumber:
                 </Form.Label>
                 <Col>
                   <Form.Control
-                    className="edit-chat-input-author"
+                    className="edit-chat-input-number"
                     type="text"
-                    ref={authorRef}
-                    defaultValue={props.chat.author}
+                    ref={numberRef}
+                    autoFocus
+                    placeholder="0-99"
+                    defaultValue={props.chat.chatnumber}
                   />
                 </Col>
               </Form.Group>
-            ) : null}
 
-            {props.user.admin ? (
               <Form.Group as={Row}>
-                <Form.Label className="edit-chat-admin" column sm="3">
-                  {toggleAdmin ? 'Admin' : 'User'}:
+                <Form.Label className="edit-chat-title" column sm="3">
+                  Title:
                 </Form.Label>
                 <Col>
-                  <div
-                    className={
-                      toggleAdmin
-                        ? 'edit-chat-toggle-admin'
-                        : 'edit-chat-toggle-user'
-                    }
-                  >
-                    <Form.Check
-                      type="switch"
-                      id="edit-chat-toggle"
-                      onChange={() => toggleAdminChat()}
-                      checked={toggleAdmin ? true : false}
-                    />
-                  </div>
+                  <Form.Control
+                    className="edit-chat-input-title"
+                    type="text"
+                    ref={titleRef}
+                    as="textarea"
+                    placeholder="Insert a title"
+                    defaultValue={props.chat.title}
+                    rows="2"
+                  />
                 </Col>
               </Form.Group>
-            ) : null}
 
-            <Form.Group as={Row}>
-              <Form.Label className="edit-chat-language" column sm="3">
-                Language:
-              </Form.Label>
-              <Col>
-                <select
-                  className="edit-chat-language-select"
-                  type="text"
-                  value={chatLanguage}
-                  onChange={handleChange}
-                >
-                  {props.user.selectLanguage.map((lang) => {
+              <Form.Group className="edit-chat-top" as={Row}>
+                <Form.Label className="edit-chat-description" column sm="3">
+                  Description:
+                </Form.Label>
+                <Col>
+                  <Form.Control
+                    className="edit-chat-input-description"
+                    type="text"
+                    as="textarea"
+                    ref={descriptionRef}
+                    placeholder="Give a brief summary or description of your chat"
+                    defaultValue={props.chat.description}
+                    rows="5"
+                  />
+                </Col>
+              </Form.Group>
+
+              <Form.Group className="edit-chat-top" as={Row}>
+                <Form.Label className="edit-chat-tags" column sm="3">
+                  Tags:{' '}
+                </Form.Label>
+                <Col>
+                  <Form.Control
+                    className="edit-chat-input-tags"
+                    type="text"
+                    ref={tagsRef}
+                    as="textarea"
+                    row="4"
+                    placeholder="E.g. philosophy, theory of mind etc."
+                    defaultValue={props.chat.tags}
+                  />
+                </Col>
+              </Form.Group>
+
+              {props.user.admin ? (
+                <Form.Group className="edit-chat-top" as={Row}>
+                  <Form.Label className="edit-chat-author" column sm="3">
+                    Author:
+                  </Form.Label>
+                  <Col>
+                    <Form.Control
+                      className="edit-chat-input-author"
+                      type="text"
+                      ref={authorRef}
+                      defaultValue={props.chat.author}
+                    />
+                  </Col>
+                </Form.Group>
+              ) : null}
+
+              {props.user.admin ? (
+                <Form.Group as={Row}>
+                  <Form.Label className="edit-chat-admin" column sm="3">
+                    {toggleAdmin ? 'Admin' : 'User'}:
+                  </Form.Label>
+                  <Col>
+                    <div
+                      className={
+                        toggleAdmin
+                          ? 'edit-chat-toggle-admin'
+                          : 'edit-chat-toggle-user'
+                      }
+                    >
+                      <Form.Check
+                        type="switch"
+                        id="edit-chat-toggle"
+                        onChange={() => toggleAdminChat()}
+                        checked={toggleAdmin ? true : false}
+                      />
+                    </div>
+                  </Col>
+                </Form.Group>
+              ) : null}
+
+              <Form.Group as={Row}>
+                <Form.Label className="edit-chat-language" column sm="3">
+                  Language:
+                </Form.Label>
+                <Col>
+                  <select
+                    className="edit-chat-language-select"
+                    type="text"
+                    value={chatLanguage}
+                    onChange={handleChange}
+                  >
+                    {props.user.selectLanguage.map((lang) => {
+                      return (
+                        <option value={lang} key={uuidv4()}>
+                          {lang}
+                        </option>
+                      )
+                    })}
+                  </select>
+                </Col>
+              </Form.Group>
+
+              <Form.Group as={Row}>
+                <Form.Label className="edit-chat-date" column sm="3">
+                  Published:
+                </Form.Label>
+                <Col>
+                  <Form.Control
+                    className="edit-chat-input-date"
+                    type="text"
+                    ref={dateRef}
+                    placeholder="yyyy-mm-dd"
+                    defaultValue={props.chat.date}
+                  />
+                </Col>
+              </Form.Group>
+              <br />
+            </div>
+          ) : (
+            <div>
+              <div className="chat-details">
+                <p>Chatnumber:</p>
+                <p className="chat-info" id="chat-number">
+                  {props.chat.chatnumber}
+                </p>
+              </div>
+
+              <div className="chat-details">
+                <p>Title:</p>
+                <p className="chat-info">{props.chat.title}</p>
+              </div>
+
+              <div className="chat-details">
+                <p>Description:</p>
+                <p className="chat-info" id="chat-info-description">
+                  {props.chat.description}
+                </p>
+              </div>
+
+              <div className="chat-details">
+                <p>Tags:</p>
+                <p className="chat-info" id="chat-info-tags">
+                  {props.chat.tags}
+                </p>
+              </div>
+
+              <div className="chat-details">
+                <p>Philosopher:</p>
+                <div className="chat-info">
+                  {props.chat.philosopher.map((phil) => {
                     return (
-                      <option value={lang} key={uuidv4()}>
-                        {lang}
-                      </option>
+                      <p key={uuidv4()} id="chat-info-phil">
+                        {phil.name}
+                      </p>
                     )
                   })}
-                </select>
-              </Col>
-            </Form.Group>
-
-            <Form.Group as={Row}>
-              <Form.Label className="edit-chat-date" column sm="3">
-                Published:
-              </Form.Label>
-              <Col>
-                <Form.Control
-                  className="edit-chat-input-date"
-                  type="text"
-                  ref={dateRef}
-                  placeholder="yyyy-mm-dd"
-                  defaultValue={props.chat.date}
-                />
-              </Col>
-            </Form.Group>
-            <br />
-          </div>
-        ) : (
-          <div>
-            <div className="chat-details">
-              <p>Chatnumber:</p>
-              <p className="chat-info" id="chat-number">
-                {props.chat.chatnumber}
-              </p>
-            </div>
-
-            <div className="chat-details">
-              <p>Title:</p>
-              <p className="chat-info">{props.chat.title}</p>
-            </div>
-
-            <div className="chat-details">
-              <p>Description:</p>
-              <p className="chat-info" id="chat-info-description">
-                {props.chat.description}
-              </p>
-            </div>
-
-            <div className="chat-details">
-              <p>Tags:</p>
-              <p className="chat-info" id="chat-info-tags">
-                {props.chat.tags}
-              </p>
-            </div>
-
-            <div className="chat-details">
-              <p>Philosopher:</p>
-              <div className="chat-info">
-                {props.chat.philosopher.map((phil) => {
-                  return (
-                    <p key={uuidv4()} id="chat-info-phil">
-                      {phil.name}
-                    </p>
-                  )
-                })}
+                </div>
               </div>
-            </div>
 
-            <div className="chat-details" id="chat-info-description-margin">
-              <p>Author:</p>
-              <p className="chat-info">{props.chat.author}</p>
-            </div>
+              <div className="chat-details" id="chat-info-description-margin">
+                <p>Author:</p>
+                <p className="chat-info">{props.chat.author}</p>
+              </div>
 
-            {props.user.admin ? (
+              {props.user.admin ? (
+                <div className="chat-details">
+                  <p>Status:</p>
+                  <p className="chat-info">
+                    {props.chat.chatEditmode
+                      ? props.chat.admin
+                        ? 'Admin'
+                        : 'User'
+                      : null}
+                  </p>
+                </div>
+              ) : null}
+
               <div className="chat-details">
-                <p>Status:</p>
-                <p className="chat-info">
-                  {props.chat.chatEditmode
-                    ? props.chat.admin
-                      ? 'Admin'
-                      : 'User'
+                <p>Language:</p>
+                <p className="chat-info">{props.chat.language}</p>
+              </div>
+
+              <div className="chat-details">
+                <p>Messages:</p>
+                <p className="chat-info" id="chat-messages">
+                  {props.chat.messages.length !== 0
+                    ? props.chat.messages.length
                     : null}
                 </p>
               </div>
-            ) : null}
 
-            <div className="chat-details">
-              <p>Language:</p>
-              <p className="chat-info">{props.chat.language}</p>
-            </div>
+              <div className="chat-details">
+                <p>Published:</p>
+                <p className="chat-info" id="chat-messages">
+                  {props.chat.messages.length !== 0 ? props.chat.date : null}
+                </p>
+              </div>
 
-            <div className="chat-details">
-              <p>Messages:</p>
-              <p className="chat-info" id="chat-messages">
-                {props.chat.messages.length !== 0
-                  ? props.chat.messages.length
-                  : null}
-              </p>
-            </div>
-
-            <div className="chat-details">
-              <p>Published:</p>
-              <p className="chat-info" id="chat-messages">
-                {props.chat.messages.length !== 0 ? props.chat.date : null}
-              </p>
-            </div>
-
-            <div className="chat-details" id="chat-details-download">
-              <p>Download:</p>
-              <div className="chat-info">
-                {download ? (
-                  <PDFDownloadLink
-                    document={
-                      <PDF
-                        title={props.chat.title}
-                        data={props.chat.messages}
-                        author={props.chat.author}
-                        date={props.chat.date}
-                      />
-                    }
-                    fileName={props.chat.title + '.pdf'}
-                    className="link-download-chat"
-                  >
-                    {({ blob, url, loading, error }) =>
-                      loading ? 'loading...' : 'download'
-                    }
-                  </PDFDownloadLink>
-                ) : (
-                  <p
-                    className={'link-download-chat'}
-                    onClick={() => pdfdownload(props.chat.chatId)}
-                  >
-                    {props.chat.title ? props.chat.title + '.pdf' : null}
-                  </p>
-                )}
+              <div className="chat-details" id="chat-details-download">
+                <p>Download:</p>
+                <div className="chat-info">
+                  {download ? (
+                    <PDFDownloadLink
+                      document={
+                        <PDF
+                          title={props.chat.title}
+                          data={props.chat.messages}
+                          author={props.chat.author}
+                          date={props.chat.date}
+                        />
+                      }
+                      fileName={props.chat.title + '.pdf'}
+                      className="link-download-chat"
+                    >
+                      {({ blob, url, loading, error }) =>
+                        loading ? 'loading...' : 'download'
+                      }
+                    </PDFDownloadLink>
+                  ) : (
+                    <p
+                      className={'link-download-chat'}
+                      onClick={() => pdfdownload(props.chat.chatId)}
+                    >
+                      {props.chat.title ? props.chat.title + '.pdf' : null}
+                    </p>
+                  )}
+                </div>
               </div>
             </div>
+          )}
+          <div className="edit-chat-border">{''}</div>
+          <div className="edit-chat-spinner">
+            {spinner ? (
+              <Spinner animation="border" role="status"></Spinner>
+            ) : null}
           </div>
-        )}
-        <div className="edit-chat-border">{''}</div>
-        <div className="edit-chat-spinner">
-          {spinner ? (
-            <Spinner animation="border" role="status"></Spinner>
-          ) : null}
-        </div>
-        <div className="edit-chat-actions">
-          {!edit ? (
-            <Button
-              label="Edit details"
-              className="edit-chat-btn"
-              handleClick={() => setEdit(true)}
-            ></Button>
-          ) : (
-            <Button
-              label="Save changes"
-              className="edit-chat-btn"
-              type="submit"
-              handleClick={() => setSave(true)}
-            ></Button>
-          )}
-          {!edit ? (
-            <Button
-              label="Save as draft"
-              className="edit-chat-btn"
-              handleClick={() => saveAsDraft()}
-            ></Button>
-          ) : null}
-          {!edit ? (
-            <Button
-              label="Clear"
-              className="edit-chat-btn-clear"
-              handleClick={() => clear()}
-            ></Button>
-          ) : (
-            <Button
-              label="Back"
-              className="edit-chat-btn-clear"
-              handleClick={() => setEdit(false)}
-            ></Button>
-          )}
-          {!edit ? (
-            <Button
-              label="Delete"
-              className="edit-chat-btn-delete"
-              handleClick={() => deleteChat(props.chat.chatId)}
-            ></Button>
-          ) : null}
-        </div>
-      </Form>
+          <div className="edit-chat-actions">
+            {!edit ? (
+              <Button
+                label="Edit details"
+                className="edit-chat-btn"
+                handleClick={() => setEdit(true)}
+              ></Button>
+            ) : (
+              <Button
+                label="Save changes"
+                className="edit-chat-btn"
+                type="submit"
+                handleClick={() => setSave(true)}
+              ></Button>
+            )}
+            {!edit ? (
+              <Button
+                label="Save as draft"
+                className="edit-chat-btn"
+                handleClick={() => saveAsDraft()}
+              ></Button>
+            ) : null}
+            {!edit ? (
+              <Button
+                label="Clear"
+                className="edit-chat-btn-clear"
+                handleClick={() => clear()}
+              ></Button>
+            ) : (
+              <Button
+                label="Back"
+                className="edit-chat-btn-clear"
+                handleClick={() => setEdit(false)}
+              ></Button>
+            )}
+            {!edit ? (
+              <Button
+                label="Delete"
+                className="edit-chat-btn-delete"
+                handleClick={() => deleteChat(props.chat.chatId)}
+              ></Button>
+            ) : null}
+          </div>
+        </Form>
+      </div>
     </Panel>
   )
 }
