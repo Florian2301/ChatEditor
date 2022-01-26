@@ -6,7 +6,8 @@ import WriteMessage from '../messages/WriteMessage'
 import { connect } from 'react-redux'
 import './Chatbox.css'
 import { v4 as uuidv4 } from 'uuid'
-import { Container } from 'react-bootstrap'
+import { Container, ListGroup } from 'react-bootstrap'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { saveTitle, publishTitle } from '../../redux/actions/title'
 import { getUserChats } from '../../redux/actions/chat'
 
@@ -50,7 +51,7 @@ export function ChatboxBackend(props) {
         })
       }, 500)
     }
-    if (props.chat.messages[0] && !scroll) {
+    if (props.user.loggedin & props.chat.messages[0] && !scroll) {
       setTimeout(() => {
         scrollRef.current.scrollIntoView({
           block: 'end',
@@ -118,40 +119,87 @@ export function ChatboxBackend(props) {
             : 'chatbox'
         }
       >
-        <ul className="listgroup-edit">
-          {messages.map(
-            ({
-              _id,
-              color,
-              position,
-              name,
-              messagenumber,
-              text,
-              repliedmessage,
-            }) => {
-              return (
-                <div ref={setRef(_id)} key={uuidv4()}>
-                  <Message
-                    positionedit={'position-' + position + '-edit'}
-                    coloredit={'color-' + color + '-edit'}
-                    key={uuidv4()}
-                    number={messagenumber}
-                    name={name}
-                    text={text}
-                    chatid={chatId}
-                    chatnumber={chatnumber}
-                    messageId={_id}
-                    userid={userId}
-                    scroll={scrollRef}
-                    repliedmessage={repliedmessage}
-                    replyTo={scrollTo}
-                    scrollTo={scrollToReplace}
-                  />
-                </div>
-              )
-            }
-          )}
-        </ul>
+        {!props.user.loggedIn ? (
+          <ListGroup>
+            <TransitionGroup>
+              {messages.map(
+                ({
+                  _id,
+                  color,
+                  position,
+                  name,
+                  messagenumber,
+                  text,
+                  repliedmessage,
+                }) => {
+                  return (
+                    <CSSTransition
+                      key={uuidv4()}
+                      timeout={1}
+                      classNames="transition-message"
+                    >
+                      <ListGroup.Item className="listgroup-chat">
+                        <div ref={setRef(_id)} key={uuidv4()}>
+                          <Message
+                            position={'position-' + position}
+                            color={'color-' + color}
+                            key={uuidv4()}
+                            number={messagenumber}
+                            name={name}
+                            text={text}
+                            chatid={chatId}
+                            chatnumber={chatnumber}
+                            messageId={_id}
+                            userid={userId}
+                            scroll={scrollRef}
+                            repliedmessage={repliedmessage}
+                            replyTo={scrollTo}
+                            scrollTo={scrollToReplace}
+                          />
+                        </div>
+                      </ListGroup.Item>
+                    </CSSTransition>
+                  )
+                }
+              )}
+            </TransitionGroup>
+          </ListGroup>
+        ) : (
+          <ul className="listgroup-edit">
+            {messages.map(
+              ({
+                _id,
+                color,
+                position,
+                name,
+                messagenumber,
+                text,
+                repliedmessage,
+              }) => {
+                return (
+                  <div ref={setRef(_id)} key={uuidv4()}>
+                    <Message
+                      positionedit={'position-' + position + '-edit'}
+                      coloredit={'color-' + color + '-edit'}
+                      key={uuidv4()}
+                      number={messagenumber}
+                      name={name}
+                      text={text}
+                      chatid={chatId}
+                      chatnumber={chatnumber}
+                      messageId={_id}
+                      userid={userId}
+                      scroll={scrollRef}
+                      repliedmessage={repliedmessage}
+                      replyTo={scrollTo}
+                      scrollTo={scrollToReplace}
+                    />
+                  </div>
+                )
+              }
+            )}
+          </ul>
+        )}
       </Container>
 
       {props.draft.draftEditmode ? (

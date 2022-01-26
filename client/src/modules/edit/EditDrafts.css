@@ -4,7 +4,7 @@
 
 .edit-draft-scroll {
   overflow: auto;
-  height: 77vh;
+  max-height: 75vh;
 }
 
 .edit-draft-scroll-mobile {

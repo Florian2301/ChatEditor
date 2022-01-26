@@ -2,9 +2,9 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import './Main.css'
 import { Container, Tab, Tabs } from 'react-bootstrap'
-import ChatboxBackend from './chatbox/ChatboxBackend'
-import ChatboxPublic from './chatbox/ChatboxPublic'
-import ChatboxComments from './chatbox/ChatboxComments'
+import ChatboxDesktop from './chatbox/ChatboxDesktop'
+//import ChatboxPublic from './chatbox/ChatboxPublic'
+import ChatboxCommentsDesktop from './chatbox/ChatboxCommentsDesktop'
 import AdminChats from './tables/AdminChats'
 import Title from './title/Title'
 import UserChats from './tables/UserChats'
@@ -141,13 +141,13 @@ export function FlexMain(props) {
                     })`
               }
             >
-              {props.user.loggedIn ? <ChatboxBackend /> : <ChatboxPublic />}
+              <ChatboxDesktop />
             </Tab>
             <Tab
               eventKey="comments"
               title={`Comments (${props.chat.comments.length})`}
             >
-              <ChatboxComments />
+              <ChatboxCommentsDesktop />
             </Tab>
           </Tabs>
         </Container>

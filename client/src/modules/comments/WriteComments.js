@@ -126,7 +126,7 @@ export function WriteComments(props) {
                 ref={commentRef}
                 placeholder={'write your comment here'}
                 onKeyDown={keyEventTextarea}
-                rows="5"
+                rows={window.innerWidth <= 979 ? '4' : '5'}
               />
               <EmojiPicker getEmoji={addEmoji} />
             </div>
