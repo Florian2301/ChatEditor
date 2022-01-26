@@ -4,6 +4,11 @@
 
 .edit-chat-scroll {
   overflow: auto;
+  height: 77vh;
+}
+
+.edit-chat-scroll-mobile {
+  overflow: auto;
   height: 55vh;
 }
 

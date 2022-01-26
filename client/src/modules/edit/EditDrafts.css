@@ -4,6 +4,11 @@
 
 .edit-draft-scroll {
   overflow: auto;
+  height: 77vh;
+}
+
+.edit-draft-scroll-mobile {
+  overflow: auto;
   height: 55vh;
 }
 

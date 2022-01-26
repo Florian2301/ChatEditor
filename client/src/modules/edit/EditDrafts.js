@@ -502,7 +502,11 @@ export function EditDrafts(props) {
       <Form onSubmit={handleSubmit}>
         {edit ? (
           <div
-            className={window.innerWidth <= 979 ? 'edit-draft-scroll' : null}
+            className={
+              window.innerWidth <= 979
+                ? 'edit-draft-scroll-mobile'
+                : 'edit-draft-scroll'
+            }
           >
             <Form.Group as={Row} className="edit-draft-top">
               <Form.Label className="edit-draft-title" column sm="3">
@@ -761,7 +765,13 @@ export function EditDrafts(props) {
             </Form.Group>
           </div>
         ) : (
-          <div>
+          <div
+            className={
+              window.innerWidth <= 979
+                ? 'edit-draft-scroll-mobile'
+                : 'edit-draft-scroll'
+            }
+          >
             <div className="draft-details">
               <p>Title:</p>
               <p className="draft-info">{props.draft.title}</p>

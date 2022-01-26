@@ -52,7 +52,13 @@ export function Chats(props) {
         <div className="thead-chats">Your published chats</div>
         <div className="thead-chats">Date</div>
       </div>
-      <div className="chatlist-scroll">
+      <div
+        className={
+          window.innerWidth <= 979
+            ? 'chatlist-scroll-mobile'
+            : 'chatlist-scroll'
+        }
+      >
         {
           (chats = userChats.map((chat) => {
             if (chat.language === props.user.language) {

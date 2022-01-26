@@ -38,7 +38,13 @@ export function Drafts(props) {
         <div className="thead-drafts">Your drafts</div>
         <div className="thead-drafts">Date</div>
       </div>
-      <div className="draftlist-scroll">
+      <div
+        className={
+          window.innerWidth <= 979
+            ? 'draftlist-scroll-mobile'
+            : 'draftlist-scroll'
+        }
+      >
         {
           (drafts = userDrafts.map((draft) => {
             if (draft.language === props.user.language) {

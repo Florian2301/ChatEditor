@@ -1,10 +1,14 @@
 #title-panel {
   margin-top: 1.5rem;
-  max-height: 77vh;
 }
 
 .title-scroll {
-  max-height: 83vh;
+  max-height: 77vh;
+  overflow: auto;
+}
+
+.title-scroll-mobile {
+  max-height: 70vh;
   overflow: auto;
 }
 

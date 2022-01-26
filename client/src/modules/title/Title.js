@@ -9,7 +9,11 @@ import { v4 as uuidv4 } from 'uuid'
 export function Title(props) {
   return (
     <Panel title="chat details" id="title-panel">
-      <div className="title-scroll">
+      <div
+        className={
+          window.innerWidth <= 979 ? 'title-scroll-mobile' : 'title-scroll'
+        }
+      >
         <div className="title-details" id="title-number">
           <p>Chatnumber:</p>
           <p className="title-info">{props.title.chatnumber}</p>

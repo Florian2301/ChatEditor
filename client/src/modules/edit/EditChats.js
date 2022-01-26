@@ -239,7 +239,13 @@ export function EditChats(props) {
 
       <Form onSubmit={handleSubmit}>
         {edit ? (
-          <div className={window.innerWidth <= 979 ? 'edit-chat-scroll' : null}>
+          <div
+            className={
+              window.innerWidth <= 979
+                ? 'edit-chat-scroll-mobile'
+                : 'edit-chat-scroll'
+            }
+          >
             <Form.Group as={Row}>
               <Form.Label className="edit-chat-number" column sm="3">
                 Chatnumber:
@@ -386,7 +392,13 @@ export function EditChats(props) {
             <br />
           </div>
         ) : (
-          <div>
+          <div
+            className={
+              window.innerWidth <= 979
+                ? 'edit-chat-scroll-mobile'
+                : 'edit-chat-scroll'
+            }
+          >
             <div className="chat-details">
               <p>Chatnumber:</p>
               <p className="chat-info" id="chat-number">

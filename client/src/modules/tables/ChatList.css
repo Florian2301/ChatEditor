@@ -10,6 +10,11 @@
   max-height: 75vh;
 }
 
+.chatlist-scroll-mobile {
+  overflow: auto;
+  max-height: 71vh;
+}
+
 .data-rows-chats-1 {
   display: grid;
   grid-template-columns: 10% 65% 25%;
