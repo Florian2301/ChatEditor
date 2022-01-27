@@ -51,7 +51,7 @@ export function ChatboxBackend(props) {
         })
       }, 500)
     }
-    if (props.user.loggedin & props.chat.messages[0] && !scroll) {
+    if (props.chat.messages[0] && !scroll) {
       setTimeout(() => {
         scrollRef.current.scrollIntoView({
           block: 'end',

@@ -154,6 +154,7 @@ export function ChatboxMobile(props) {
                           chatnumber={chatnumber}
                           messageId={_id}
                           userid={userId}
+                          scroll={scrollRef}
                           repliedmessage={repliedmessage}
                           replyTo={scrollTo}
                           scrollTo={scrollToReplace}

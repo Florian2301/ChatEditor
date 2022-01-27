@@ -43,7 +43,7 @@ export function ChatboxTablet(props) {
   useEffect(() => {
     // after sending a message, new message will be scrolled into view or when chat is loaded
     // check if draft/chat is active, "scroll" is for scrolling to a replied message (set in component writeMessage)
-    if (props.draft.messages[0] && !scroll && props.user.loggedIn) {
+    if (props.draft.messages[0] && !scroll) {
       setTimeout(() => {
         scrollRef.current.scrollIntoView({
           block: 'end',
@@ -51,7 +51,7 @@ export function ChatboxTablet(props) {
         })
       }, 500)
     }
-    if (props.chat.messages[0] && !scroll && props.user.loggedIn) {
+    if (props.chat.messages[0] && !scroll) {
       setTimeout(() => {
         scrollRef.current.scrollIntoView({
           block: 'end',
@@ -154,6 +154,7 @@ export function ChatboxTablet(props) {
                           chatnumber={chatnumber}
                           messageId={_id}
                           userid={userId}
+                          scroll={scrollRef}
                           repliedmessage={repliedmessage}
                           replyTo={scrollTo}
                           scrollTo={scrollToReplace}
