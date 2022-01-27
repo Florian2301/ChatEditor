@@ -51,7 +51,7 @@ export function ChatboxTablet(props) {
         })
       }, 500)
     }
-    if (props.chat.messages[0] && !scroll) {
+    if (props.chat.messages[0] && !scroll & props.user.loggedIn) {
       setTimeout(() => {
         scrollRef.current.scrollIntoView({
           block: 'end',
