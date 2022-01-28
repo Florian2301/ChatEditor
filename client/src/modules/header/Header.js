@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Header.css'
 import { connect } from 'react-redux'
 import { clearDisplay } from '../../redux/actions/user'
@@ -11,28 +11,47 @@ export function Header(props) {
     props.clearDisplay()
   }
 
+  const [show, setShow] = useState(true)
+
   return (
-    <section className="flexContainer-header">
-      <div className="flexItem-header" id="item-language">
-        <Language />
-      </div>
+    <div>
+      {!show ? (
+        <div id="item-show" onClick={() => setShow(!show)}>
+          {show ? 'fade-out:' : 'show header'}
+        </div>
+      ) : null}
 
-      <div className="flexItem-header" id="item-clear">
-        <p id="header-link-clear" onClick={clear}>
-          clear chatbox
-        </p>
-      </div>
+      {show ? (
+        <section className="flexContainer-header">
+          <div
+            className="flexItem-header"
+            id="item-fade-out"
+            onClick={() => setShow(!show)}
+          >
+            {show ? 'fade-out:' : 'show header'}
+          </div>
+          <div className="flexItem-header" id="item-language">
+            <Language />
+          </div>
 
-      <div className="flexItem-header" id="item-select">
-        <SelectView
-          auto={props.auto}
-          desktop={props.desktop}
-          tablet={props.tablet}
-          mobile={props.mobile}
-          id={props.id}
-        />
-      </div>
-    </section>
+          <div className="flexItem-header" id="item-clear">
+            <p id="header-link-clear" onClick={clear}>
+              clear chatbox
+            </p>
+          </div>
+
+          <div className="flexItem-header" id="item-select">
+            <SelectView
+              auto={props.auto}
+              desktop={props.desktop}
+              tablet={props.tablet}
+              mobile={props.mobile}
+              id={props.id}
+            />
+          </div>
+        </section>
+      ) : null}
+    </div>
   )
 }
 

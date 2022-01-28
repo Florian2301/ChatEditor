@@ -1,12 +1,35 @@
 .flexContainer-header {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 10% 20% 40% 30%;
   justify-items: center;
   margin-bottom: -1rem;
 }
 
 .flexItem-header {
   margin-top: 1rem;
+}
+
+#item-show {
+  margin-left: 20%;
+  font-size: 1.2rem;
+  height: fit-content;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 0.2rem;
+}
+
+#item-show:hover {
+  color: dodgerblue;
+}
+
+#item-fade-out {
+  font-size: 1.2rem;
+  height: fit-content;
+  cursor: pointer;
+}
+
+#item-fade-out:hover {
+  text-decoration: underline;
 }
 
 #item-language {
