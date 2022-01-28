@@ -55,6 +55,8 @@ export default function App() {
     return isMobile ? children : null
   }
 
+  const [show, setShow] = useState(true)
+
   // --------------------------------- RETURN -------------------------------------------
 
   return (
@@ -72,16 +74,26 @@ export default function App() {
         </DesktopScreen>
 
         <TabletScreen>
-          <div id="tablet-header">
-            <Language id="tablet-language" />
-            <SelectView
-              auto={viewAuto}
-              desktop={viewDesktop}
-              tablet={viewTablet}
-              mobile={viewMobile}
-              id="viewtablet"
-            />
-          </div>
+          {!show ? (
+            <div id="show-options" onClick={() => setShow(!show)}>
+              {show ? 'fade-out' : 'show options'}
+            </div>
+          ) : null}
+          {show ? (
+            <div id="tablet-header">
+              <div id="fade-out-options" onClick={() => setShow(!show)}>
+                {show ? 'fade-out' : 'show options'}
+              </div>
+              <Language id="tablet-language" />
+              <SelectView
+                auto={viewAuto}
+                desktop={viewDesktop}
+                tablet={viewTablet}
+                mobile={viewMobile}
+                id="viewtablet"
+              />
+            </div>
+          ) : null}
           <Container id="flexTablet">
             <MainTabletLeft />
             <MainTabletRight />

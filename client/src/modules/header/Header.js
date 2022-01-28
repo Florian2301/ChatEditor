@@ -17,7 +17,7 @@ export function Header(props) {
     <div>
       {!show ? (
         <div id="item-show" onClick={() => setShow(!show)}>
-          {show ? 'fade-out:' : 'show header'}
+          {show ? 'fade-out' : 'show options'}
         </div>
       ) : null}
 
@@ -28,7 +28,7 @@ export function Header(props) {
             id="item-fade-out"
             onClick={() => setShow(!show)}
           >
-            {show ? 'fade-out:' : 'show header'}
+            {show ? 'fade-out' : 'show options'}
           </div>
           <div className="flexItem-header" id="item-language">
             <Language />
