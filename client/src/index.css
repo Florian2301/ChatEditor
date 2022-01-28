@@ -3,14 +3,22 @@ body {
   background-color: black;
   color: white;
   background-image: url('/public/img/red_curtain.jpg');
-  background-repeat: repeat-y;
-  overflow: hidden;
+  /*background-repeat: repeat-y;*/
+  background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  overflow: auto;
+  width: 95vw;
+  min-height: 100vh;
+  margin: 0 auto;
 }
 
 html {
-  /* gesamtes Dokument auf 1opx setzen,
+  /* gesamtes Dokument auf 10px setzen,
     damit mit "rem" einfacher zu rechnen ist: 16px = 1,6 rem */
   font-size: 10px;
+  width: 95vw;
 }
 
 p {

@@ -1,31 +1,21 @@
 /* Main view */
 .flexContainer-main {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  max-height: 100%;
+  grid-template-columns: 25% 50% 25%;
 }
 
 #item-1 {
-  max-width: 25vw;
-  min-width: 280px;
-  height: fit-content;
   margin-left: 2rem;
   margin-top: -1rem;
 }
 
 #item-2 {
-  max-width: 40vw;
-  min-width: 280px;
   justify-self: center;
   margin-top: -1rem;
 }
 
 #item-3 {
-  width: 25vw;
-  min-width: 280px;
   justify-self: center;
-  height: fit-content;
-  margin-right: 4rem;
   margin-top: -1rem;
 }
 
