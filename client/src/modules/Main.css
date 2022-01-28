@@ -19,6 +19,23 @@
   margin-top: -1rem;
 }
 
+/* ---------------- Tablet --------------------------- */
+
+#responsive-container-tablet {
+  width: 45%;
+  margin-top: 0rem;
+}
+
+/* ---------------- Mobile --------------------------- */
+
+#responsive-container-mobile {
+  border-radius: 0.6rem;
+  height: 100vh;
+  width: 95vw;
+  max-width: 65rem;
+  margin-left: 0.5rem;
+}
+
 /* Tabs */
 
 /* Edit-Container */
@@ -288,20 +305,4 @@
   border-color: dodgerblue;
   border-radius: 0.5rem;
   background-color: rgba(0, 0, 0, 0.3);
-}
-
-/* ---------------- Tablet --------------------------- */
-
-#responsive-container-tablet {
-  width: 45%;
-  margin-top: 0rem;
-}
-
-/* ---------------- Mobile --------------------------- */
-
-#responsive-container-mobile {
-  border-radius: 0.6rem;
-  height: 100vh;
-  width: 100vw;
-  max-width: 65rem;
 }

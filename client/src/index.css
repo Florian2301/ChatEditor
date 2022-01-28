@@ -4,13 +4,8 @@ body {
   color: white;
   background-image: url('/public/img/red_curtain.jpg');
   background-repeat: repeat-y;
-  /*background-size: 100% 100%;
-  -webkit-background-size: 100% 100%;
-  -moz-background-size: 100% 100%;
-  -o-background-size: 100% 100%;*/
   overflow-x: hidden;
   overflow-y: auto;
-  min-height: 100vh;
 }
 
 html {
