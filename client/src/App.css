@@ -29,8 +29,9 @@
 
 #mobile-header {
   display: grid;
-  grid-template-columns: 25% 65%;
+  grid-template-columns: 25% 75%;
   justify-items: center;
+  margin-left: 0.5rem;
 }
 
 #mobile-language {
