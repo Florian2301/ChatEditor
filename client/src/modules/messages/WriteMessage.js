@@ -246,7 +246,7 @@ export function WriteMessage(props) {
   return (
     <div
       className={
-        window.innerWidth <= 979 ? 'write-message-mobile' : 'write-message'
+        window.innerWidth <= 1000 ? 'write-message-mobile' : 'write-message'
       }
     >
       <div>
@@ -303,7 +303,7 @@ export function WriteMessage(props) {
               ref={messageRef}
               placeholder={'write your message here'}
               onKeyDown={keyEventTextarea}
-              rows={window.innerWidth <= 979 ? '4' : '5'}
+              rows={window.innerWidth <= 1000 ? '4' : '5'}
             />
             <EmojiPicker getEmoji={addEmoji} />
 

@@ -54,7 +54,7 @@ export function Chats(props) {
       </div>
       <div
         className={
-          window.innerWidth <= 979
+          window.innerWidth <= 1000
             ? 'chatlist-scroll-mobile'
             : 'chatlist-scroll'
         }

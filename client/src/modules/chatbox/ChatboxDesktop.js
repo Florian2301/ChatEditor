@@ -11,7 +11,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { saveTitle, publishTitle } from '../../redux/actions/title'
 import { getUserChats } from '../../redux/actions/chat'
 
-export function ChatboxBackend(props) {
+export function ChatboxDesktop(props) {
   const scrollRef = useRef()
   const [getRef, setRef] = useDynamicRefs()
   const [scroll, setScroll] = useState(false)
@@ -221,4 +221,4 @@ const mapActionsToProps = {
   getUserChats: getUserChats,
 }
 
-export default connect(mapStateToProps, mapActionsToProps)(ChatboxBackend)
+export default connect(mapStateToProps, mapActionsToProps)(ChatboxDesktop)

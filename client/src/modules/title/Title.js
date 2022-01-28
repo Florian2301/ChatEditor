@@ -11,7 +11,7 @@ export function Title(props) {
     <Panel title="chat details" id="title-panel">
       <div
         className={
-          window.innerWidth <= 979 ? 'title-scroll-mobile' : 'title-scroll'
+          window.innerWidth <= 1000 ? 'title-scroll-mobile' : 'title-scroll'
         }
       >
         <div className="title-details" id="title-number">

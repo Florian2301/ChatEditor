@@ -7,7 +7,7 @@
   border-top-color: dodgerblue;
   border-top-width: thin;
   overflow: auto;
-  width: 30vw;
+  width: 100%;
 }
 
 .write-message-mobile {

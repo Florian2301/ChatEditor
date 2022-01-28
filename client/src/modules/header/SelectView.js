@@ -44,6 +44,7 @@ export function SelectView(props) {
           id="desktop"
           onChange={(e) => handleChange(e)}
           checked={props.user.modus === 'desktop' ? true : false}
+          disabled={window.innerWidth <= 1400 ? true : false}
         />
         <Form.Check
           style={{ fontSize: '12px' }}
@@ -54,6 +55,7 @@ export function SelectView(props) {
           id="tablet"
           onChange={(e) => handleChange(e)}
           checked={props.user.modus === 'tablet' ? true : false}
+          disabled={window.innerWidth <= 1000 ? true : false}
         />
         <Form.Check
           style={{ fontSize: '12px' }}
@@ -81,69 +83,3 @@ const mapActionsToProps = {
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(SelectView)
-
-/*
-<Form as={Row} id={props.id}>
-      <FormGroup as={Row} id="size">
-        <Radio
-          id="auto"
-          name="modi"
-          onChange={(e) => handleChange(e)}
-          checked={props.user.modus === 'auto' ? true : false}
-          inline
-        >
-          auto
-        </Radio>
-      </FormGroup>
-
-      <Form.Group as={Row} id="size">
-        <Form.Check
-          type="radio"
-          id="desktop"
-          name="modi"
-          label=""
-          onChange={(e) => handleChange(e)}
-          checked={props.user.modus === 'desktop' ? true : false}
-        />
-        <Form.Label
-          id="label-view"
-          style={
-            window.innerWidth <= 979 ? { color: 'grey' } : { color: 'white' }
-          }
-        >
-          Desktop
-        </Form.Label>
-      </Form.Group>
-
-      <Form.Group as={Row} id="size">
-        <Form.Check
-          type="radio"
-          id="tablet"
-          name="modi"
-          label=""
-          onChange={(e) => handleChange(e)}
-          checked={props.user.modus === 'tablet' ? true : false}
-        />
-        <Form.Label
-          id="label-view"
-          style={
-            window.innerWidth <= 767 ? { color: 'grey' } : { color: 'white' }
-          }
-        >
-          Tablet
-        </Form.Label>
-      </Form.Group>
-
-      <Form.Group as={Row} id="size">
-        <Form.Check
-          type="radio"
-          id="mobile"
-          name="modi"
-          label=""
-          onChange={(e) => handleChange(e)}
-          checked={props.user.modus === 'mobile' ? true : false}
-        />
-        <Form.Label id="label-view">Mobile</Form.Label>
-      </Form.Group>
-    </Form>
-    */

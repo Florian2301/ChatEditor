@@ -50,7 +50,7 @@
 /* tablet */
 .chatbox-tablet {
   height: 60vh;
-  width: 30vw;
+  width: 100%;
   overflow: auto;
   border-radius: 0.6rem;
   position: relative;

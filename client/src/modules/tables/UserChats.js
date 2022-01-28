@@ -32,7 +32,7 @@ export function UserChatsTable(props) {
       </div>
       <div
         className={
-          window.innerWidth <= 979
+          window.innerWidth <= 1000
             ? 'userchats-scroll-mobile'
             : 'userchats-scroll'
         }

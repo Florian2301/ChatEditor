@@ -37,7 +37,7 @@ export default function About() {
   //-------------------------- RETURN -----------------------------------------------------------------------
   return (
     <Panel title="Demo-Version Chat-Editor" id="about">
-      <div className={window.innerWidth <= 979 ? 'about-mobile' : 'about'}>
+      <div className={window.innerWidth <= 1000 ? 'about-mobile' : 'about'}>
         <div>
           <div
             className="about-menu"

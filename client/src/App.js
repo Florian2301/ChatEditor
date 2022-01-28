@@ -14,27 +14,27 @@ import Language from './modules/header/Language'
 import Header from './modules/header/Header'
 
 export default function App() {
-  const [bigScreen, setBigScreen] = useState(1200)
-  const [mediumScreen, setMediumScreen] = useState(768)
+  const [bigScreen, setBigScreen] = useState(1400) // 1200
+  const [mediumScreen, setMediumScreen] = useState(1000) //768
 
   const viewAuto = () => {
-    setBigScreen(1200)
-    setMediumScreen(768)
+    setBigScreen(1400) // 1200
+    setMediumScreen(1000) // 768
   }
 
   const viewDesktop = () => {
-    setBigScreen(980)
-    setMediumScreen(768)
+    setBigScreen(1400) // 980
+    setMediumScreen(1000) // 768
   }
 
   const viewTablet = () => {
-    setBigScreen(3000)
-    setMediumScreen(768)
+    setBigScreen(3000) // 3000
+    setMediumScreen(1000) // 768
   }
 
   const viewMobile = () => {
-    setBigScreen(3000)
-    setMediumScreen(2991)
+    setBigScreen(3000) // 3000
+    setMediumScreen(3000) // 2991
   }
 
   const DesktopScreen = ({ children }) => {
@@ -45,13 +45,13 @@ export default function App() {
   const TabletScreen = ({ children }) => {
     const isTablet = useMediaQuery({
       minWidth: mediumScreen,
-      maxWidth: bigScreen - 1,
+      maxWidth: bigScreen,
     })
     return isTablet ? children : null
   }
 
   const MobileScreen = ({ children }) => {
-    const isMobile = useMediaQuery({ maxWidth: mediumScreen - 1 })
+    const isMobile = useMediaQuery({ maxWidth: mediumScreen })
     return isMobile ? children : null
   }
 

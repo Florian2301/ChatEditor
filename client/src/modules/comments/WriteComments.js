@@ -97,7 +97,7 @@ export function WriteComments(props) {
   return (
     <div
       className={
-        window.innerWidth <= 979 ? 'write-comments-mobile' : 'write-comments'
+        window.innerWidth <= 1000 ? 'write-comments-mobile' : 'write-comments'
       }
     >
       <div>
@@ -130,7 +130,7 @@ export function WriteComments(props) {
                 ref={commentRef}
                 placeholder={'write your comment here'}
                 onKeyDown={keyEventTextarea}
-                rows={window.innerWidth <= 979 ? '4' : '5'}
+                rows={window.innerWidth <= 1000 ? '4' : '5'}
               />
               <EmojiPicker getEmoji={addEmoji} />
             </div>

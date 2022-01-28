@@ -179,6 +179,7 @@ export function EditChats(props) {
         props.getUserChats(props.user.userId)
         props.getUserTitles(props.user.userId)
       }, 500)
+      clear()
     } else {
       return
     }
@@ -241,7 +242,7 @@ export function EditChats(props) {
         {edit ? (
           <div
             className={
-              window.innerWidth <= 979
+              window.innerWidth <= 1000
                 ? 'edit-chat-scroll-mobile'
                 : 'edit-chat-scroll'
             }
@@ -394,7 +395,7 @@ export function EditChats(props) {
         ) : (
           <div
             className={
-              window.innerWidth <= 979
+              window.innerWidth <= 1000
                 ? 'edit-chat-scroll-mobile'
                 : 'edit-chat-scroll'
             }

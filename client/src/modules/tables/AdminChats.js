@@ -31,7 +31,7 @@ export function AdminChatsTable(props) {
       </div>
       <div
         className={
-          window.innerWidth <= 979
+          window.innerWidth <= 1000
             ? 'adminchats-scroll-mobile'
             : 'adminchats-scroll'
         }

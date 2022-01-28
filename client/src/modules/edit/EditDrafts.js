@@ -485,7 +485,7 @@ export function EditDrafts(props) {
       setTimeout(() => {
         props.getDrafts(props.user.userId)
       }, 500)
-      props.clearDisplay()
+      clear()
     } else {
       return
     }
@@ -503,7 +503,7 @@ export function EditDrafts(props) {
         {edit ? (
           <div
             className={
-              window.innerWidth <= 979
+              window.innerWidth <= 1000
                 ? 'edit-draft-scroll-mobile'
                 : 'edit-draft-scroll'
             }
@@ -767,7 +767,7 @@ export function EditDrafts(props) {
         ) : (
           <div
             className={
-              window.innerWidth <= 979
+              window.innerWidth <= 1000
                 ? 'edit-draft-scroll-mobile'
                 : 'edit-draft-scroll'
             }
