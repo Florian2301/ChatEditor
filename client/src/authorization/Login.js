@@ -43,10 +43,15 @@ export function Login(props) {
   // submit data to login through firebase + get userdata from database
   async function handleSubmitTestuser(e) {
     e.preventDefault()
+    let email1 = 'philo'
+    let email2 = 'messenger'
+    let email3 = 'gmail.com'
+    let pw1 = 'Philomessenger'
+    let pw2 = '2020'
     try {
       setError('')
       setLoading(true)
-      await login('bigsoul@gmx.de', 'test123') // log in firebase
+      await login(email1 + email2 + '@' + email3, pw1 + pw2) // log in firebase as testuser
     } catch {
       setError('Failed to log in')
     }
@@ -114,7 +119,7 @@ export function Login(props) {
               ref={passwordRef}
               required
               placeholder="Enter password"
-              defaultValue="test123"
+              defaultValue=""
             />
           </Col>
         </Form.Group>
