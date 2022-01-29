@@ -31,8 +31,6 @@
 
 .data-columns-adminchats-2:hover {
   background-color: rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  text-decoration: underline;
 }
 
 .thead-adminchats-1 {
@@ -67,9 +65,18 @@
   word-wrap: break-word;
 }
 
+.adminchats-column-2:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .adminchats-column-3 {
-  font-size: 1.2rem;
   padding: 0.5rem;
-  text-align: left;
+  text-align: center;
   word-wrap: break-word;
+}
+
+.adminchats-column-3:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }

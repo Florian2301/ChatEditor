@@ -1,9 +1,11 @@
 /* box where the chat does appear*/
+/* Panel */
 #chatbox {
   background-color: rgba(0, 0, 0, 0.3);
   margin-top: 1.5rem;
 }
 
+/* Panel */
 #chatbox-mobile {
   background-color: rgba(0, 0, 0, 0.3);
   margin-top: 1.5rem;

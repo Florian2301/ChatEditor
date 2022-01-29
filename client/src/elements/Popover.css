@@ -8,18 +8,26 @@
 
 #popover-header {
   color: white;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.9);
   font-size: 1.2rem;
   border-color: dodgerblue;
   font-weight: bold;
   border-radius: 1rem 1rem 0rem 0rem;
+  max-height: 7rem;
+  overflow: auto;
 }
 
 #popover-body {
   color: white;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.9);
   font-size: 1.2rem;
   border-radius: 0rem 0rem 1rem 1rem;
+  max-height: 20rem;
+  overflow: auto;
+}
+
+#popover-title {
+  font-size: small;
 }
 
 .fade-in-popover {

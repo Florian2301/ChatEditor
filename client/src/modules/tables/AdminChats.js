@@ -40,20 +40,21 @@ export function AdminChatsTable(props) {
           (admintitles = props.title.allTitles.map((title) => {
             if (title.admin && props.user.language === title.language) {
               return (
-                <div
-                  key={uuidv4()}
-                  className="data-columns-adminchats-2"
-                  onClick={() => displayChat(title._id, title.chatId)}
-                >
+                <div key={uuidv4()} className="data-columns-adminchats-2">
                   <div className="adminchats-column-1">{title.chatnumber}</div>
-                  <div className="adminchats-column-2">
+                  <div
+                    className="adminchats-column-2"
+                    onClick={() => displayChat(title._id, title.chatId)}
+                  >
+                    {title.title}
+                  </div>
+                  <div className="adminchats-column-3">
                     <Popover
-                      title={title.title}
+                      date={title.date}
                       tags={title.tags}
                       description={title.description}
                     />
                   </div>
-                  <div className="adminchats-column-3">{title.date}</div>
                 </div>
               )
             }

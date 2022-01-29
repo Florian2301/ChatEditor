@@ -4,7 +4,7 @@ import './Popover.css'
 import { OverlayTrigger, Popover } from 'react-bootstrap'
 
 export function PopoverHistory(props) {
-  const title = props.title
+  const date = props.date
   const tags = props.tags
   const description = props.description
 
@@ -19,11 +19,11 @@ export function PopoverHistory(props) {
 
   const InfoPopover = () => (
     <OverlayTrigger
-      trigger={['hover', 'focus']}
-      placement={'top'}
+      trigger={['click', 'focus']}
+      placement={window.innerWidth <= 1000 ? 'top' : 'right'}
       overlay={popover}
     >
-      <p>{title}</p>
+      <p id="popover-title">{date}</p>
     </OverlayTrigger>
   )
 

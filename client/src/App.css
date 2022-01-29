@@ -8,7 +8,7 @@
 
 #tablet-header {
   display: grid;
-  grid-template-columns: 25% 35% 40%;
+  grid-template-columns: 35% 20% 45%;
   justify-items: center;
 }
 
