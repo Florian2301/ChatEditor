@@ -24,7 +24,7 @@ export default function About() {
   }
 
   function getEmail() {
-    const Email = process.env.ContactEmail || require('./Contact').ContactEmail
+    const Email = process.env.ContactEmail // require('./Contact').ContactEmail
     setEmail(Email)
     setTimeout(() => {
       setEmail(false)
