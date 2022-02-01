@@ -27,8 +27,7 @@ export function UpdateProfile(props) {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const history = useNavigate()
-  const Testuser =
-    process.env.TestuserEmail || require('./Testuser').TestuserEmail
+  const Testuser = process.env.TestuserEmail //|| require('./Testuser').TestuserEmail
 
   // submit data to update profile in firebase + database
   function handleSubmit(e) {
