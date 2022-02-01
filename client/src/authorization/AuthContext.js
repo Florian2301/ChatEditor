@@ -63,7 +63,10 @@ export function AuthProvider({ children }) {
     let user = auth.currentUser
     return user
       .updateEmail(email)
-      .then(console.log('email updated'))
+      .then(
+        console.log('email updated'),
+        user.sendEmailVerification().then(console.log('Verification sent'))
+      )
       .catch((error) => errorHandling(error))
   }
 

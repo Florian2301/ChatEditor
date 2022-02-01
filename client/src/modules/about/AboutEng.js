@@ -23,12 +23,9 @@ export default function About() {
     key === 'contact' ? setContact(!contact) : setContact(false)
   }
 
-  function createEmail() {
-    let email1 = 'flokrates'
-    let email2 = 'online'
-    let email3 = 'gmail.com'
-    setEmail(email1 + '.' + email2 + '@' + email3)
-
+  function getEmail() {
+    const Email = process.env.ContactEmail || require('./Contact').ContactEmail
+    setEmail(Email)
     setTimeout(() => {
       setEmail(false)
     }, 10000)
@@ -282,7 +279,7 @@ export default function About() {
                 <div className="about-details" id="example-collapse-text">
                   <p
                     id={!email ? 'about-email' : null}
-                    onClick={() => createEmail()}
+                    onClick={() => getEmail()}
                   >
                     {email ? email : 'click here to show the email-address'}
                   </p>

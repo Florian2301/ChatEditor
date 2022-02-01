@@ -18,6 +18,8 @@ export function Login(props) {
   const history = useNavigate()
   const verify = 'Please check your inbox to verify your email address'
   const goodbye = 'Your profile has been deleted successfully'
+  const Email = process.env.TestuserEmail || require('./Testuser').TestuserEmail
+  const PW = process.env.TestuserPW || require('./Testuser').TestuserPW
 
   // submit data to login through firebase + get userdata from database
   async function handleSubmit(e) {
@@ -43,15 +45,10 @@ export function Login(props) {
   // submit data to login through firebase + get userdata from database
   async function handleSubmitTestuser(e) {
     e.preventDefault()
-    let email1 = 'philo'
-    let email2 = 'messenger'
-    let email3 = 'gmail.com'
-    let pw1 = 'Philomessenger'
-    let pw2 = '2020'
     try {
       setError('')
       setLoading(true)
-      await login(email1 + email2 + '@' + email3, pw1 + pw2) // log in firebase as testuser
+      await login(Email, PW) // log in firebase as testuser
     } catch {
       setError('Failed to log in')
     }

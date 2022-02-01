@@ -75,12 +75,12 @@ export function SignUp(props) {
         setLoading(true)
         await signup(newName, newEmail, password) // create profile in firebase
         props.addUserToDB(newName, newEmail) // create profile in database
-        history.push('/login')
+        history('/login')
       } catch {
         setError('Failed to create an account')
       }
     } else {
-      history.push('/login')
+      history('/login')
     }
     setLoading(false)
   }

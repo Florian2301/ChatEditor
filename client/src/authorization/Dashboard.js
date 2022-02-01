@@ -16,7 +16,7 @@ export function Dashboard(props) {
   const [userLoggedOut, setUserLoggedOut] = useState(false)
   const { currentUser, logout } = useAuth()
   const history = useNavigate()
-  const update = 'Your profile has been updated successfully'
+  const update = 'Your profile has been updated successfully!'
   let welcomeMessage = ''
 
   // get all Users for further actions (when update Profile is clicked)

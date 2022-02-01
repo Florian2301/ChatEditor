@@ -111,7 +111,7 @@ export function EditDrafts(props) {
         return props.draft.colors
       })
     }
-  })
+  }, [edit, props.draft.colors])
 
   // add new name
   function addName() {

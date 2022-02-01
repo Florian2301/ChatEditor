@@ -2,3 +2,5 @@ node_modules
 keys.js
 .env.local
 auth-prod.js
+Testuser.js
+Contact.js

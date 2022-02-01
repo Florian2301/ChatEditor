@@ -76,13 +76,13 @@ export default function App() {
         <TabletScreen>
           {!show ? (
             <div id="show-options" onClick={() => setShow(!show)}>
-              {show ? 'fade-out' : 'show options'}
+              {show ? 'fade-out options' : 'show options'}
             </div>
           ) : null}
           {show ? (
             <div id="tablet-header">
               <div id="fade-out-options" onClick={() => setShow(!show)}>
-                {show ? 'fade-out' : 'show options'}
+                {show ? 'fade-out options' : 'show options'}
               </div>
               <Language id="tablet-language" />
               <SelectView

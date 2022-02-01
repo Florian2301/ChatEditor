@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { Form, Alert, Col, Row } from 'react-bootstrap'
 import { useAuth } from './AuthContext'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Button from '../elements/Button'
 import Panel from '../elements/Panel'
 
@@ -11,6 +11,7 @@ export default function ForgotPassword() {
   const [error, setError] = useState('')
   const [message, setMessage] = useState('')
   const [loading, setLoading] = useState(false)
+  const history = useNavigate()
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -25,6 +26,9 @@ export default function ForgotPassword() {
       setError('Failed to reset password')
     }
     setLoading(false)
+    setTimeout(() => {
+      history('/login')
+    }, 5000)
   }
 
   //------------------- RETURN --------------------------------------------------------------

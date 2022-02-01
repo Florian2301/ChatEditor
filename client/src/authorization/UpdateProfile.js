@@ -27,43 +27,36 @@ export function UpdateProfile(props) {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const history = useNavigate()
-
-  // check if username or useremail already exist in database
-  let checkName
-  let checkMail
-
-  function inputName(e) {
-    checkName = e.target.value
-    return checkName
-  }
-
-  function inputMail(e) {
-    checkMail = e.target.value
-    return checkMail
-  }
+  const Testuser =
+    process.env.TestuserEmail || require('./Testuser').TestuserEmail
 
   // submit data to update profile in firebase + database
   function handleSubmit(e) {
     e.preventDefault()
+    if (currentUser.email === Testuser) {
+      setError('Its not allowed to update this profile')
+      setTimeout(() => {
+        history('/')
+      }, 2000)
+      return
+    }
 
     let inputUsername = usernameRef.current.value
     props.user.allUsers.map(({ username }) => {
       // get username from all users in database
-      if (username === checkName) {
+      if (username === inputUsername) {
         // check if username already exists
         inputUsername = false
-        return inputUsername
       }
       return inputUsername
     })
     if (!inputUsername && inputUsername !== '') {
-      return setError(checkName + ' does already exist')
+      return setError(inputUsername + ' does already exist')
     }
-
     let inputEmail = emailRef.current.value
     props.user.allUsers.map(({ email }) => {
       // get useremail from all users in database
-      if (email === checkMail) {
+      if (email === inputEmail) {
         // check if useremail already exists
         inputEmail = false
         return inputEmail
@@ -71,21 +64,21 @@ export function UpdateProfile(props) {
       return inputEmail
     })
     if (!inputEmail && inputEmail !== '') {
-      return setError(checkMail + ' does already exist')
+      return setError(inputEmail + ' does already exist')
     }
-
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
       // check if passwords match
       return setError('Passwords do not match')
     }
-
     if (!error) {
       // check if error is set by check username/email
       const { userId } = props.user // get current user-id from database
       const promises = []
       setLoading(true)
       setError('')
-
+      setTimeout(() => {
+        setLoading(false)
+      }, 500)
       if (inputUsername && inputUsername !== currentUser.displayName) {
         props.updateUserDB(userId, inputUsername, currentUser.email) // currentUser.email from Firebase
         promises.push(updateUsername(inputUsername))
@@ -96,43 +89,40 @@ export function UpdateProfile(props) {
       }
       if (
         passwordRef.current.value &&
-        passwordRef.current.value !== currentUser.password
+        passwordRef.current.value !== currentUser.password // currentUser.password from Firebase
       ) {
-        // currentUser.password from Firebase
         promises.push(updatePassword(passwordRef.current.value))
       }
-
-      if (currentUser.email !== 'philomessenger@gmail.com') {
-        // checl if "testuser" is trying to update profile
-        Promise.all(promises)
-          .then(() => {
-            history.push('/')
-          })
-          .catch(() => {
-            setError('Failed to update account')
-          })
-          .finally(() => {
-            setLoading(false)
-          })
-      } else {
-        setError('Its not allowed to update this profile')
-      }
+      Promise.all(promises)
+        .then(() => {
+          history('/')
+        })
+        .catch(() => {
+          setError('Failed to update account')
+        })
     } else {
       return
     }
   }
 
   function deleteProfile() {
+    if (currentUser.email === Testuser) {
+      setError('Its not allowed to delete this profile')
+      setTimeout(() => {
+        history('/')
+      }, 2000)
+      return
+    }
     let answer = window.confirm(
       'Are you sure you want to delete your profile and all your drafts and published chats?'
     )
-    if (answer && currentUser.email !== 'bigsoul@gmx.de') {
+    const currentUserId = props.user.userId // get current user-id from database
+    if (answer) {
       deleteUser(currentUser) // delete user from firebase
-      const currentUserId = props.user.userId // get current user-id from database
       props.deleteUserDB(currentUserId) // delete user from database
-      history.push('/login')
+      history('/login')
     } else {
-      setError('Its not allowed to delete this profile')
+      return
     }
   }
 
@@ -163,7 +153,6 @@ export function UpdateProfile(props) {
               type="text"
               ref={usernameRef}
               autoFocus
-              onChange={inputName}
               placeholder="New username"
             />
           </Col>
@@ -178,7 +167,6 @@ export function UpdateProfile(props) {
               id="auth-input"
               type="email"
               ref={emailRef}
-              onChange={inputMail}
               placeholder="New email address"
             />
           </Col>

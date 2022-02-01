@@ -82,6 +82,7 @@ export function ChatboxMobile(props) {
     scroll,
     props.chat.userChats,
     props,
+    props.title.publish,
   ])
 
   // get data for display saved draft
