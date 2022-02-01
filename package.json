@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Florian2301/philomessenger.git"
+    "url": "git+https://github.com/Florian2301/ChatEditor.git"
   },
   "author": "PLFJ",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Florian2301/philomessenger/issues"
+    "url": "https://github.com/Florian2301/ChatEditor/issues"
   },
-  "homepage": "https://github.com/Florian2301/philomessenger#readme",
+  "homepage": "https://github.com/Florian2301/ChatEditor#readme",
   "dependencies": {
     "@babel/eslint-parser": "^7.16.5",
     "body-parser": "^1.19.1",

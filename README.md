@@ -36,4 +36,4 @@ I do not follow any commercial purposes with this app.
 
 See live demo on heroku (might take a few seconds to load, its free hosting on heroku):
 
-http://flokrates-online.herokuapp.com/login
+http://chat-editor.herokuapp.com/login
