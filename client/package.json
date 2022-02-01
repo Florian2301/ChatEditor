@@ -1,7 +1,7 @@
 {
   "name": "client",
   "version": "1.0.0",
-  "description": "client-side the-messenger",
+  "description": "client-side chat-editor",
   "main": "index.js",
   "scripts": {
     "start": "craco start",

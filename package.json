@@ -1,7 +1,7 @@
 {
   "name": "the-messenger",
   "version": "1.0.0",
-  "description": "server-side the-messenger",
+  "description": "server-side chat-editor",
   "main": "./server/server.js",
   "scripts": {
     "client-install": "npm install --prefix client",
