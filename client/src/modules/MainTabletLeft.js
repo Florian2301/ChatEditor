@@ -82,7 +82,7 @@ export function MainTabletLeft(props) {
         {!props.user.loggedIn ? (
           <Tab
             eventKey="adminchats"
-            title={`Flokrates.Online (${adminTitleNumber.length})`}
+            title={`Chats (${adminTitleNumber.length})`}
           >
             <div className="table-border-color">
               <AdminChats />
@@ -97,7 +97,7 @@ export function MainTabletLeft(props) {
         {!props.user.loggedIn ? (
           <Tab
             eventKey="userchats"
-            title={`Know thyself (${userTitleNumber.length})`}
+            title={`Userchats (${userTitleNumber.length})`}
           >
             <div className="table-border-color">
               <UserChats />

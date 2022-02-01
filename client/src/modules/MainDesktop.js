@@ -93,7 +93,7 @@ export function FlexMain(props) {
             {!props.user.loggedIn ? (
               <Tab
                 eventKey="adminchats"
-                title={`Flokrates.Online (${adminTitleNumber.length})`}
+                title={`Chats (${adminTitleNumber.length})`}
               >
                 <AdminChats />
               </Tab>
@@ -109,7 +109,7 @@ export function FlexMain(props) {
             {!props.user.loggedIn ? (
               <Tab
                 eventKey="userchats"
-                title={`Know thyself (${userTitleNumber.length})`}
+                title={`Userchats (${userTitleNumber.length})`}
               >
                 <UserChats />
               </Tab>
