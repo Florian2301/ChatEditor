@@ -43,9 +43,9 @@ const PDF = (props) => {
     <Document>
       <Page size="A4" style={styles.page}>
         <Text style={styles.header} fixed>
-          <Link src={'http://flokrates-online.herokuapp.com'}>
+          <Link src={'http://chat-editor.herokuapp.com'}>
             {' '}
-            ~ flokrates-online.herokuapp.com ~{' '}
+            ~ chat-editor.herokuapp.com ~{' '}
           </Link>
         </Text>
 

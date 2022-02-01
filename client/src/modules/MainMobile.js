@@ -25,7 +25,7 @@ import './Main.css'
 export function MainMobile(props) {
   // get all titles when page is loading for the first time
   useEffect(() => {
-    if (props.title.allTitles.length === 0) {
+    if (!props.user.loggedIn & (props.title.allTitles.length === 0)) {
       props.getAllTitles()
     }
   }, [props.title.allTitles, props])

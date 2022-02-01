@@ -17,8 +17,8 @@ export function Chats(props) {
       if (!userChats[0]) {
         props.getUserChats(userId)
         props.getUserTitles(userId)
-        setList(true)
       }
+      setList(true)
     }
   }, [userChats, userId, props, list])
 

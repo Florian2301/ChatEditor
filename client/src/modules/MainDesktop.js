@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import './Main.css'
 import { Container, Tab, Tabs } from 'react-bootstrap'
 import ChatboxDesktop from './chatbox/ChatboxDesktop'
-//import ChatboxPublic from './chatbox/ChatboxPublic'
 import ChatboxCommentsDesktop from './chatbox/ChatboxCommentsDesktop'
 import AdminChats from './tables/AdminChats'
 import Title from './title/Title'
@@ -19,7 +18,7 @@ import AboutEng from './about/AboutEng'
 import { setKeyR } from '../redux/actions/user'
 import { getAllTitles } from '../redux/actions/title'
 
-export function FlexMain(props) {
+export function MainDesktop(props) {
   // function to select menu (tablet/mobile)
   function handleSelect(key) {
     props.setKeyR(key)
@@ -27,10 +26,10 @@ export function FlexMain(props) {
 
   // get all titles when page is loading for the first time
   useEffect(() => {
-    if (props.title.allTitles.length === 0) {
+    if (!props.user.loggedIn & (props.title.allTitles.length === 0)) {
       props.getAllTitles()
     }
-  }, [props.title.allTitles, props])
+  }, [props.title.allTitles, props.user.loggedIn, props])
 
   // filter number of drafts by language
   let draftList = []
@@ -218,6 +217,6 @@ let mapDispatchToProps = {
   getAllTitles: getAllTitles,
 }
 
-let FlexContainer = connect(mapStateToProps, mapDispatchToProps)(FlexMain)
+let DesktopContainer = connect(mapStateToProps, mapDispatchToProps)(MainDesktop)
 
-export default FlexContainer
+export default DesktopContainer
