@@ -11,7 +11,7 @@ let initialState = {
   update: false,
   delete: false,
   modus: 'auto',
-  keyL: 'adminchats',
+  keyL: 'userchats',
   keyR: 'about',
   language: 'deutsch',
   selectLanguage: ['deutsch', 'english'],
@@ -70,7 +70,7 @@ function users(state = initialState, action) {
         signUp: false,
         update: false,
         delete: false,
-        keyL: 'adminchats',
+        keyL: 'userchats',
         keyR: 'about',
       }
     case 'SET_KEY_L':

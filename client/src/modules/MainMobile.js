@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Container, Tab, Tabs } from 'react-bootstrap'
-import AdminChats from './tables/AdminChats'
 import ChatboxMobile from './chatbox/ChatboxMobile'
 import ChatboxCommentsMobile from './chatbox/ChatboxCommentsMobile'
 import UserChats from './tables/UserChats'
@@ -48,34 +47,14 @@ export function MainMobile(props) {
     return chatList
   })
 
-  // filter number of chats from admin/users
-  let adminTitle = []
+  // filter chats by language
   let userTitle = []
   props.title.allTitles.map((title) => {
-    if (title.admin) {
-      adminTitle.push(title)
-    } else userTitle.push(title)
-    return { adminTitle, userTitle }
+    if (title.language === props.user.language) {
+      userTitle.push(title)
+    }
+    return userTitle
   })
-
-  // filter chats by language from admin/users
-  let adminTitleNumber = []
-  let userTitleNumber = []
-  if (adminTitle) {
-    adminTitle.map((title) => {
-      if (title.language === props.user.language) {
-        adminTitleNumber.push(title)
-      }
-      return adminTitleNumber
-    })
-
-    userTitle.map((title) => {
-      if (title.language === props.user.language) {
-        userTitleNumber.push(title)
-      }
-      return userTitleNumber
-    })
-  }
 
   function handleSelect(key) {
     props.setKeyL(key)
@@ -101,19 +80,7 @@ export function MainMobile(props) {
         onSelect={handleSelect}
       >
         {!props.user.loggedIn ? (
-          <Tab
-            eventKey="adminchats"
-            title={`Chats (${adminTitleNumber.length})`}
-          >
-            <AdminChats />
-          </Tab>
-        ) : null}
-
-        {!props.user.loggedIn ? (
-          <Tab
-            eventKey="userchats"
-            title={`Userchats (${userTitleNumber.length})`}
-          >
+          <Tab eventKey="userchats" title={`Userchats (${userTitle.length})`}>
             <UserChats />
           </Tab>
         ) : null}

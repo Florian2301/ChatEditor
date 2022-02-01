@@ -4,7 +4,6 @@ import './Main.css'
 import { Container, Tab, Tabs } from 'react-bootstrap'
 import ChatboxDesktop from './chatbox/ChatboxDesktop'
 import ChatboxCommentsDesktop from './chatbox/ChatboxCommentsDesktop'
-import AdminChats from './tables/AdminChats'
 import Title from './title/Title'
 import UserChats from './tables/UserChats'
 import StartDraft from './edit/StartDraft'
@@ -49,34 +48,14 @@ export function MainDesktop(props) {
     return chatList
   })
 
-  // filter number of chats from admin/users
-  let adminTitle = []
+  // filter chats by language
   let userTitle = []
   props.title.allTitles.map((title) => {
-    if (title.admin) {
-      adminTitle.push(title)
-    } else userTitle.push(title)
-    return { adminTitle, userTitle }
+    if (title.language === props.user.language) {
+      userTitle.push(title)
+    }
+    return userTitle
   })
-
-  // filter chats by language from admin/users
-  let adminTitleNumber = []
-  let userTitleNumber = []
-  if (adminTitle) {
-    adminTitle.map((title) => {
-      if (title.language === props.user.language) {
-        adminTitleNumber.push(title)
-      }
-      return adminTitleNumber
-    })
-
-    userTitle.map((title) => {
-      if (title.language === props.user.language) {
-        userTitleNumber.push(title)
-      }
-      return userTitleNumber
-    })
-  }
 
   //---------------------- RETURN ------------------------------------------------------------------------------------
 
@@ -85,18 +64,11 @@ export function MainDesktop(props) {
       <div id="item-1">
         <Container fluid>
           <Tabs
-            defaultActiveKey={'adminchats'}
+            defaultActiveKey={'userchats'}
             id="uncontrolled"
             style={{ borderBottom: 0 }}
           >
-            {!props.user.loggedIn ? (
-              <Tab
-                eventKey="adminchats"
-                title={`Chats (${adminTitleNumber.length})`}
-              >
-                <AdminChats />
-              </Tab>
-            ) : (
+            {!props.user.loggedIn ? null : (
               <Tab
                 eventKey="adminchats"
                 title={`Draftlist (${draftList.length})`}
@@ -106,10 +78,7 @@ export function MainDesktop(props) {
             )}
 
             {!props.user.loggedIn ? (
-              <Tab
-                eventKey="userchats"
-                title={`Userchats (${userTitleNumber.length})`}
-              >
+              <Tab eventKey="userchats" title={`Chats (${userTitle.length})`}>
                 <UserChats />
               </Tab>
             ) : (

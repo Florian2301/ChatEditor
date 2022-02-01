@@ -39,7 +39,7 @@ export function UserChatsTable(props) {
       >
         {
           (usertitles = props.title.allTitles.map((title) => {
-            if (!title.admin && props.user.language === title.language) {
+            if (props.user.language === title.language) {
               return (
                 <div key={uuidv4()} className="data-columns-userchats-2">
                   <div className="userchats-column-1">{title.author}</div>

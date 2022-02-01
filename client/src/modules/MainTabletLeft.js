@@ -41,34 +41,14 @@ export function MainTabletLeft(props) {
     return chatList
   })
 
-  // filter number of chats from admin/users
-  let adminTitle = []
+  // filter chats by language
   let userTitle = []
   props.title.allTitles.map((title) => {
-    if (title.admin) {
-      adminTitle.push(title)
-    } else userTitle.push(title)
-    return { adminTitle, userTitle }
+    if (title.language === props.user.language) {
+      userTitle.push(title)
+    }
+    return userTitle
   })
-
-  // filter chats by language from admin/users
-  let adminTitleNumber = []
-  let userTitleNumber = []
-  if (adminTitle) {
-    adminTitle.map((title) => {
-      if (title.language === props.user.language) {
-        adminTitleNumber.push(title)
-      }
-      return adminTitleNumber
-    })
-
-    userTitle.map((title) => {
-      if (title.language === props.user.language) {
-        userTitleNumber.push(title)
-      }
-      return userTitleNumber
-    })
-  }
 
   //------------------------------------------------------- return ------------------------------------------------------------
   return (
@@ -79,26 +59,14 @@ export function MainTabletLeft(props) {
         style={{ borderBottom: 0 }}
         onSelect={handleSelect}
       >
-        {!props.user.loggedIn ? (
-          <Tab
-            eventKey="adminchats"
-            title={`Chats (${adminTitleNumber.length})`}
-          >
-            <div className="table-border-color">
-              <AdminChats />
-            </div>
-          </Tab>
-        ) : (
+        {!props.user.loggedIn ? null : (
           <Tab eventKey="adminchats" title={`Draftlist (${draftList.length})`}>
             <DraftList />
           </Tab>
         )}
 
         {!props.user.loggedIn ? (
-          <Tab
-            eventKey="userchats"
-            title={`Userchats (${userTitleNumber.length})`}
-          >
+          <Tab eventKey="userchats" title={`Userchats (${userTitle.length})`}>
             <div className="table-border-color">
               <UserChats />
             </div>
