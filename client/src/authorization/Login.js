@@ -18,7 +18,7 @@ export function Login(props) {
   const history = useNavigate()
   const verify = 'Please check your inbox to verify your email address'
   const goodbye = 'Your profile has been deleted successfully'
-  const Email = process.env.TestuserEmail || require('./Testuser').TestuserEmail
+  const Email = process.env.TestuserEmail //|| require('./Testuser').TestuserEmail
   const PW = process.env.TestuserPW //|| require('./Testuser').TestuserPW
 
   // submit data to login through firebase + get userdata from database
