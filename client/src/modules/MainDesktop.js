@@ -70,7 +70,7 @@ export function MainDesktop(props) {
           >
             {!props.user.loggedIn ? null : (
               <Tab
-                eventKey="adminchats"
+                eventKey="userchats"
                 title={`Draftlist (${draftList.length})`}
               >
                 <DraftList />
@@ -82,7 +82,7 @@ export function MainDesktop(props) {
                 <UserChats />
               </Tab>
             ) : (
-              <Tab eventKey="userchats" title={`Chatlist (${chatList.length})`}>
+              <Tab eventKey="chatlist" title={`Chatlist (${chatList.length})`}>
                 <ChatList />
               </Tab>
             )}

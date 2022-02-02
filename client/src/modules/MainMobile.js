@@ -80,7 +80,7 @@ export function MainMobile(props) {
         onSelect={handleSelect}
       >
         {!props.user.loggedIn ? (
-          <Tab eventKey="userchats" title={`Userchats (${userTitle.length})`}>
+          <Tab eventKey="userchats" title={`Chats (${userTitle.length})`}>
             <UserChats />
           </Tab>
         ) : null}
@@ -100,7 +100,7 @@ export function MainMobile(props) {
         {props.user.loggedIn ? (
           /* eventKey = adminchats because initial state is adminchats when page is refreshed */
           <Tab
-            eventKey="adminchats"
+            eventKey="userchats"
             title={props.draft.draftEditmode ? 'Edit Draft' : 'Start Draft'}
           >
             {props.draft.draftEditmode ? <EditDrafts /> : <StartDraft />}
@@ -108,7 +108,7 @@ export function MainMobile(props) {
         ) : null}
 
         {props.user.loggedIn ? (
-          <Tab eventKey="userchats" title="Edit chats">
+          <Tab eventKey="editchats" title="Edit chats">
             <EditChats />
           </Tab>
         ) : null}

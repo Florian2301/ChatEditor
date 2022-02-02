@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Container, Tab, Tabs } from 'react-bootstrap'
-import AdminChats from '../modules/tables/AdminChats'
 import UserChats from '../modules/tables/UserChats'
 import ChatboxTablet from './chatbox/ChatboxTablet'
 import ChatboxCommentsTablet from './chatbox/ChatboxCommentsTablet'
@@ -60,19 +59,19 @@ export function MainTabletLeft(props) {
         onSelect={handleSelect}
       >
         {!props.user.loggedIn ? null : (
-          <Tab eventKey="adminchats" title={`Draftlist (${draftList.length})`}>
+          <Tab eventKey="userchats" title={`Draftlist (${draftList.length})`}>
             <DraftList />
           </Tab>
         )}
 
         {!props.user.loggedIn ? (
-          <Tab eventKey="userchats" title={`Userchats (${userTitle.length})`}>
+          <Tab eventKey="userchats" title={`Chats (${userTitle.length})`}>
             <div className="table-border-color">
               <UserChats />
             </div>
           </Tab>
         ) : (
-          <Tab eventKey="userchats" title={`Chatlist (${chatList.length})`}>
+          <Tab eventKey="chatlist" title={`Chatlist (${chatList.length})`}>
             <ChatList />
           </Tab>
         )}
