@@ -5,7 +5,6 @@ import Authorization from '../authorization/Authorization'
 import EditChats from '../modules/edit/EditChats'
 import EditDrafts from '../modules/edit/EditDrafts'
 import StartDraft from '../modules/edit/StartDraft'
-import ChatboxCommentsTablet from './chatbox/ChatboxCommentsTablet'
 import AboutGer from './about/AboutGer'
 import AboutEng from './about/AboutEng'
 import Title from '../modules/title/Title'
@@ -38,15 +37,6 @@ export function MainTabletRight(props) {
             <Title />
           </Tab>
         )}
-
-        {!props.user.loggedIn ? (
-          <Tab
-            eventKey="comments"
-            title={`Comments (${props.chat.comments.length})`}
-          >
-            <ChatboxCommentsTablet />
-          </Tab>
-        ) : null}
 
         {props.user.loggedIn ? (
           <Tab eventKey="chats" title="Edit Chat">

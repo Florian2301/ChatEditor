@@ -87,14 +87,12 @@ export function MainTabletLeft(props) {
           <ChatboxTablet />
         </Tab>
 
-        {props.user.loggedIn ? (
-          <Tab
-            eventKey="comments"
-            title={`Comments (${props.chat.comments.length})`}
-          >
-            <ChatboxCommentsTablet />
-          </Tab>
-        ) : null}
+        <Tab
+          eventKey="comments"
+          title={`Comments (${props.chat.comments.length})`}
+        >
+          <ChatboxCommentsTablet />
+        </Tab>
       </Tabs>
     </Container>
   )

@@ -117,7 +117,10 @@ export function MainMobile(props) {
           <ChatboxMobile />
         </Tab>
 
-        <Tab eventKey="comments" title="Comments">
+        <Tab
+          eventKey="comments"
+          title={`Comments (${props.chat.comments.length})`}
+        >
           <ChatboxCommentsMobile />
         </Tab>
 
