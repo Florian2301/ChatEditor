@@ -1,0 +1,40 @@
+#options {
+  margin-top: 1.5rem;
+}
+
+.options {
+  margin-left: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+
+.options-language-select {
+  width: fit-content;
+  background-color: lightgray;
+  border-radius: 1rem;
+  border-color: dodgerblue;
+  font-size: 1.2rem;
+}
+
+#options-link-clear {
+  font-size: 1.5rem;
+  text-decoration: underline;
+  margin-left: 3rem;
+}
+
+#options-link-clear:hover {
+  cursor: pointer;
+  color: dodgerblue;
+}
+
+/* mobile */
+#mobile-language {
+  margin-top: 1rem;
+  margin-right: 5rem;
+}
+
+#viewmobile {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  margin-left: 1rem;
+}

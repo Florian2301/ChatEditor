@@ -2,25 +2,22 @@
 .flexContainer-main {
   display: grid;
   grid-template-columns: 25% 50% 25%;
+  justify-items: center;
+  margin-left: 5%;
 }
 
 #item-1 {
-  margin-left: 2rem;
-  margin-top: -1rem;
   min-width: 25vw;
   max-width: 30vw;
 }
 
 #item-2 {
   justify-self: center;
-  margin-top: -1rem;
   min-width: 25vw;
   max-width: 31vw;
 }
 
 #item-3 {
-  justify-self: center;
-  margin-top: -1rem;
   min-width: 25vw;
   max-width: 30vw;
 }
@@ -29,7 +26,6 @@
 
 #responsive-container-tablet {
   width: 45%;
-  margin-top: 0rem;
 }
 
 /* ---------------- Mobile --------------------------- */
@@ -288,6 +284,26 @@
 }
 
 #uncontrolled-tab-drafts[aria-selected='true'] {
+  border-color: dodgerblue;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* options */
+#uncontrolled-tab-options {
+  background: none;
+  color: lightgray;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#uncontrolled-tab-options:hover {
+  border-color: dodgerblue;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+#uncontrolled-tab-options[aria-selected='true'] {
   border-color: dodgerblue;
   border-radius: 0.5rem;
   background-color: rgba(0, 0, 0, 0.3);

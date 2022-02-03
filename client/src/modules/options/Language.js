@@ -19,7 +19,7 @@ export function Language(props) {
       <Form>
         <Form.Group as={Row}>
           <select
-            className="header-language-select"
+            className="options-language-select"
             value={select}
             onChange={handleChange}
           >

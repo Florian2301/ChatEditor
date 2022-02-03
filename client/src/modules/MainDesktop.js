@@ -14,13 +14,18 @@ import ChatList from './tables/ChatList'
 import Authorization from '../authorization/Authorization'
 import AboutGer from './about/AboutGer'
 import AboutEng from './about/AboutEng'
-import { setKeyR } from '../redux/actions/user'
+import Options from './options/Options'
+import { setKeyR, setKeyL } from '../redux/actions/user'
 import { getAllTitles } from '../redux/actions/title'
 
 export function MainDesktop(props) {
   // function to select menu (tablet/mobile)
-  function handleSelect(key) {
+  function handleSelectR(key) {
     props.setKeyR(key)
+  }
+
+  function handleSelectL(key) {
+    props.setKeyL(key)
   }
 
   // get all titles when page is loading for the first time
@@ -67,6 +72,7 @@ export function MainDesktop(props) {
             defaultActiveKey={'userchats'}
             id="uncontrolled"
             style={{ borderBottom: 0 }}
+            onSelect={handleSelectL}
           >
             {!props.user.loggedIn ? null : (
               <Tab
@@ -111,12 +117,14 @@ export function MainDesktop(props) {
             >
               <ChatboxDesktop />
             </Tab>
-            <Tab
-              eventKey="comments"
-              title={`Comments (${props.chat.comments.length})`}
-            >
-              <ChatboxCommentsDesktop />
-            </Tab>
+            {props.chat.chatEditmode ? (
+              <Tab
+                eventKey="comments"
+                title={`Comments (${props.chat.comments.length})`}
+              >
+                <ChatboxCommentsDesktop />
+              </Tab>
+            ) : null}
           </Tabs>
         </Container>
       </div>
@@ -127,7 +135,7 @@ export function MainDesktop(props) {
             activeKey={props.user.keyR}
             id="uncontrolled"
             style={{ borderBottom: 0 }}
-            onSelect={handleSelect}
+            onSelect={handleSelectR}
           >
             {props.user.loggedIn ? (
               /* eventKey = about because initial state is "about", when page gets refreshed */
@@ -163,6 +171,18 @@ export function MainDesktop(props) {
             >
               <Authorization />
             </Tab>
+
+            {!props.user.loggedIn ? (
+              <Tab eventKey="options" title="Options">
+                <Options
+                  auto={props.auto}
+                  desktop={props.desktop}
+                  tablet={props.tablet}
+                  mobile={props.mobile}
+                  id="viewdestktop"
+                />
+              </Tab>
+            ) : null}
           </Tabs>
         </Container>
       </div>
@@ -183,6 +203,7 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = {
   setKeyR: setKeyR,
+  setKeyL: setKeyL,
   getAllTitles: getAllTitles,
 }
 

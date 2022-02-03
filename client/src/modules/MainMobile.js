@@ -13,10 +13,9 @@ import Authorization from '../authorization/Authorization'
 import AboutGer from './about/AboutGer'
 import AboutEng from './about/AboutEng'
 import Title from './title/Title'
-import { getUser, setKeyL, setKeyR } from '../redux/actions/user'
+import Options from './options/Options'
+import { getUser, setKeyL } from '../redux/actions/user'
 import { getAllTitles } from '../redux/actions/title'
-import SelectView from './header/SelectView'
-import Language from './header/Language'
 import 'firebase/auth'
 import './Main.css'
 
@@ -63,16 +62,6 @@ export function MainMobile(props) {
   // ------------------------------ RETURN -----------------------------------------------------------------------------
   return (
     <Container id="responsive-container-mobile">
-      <div id="mobile-header">
-        <Language id="mobile-language" />
-        <SelectView
-          auto={props.auto}
-          desktop={props.desktop}
-          tablet={props.tablet}
-          mobile={props.mobile}
-          id={props.id}
-        />
-      </div>
       <Tabs
         id="uncontrolled"
         style={{ borderBottom: 0 }}
@@ -113,16 +102,29 @@ export function MainMobile(props) {
           </Tab>
         ) : null}
 
-        <Tab eventKey="chatbox" title="Chatbox">
+        <Tab
+          eventKey="chatbox"
+          title={
+            !props.user.loggedIn
+              ? 'Chatbox'
+              : `Chatbox (${
+                  props.draft.draftEditmode
+                    ? props.draft.messages.length
+                    : props.chat.messages.length
+                })`
+          }
+        >
           <ChatboxMobile />
         </Tab>
 
-        <Tab
-          eventKey="comments"
-          title={`Comments (${props.chat.comments.length})`}
-        >
-          <ChatboxCommentsMobile />
-        </Tab>
+        {props.chat.chatEditmode ? (
+          <Tab
+            eventKey="comments"
+            title={`Comments (${props.chat.comments.length})`}
+          >
+            <ChatboxCommentsMobile />
+          </Tab>
+        ) : null}
 
         {!props.user.loggedIn ? (
           <Tab eventKey="title" title="Title">
@@ -139,6 +141,18 @@ export function MainMobile(props) {
         <Tab eventKey="login" title={props.user.loggedIn ? 'Profile' : 'Login'}>
           <Authorization />
         </Tab>
+
+        {!props.user.loggedIn ? (
+          <Tab eventKey="options" title="Options">
+            <Options
+              auto={props.auto}
+              desktop={props.desktop}
+              tablet={props.tablet}
+              mobile={props.mobile}
+              id="viewmobile"
+            />
+          </Tab>
+        ) : null}
       </Tabs>
     </Container>
   )
@@ -158,7 +172,6 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = {
   getUser: getUser,
   setKeyL: setKeyL,
-  setKeyR: setKeyR,
   getAllTitles: getAllTitles,
 }
 

@@ -8,6 +8,7 @@ import StartDraft from '../modules/edit/StartDraft'
 import AboutGer from './about/AboutGer'
 import AboutEng from './about/AboutEng'
 import Title from '../modules/title/Title'
+import Options from './options/Options'
 import { setKeyR } from '../redux/actions/user'
 // CSS in App.css/FlexMain
 
@@ -15,6 +16,8 @@ export function MainTabletRight(props) {
   function handleSelect(key) {
     props.setKeyR(key)
   }
+
+  // ------------- Return --------------------------------------------------------------------
 
   return (
     <Container fluid id="responsive-container-tablet">
@@ -57,6 +60,18 @@ export function MainTabletRight(props) {
             <Authorization />
           </Tab>
         )}
+
+        {!props.user.loggedIn ? (
+          <Tab eventKey="options" title="Options">
+            <Options
+              auto={props.auto}
+              desktop={props.desktop}
+              tablet={props.tablet}
+              mobile={props.mobile}
+              id="viewtablet"
+            />
+          </Tab>
+        ) : null}
       </Tabs>
     </Container>
   )

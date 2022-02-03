@@ -9,9 +9,6 @@ import MainTabletLeft from './modules/MainTabletLeft'
 import MainTabletRight from './modules/MainTabletRight'
 import MainMobile from './modules/MainMobile'
 import './App.css'
-import SelectView from './modules/header/SelectView'
-import Language from './modules/header/Language'
-import Header from './modules/header/Header'
 
 export default function App() {
   const [bigScreen, setBigScreen] = useState(1400) // 1200
@@ -55,53 +52,36 @@ export default function App() {
     return isMobile ? children : null
   }
 
-  const [show, setShow] = useState(true)
-
   // --------------------------------- RETURN -------------------------------------------
 
   return (
     <Provider store={store}>
       <div>
         <DesktopScreen>
-          <Header
+          <MainDesktop
             auto={viewAuto}
             desktop={viewDesktop}
             tablet={viewTablet}
             mobile={viewMobile}
             id="viewdestktop"
           />
-          <MainDesktop />
         </DesktopScreen>
 
         <TabletScreen>
-          {!show ? (
-            <div id="show-options" onClick={() => setShow(!show)}>
-              {show ? 'fade-out options' : 'show options'}
-            </div>
-          ) : null}
-          {show ? (
-            <div id="tablet-header">
-              <div id="fade-out-options" onClick={() => setShow(!show)}>
-                {show ? 'fade-out options' : 'show options'}
-              </div>
-              <Language id="tablet-language" />
-              <SelectView
-                auto={viewAuto}
-                desktop={viewDesktop}
-                tablet={viewTablet}
-                mobile={viewMobile}
-                id="viewtablet"
-              />
-            </div>
-          ) : null}
-          <Container id="flexTablet">
+          <Container id="tablet">
             <MainTabletLeft />
-            <MainTabletRight />
+            <MainTabletRight
+              auto={viewAuto}
+              desktop={viewDesktop}
+              tablet={viewTablet}
+              mobile={viewMobile}
+              id="viewtablet"
+            />
           </Container>
         </TabletScreen>
 
         <MobileScreen>
-          <Container id="flexMobile">
+          <Container id="mobile">
             <MainMobile
               auto={viewAuto}
               desktop={viewDesktop}

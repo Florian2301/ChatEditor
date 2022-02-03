@@ -1,7 +1,7 @@
 import React from 'react'
 import { Form } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { changeModus } from '../../redux/actions/user'
+import { changeModus, setKeyL, setKeyR } from '../../redux/actions/user'
 
 export function SelectView(props) {
   function handleChange(e) {
@@ -9,15 +9,21 @@ export function SelectView(props) {
     props.changeModus(modus)
     if (modus === 'auto') {
       props.auto()
+      props.setKeyR('about')
+      props.setKeyL('userchats')
     }
     if (modus === 'desktop') {
       props.desktop()
+      props.setKeyR('about')
     }
     if (modus === 'tablet') {
       props.tablet()
+      props.setKeyL('userchats')
+      props.setKeyR('about')
     }
     if (modus === 'mobile') {
       props.mobile()
+      props.setKeyL('userchats')
     }
   }
 
@@ -80,6 +86,8 @@ const mapStateToProps = (state) => ({
 
 const mapActionsToProps = {
   changeModus: changeModus,
+  setKeyL: setKeyL,
+  setKeyR: setKeyR,
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(SelectView)
