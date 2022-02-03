@@ -1,21 +1,25 @@
 import React from 'react'
-import './Options.css'
+import './Settings.css'
 import { connect } from 'react-redux'
 import { clearDisplay } from '../../redux/actions/user'
 import Panel from '../../elements/Panel'
 import SelectView from './SelectView'
 import Language from './Language'
+import { setKeyR, setKeyL } from '../../redux/actions/user'
 
-export function Options(props) {
+export function Settings(props) {
   // clear screen
   function clear() {
     props.clearDisplay()
+    props.setKeyL('userchats')
+    props.setKeyR('about')
   }
 
+  //----------------------RETURN------------------------------------------
   return (
-    <Panel title="Select options" id="options">
+    <Panel title="Settings" id="settings">
       <div className="options">
-        <p>I. Select a view</p>
+        <p>I. Select a view for your device</p>
         <SelectView
           auto={props.auto}
           desktop={props.desktop}
@@ -25,13 +29,13 @@ export function Options(props) {
         />
       </div>
       <div className="options">
-        <p>II. Select a language for chats</p>
+        <p>II. Select language of chats</p>
         <Language />
       </div>
       <div className="options">
-        <p>III. Clear screen</p>
+        <p>III. Go back to startpage</p>
         <p id="options-link-clear" onClick={clear}>
-          clear screen
+          Startpage
         </p>
       </div>
       <br />
@@ -42,11 +46,15 @@ export function Options(props) {
 // ------------- REDUX ---------------------------------------
 
 const mapStateToProps = (state) => {
-  return {}
+  return {
+    user: state.user,
+  }
 }
 
 const mapActionsToProps = {
   clearDisplay: clearDisplay,
+  setKeyL: setKeyL,
+  setKeyR: setKeyR,
 }
 
-export default connect(mapStateToProps, mapActionsToProps)(Options)
+export default connect(mapStateToProps, mapActionsToProps)(Settings)

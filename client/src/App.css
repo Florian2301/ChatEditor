@@ -1,5 +1,5 @@
 /* Tabletcontainer */
-#tablet {
+#tabletcontainer {
   margin-top: 0rem;
   display: flex;
   justify-content: center;
@@ -7,7 +7,7 @@
 }
 
 /* Mobilecontainer + header*/
-#mobile {
+#mobilecontainer {
   display: grid;
   justify-content: center;
   margin-top: 1rem;

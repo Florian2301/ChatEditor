@@ -8,7 +8,7 @@ import StartDraft from '../modules/edit/StartDraft'
 import AboutGer from './about/AboutGer'
 import AboutEng from './about/AboutEng'
 import Title from '../modules/title/Title'
-import Options from './options/Options'
+import Settings from './settings/Settings'
 import { setKeyR } from '../redux/actions/user'
 // CSS in App.css/FlexMain
 
@@ -36,24 +36,32 @@ export function MainTabletRight(props) {
             {props.draft.draftEditmode ? <EditDrafts /> : <StartDraft />}
           </Tab>
         ) : (
-          <Tab eventKey="title" title="Title">
-            <Title />
-          </Tab>
-        )}
-
-        {props.user.loggedIn ? (
-          <Tab eventKey="chats" title="Edit Chat">
-            <EditChats />
-          </Tab>
-        ) : (
           <Tab eventKey="about" title="About">
             {props.user.language === 'deutsch' ? <AboutGer /> : <AboutEng />}
           </Tab>
         )}
 
+        {!props.user.loggedIn && props.chat.chatEditmode ? (
+          <Tab eventKey="title" title="Title">
+            <Title />
+          </Tab>
+        ) : null}
+
+        {props.user.loggedIn ? (
+          <Tab eventKey="chats" title="Edit Chat">
+            <EditChats />
+          </Tab>
+        ) : null}
+
         {props.user.loggedIn ? (
           <Tab eventKey="login" title="Profile">
-            <Authorization />
+            <Authorization
+              auto={props.auto}
+              desktop={props.desktop}
+              tablet={props.tablet}
+              mobile={props.mobile}
+              id="viewtablet"
+            />
           </Tab>
         ) : (
           <Tab eventKey="login" title="Login">
@@ -62,8 +70,8 @@ export function MainTabletRight(props) {
         )}
 
         {!props.user.loggedIn ? (
-          <Tab eventKey="options" title="Options">
-            <Options
+          <Tab eventKey="settings" title="Settings">
+            <Settings
               auto={props.auto}
               desktop={props.desktop}
               tablet={props.tablet}

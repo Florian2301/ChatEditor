@@ -290,20 +290,20 @@
 }
 
 /* options */
-#uncontrolled-tab-options {
+#uncontrolled-tab-settings {
   background: none;
   color: lightgray;
   font-size: 1.5rem;
   font-weight: bold;
 }
 
-#uncontrolled-tab-options:hover {
+#uncontrolled-tab-settings:hover {
   border-color: dodgerblue;
   border-radius: 0.5rem;
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-#uncontrolled-tab-options[aria-selected='true'] {
+#uncontrolled-tab-settings[aria-selected='true'] {
   border-color: dodgerblue;
   border-radius: 0.5rem;
   background-color: rgba(0, 0, 0, 0.3);

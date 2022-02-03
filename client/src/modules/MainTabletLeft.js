@@ -49,8 +49,6 @@ export function MainTabletLeft(props) {
     return userTitle
   })
 
-  console.log('keyL', props.user.keyL)
-
   //------------------------------------------------------- return ------------------------------------------------------------
   return (
     <Container fluid id="responsive-container-tablet">
@@ -78,20 +76,22 @@ export function MainTabletLeft(props) {
           </Tab>
         )}
 
-        <Tab
-          eventKey="chatbox"
-          title={
-            !props.user.loggedIn
-              ? 'Chatbox'
-              : `Chatbox (${
-                  props.draft.draftEditmode
-                    ? props.draft.messages.length
-                    : props.chat.messages.length
-                })`
-          }
-        >
-          <ChatboxTablet />
-        </Tab>
+        {props.chat.chatEditmode || props.draft.draftEditmode ? (
+          <Tab
+            eventKey="chatbox"
+            title={
+              !props.user.loggedIn
+                ? 'Chatbox'
+                : `Chatbox (${
+                    props.draft.draftEditmode
+                      ? props.draft.messages.length
+                      : props.chat.messages.length
+                  })`
+            }
+          >
+            <ChatboxTablet />
+          </Tab>
+        ) : null}
 
         {props.chat.chatEditmode ? (
           <Tab

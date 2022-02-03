@@ -68,7 +68,7 @@ export default function App() {
         </DesktopScreen>
 
         <TabletScreen>
-          <Container id="tablet">
+          <Container id="tabletcontainer">
             <MainTabletLeft />
             <MainTabletRight
               auto={viewAuto}
@@ -81,7 +81,7 @@ export default function App() {
         </TabletScreen>
 
         <MobileScreen>
-          <Container id="mobile">
+          <Container id="mobilecontainer">
             <MainMobile
               auto={viewAuto}
               desktop={viewDesktop}

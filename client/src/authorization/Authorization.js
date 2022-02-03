@@ -10,7 +10,7 @@ import ForgotPassword from './ForgotPassword'
 import UpdateProfile from './UpdateProfile'
 import './Authorization.css'
 
-export default function App() {
+export default function Authorization(props) {
   return (
     <Container className="d-flex">
       <div className="w-100">
@@ -21,7 +21,13 @@ export default function App() {
                 path="/"
                 element={
                   <PrivateRoute>
-                    <Dashboard />
+                    <Dashboard
+                      auto={props.auto}
+                      desktop={props.desktop}
+                      tablet={props.tablet}
+                      mobile={props.mobile}
+                      id={props.id}
+                    />
                   </PrivateRoute>
                 }
               />

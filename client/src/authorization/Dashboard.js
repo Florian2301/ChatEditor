@@ -7,7 +7,14 @@ import Button from '../elements/Button'
 import firebase from 'firebase/compat/app'
 import 'firebase/compat/auth'
 import { connect } from 'react-redux'
-import { getUser, clearDisplay, logout } from '../redux/actions/user'
+import {
+  getUser,
+  clearDisplay,
+  logout,
+  setKeyR,
+  setKeyL,
+} from '../redux/actions/user'
+import SelectView from '../modules/settings/SelectView'
 
 export function Dashboard(props) {
   const [error, setError] = useState('')
@@ -22,6 +29,13 @@ export function Dashboard(props) {
   // get all Users for further actions (when update Profile is clicked)
   function getUsers() {
     props.getUser()
+  }
+
+  // go to startpage
+  function clear() {
+    props.clearDisplay()
+    props.setKeyL('userchats')
+    props.setKeyR('about')
   }
 
   // log out via firebase
@@ -75,6 +89,28 @@ export function Dashboard(props) {
 
   return (
     <Panel id="auth" title="Your profile">
+      <div className="options">
+        <h3 className="dashboard-settings">Settings</h3>
+        <br />
+        <p>I. Select a view for your device</p>
+        <SelectView
+          auto={props.auto}
+          desktop={props.desktop}
+          tablet={props.tablet}
+          mobile={props.mobile}
+          id={props.id}
+        />
+      </div>
+
+      <div className="options">
+        <p>II. Go back to startpage</p>
+        <p id="options-link-clear" onClick={clear}>
+          Startpage
+        </p>
+      </div>
+
+      <div className="dasboard-border">{''}</div>
+
       <div className="text-center mb-4">
         {error && (
           <Alert className="auth-alert" variant="danger">
@@ -127,25 +163,8 @@ const mapActionsToProps = {
   getUser: getUser,
   clearDisplay: clearDisplay,
   logout: logout,
+  setKeyL: setKeyL,
+  setKeyR: setKeyR,
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(Dashboard)
-
-/*
-var user = firebase.auth().currentUser;
-    if (user) {
-      welcomeMessage = "Welcome " + user.displayName + "!"
-      welcome message activated by prop "welcome"(login) 
-      console.log(user.displayName, "logged in")
-      console.log("getname1", user.displayName)
-    } 
-
-    firebase.auth().onAuthStateChanged((user) => {
-        if(user) {
-            if (user.email === "philomessenger@gmail.com") {
-                setTestuser(user.email)
-                console.log("email verified", user.emailVerified)
-                console.log("getname2", user.displayName)
-            }
-        }
-    })*/

@@ -14,7 +14,7 @@ import ChatList from './tables/ChatList'
 import Authorization from '../authorization/Authorization'
 import AboutGer from './about/AboutGer'
 import AboutEng from './about/AboutEng'
-import Options from './options/Options'
+import Settings from './settings/Settings'
 import { setKeyR, setKeyL } from '../redux/actions/user'
 import { getAllTitles } from '../redux/actions/title'
 
@@ -145,11 +145,7 @@ export function MainDesktop(props) {
               >
                 {props.draft.draftEditmode ? <EditDrafts /> : <StartDraft />}
               </Tab>
-            ) : (
-              <Tab eventKey="title" title={'Title'}>
-                <Title />
-              </Tab>
-            )}
+            ) : null}
 
             {props.user.loggedIn ? (
               <Tab eventKey="chats" title="Edit Chat">
@@ -165,16 +161,28 @@ export function MainDesktop(props) {
               </Tab>
             )}
 
+            {!props.user.loggedIn && props.chat.chatEditmode ? (
+              <Tab eventKey="title" title={'Title'}>
+                <Title />
+              </Tab>
+            ) : null}
+
             <Tab
               eventKey="login"
               title={props.user.loggedIn ? 'Profile' : 'Login'}
             >
-              <Authorization />
+              <Authorization
+                auto={props.auto}
+                desktop={props.desktop}
+                tablet={props.tablet}
+                mobile={props.mobile}
+                id="viewdestktop"
+              />
             </Tab>
 
             {!props.user.loggedIn ? (
-              <Tab eventKey="options" title="Options">
-                <Options
+              <Tab eventKey="settings" title="Settings">
+                <Settings
                   auto={props.auto}
                   desktop={props.desktop}
                   tablet={props.tablet}

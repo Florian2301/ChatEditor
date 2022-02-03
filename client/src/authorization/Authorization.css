@@ -94,6 +94,11 @@
   width: 100%;
   margin-top: 2.5rem;
 }
+
+.dashboard-settings {
+  text-decoration: underline;
+}
+
 /* ------ login -------------------- */
 
 #forgotpassword-link {

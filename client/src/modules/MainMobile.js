@@ -13,7 +13,7 @@ import Authorization from '../authorization/Authorization'
 import AboutGer from './about/AboutGer'
 import AboutEng from './about/AboutEng'
 import Title from './title/Title'
-import Options from './options/Options'
+import Settings from './settings/Settings'
 import { getUser, setKeyL } from '../redux/actions/user'
 import { getAllTitles } from '../redux/actions/title'
 import 'firebase/auth'
@@ -102,20 +102,22 @@ export function MainMobile(props) {
           </Tab>
         ) : null}
 
-        <Tab
-          eventKey="chatbox"
-          title={
-            !props.user.loggedIn
-              ? 'Chatbox'
-              : `Chatbox (${
-                  props.draft.draftEditmode
-                    ? props.draft.messages.length
-                    : props.chat.messages.length
-                })`
-          }
-        >
-          <ChatboxMobile />
-        </Tab>
+        {props.chat.chatEditmode || props.draft.draftEditmode ? (
+          <Tab
+            eventKey="chatbox"
+            title={
+              !props.user.loggedIn
+                ? 'Chatbox'
+                : `Chatbox (${
+                    props.draft.draftEditmode
+                      ? props.draft.messages.length
+                      : props.chat.messages.length
+                  })`
+            }
+          >
+            <ChatboxMobile />
+          </Tab>
+        ) : null}
 
         {props.chat.chatEditmode ? (
           <Tab
@@ -126,25 +128,31 @@ export function MainMobile(props) {
           </Tab>
         ) : null}
 
-        {!props.user.loggedIn ? (
+        {!props.user.loggedIn & props.chat.chatEditmode ? (
           <Tab eventKey="title" title="Title">
             <Title />
           </Tab>
         ) : null}
 
-        {!props.user.loggedIn ? (
+        {!props.user.loggedIn & !props.chat.chatEditmode ? (
           <Tab eventKey="about" title="About">
             {props.user.language === 'deutsch' ? <AboutGer /> : <AboutEng />}
           </Tab>
         ) : null}
 
         <Tab eventKey="login" title={props.user.loggedIn ? 'Profile' : 'Login'}>
-          <Authorization />
+          <Authorization
+            auto={props.auto}
+            desktop={props.desktop}
+            tablet={props.tablet}
+            mobile={props.mobile}
+            id="viewmobile"
+          />
         </Tab>
 
         {!props.user.loggedIn ? (
-          <Tab eventKey="options" title="Options">
-            <Options
+          <Tab eventKey="settings" title="Settings">
+            <Settings
               auto={props.auto}
               desktop={props.desktop}
               tablet={props.tablet}
