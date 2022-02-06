@@ -15,6 +15,7 @@ import {
   setKeyL,
 } from '../redux/actions/user'
 import SelectView from '../modules/settings/SelectView'
+import Language from '../modules/settings/Language'
 
 export function Dashboard(props) {
   const [error, setError] = useState('')
@@ -103,7 +104,12 @@ export function Dashboard(props) {
       </div>
 
       <div className="options">
-        <p>II. Go back to startpage</p>
+        <p>II. Select language of chats</p>
+        <Language />
+      </div>
+
+      <div className="options">
+        <p>III. Go back to startpage</p>
         <p id="options-link-clear" onClick={clear}>
           Startpage
         </p>
