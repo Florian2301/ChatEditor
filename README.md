@@ -1,39 +1,33 @@
 Note: To deploy this app on heroku, the package.json file has to be outside of the server folder.
 
-Its a MERN stack app, means I use MongoDB as my database, express as middleware, React as framework library and node.js as runtime environment for javascript. Additionally I use Redux for state management, firebase for authorization, react-bootstrap for styling some parts (e.g. for forms) and react hooks.
-
-For React hooks and refs you can find examples in:
-
-    client/src/modules/editchats/EditChats.js
-
-or for general usage of javascript within react: -/tables/Chatlist.js
-
-For my state management you find examples in:
-
-    client/src/redux/actions/chat.js
-
-and:
-
-    redux/reducers/chatReducer.js.
-
-An example for the firebase authorization you find in:
-
-    client/src/authorization/updateProfile.js
-
-Routes for the database you can find in:
-
-    server/routes/api/userChats.js
-
-Models for the database are in e.g.:
-
-    server/models/Chat.js
-
-This is a demoversion for a free online chat editor for writing texts/dialogues in form of a chat and same time a platform to publish those texts. I always wanted to write down my own philosophical ideas, but couldn't find the right way to bring them on paper. Finally in 2019 I thought about writing in form of dialogues to express my thoughts. So I decided to create my own online chat editor and a platform to publish the chats.
-
-At the beginning of 2020 I started to teach myself programming to become a web developer and building this app. This MERN stack single page application is my first project I have launched. I am using this one as a part of my job applications.
-
-I do not follow any commercial purposes with this app.
-
-See live demo on heroku (might take a few seconds to load, its free hosting on heroku):
+See live demo version on heroku:
 
 http://chat-editor.herokuapp.com/login
+
+About the app
+
+This app is the prototype of my self-developed chat editor. With this editor, anyone can write dialogues in the form of a chat and publish them here. Dialogues are a literary art form that I would like to transfer into a digital form with this editor. In times of messengers and social media, the "chat form" is a common way of expressing oneself. However, with previous online services, it is not possible or not intended to take on more than one speaker role, as these were primarily developed for social communication and interaction.
+This chat editor is therefore a platform on which I can "chat with myself", or in other words: on which I can write a digital dialogue.
+
+Technical details
+
+Technical Details
+The chat editor has been developed with the MERN stack, i.e. MongoDB as the database, Express as the backend framework, React as the frontend library and Nodejs as the JavaScript runtime environment. The underlying language is JavaScript. Redux was used for state management, the design was implemented with CSS and React bootstrap, and authentication with Firebase.
+
+- MERN (MongoDB, Express, React, Nodejs)
+- Javascript
+- Redux
+- React-Bootstrap and CSS
+- Firebase
+
+Concept and Development
+
+The app is my first extensive web application, which I conceptualised and developed myself as part of a self-study. The project has grown organically, i.e. there were always major adjustments and changes in the course of development, because at the beginning I only had a rough idea of how the idea of a chat editor could be implemented technically.
+
+The initial idea was to create a possibility to write and publish dialogues in the form of a chat. The chats should look like what one is used to from messengers such as Whatsapp. They are written from the first-person perspective, i.e. regardless of how many participants take part in a chat, one's own messages are always either on the left or on the right in the message flow. So to make the app look like a group chat, the first participant added is set as the first-order speaker (first-person perspective).
+
+As with other messenger services, it is also possible to reply to individual messages, which then have a reference to each other. The message being replied to then appears in a small extra window above the current message.
+
+The chats are initially written as a draft and are not publicly accessible. At this stage, they can be edited extensively. Content can be edited, messages can be moved or deleted. If necessary, new participants can also be added to a chat or old ones removed. After a chat has been published, it appears on the start page. Only the contents of individual messages can then be changed afterwards, e.g. to correct spelling mistakes. If a chat still needs major revision, it can be saved again as a draft and edited.
+
+The development of the chat editor has continuously changed and adapted with my learning progress in the field of web development. Not only has my ability to implement new functionalities grown, resulting in constant restructuring, but also my ability to, for example, combine and simplify functions and write a clean code.

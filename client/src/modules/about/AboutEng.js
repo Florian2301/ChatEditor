@@ -53,19 +53,21 @@ export default function About() {
               <Collapse in={about}>
                 <div className="about-details" id="example-collapse-text">
                   <p>
-                    This app is a demo version of a chat editor, which I
-                    developed by myself. Through this app everyone is able to
-                    write dialogues in form of a chat und publish those.
-                    Dialogues are form literary form of art, which I transfer to
-                    a digital form with this editor. In time of messengers and
-                    social media a “chat” is a common way to express yourself.
-                    Though it is not possible or not intended on previous online
-                    chat services to be more than one speaker. Online chats are
-                    mainly there for social communication and interaction.
+                    This app is the prototype of my self-developed chat editor.
+                    With this editor, anyone can write dialogues in the form of
+                    a chat and publish them here. Dialogues are a literary art
+                    form that I would like to transfer into a digital form with
+                    this editor. In times of messengers and social media, the
+                    "chat form" is a common way of expressing oneself. However,
+                    with previous online services, it is not possible or not
+                    intended to take on more than one speaker role, as these
+                    were primarily developed for social communication and
+                    interaction.
                   </p>
                   <p>
-                    This chat editor enables you to “chat with yourself”, or in
-                    other words: to write a digital dialogue.
+                    This chat editor is therefore a platform on which I can
+                    "chat with myself", or in other words: on which I can write
+                    a digital dialogue.
                   </p>
                 </div>
               </Collapse>
@@ -92,21 +94,18 @@ export default function About() {
               <Collapse in={background}>
                 <div className="about-details" id="example-collapse-text">
                   <p>
-                    Since many years I want to write down my philosophical
-                    thoughts about life, the self and the reality, but I never
-                    found the right way to express myself. In my mind I always
-                    had internal dialogues, some with myself, some with real or
-                    others with fictional people. I am aware that this is my
-                    special way of thinking, which I would like to let other
-                    people take part of.
+                    With this app, I have created a way for myself to write down
+                    my own philosophical thoughts about life, the self and
+                    reality. Dialogues are a suitable form for me to present
+                    philosophy in a lively and true-to-life way.
                   </p>
                   <p>
-                    My studies of philosophy at the university had a strong
-                    influence to my way of thinking and on my personality. Even
-                    though I do not intend to write an academic philosophy here.
-                    I rather like to be understood also from non-academic people
-                    and so I reach out for anyone who is interested in and enjoy
-                    philosophy, self-reflexion and the exchange of thoughts.
+                    My studies in philosophy have had a great impact on my
+                    thinking and my personality, although I do not intend here
+                    to pursue a purely academic philosophy, nor to address a
+                    purely academic audience. On the contrary, I am addressing
+                    all those who are interested in and enjoy philosophy,
+                    self-reflection and an exchange of ideas.
                   </p>
                 </div>
               </Collapse>
@@ -134,28 +133,50 @@ export default function About() {
               <Collapse in={concept}>
                 <div className="about-details" id="example-collapse-text">
                   <p>
-                    The concept and development of this chat editor changed and
-                    adjusted during my process about learning webdevelopment.
-                    From the beginning I had a rough idea of how the chat editor
-                    should look like. However during the development of the app
-                    the differentiation of the single steps to write a chat was
-                    growing on and on.
+                    The app is my first extensive web application, which I
+                    conceptualised and developed myself as part of a self-study.
+                    The project has grown organically, i.e. there were always
+                    major adjustments and changes in the course of development,
+                    because at the beginning I only had a rough idea of how the
+                    idea of a chat editor could be implemented technically.
                   </p>
                   <p>
-                    For example the different treatment of drafts and published
-                    chats. Also the question if and how published chats are able
-                    to be changed? To correct mistyping yes, but not adding new
-                    messages or new protagonists. In this case you have the
-                    option to safe the published chat as a draft and then upload
-                    it again as a chat.
+                    The initial idea was to create a possibility to write and
+                    publish dialogues in the form of a chat. The chats should
+                    look like what one is used to from messengers such as
+                    Whatsapp. They are written from the first-person
+                    perspective, i.e. regardless of how many participants take
+                    part in a chat, one's own messages are always either on the
+                    left or on the right in the message flow. So to make the app
+                    look like a group chat, the first participant added is set
+                    as the first-order speaker (first-person perspective).
                   </p>
                   <p>
-                    This app is a grown project, which means there were plenty
-                    restructuring, changing and adjustments. For example the
-                    state management was grown so far so I lost the overview
-                    about it. That was leading to an important insight about
-                    developing: to simplify and unification of functions and
-                    processes.
+                    As with other messenger services, it is also possible to
+                    reply to individual messages, which then have a reference to
+                    each other. The message being replied to then appears in a
+                    small extra window above the current message.
+                  </p>
+                  <p>
+                    The chats are initially written as a draft and are not
+                    publicly accessible. At this stage, they can be edited
+                    extensively. Content can be edited, messages can be moved or
+                    deleted. If necessary, new participants can also be added to
+                    a chat or old ones removed. After a chat has been published,
+                    it appears on the start page. Only the contents of
+                    individual messages can then be changed afterwards, e.g. to
+                    correct spelling mistakes. If a chat still needs major
+                    revision, it can be saved again as a draft and edited.
+                  </p>
+                  <p>
+                    The development of the chat editor has continuously changed
+                    and adapted with my learning progress in the field of web
+                    development. Not only has my ability to implement new
+                    functionalities grown, resulting in constant restructuring,
+                    but also my ability to, for example, combine and simplify
+                    functions and write a clean code. An overview of the
+                    technology used and a link to the code can be found in the
+                    next section "Technical details".
                   </p>
                 </div>
               </Collapse>
@@ -183,15 +204,16 @@ export default function About() {
               <Collapse in={tech}>
                 <div className="about-details" id="example-collapse-text">
                   <p>
-                    I developed this chat editor with the MEARN stack. MERN
-                    stands for MongoDb as database, Express as backend, React as
-                    Frontend and Nodejs as environment for developing. The
-                    programming language is javascript and as state management I
-                    am using Redux. The design is composed with CSS and
-                    React-Bootstrap.
+                    The chat editor has been developed with the MERN stack, i.e.
+                    MongoDB as the database, Express as the backend framework,
+                    React as the frontend library and Nodejs as the JavaScript
+                    runtime environment. The underlying language is JavaScript.
+                    Redux was used for state management, the design was
+                    implemented with CSS and React bootstrap, and authentication
+                    with Firebase.
                   </p>
                   <p>
-                    You can see the whole code{' '}
+                    You can see the code{' '}
                     <a
                       id="git"
                       href="https://github.com/Florian2301/ChatEditor"
@@ -206,6 +228,7 @@ export default function About() {
                   <p>- Javascript</p>
                   <p>- Redux</p>
                   <p>- React-Bootstrap and CSS</p>
+                  <p>- Firebase</p>
                 </div>
               </Collapse>
             </CSSTransition>
@@ -232,9 +255,10 @@ export default function About() {
               <Collapse in={future}>
                 <div className="about-details" id="example-collapse-text">
                   <p>
-                    The editor is as far developed that you can already write,
-                    edit and publish chats. However there are more features I am
-                    missing and which I will develop in the future:
+                    The editor is developed to the extent that it can write,
+                    edit and permanently publish chats. However, so far it is
+                    only a prototype of the chat editor, I still want to develop
+                    further modules and functions. Here are a few examples:
                   </p>
 
                   <p>
