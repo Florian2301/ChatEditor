@@ -42,9 +42,14 @@ export function Comments(props) {
 
   // ----------------------------------- RETURN --------------------------------------------------------------------------
   return (
-    <div className="comments" ref={props.commentRef}>
+    <div
+      className={props.author ? 'comments-author' : 'comments-user'}
+      ref={props.commentRef}
+    >
       <div className="comments-header">
-        <p className="comments-name">{props.name}</p>
+        <p className="comments-name">
+          {props.author ? props.name + ' (author)' : props.name}
+        </p>
         <p className="comments-date">{props.date}</p>
       </div>
       <div className="comments-body">

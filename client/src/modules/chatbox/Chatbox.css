@@ -139,10 +139,10 @@
   background-color: transparent;
   border-style: none;
 }
-
+/*
 .listgroup-chat-comments:nth-child(even) {
   margin-left: 20%;
-}
+}*/
 
 /*transition of messages*/
 .transition-message-enter {

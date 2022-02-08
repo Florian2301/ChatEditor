@@ -48,6 +48,8 @@ export function Dashboard(props) {
     try {
       await logout()
       history('/login')
+      props.setKeyL('userchats')
+      props.setKeyR('about')
     } catch {
       setError('Log out failed')
     }

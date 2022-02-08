@@ -109,6 +109,10 @@ const ChatSchema = new Schema({
         type: String,
         required: true,
       },
+      author: {
+        type: Boolean,
+        required: true,
+      },
     },
   ],
 })

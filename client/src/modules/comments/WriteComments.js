@@ -42,6 +42,7 @@ export function WriteComments(props) {
   function sendComment() {
     const name = nameRef.current.value
     const comment = commentRef.current.value
+    let authorOfChat
     //check if name or comment is set
     if (!name) {
       alert('set a name and then send it')
@@ -51,6 +52,11 @@ export function WriteComments(props) {
       alert('Write a comment and then send it')
       return
     }
+    if (!props.user.loggedIn) {
+      authorOfChat = false
+    } else {
+      authorOfChat = true
+    }
     // save comment as new object with date
     const dateOfComment = date.toLocaleDateString('en-CA', {
       year: 'numeric',
@@ -58,7 +64,12 @@ export function WriteComments(props) {
       day: '2-digit',
     })
     const comments = props.chat.comments
-    comments.push({ name, date: dateOfComment, text: comment })
+    comments.push({
+      name,
+      date: dateOfComment,
+      text: comment,
+      author: authorOfChat,
+    })
 
     // save comments in chat
     const title = props.chat.title

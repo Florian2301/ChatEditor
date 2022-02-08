@@ -49,6 +49,7 @@ export function ChatboxComments(props) {
                     name={c.name}
                     date={c.date}
                     text={c.text}
+                    author={c.author}
                     id={c._id}
                     commentRef={scrollToCommentRef}
                   />
