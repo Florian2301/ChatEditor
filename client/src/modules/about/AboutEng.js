@@ -42,7 +42,7 @@ export default function About() {
             aria-controls="example-collapse-text"
             aria-expanded={about}
           >
-            About the application
+            About this chat editor
           </div>
           <TransitionGroup>
             <CSSTransition
@@ -53,20 +53,18 @@ export default function About() {
               <Collapse in={about}>
                 <div className="about-details" id="example-collapse-text">
                   <p>
-                    This application is a prototype of my self-developed chat
-                    editor. With this editor, anyone can write dialogues in the
-                    form of a chat and publish them here. Dialogues are a
-                    literary art form that I would like to transfer into a
-                    digital form. In times of messengers and social media, the
-                    "chat form" is a common way of expressing oneself. However,
-                    with existing online services the intention is not to take
-                    on more than one speaker role, as these are primarily
-                    developed for social communication and interaction.
+                    This chat editor is a platform on which you can create a
+                    dialogue for up to six characters that converse with each
+                    other within one chat group.
                   </p>
                   <p>
-                    This chat editor is therefore a platform on which I can
-                    "chat with myself", or in other words: on which I can write
-                    a digital dialogue.
+                    This application is a prototype of a self-developed chat
+                    editor. Anyone can write dialogues in the form of a chat and
+                    publish them. Dialogues are a literary art form that
+                    transfer well into digital form. In times of messengers and
+                    social media, the "chat form" is a common way of expressing
+                    oneself. However, with existing chat applications the
+                    intention is not to take on more than one speaker role.
                   </p>
                 </div>
               </Collapse>
@@ -93,18 +91,17 @@ export default function About() {
               <Collapse in={background}>
                 <div className="about-details" id="example-collapse-text">
                   <p>
-                    With this application, I have created a way for myself to
-                    write down my philosophical thoughts about life, the self
-                    and reality. Dialogues are a suitable form for me to present
-                    philosophy in a lively and true-to-life way.
+                    I have created a way for myself to write philosophical
+                    thoughts about life, the self and reality. Dialogues are a
+                    suitable form for me to present philosophy in a lively and
+                    true-to-life way
                   </p>
                   <p>
                     My studies in philosophy have had a great impact on my
-                    thinking and personality, although I do not intend here to
-                    pursue a purely academic philosophy, nor to address a purely
-                    academic audience. On the contrary, I am addressing all
-                    those who are interested in and enjoy philosophy,
-                    self-reflection and an exchange of ideas.
+                    thinking and personality, although I do not intend to pursue
+                    a purely academic audience. I am addressing all those who
+                    are interested in and enjoy philosophy, self-reflection and
+                    an exchange of ideas.
                   </p>
                 </div>
               </Collapse>
@@ -141,19 +138,10 @@ export default function About() {
                   <p>
                     The initial idea was to create a platform to write and
                     publish dialogues in the form of a chat, being similar in
-                    appearance to that of messengers such as Whatsapp. They are
-                    written in the first-person perspective, i.e. regardless of
-                    how many participants take part in a chat, one's own
-                    messages are always either on the left or right in the
-                    message flow. Thus, to make the app look like a group chat
-                    the first participant added is set as the first-order
-                    speaker (first-person perspective).
-                  </p>
-                  <p>
-                    As with other messenger services, it is possible to reply to
-                    individual messages, which then have a reference to each
-                    other. The message being replied to then appears in an extra
-                    window above the current message.
+                    appearance to that of messengers such as Whatsapp. It is
+                    possible to reply to individual messages, which have a
+                    reference to each other. The message being replied to
+                    appears in an extra window above the current message.
                   </p>
                   <p>
                     The chats are initially written as a draft and are not
@@ -167,7 +155,7 @@ export default function About() {
                     can be saved again as a draft and edited.
                   </p>
                   <p>
-                    The development of the chat editor has continuously evolved
+                    The development of this chat editor has continuously evolved
                     as I have enhanced my workable knowledge of web development.
                     My ability to implement new functionalities has grown,
                     resulting in ongoing restructuring and simplification of
@@ -199,11 +187,11 @@ export default function About() {
               <Collapse in={tech}>
                 <div className="about-details" id="example-collapse-text">
                   <p>
-                    The chat editor has been developed with the MERN stack, i.e.
-                    MongoDB as the database, Express as the backend framework,
-                    React as the frontend library and Nodejs as the JavaScript
-                    runtime environment. The underlying language is JavaScript.
-                    Redux was used for state management, the design was
+                    This chat editor has been developed with the MERN stack,
+                    i.e. MongoDB as the database, Express as the back end
+                    framework, React as the front end library and Nodejs as the
+                    JavaScript runtime environment. The underlying language is
+                    JavaScript. Redux was used for state management, design was
                     implemented with CSS and React bootstrap, and authentication
                     with Firebase.
                   </p>
@@ -250,8 +238,8 @@ export default function About() {
                   <p>
                     The editor is developed to the extent that it can write,
                     edit and permanently publish chats. However, this is only a
-                    prototype of the chat editor, as I will be developing
-                    further modules and functions.
+                    prototype of the chat editor, as further modules and
+                    functions will be developed.
                   </p>
                   <p>For example:</p>
 

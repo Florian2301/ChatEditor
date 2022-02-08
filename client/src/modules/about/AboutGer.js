@@ -42,7 +42,7 @@ export default function About() {
             aria-controls="example-collapse-text"
             aria-expanded={about}
           >
-            Über diese App
+            Über den Chat-Editor
           </div>
           <TransitionGroup>
             <CSSTransition
@@ -53,22 +53,19 @@ export default function About() {
               <Collapse in={about}>
                 <div className="about-details" id="example-collapse-text">
                   <p>
-                    Diese App ist der Prototyp meines selbst entwickelten
-                    Chat-Editors. Mit diesem Editor kann jeder Dialoge in Form
-                    eines Chats schreiben und hier veröffentlichen. Dialoge sind
-                    eine literarische Kunstform, die ich mit diesem Editor in
-                    eine digitale Form überführen möchte. In Zeiten von
-                    Messengern und Social Media ist die „Chatform“ eine
-                    geläufige Art, sich zu auszudrücken. Jedoch ist es bei
-                    bisherigen Online-Diensten nicht möglich bzw. nicht
-                    vorgesehen, mehr als eine Sprecherrolle einzunehmen, da
-                    diese vornehmlich zur sozialen Kommunikation und Interaktion
-                    entwickelt wurden
+                    Dieser Chat-Editor ist eine Plattform auf der man Dialoge
+                    mit bis zu sechs Charakteren schreiben kann, die in einer
+                    Chatgruppe miteinander interagieren.
                   </p>
                   <p>
-                    Dieser Chat-Editor ist daher eine Plattform, auf der ich
-                    „mit mir selber chatten“ kann, oder in anderen Worten: auf
-                    der ich einen digitalen Dialog schreiben kann.
+                    Diese App ist der Prototyp eines selbst entwickelten
+                    Chat-Editors. Jeder kann mit diesem Dialoge in Form eines
+                    Chats schreiben und veröffentlichen. Dialoge sind eine
+                    literarische Kunstform, die gut in eine digitale Form
+                    überführt werden können. In Zeiten von Messengern und Social
+                    Media ist die „Chatform“ eine geläufige Art, sich zu
+                    auszudrücken. Jedoch ist es bei bisherigen Online-Diensten
+                    nicht vorgesehen, mehr als eine Sprecherrolle einzunehmen.
                   </p>
                 </div>
               </Collapse>
@@ -103,12 +100,10 @@ export default function About() {
                   </p>
                   <p>
                     Mein Studium der Philosophie hat mich in meinem Denken und
-                    meiner Persönlichkeit sehr geprägt, wobei ich hier nicht
-                    beabsichtige, eine rein akademische Philosophie zu betreiben
-                    noch mich an ein rein akademisches Publikum zu wenden. Im
-                    Gegenteil, ich wende mich an alle diejenigen, die an
-                    Philosophie, Selbstreflexion und einem Gedankenaustausch
-                    Interesse und ihre Freude haben.
+                    meiner Persönlichkeit sehr geprägt, wobei ich mich nicht an
+                    ein rein akademisches Publikum wende, sondern an alle
+                    diejenigen, die an Philosophie, Selbstreflexion und einem
+                    Gedankenaustausch Interesse und ihre Freude haben.
                   </p>
                 </div>
               </Collapse>
@@ -140,26 +135,16 @@ export default function About() {
                     im Rahmen eines Selbststudiums selbst konzeptioniert und
                     entwickelt habe. Das Projekt ist organisch gewachsen, d.h.
                     es kam es immer wieder zu größeren Anpassungen und
-                    Veränderungen im Laufe der Entwicklung.
+                    Veränderungen während der Entwicklung.
                   </p>
                   <p>
                     Die Idee war zunächst, eine Plattform zu schaffen, Dialoge
                     in Form eines Chats schreiben und veröffentlichen zu können.
                     Dabei sollen sie aussehen wie man es von Messengern wie z.B.
-                    Whatsapp gewohnt ist. Sie werden aus der Ich-Perspektive
-                    geschrieben, d.h unabhängig davon, wie viele Teilnehmer in
-                    einem Chat teilnehmen, die eigenen Nachrichten stehen immer
-                    entweder links oder rechts in dem Nachrichtenfluss. Um die
-                    App also wie einen Gruppenchat aussehen zu lassen, wird der
-                    erste hinzugefügte Teilnehmer als Sprecher erster Ordnung
-                    gesetzt (Ich-Perspektive).
-                  </p>
-                  <p>
-                    Wie bei anderen Messenger-Diensten lässt sich auch hier auf
-                    einzelne Nachrichten antworten, die dann einen Bezug
-                    zueinander haben. Die Nachricht, auf die geantwortet wird,
-                    erscheint dann in einem kleinen Fenster über der aktuellen
-                    Nachricht.
+                    Whatsapp gewohnt ist. Auch hier kann man auf einzelne
+                    Nachrichten antworten, die dann einen Bezug zueinander
+                    haben. Die Nachricht, auf die geantwortet wird, erscheint
+                    dann in einem kleinen Fenster über der aktuellen Nachricht.
                   </p>
                   <p>
                     Die Chats werden zunächst als Entwurf geschrieben und sind
@@ -260,11 +245,11 @@ export default function About() {
               <Collapse in={future}>
                 <div className="about-details" id="example-collapse-text">
                   <p>
-                    Der Editor ist so weit entwickelt, um Chats zu schreiben, zu
-                    bearbeiten und dauerhaft zu veröffentlichen. Jedoch befindet
-                    sich die Anwendung noch in der Entwicklungsphase und ist nur
-                    als Prototyp verfügbar, weitere Module und Funktionen werden
-                    noch entwickelt.
+                    Der Editor ist so weit entwickelt, um Chats schreiben zu
+                    können, zu bearbeiten und dauerhaft zu veröffentlichen.
+                    Jedoch befindet sich die Anwendung noch in der
+                    Entwicklungsphase und ist nur als Prototyp verfügbar,
+                    weitere Module und Funktionen werden noch entwickelt.
                   </p>
                   <p>Zum Beispiel:</p>
 
