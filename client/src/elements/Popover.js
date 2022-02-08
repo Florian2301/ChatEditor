@@ -20,7 +20,7 @@ export function PopoverHistory(props) {
   const InfoPopover = () => (
     <OverlayTrigger
       trigger={['click', 'focus']}
-      placement={window.innerWidth <= 1000 ? 'top' : 'right'}
+      placement={window.innerWidth <= 1000 ? 'left' : 'right'}
       overlay={popover}
     >
       <p id="popover-title">{date}</p>
