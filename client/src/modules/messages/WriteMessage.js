@@ -16,7 +16,7 @@ export function WriteMessage(props) {
   const [reply, setReply] = useState(false)
 
   // dropdown box to write a message
-  function writeMessage() {
+  function newMessage() {
     props.writeMessage(!write)
     setWrite(!write)
   }
@@ -250,7 +250,7 @@ export function WriteMessage(props) {
       }
     >
       <div>
-        <p id="write-message-collapse" onClick={() => writeMessage()}>
+        <p id="write-message-collapse" onClick={() => newMessage()}>
           {write ? 'view full chatbox' : 'write a message'}
         </p>
       </div>
