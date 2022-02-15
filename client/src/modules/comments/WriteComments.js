@@ -18,7 +18,7 @@ export function WriteComments(props) {
   const [write, setWrite] = useState(false)
 
   // dropdown box to write a comment
-  function writeComment() {
+  function newComment() {
     props.writeComment(!write)
     setWrite(!write)
   }
@@ -112,7 +112,7 @@ export function WriteComments(props) {
       }
     >
       <div>
-        <p id="write-comments-collapse" onClick={() => writeComment()}>
+        <p id="write-comments-collapse" onClick={() => newComment()}>
           {write ? 'view full chatbox' : 'write a comment'}
         </p>
       </div>
