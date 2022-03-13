@@ -209,6 +209,7 @@ const About: React.FC = () => {
                   <p>- MERN (MongoDB, Express, React, Nodejs)</p>
                   <p>- Javascript</p>
                   <p>- Redux</p>
+                  <p>- Typescript</p>
                   <p>- React-Bootstrap and CSS</p>
                   <p>- Firebase</p>
                 </div>

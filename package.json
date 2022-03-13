@@ -1,5 +1,5 @@
 {
-  "name": "the-messenger",
+  "name": "chat-editor",
   "version": "1.0.0",
   "description": "server-side chat-editor",
   "main": "./server/server.js",

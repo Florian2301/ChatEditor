@@ -77,6 +77,7 @@ const About = () => {
                                 React.createElement("p", null, "- MERN (MongoDB, Express, React, Nodejs)"),
                                 React.createElement("p", null, "- Javascript"),
                                 React.createElement("p", null, "- Redux"),
+                                React.createElement("p", null, "- Typescript"),
                                 React.createElement("p", null, "- React-Bootstrap und CSS"),
                                 React.createElement("p", null, "- Firebase")))))),
             React.createElement("br", null),
