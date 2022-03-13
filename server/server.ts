@@ -2,10 +2,13 @@ import express, { Request, Response } from 'express'
 import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
 import path from 'path'
-
+import compression from 'compression'
 import mongoURI from './config/keys.js'
 
 const app = express()
+
+// compression
+app.use(compression())
 
 // BodyParser Middleware
 app.use(bodyParser.json())
