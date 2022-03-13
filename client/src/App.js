@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import store from './store'
+import { store } from './store.js'
 import { Provider } from 'react-redux'
 import { useMediaQuery } from 'react-responsive'
 import { Container } from 'react-bootstrap'
-import MainDesktop from './modules/MainDesktop'
-import MainTabletLeft from './modules/MainTabletLeft'
-import MainTabletRight from './modules/MainTabletRight'
-import MainMobile from './modules/MainMobile'
+import MainDesktop from './modules/main/MainDesktop/MainDesktop'
+import MainTabletLeft from './modules/main/MainTablet/MainTabletLeft'
+import MainTabletRight from './modules/main/MainTablet/MainTabletRight'
+import MainMobile from './modules/main/MainMobile/MainMobile'
 import './App.css'
 
 export default function App() {

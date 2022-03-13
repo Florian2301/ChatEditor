@@ -7,17 +7,3 @@ export default function PrivateRoute({ children }) {
 
   return currentUser ? children : <Navigate to="/login" />
 }
-
-/*
-export default function PrivateRoute({ component: Component, ...rest }) {
-  const { currentUser } = useAuth()
-
-  return (
-    <Route
-      {...rest}
-      render={(props) => {
-        return currentUser ? <Component {...props} /> : <Navigate to="/login" />
-      }}
-    ></Route>
-  )
-}*/

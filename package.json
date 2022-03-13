@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "server-side chat-editor",
   "main": "./server/server.js",
+  "type": "module",
   "scripts": {
     "client-install": "npm install --prefix client",
     "start": "node ./server/server.js",
@@ -31,6 +32,8 @@
     "webpack-dev-server": "^4.7.3"
   },
   "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^17.0.18",
     "eslint-config-node": "^4.1.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.4",

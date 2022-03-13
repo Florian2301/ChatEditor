@@ -2,8 +2,8 @@ import React, { useRef, useState } from 'react'
 import { Form, Alert, Col, Row } from 'react-bootstrap'
 import { useAuth } from './AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
-import Button from '../elements/Button'
-import Panel from '../elements/Panel'
+import Button from '../elements/Button/Button'
+import Panel from '../elements/Panel/Panel'
 
 export default function ForgotPassword() {
   const emailRef = useRef()

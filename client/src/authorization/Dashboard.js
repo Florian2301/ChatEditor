@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { Alert } from 'react-bootstrap'
 import { useAuth } from './AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
-import Panel from '../elements/Panel'
-import Button from '../elements/Button'
+import Panel from '../elements/Panel/Panel'
+import Button from '../elements/Button/Button'
 import firebase from 'firebase/compat/app'
 import 'firebase/compat/auth'
 import { connect } from 'react-redux'
@@ -13,9 +13,9 @@ import {
   logout,
   setKeyR,
   setKeyL,
-} from '../redux/actions/user'
-import SelectView from '../modules/settings/SelectView'
-import Language from '../modules/settings/Language'
+} from '../redux/actions/user/user'
+import SelectView from '../modules/settings/SelectView/SelectView'
+import Language from '../modules/settings/Language/Language'
 
 export function Dashboard(props) {
   const [error, setError] = useState('')
@@ -63,7 +63,7 @@ export function Dashboard(props) {
 
   // if page reloads, user still logged in
   firebase.auth().onAuthStateChanged((user) => {
-    if (user && !props.user.loggedIn & !userLoggedOut) {
+    if (user && !props.user.loggedIn && !userLoggedOut) {
       props.getUser(user.displayName)
     }
   })

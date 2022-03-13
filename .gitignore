@@ -1,4 +1,9 @@
 node_modules
 keys.js
+keys.js.map
+keys.ts
 .env.local
 auth-prod.js
+empty.ts
+empty.js.map
+empty.js

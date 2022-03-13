@@ -2,10 +2,10 @@ import React, { useRef, useState } from 'react'
 import { Form, Alert, Col, Row } from 'react-bootstrap'
 import { useAuth } from './AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
-import Panel from '../elements/Panel'
-import Button from '../elements/Button'
+import Panel from '../elements/Panel/Panel'
+import Button from '../elements/Button/Button'
 import { connect } from 'react-redux'
-import { addUserToDB, getUser } from '../redux/actions/user'
+import { addUserToDB, getUser } from '../redux/actions/user/user'
 
 export function SignUp(props) {
   const usernameRef = useRef()

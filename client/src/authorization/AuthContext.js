@@ -1,12 +1,14 @@
+//import firebase from 'firebase/compat'
 import React, { useContext, useState, useEffect } from 'react'
 import { auth } from './firebase'
 
+//const AuthContext = createContext<firebase.User | null>(null)
 const AuthContext = React.createContext()
 
 export function useAuth() {
   return useContext(AuthContext)
 }
-
+//export function AuthProvider({ children } : { children: any}) {
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState()
   const [loading, setLoading] = useState(true)

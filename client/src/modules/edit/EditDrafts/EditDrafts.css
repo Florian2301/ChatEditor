@@ -1,0 +1,270 @@
+#edit-draft-panel {
+  margin-top: 1.5rem;
+}
+
+.edit-draft-scroll {
+  overflow: auto;
+  max-height: 75vh;
+}
+
+.edit-draft-scroll-mobile {
+  overflow: auto;
+  height: 55vh;
+}
+
+.edit-draft-top {
+  margin-top: 1rem;
+}
+
+.edit-draft-top-2 {
+  margin-top: 1.5rem;
+}
+
+.edit-draft-top-3 {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* title */
+.edit-draft-title {
+  color: lightgray;
+}
+
+.edit-draft-title-input {
+  font-size: 14px;
+  width: 90%;
+}
+
+/* name of philosopher */
+.edit-draft-name {
+  color: lightgray;
+}
+
+.edit-draft-input-name {
+  font-size: 14px;
+  width: 40%;
+  height: 2.5rem;
+}
+
+/* add new name */
+.edit-draft-add-name {
+  color: lightgray;
+}
+
+.edit-draft-add-name-input {
+  width: 40%;
+  font-size: 14px;
+  height: 2.5rem;
+}
+
+.edit-draft-add-name-link {
+  font-size: 1.2rem;
+  color: white;
+  margin-top: 0.5rem;
+  text-decoration: underline;
+}
+
+.edit-draft-add-name-link:hover {
+  color: dodgerblue;
+  cursor: pointer;
+}
+
+/* select color */
+.edit-draft-name-color-select {
+  font-size: 10px;
+  width: 9rem;
+  height: 2rem;
+  cursor: pointer;
+  margin-left: 10rem;
+}
+
+/* tags */
+.edit-draft-tags {
+  color: lightgray;
+}
+
+.edit-draft-tags-input {
+  font-size: 14px;
+  width: 90%;
+}
+
+/* description */
+.edit-draft-description {
+  color: lightgray;
+}
+
+.edit-draft-description-input {
+  font-size: 14px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  width: 90%;
+}
+
+/* author */
+.edit-draft-author {
+  color: lightgray;
+}
+
+.edit-draft-author-input {
+  font-size: 14px;
+  width: 40%;
+  height: 2.5rem;
+}
+
+/* admin */
+.edit-draft-admin {
+  color: lightgray;
+}
+
+.edit-draft-admin-toggle {
+  font-size: 12px;
+  margin-top: 0.5rem;
+}
+
+.edit-draft-user-toggle {
+  font-size: 12px;
+  margin-top: 0.5rem;
+}
+
+/* select language */
+.edit-draft-language {
+  color: lightgray;
+}
+
+.edit-draft-language-select {
+  font-size: 10px;
+  width: 25%;
+  cursor: pointer;
+}
+
+/* draft details read only mode */
+.draft-details {
+  color: lightgray;
+  font-size: 1.5rem;
+  display: grid;
+  grid-template-columns: 26% 74%;
+  grid-template-rows: auto;
+  word-wrap: break-word;
+}
+
+.draft-info {
+  word-wrap: break-word;
+  margin-left: 1.5rem;
+  color: white;
+}
+
+#draft-info-description {
+  overflow: auto;
+  max-height: 10rem;
+}
+
+#draft-info-description-margin {
+  margin-top: 0.5rem;
+}
+
+#draft-details-tags {
+  margin-top: 0.5rem;
+}
+
+#draft-info-tags {
+  overflow: auto;
+  max-height: 5rem;
+}
+
+#draft-info-phil {
+  margin: 0rem;
+}
+
+#draft-messages {
+  font-size: 1.5rem;
+}
+
+#draft-date {
+  font-size: 1.5rem;
+}
+
+#draft-details-download {
+  margin-bottom: 1rem;
+}
+
+.link-download-draft {
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: white;
+}
+
+.link-download-draft:hover {
+  font-size: 1.5rem;
+  text-decoration: underline;
+  color: white;
+}
+
+/* border-line */
+.draft-details-border {
+  border-top-style: groove;
+  width: 100%;
+}
+
+/* Spinner */
+.draft-details-spinner {
+  text-align: center;
+  margin-top: 1rem;
+  color: dodgerblue;
+}
+
+/* actions */
+.draft-details-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.draft-details-btn {
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  margin-right: 1.5rem;
+  background-color: silver;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.draft-details-btn:hover {
+  border-color: dodgerblue;
+}
+
+.draft-details-btn:active {
+  background-color: dodgerblue;
+}
+
+.draft-details-btn-clear {
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  margin-right: 1.5rem;
+  background-color: silver;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.draft-details-btn-clear:hover {
+  border-color: dodgerblue;
+}
+
+.draft-details-btn-clear:active {
+  background-color: dodgerblue;
+}
+
+.draft-details-btn-delete {
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  background-color: silver;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.draft-details-btn-delete:hover {
+  border-color: red;
+}
+
+.draft-details-btn-delete:active {
+  background-color: red;
+}
