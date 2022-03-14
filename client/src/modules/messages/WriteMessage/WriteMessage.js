@@ -1,11 +1,12 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js';
 import { v4 as uuidv4 } from 'uuid';
 import Button from '../../../elements/Button/Button.js';
 import { updateDraft, writeMessage } from '../../../redux/actions/draft/draft.js';
 import './WriteMessage.css';
-import EmojiPicker from '../../../elements/Emoji/EmojiPicker.js';
+//React.lazy
+const EmojiPicker = React.lazy(() => import('../../../elements/Emoji/EmojiPicker.js'));
 const WriteMessage = (props) => {
     // state
     const dispatch = useDispatch();
@@ -225,7 +226,8 @@ const WriteMessage = (props) => {
                     }),
                     React.createElement("option", { value: draft.messages.length + 1 }, draft.messages.length + 1)))),
             React.createElement("textarea", { className: "textarea-write-message", ref: messageRef, placeholder: 'write your message here', onKeyDown: keyEventTextarea, rows: window.innerWidth <= 1000 ? 4 : 5 }),
-            React.createElement(EmojiPicker, { getEmoji: addEmoji }),
+            React.createElement(Suspense, { fallback: React.createElement("div", null, "Loading...") },
+                React.createElement(EmojiPicker, { getEmoji: addEmoji })),
             React.createElement("div", { className: "writemessage-btn" }, draft.philosopher.map((phil) => {
                 return (React.createElement(Button, { key: uuidv4(), className: "button-chat-Phil", id: phil.name, label: phil.name, handleClick: () => getPhil(phil.name, phil.color) }));
             })))) : null)));

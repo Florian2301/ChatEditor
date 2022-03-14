@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js';
 import { writeComment } from '../../../redux/actions/user/user.js';
@@ -6,7 +6,8 @@ import { updateChatDetails } from '../../../redux/actions/chat/chat.js';
 import { writeMessage } from '../../../redux/actions/draft/draft.js';
 import './WriteComments.css';
 import Button from '../../../elements/Button/Button.js';
-import EmojiPicker from '../../../elements/Emoji/EmojiPicker.js';
+// React.lazy
+const EmojiPicker = React.lazy(() => import('../../../elements/Emoji/EmojiPicker.js'));
 const WriteComments = () => {
     // state
     const dispatch = useDispatch();
@@ -89,7 +90,8 @@ const WriteComments = () => {
                 React.createElement(Button, { className: "btn-write-comment", label: "send", handleClick: () => sendComment() })),
             React.createElement("div", { className: "column-write-comment" },
                 React.createElement("textarea", { className: "textarea-write-comment", ref: commentRef, placeholder: 'write your comment here', onKeyDown: keyEventTextarea, rows: window.innerWidth <= 1000 ? 4 : 5 }),
-                React.createElement(EmojiPicker, { getEmoji: addEmoji })))) : null)));
+                React.createElement(Suspense, { fallback: React.createElement("div", null, "Loading...") },
+                    React.createElement(EmojiPicker, { getEmoji: addEmoji }))))) : null)));
 };
 export default WriteComments;
 //# sourceMappingURL=WriteComments.js.map

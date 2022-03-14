@@ -1,12 +1,15 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, Suspense } from 'react'
 import { useDispatch } from 'react-redux'
 import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
 import { v4 as uuidv4 } from 'uuid'
 import Button from '../../../elements/Button/Button.js'
 import { updateDraft, writeMessage } from '../../../redux/actions/draft/draft.js'
 import './WriteMessage.css'
-import EmojiPicker from '../../../elements/Emoji/EmojiPicker.js'
+//import EmojiPicker from '../../../elements/Emoji/EmojiPicker.js'
 import {StateUser, StateDraft, Philosopher, Messages} from '../../../redux/interfaces/interfaces'
+
+//React.lazy
+const EmojiPicker = React.lazy(() => import('../../../elements/Emoji/EmojiPicker.js'))
 
 const WriteMessage = (props: {scrollTo: any, defaultScroll: any}) => {
   // state
@@ -310,7 +313,9 @@ const WriteMessage = (props: {scrollTo: any, defaultScroll: any}) => {
               onKeyDown={keyEventTextarea}
               rows={window.innerWidth <= 1000 ? 4 : 5}
             />
-            <EmojiPicker getEmoji={addEmoji} />
+            <Suspense fallback={<div>Loading...</div>}>
+              <EmojiPicker getEmoji={addEmoji} />
+            </Suspense>
 
             <div className="writemessage-btn">
               {draft.philosopher.map((phil: any) => {
