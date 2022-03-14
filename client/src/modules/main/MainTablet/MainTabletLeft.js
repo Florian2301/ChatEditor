@@ -1,18 +1,18 @@
 import React, { useEffect, Suspense } from 'react';
+import '../Main.css';
+import { Container, Tab, Tabs } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js';
-import { Container, Tab, Tabs } from 'react-bootstrap';
-import UserChats from '../../tables/UserChats/UserChats.js';
-import ChatboxTablet from '../../chatbox/Tablet/ChatboxTablet.js';
-import ChatboxCommentsTablet from '../../chatbox/TabletComments/ChatboxCommentsTablet.js';
-//import DraftList from '../../tables/DraftList/DraftList.js'
-//import ChatList from '../../tables/ChatList/ChatList.js'
 import { setKeyL } from '../../../redux/actions/user/user.js';
 import { getAllTitles } from '../../../redux/actions/title/title.js';
-import '../Main.css';
+import ChatboxCommentsTablet from '../../chatbox/TabletComments/ChatboxCommentsTablet.js';
+import ChatboxTablet from '../../chatbox/Tablet/ChatboxTablet.js';
+import UserChats from '../../tables/UserChats/UserChats.js';
+//import DraftList from '../../tables/DraftList/DraftList.js'
+//import ChatList from '../../tables/ChatList/ChatList.js'
 // Lazy Load
-const DraftList = React.lazy(() => import('../../tables/DraftList/DraftList.js'));
 const ChatList = React.lazy(() => import('../../tables/ChatList/ChatList.js'));
+const DraftList = React.lazy(() => import('../../tables/DraftList/DraftList.js'));
 const MainTabletLeft = () => {
     // State
     const dispatch = useDispatch();

@@ -1,24 +1,24 @@
 import React, { Suspense } from 'react'
+import '../Main.css'
+import { Container, Tab, Tabs } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
-import { Container, Tab, Tabs } from 'react-bootstrap'
+import { setKeyR } from '../../../redux/actions/user/user.js'
+import {StateChat, StateUser, StateDraft } from '../../../redux/interfaces/interfaces'
+import AboutEng from '../../about/Eng/AboutEng.js'
+import AboutGer from '../../about/Ger/AboutGer.js'
 import Authorization from '../../../authorization/Authorization.js'
+import Settings from '../../settings/Settings/Settings.js'
+import Title from '../../title/Title.js'
 //import EditChats from '../../edit/EditChats/EditChats.js'
 //import EditDrafts from '../../edit/EditDrafts/EditDrafts.js'
 //import StartDraft from '../../edit/StartDraft/StartDraft.js'
-import AboutGer from '../../about/Ger/AboutGer.js'
-import AboutEng from '../../about/Eng/AboutEng.js'
-import Title from '../../title/Title.js'
-import Settings from '../../settings/Settings/Settings.js'
-import { setKeyR } from '../../../redux/actions/user/user.js'
-import {StateChat, StateUser, StateDraft } from '../../../redux/interfaces/interfaces'
-import '../Main.css'
 
 
 // Lazy Load
-const StartDraft = React.lazy(() => import ('../../edit/StartDraft/StartDraft.js'))
-const EditDrafts = React.lazy(() => import ('../../edit/EditDrafts/EditDrafts.js'))
 const EditChats = React.lazy(() => import ('../../edit/EditChats/EditChats.js'))
+const EditDrafts = React.lazy(() => import ('../../edit/EditDrafts/EditDrafts.js'))
+const StartDraft = React.lazy(() => import ('../../edit/StartDraft/StartDraft.js'))
 
 
 const MainTabletRight: React.FC = (props: any) => {

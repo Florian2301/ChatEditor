@@ -1,9 +1,7 @@
 import React, { useRef, useState } from 'react'
-import { Form, Alert, Col, Row, Spinner } from 'react-bootstrap'
-import { v4 as uuidv4 } from 'uuid'
-import Panel from '../../../elements/Panel/Panel.js'
-import Button from '../../../elements/Button/Button.js'
 import './StartDraft.css'
+import { v4 as uuidv4 } from 'uuid'
+import { Form, Alert, Col, Row, Spinner } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
 import {
@@ -15,6 +13,8 @@ import {
 } from '../../../redux/actions/draft/draft.js'
 import { clearDisplay } from '../../../redux/actions/user/user.js'
 import {StateDraft, StateUser, Philosopher} from '../../../redux/interfaces/interfaces'
+import Button from '../../../elements/Button/Button.js'
+import Panel from '../../../elements/Panel/Panel.js'
 
 const StartDraft: React.FC = () => {
   // state

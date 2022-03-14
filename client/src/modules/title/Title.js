@@ -1,10 +1,10 @@
 import React from 'react';
-import { useTypedSelector } from '../../redux/hooks/useTypeSelector.js';
 import './Title.css';
+import { v4 as uuidv4 } from 'uuid';
+import { useTypedSelector } from '../../redux/hooks/useTypeSelector.js';
+import { PDFDownloadLink } from '@react-pdf/renderer';
 import Panel from '../../elements/Panel/Panel.js';
 import PDF from '../../elements/PDF/PDF.js';
-import { PDFDownloadLink } from '@react-pdf/renderer';
-import { v4 as uuidv4 } from 'uuid';
 const Title = () => {
     const title = useTypedSelector((state) => state.title);
     const chat = useTypedSelector((state) => state.chat);

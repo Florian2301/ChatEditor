@@ -1,10 +1,11 @@
 import React, { useRef, useState, Suspense } from 'react';
+import './WriteMessage.css';
+import { v4 as uuidv4 } from 'uuid';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js';
-import { v4 as uuidv4 } from 'uuid';
-import Button from '../../../elements/Button/Button.js';
 import { updateDraft, writeMessage } from '../../../redux/actions/draft/draft.js';
-import './WriteMessage.css';
+import Button from '../../../elements/Button/Button.js';
+//import EmojiPicker from '../../../elements/Emoji/EmojiPicker.js'
 //React.lazy
 const EmojiPicker = React.lazy(() => import('../../../elements/Emoji/EmojiPicker.js'));
 const WriteMessage = (props) => {

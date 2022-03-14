@@ -1,14 +1,14 @@
 import React from 'react'
 import './UserChats.css'
+import { v4 as uuidv4 } from 'uuid'
 import { useDispatch } from 'react-redux'
 import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
-import { v4 as uuidv4 } from 'uuid'
 import { clearDisplay, setKeyL, setKeyR } from '../../../redux/actions/user/user.js'
 import { getOneChat } from '../../../redux/actions/chat/chat.js'
 import { getOneTitle } from '../../../redux/actions/title/title.js'
-import Popover from '../../../elements/Popover/Popover.js'
 import { writeMessage } from '../../../redux/actions/draft/draft.js'
 import { StateUser, StateTitle, UserChats } from '../../../redux/interfaces/interfaces'
+import Popover from '../../../elements/Popover/Popover.js'
 
 
 const UserChats: React.FC = () => {

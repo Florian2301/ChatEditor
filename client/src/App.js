@@ -1,28 +1,27 @@
 import React, { useState, Suspense } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import './App.css'
 import { store } from './store.js'
 import { Provider } from 'react-redux'
 import { useMediaQuery } from 'react-responsive'
 import { Container } from 'react-bootstrap'
 //import MainDesktop from './modules/main/MainDesktop/MainDesktop'
-import MainTabletLeft from './modules/main/MainTablet/MainTabletLeft'
-import MainTabletRight from './modules/main/MainTablet/MainTabletRight'
-import MainMobile from './modules/main/MainMobile/MainMobile'
-import './App.css'
+//import MainMobile from './modules/main/MainMobile/MainMobile'
+//import MainTabletLeft from './modules/main/MainTablet/MainTabletLeft'
+//import MainTabletRight from './modules/main/MainTablet/MainTabletRight'
 
 const MainDesktop = React.lazy(() =>
   import('./modules/main/MainDesktop/MainDesktop')
 )
-/*
+const MainMobile = React.lazy(() =>
+  import('./modules/main/MainMobile/MainMobile')
+)
 const MainTabletLeft = React.lazy(() =>
   import('./modules/main/MainTablet/MainTabletLeft')
 )
 const MainTabletRight = React.lazy(() =>
   import('./modules/main/MainTablet/MainTabletRight')
 )
-const MainMobile = React.lazy(() =>
-  import('./modules/main/MainMobile/MainMobile')
-)*/
 
 export default function App() {
   const [bigScreen, setBigScreen] = useState(1400) // 1200
@@ -72,37 +71,43 @@ export default function App() {
     <Provider store={store}>
       <div>
         <DesktopScreen>
-          <MainDesktop
-            auto={viewAuto}
-            desktop={viewDesktop}
-            tablet={viewTablet}
-            mobile={viewMobile}
-            id="viewdestktop"
-          />
-        </DesktopScreen>
-
-        <TabletScreen>
-          <Container id="tabletcontainer">
-            <MainTabletLeft />
-            <MainTabletRight
+          <Suspense fallback={<div>Loading...</div>}>
+            <MainDesktop
               auto={viewAuto}
               desktop={viewDesktop}
               tablet={viewTablet}
               mobile={viewMobile}
-              id="viewtablet"
+              id="viewdestktop"
             />
+          </Suspense>
+        </DesktopScreen>
+
+        <TabletScreen>
+          <Container id="tabletcontainer">
+            <Suspense fallback={<div>Loading...</div>}>
+              <MainTabletLeft />
+              <MainTabletRight
+                auto={viewAuto}
+                desktop={viewDesktop}
+                tablet={viewTablet}
+                mobile={viewMobile}
+                id="viewtablet"
+              />
+            </Suspense>
           </Container>
         </TabletScreen>
 
         <MobileScreen>
           <Container id="mobilecontainer">
-            <MainMobile
-              auto={viewAuto}
-              desktop={viewDesktop}
-              tablet={viewTablet}
-              mobile={viewMobile}
-              id="viewmobile"
-            />
+            <Suspense fallback={<div>Loading...</div>}>
+              <MainMobile
+                auto={viewAuto}
+                desktop={viewDesktop}
+                tablet={viewTablet}
+                mobile={viewMobile}
+                id="viewmobile"
+              />
+            </Suspense>
           </Container>
         </MobileScreen>
       </div>

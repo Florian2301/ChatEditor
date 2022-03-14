@@ -1,8 +1,8 @@
 import React from 'react';
+import './Comments.css';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js';
 import { updateChatDetails } from '../../../redux/actions/chat/chat.js';
-import './Comments.css';
 const Comments = (props) => {
     // state
     const dispatch = useDispatch();

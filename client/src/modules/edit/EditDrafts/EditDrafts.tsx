@@ -1,11 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react'
-import { Form, Alert, Col, Row, Spinner } from 'react-bootstrap'
-import { v4 as uuidv4 } from 'uuid'
-import PDF from '../../../elements/PDF/PDF.js'
-import { PDFDownloadLink } from '@react-pdf/renderer'
-import Panel from '../../../elements/Panel/Panel.js'
-import Button from '../../../elements/Button/Button.js'
 import './EditDrafts.css'
+import { v4 as uuidv4 } from 'uuid'
+import { Form, Alert, Col, Row, Spinner } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
 import {
@@ -19,6 +15,11 @@ import { clearDisplay } from '../../../redux/actions/user/user.js'
 import { saveChat, getUserChats } from '../../../redux/actions/chat/chat.js'
 import { publishTitle } from '../../../redux/actions/title/title.js'
 import {StateChat, StateUser, StateDraft, Philosopher, Messages, UserChats, Comments} from '../../../redux/interfaces/interfaces'
+import Button from '../../../elements/Button/Button.js'
+import Panel from '../../../elements/Panel/Panel.js'
+import PDF from '../../../elements/PDF/PDF.js'
+import { PDFDownloadLink } from '@react-pdf/renderer'
+
 
 const EditDrafts: React.FC = () => {
   // state

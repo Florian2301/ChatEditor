@@ -1,12 +1,12 @@
 import React from 'react'
-import { useTypedSelector } from '../../redux/hooks/useTypeSelector.js'
-import { Philosopher } from '../../redux/interfaces/interfaces.js'
 import './Title.css'
+import { v4 as uuidv4 } from 'uuid'
+import { useTypedSelector } from '../../redux/hooks/useTypeSelector.js'
+import { StateChat, StateTitle } from '../../redux/interfaces/interfaces'
+import { Philosopher } from '../../redux/interfaces/interfaces.js'
+import { PDFDownloadLink } from '@react-pdf/renderer'
 import Panel from '../../elements/Panel/Panel.js'
 import PDF from '../../elements/PDF/PDF.js'
-import { PDFDownloadLink } from '@react-pdf/renderer'
-import { v4 as uuidv4 } from 'uuid'
-import { StateChat, StateTitle } from '../../redux/interfaces/interfaces'
 
 
 const Title: React.FC = () => {

@@ -2,10 +2,10 @@ import React from 'react';
 import './Settings.css';
 import { useDispatch } from 'react-redux';
 import { clearDisplay } from '../../../redux/actions/user/user.js';
+import { setKeyR, setKeyL } from '../../../redux/actions/user/user.js';
+import Language from '../Language/Language.js';
 import Panel from '../../../elements/Panel/Panel.js';
 import SelectView from '../SelectView/SelectView.js';
-import Language from '../Language/Language.js';
-import { setKeyR, setKeyL } from '../../../redux/actions/user/user.js';
 const Settings = (props) => {
     const dispatch = useDispatch();
     // clear screen

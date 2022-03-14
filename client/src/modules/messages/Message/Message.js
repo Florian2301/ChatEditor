@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import './Message.css';
+import { v4 as uuidv4 } from 'uuid';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js';
 import { updateChat } from '../../../redux/actions/chat/chat.js';
