@@ -15,12 +15,13 @@ import {StateChat, StateUser, StateDraft } from '../../../redux/interfaces/inter
 import '../Main.css'
 
 
-const MainTabletRight: React.FC = (props: any) => {
-  // Lazy Load
-  const StartDraft = React.lazy(() => import ('../../edit/StartDraft/StartDraft.js'))
-  const EditDrafts = React.lazy(() => import ('../../edit/EditDrafts/EditDrafts.js'))
-  const EditChats = React.lazy(() => import ('../../edit/EditChats/EditChats.js'))
+// Lazy Load
+const StartDraft = React.lazy(() => import ('../../edit/StartDraft/StartDraft.js'))
+const EditDrafts = React.lazy(() => import ('../../edit/EditDrafts/EditDrafts.js'))
+const EditChats = React.lazy(() => import ('../../edit/EditChats/EditChats.js'))
 
+
+const MainTabletRight: React.FC = (props: any) => {
   // state
   const dispatch = useDispatch()
   const chat: StateChat = useTypedSelector((state) => state.chat)

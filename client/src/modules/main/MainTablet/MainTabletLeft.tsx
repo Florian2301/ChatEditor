@@ -12,11 +12,11 @@ import { getAllTitles } from '../../../redux/actions/title/title.js'
 import {StateChat, StateUser, StateDraft, StateTitle, UserTitles, Chat, UserDrafts} from '../../../redux/interfaces/interfaces'
 import '../Main.css'
 
-const MainTabletLeft: React.FC = () => {
-  // Lazy Load
-  const DraftList = React.lazy(() => import ('../../tables/DraftList/DraftList.js'))
-  const ChatList = React.lazy(() => import ('../../tables/ChatList/ChatList.js'))
+// Lazy Load
+const DraftList = React.lazy(() => import ('../../tables/DraftList/DraftList.js'))
+const ChatList = React.lazy(() => import ('../../tables/ChatList/ChatList.js'))
 
+const MainTabletLeft: React.FC = () => {
   // State
   const dispatch = useDispatch()
   const title: StateTitle = useTypedSelector((state) => state.title)

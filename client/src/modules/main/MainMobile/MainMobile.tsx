@@ -20,15 +20,16 @@ import { getAllTitles } from '../../../redux/actions/title/title.js'
 import '../Main.css'
 import {StateChat, StateUser, StateDraft, StateTitle, UserTitles, Chat, UserDrafts} from '../../../redux/interfaces/interfaces'
 
-// mobile version
-const MainMobile: React.FC = (props: any) => {
-  // Lazy Load
+// Lazy Load
   const DraftList = React.lazy(() => import ('../../tables/DraftList/DraftList.js'))
   const StartDraft = React.lazy(() => import ('../../edit/StartDraft/StartDraft.js'))
   const EditDrafts = React.lazy(() => import ('../../edit/EditDrafts/EditDrafts.js'))
   const EditChats = React.lazy(() => import ('../../edit/EditChats/EditChats.js'))
   const ChatList = React.lazy(() => import ('../../tables/ChatList/ChatList.js'))
 
+
+// mobile version
+const MainMobile: React.FC = (props: any) => {
   // State
   const dispatch = useDispatch()
   const title: StateTitle = useTypedSelector((state) => state.title)
