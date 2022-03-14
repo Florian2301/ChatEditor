@@ -1,24 +1,30 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, Suspense } from 'react'
 import { useDispatch } from 'react-redux'
 import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
 import { Container, Tab, Tabs } from 'react-bootstrap'
 import UserChats from '../../tables/UserChats/UserChats.js'
 import ChatboxTablet from '../../chatbox/Tablet/ChatboxTablet.js'
 import ChatboxCommentsTablet from '../../chatbox/TabletComments/ChatboxCommentsTablet.js'
-import DraftList from '../../tables/DraftList/DraftList.js'
-import ChatList from '../../tables/ChatList/ChatList.js'
+//import DraftList from '../../tables/DraftList/DraftList.js'
+//import ChatList from '../../tables/ChatList/ChatList.js'
 import { setKeyL } from '../../../redux/actions/user/user.js'
 import { getAllTitles } from '../../../redux/actions/title/title.js'
 import {StateChat, StateUser, StateDraft, StateTitle, UserTitles, Chat, UserDrafts} from '../../../redux/interfaces/interfaces'
 import '../Main.css'
 
 const MainTabletLeft: React.FC = () => {
+  // Lazy Load
+  const DraftList = React.lazy(() => import ('../../tables/DraftList/DraftList.js'))
+  const ChatList = React.lazy(() => import ('../../tables/ChatList/ChatList.js'))
+
+  // State
   const dispatch = useDispatch()
   const title: StateTitle = useTypedSelector((state) => state.title)
   const chat: StateChat = useTypedSelector((state) => state.chat)
   const draft: StateDraft = useTypedSelector((state) => state.draft)
   const user: StateUser = useTypedSelector((state) => state.user)
 
+  // sets key for active tabs
   function handleSelect(key: string | null) {
     key !== null? dispatch(setKeyL(key)) : null
   }
@@ -70,7 +76,9 @@ const MainTabletLeft: React.FC = () => {
       >
         {!user.loggedIn ? null : (
           <Tab eventKey="userchats" title={`Draftlist (${draftList.length})`}>
-            <DraftList />
+            <Suspense fallback={<div>Loading...</div>}>
+              <DraftList />
+            </Suspense>
           </Tab>
         )}
 
@@ -82,7 +90,9 @@ const MainTabletLeft: React.FC = () => {
           </Tab>
         ) : (
           <Tab eventKey="chatlist" title={`Chatlist (${chatList.length})`}>
-            <ChatList />
+            <Suspense fallback={<div>Loading...</div>}>
+              <ChatList />
+            </Suspense>
           </Tab>
         )}
 

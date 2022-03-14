@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, Suspense } from 'react'
 import { useDispatch } from 'react-redux'
 import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
 import '../Main.css'
@@ -7,11 +7,11 @@ import ChatboxDesktop from '../../chatbox/Desktop/ChatboxDesktop.js'
 import ChatboxCommentsDesktop from '../../chatbox/DesktopComments/ChatboxCommentsDesktop.js'
 import Title from '../../title/Title.js'
 import UserChats from '../../tables/UserChats/UserChats.js'
-import StartDraft from '../../edit/StartDraft/StartDraft.js'
-import EditDrafts from '../../edit/EditDrafts/EditDrafts.js'
-import DraftList from '../../tables/DraftList/DraftList.js'
-import EditChats from '../../edit/EditChats/EditChats.js'
-import ChatList from '../../tables/ChatList/ChatList.js'
+//import StartDraft from '../../edit/StartDraft/StartDraft.js'
+//import EditDrafts from '../../edit/EditDrafts/EditDrafts.js'
+//import DraftList from '../../tables/DraftList/DraftList.js'
+//import EditChats from '../../edit/EditChats/EditChats.js'
+//import ChatList from '../../tables/ChatList/ChatList.js'
 import Authorization from '../../../authorization/Authorization.js'
 import AboutGer from '../../about/Ger/AboutGer.js'
 import AboutEng from '../../about/Eng/AboutEng.js'
@@ -22,6 +22,14 @@ import {StateChat, StateUser, StateDraft, StateTitle, UserTitles, Chat, UserDraf
 
 
 const MainDesktop: React.FC = (props: any) => {
+  // Lazy Load
+  const DraftList = React.lazy(() => import ('../../tables/DraftList/DraftList.js'))
+  const StartDraft = React.lazy(() => import ('../../edit/StartDraft/StartDraft.js'))
+  const EditDrafts = React.lazy(() => import ('../../edit/EditDrafts/EditDrafts.js'))
+  const EditChats = React.lazy(() => import ('../../edit/EditChats/EditChats.js'))
+  const ChatList = React.lazy(() => import ('../../tables/ChatList/ChatList.js'))
+
+  //State
   const dispatch = useDispatch()
   const title: StateTitle = useTypedSelector((state) => state.title)
   const chat: StateChat = useTypedSelector((state) => state.chat)
@@ -92,7 +100,9 @@ const MainDesktop: React.FC = (props: any) => {
                 eventKey="userchats"
                 title={`Draftlist (${draftList.length})`}
               >
-                <DraftList />
+                <Suspense fallback={<div>Loading...</div>}>
+                  <DraftList />
+                </Suspense>
               </Tab>
             )}
 
@@ -102,7 +112,9 @@ const MainDesktop: React.FC = (props: any) => {
               </Tab>
             ) : (
               <Tab eventKey="chatlist" title={`Chatlist (${chatList.length})`}>
-                <ChatList />
+                <Suspense fallback={<div>Loading...</div>}>
+                  <ChatList />
+                </Suspense>
               </Tab>
             )}
           </Tabs>
@@ -156,13 +168,17 @@ const MainDesktop: React.FC = (props: any) => {
                 eventKey="about"
                 title={draft.draftEditmode ? 'Edit Draft' : 'Start Draft'}
               >
-                {draft.draftEditmode ? <EditDrafts /> : <StartDraft />}
+                <Suspense fallback={<div>Loading...</div>}>
+                  {draft.draftEditmode ? <EditDrafts /> : <StartDraft />}
+                </Suspense>
               </Tab>
             ) : null}
 
             {user.loggedIn ? (
               <Tab eventKey="chats" title="Edit Chat">
-                <EditChats />
+                <Suspense fallback={<div>Loading...</div>}>
+                  <EditChats />
+                </Suspense>
               </Tab>
             ) : (
               <Tab eventKey="about" title="About">

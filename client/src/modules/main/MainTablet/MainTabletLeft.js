@@ -1,21 +1,26 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js';
 import { Container, Tab, Tabs } from 'react-bootstrap';
 import UserChats from '../../tables/UserChats/UserChats.js';
 import ChatboxTablet from '../../chatbox/Tablet/ChatboxTablet.js';
 import ChatboxCommentsTablet from '../../chatbox/TabletComments/ChatboxCommentsTablet.js';
-import DraftList from '../../tables/DraftList/DraftList.js';
-import ChatList from '../../tables/ChatList/ChatList.js';
+//import DraftList from '../../tables/DraftList/DraftList.js'
+//import ChatList from '../../tables/ChatList/ChatList.js'
 import { setKeyL } from '../../../redux/actions/user/user.js';
 import { getAllTitles } from '../../../redux/actions/title/title.js';
 import '../Main.css';
 const MainTabletLeft = () => {
+    // Lazy Load
+    const DraftList = React.lazy(() => import('../../tables/DraftList/DraftList.js'));
+    const ChatList = React.lazy(() => import('../../tables/ChatList/ChatList.js'));
+    // State
     const dispatch = useDispatch();
     const title = useTypedSelector((state) => state.title);
     const chat = useTypedSelector((state) => state.chat);
     const draft = useTypedSelector((state) => state.draft);
     const user = useTypedSelector((state) => state.user);
+    // sets key for active tabs
     function handleSelect(key) {
         key !== null ? dispatch(setKeyL(key)) : null;
     }
@@ -55,11 +60,13 @@ const MainTabletLeft = () => {
     return (React.createElement(Container, { fluid: true, id: "responsive-container-tablet" },
         React.createElement(Tabs, { activeKey: user.keyL, id: "uncontrolled", style: { borderBottom: 0 }, onSelect: handleSelect },
             !user.loggedIn ? null : (React.createElement(Tab, { eventKey: "userchats", title: `Draftlist (${draftList.length})` },
-                React.createElement(DraftList, null))),
+                React.createElement(Suspense, { fallback: React.createElement("div", null, "Loading...") },
+                    React.createElement(DraftList, null)))),
             !user.loggedIn ? (React.createElement(Tab, { eventKey: "userchats", title: `Chats (${userTitle.length})` },
                 React.createElement("div", { className: "table-border-color" },
                     React.createElement(UserChats, null)))) : (React.createElement(Tab, { eventKey: "chatlist", title: `Chatlist (${chatList.length})` },
-                React.createElement(ChatList, null))),
+                React.createElement(Suspense, { fallback: React.createElement("div", null, "Loading...") },
+                    React.createElement(ChatList, null)))),
             React.createElement(Tab, { eventKey: "chatbox", title: !user.loggedIn
                     ? 'Chatbox'
                     : `Chatbox (${draft.draftEditmode
