@@ -18,13 +18,13 @@ import AboutEng from '../../about/Eng/AboutEng.js';
 import Settings from '../../settings/Settings/Settings.js';
 import { setKeyR, setKeyL } from '../../../redux/actions/user/user.js';
 import { getAllTitles } from '../../../redux/actions/title/title.js';
+// Lazy Load
+const DraftList = React.lazy(() => import('../../tables/DraftList/DraftList.js'));
+const StartDraft = React.lazy(() => import('../../edit/StartDraft/StartDraft.js'));
+const EditDrafts = React.lazy(() => import('../../edit/EditDrafts/EditDrafts.js'));
+const EditChats = React.lazy(() => import('../../edit/EditChats/EditChats.js'));
+const ChatList = React.lazy(() => import('../../tables/ChatList/ChatList.js'));
 const MainDesktop = (props) => {
-    // Lazy Load
-    const DraftList = React.lazy(() => import('../../tables/DraftList/DraftList.js'));
-    const StartDraft = React.lazy(() => import('../../edit/StartDraft/StartDraft.js'));
-    const EditDrafts = React.lazy(() => import('../../edit/EditDrafts/EditDrafts.js'));
-    const EditChats = React.lazy(() => import('../../edit/EditChats/EditChats.js'));
-    const ChatList = React.lazy(() => import('../../tables/ChatList/ChatList.js'));
     //State
     const dispatch = useDispatch();
     const title = useTypedSelector((state) => state.title);

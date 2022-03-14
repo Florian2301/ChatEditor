@@ -10,10 +10,10 @@ import ChatboxCommentsTablet from '../../chatbox/TabletComments/ChatboxCommentsT
 import { setKeyL } from '../../../redux/actions/user/user.js';
 import { getAllTitles } from '../../../redux/actions/title/title.js';
 import '../Main.css';
+// Lazy Load
+const DraftList = React.lazy(() => import('../../tables/DraftList/DraftList.js'));
+const ChatList = React.lazy(() => import('../../tables/ChatList/ChatList.js'));
 const MainTabletLeft = () => {
-    // Lazy Load
-    const DraftList = React.lazy(() => import('../../tables/DraftList/DraftList.js'));
-    const ChatList = React.lazy(() => import('../../tables/ChatList/ChatList.js'));
     // State
     const dispatch = useDispatch();
     const title = useTypedSelector((state) => state.title);

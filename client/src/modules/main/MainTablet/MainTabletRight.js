@@ -12,11 +12,11 @@ import Title from '../../title/Title.js';
 import Settings from '../../settings/Settings/Settings.js';
 import { setKeyR } from '../../../redux/actions/user/user.js';
 import '../Main.css';
+// Lazy Load
+const StartDraft = React.lazy(() => import('../../edit/StartDraft/StartDraft.js'));
+const EditDrafts = React.lazy(() => import('../../edit/EditDrafts/EditDrafts.js'));
+const EditChats = React.lazy(() => import('../../edit/EditChats/EditChats.js'));
 const MainTabletRight = (props) => {
-    // Lazy Load
-    const StartDraft = React.lazy(() => import('../../edit/StartDraft/StartDraft.js'));
-    const EditDrafts = React.lazy(() => import('../../edit/EditDrafts/EditDrafts.js'));
-    const EditChats = React.lazy(() => import('../../edit/EditChats/EditChats.js'));
     // state
     const dispatch = useDispatch();
     const chat = useTypedSelector((state) => state.chat);
