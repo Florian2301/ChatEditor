@@ -6,9 +6,11 @@ import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
 import { writeMessage } from '../../../redux/actions/draft/draft.js'
 import { StateChat, StateUser, StateDraft } from '../../../redux/interfaces/interfaces'
 import { Container, ListGroup } from 'react-bootstrap'
-import WriteComments from '../../comments/WriteComments/WriteComments.js'
 import Comments from '../../comments/Comments/Comments.js'
 import Panel from '../../../elements/Panel/Panel.js'
+import WriteComments from '../../comments/WriteComments/WriteComments.js'
+
+
 
 
 

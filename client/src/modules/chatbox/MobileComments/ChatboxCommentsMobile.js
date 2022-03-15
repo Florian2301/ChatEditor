@@ -5,9 +5,9 @@ import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js';
 import { writeMessage } from '../../../redux/actions/draft/draft.js';
 import { Container, ListGroup } from 'react-bootstrap';
-import WriteComments from '../../comments/WriteComments/WriteComments.js';
 import Comments from '../../comments/Comments/Comments.js';
 import Panel from '../../../elements/Panel/Panel.js';
+import WriteComments from '../../comments/WriteComments/WriteComments.js';
 const ChatboxComments = () => {
     // state
     const dispatch = useDispatch();
