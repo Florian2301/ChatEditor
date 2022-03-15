@@ -1,15 +1,16 @@
-import React, { useRef, useEffect } from 'react'
 import '../ChatboxComments.css'
-import { v4 as uuidv4 } from 'uuid'
-import { useDispatch } from 'react-redux'
-import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
-import { writeMessage } from '../../../redux/actions/draft/draft.js'
-import { StateChat, StateUser, StateDraft } from '../../../redux/interfaces/interfaces'
+
 import { Container, ListGroup } from 'react-bootstrap'
+import React, { useEffect, useRef } from 'react'
+import { StateChat, StateDraft, StateUser } from '../../../redux/interfaces/interfaces'
+
 import Comments from '../../comments/Comments/Comments.js'
 import Panel from '../../../elements/Panel/Panel.js'
 import WriteComments from '../../comments/WriteComments/WriteComments.js'
-
+import { useDispatch } from 'react-redux'
+import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
+import { v4 as uuidv4 } from 'uuid'
+import { writeMessage } from '../../../redux/actions/draft/draft.js'
 
 const ChatboxComments: React.FC = () => {
   // state

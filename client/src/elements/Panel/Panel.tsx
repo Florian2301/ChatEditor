@@ -1,6 +1,6 @@
-import React from 'react'
 import './Panel.css'
 
+import React from 'react'
 
 export default function Panel(props: {id: string, title: string, children: any}) {
   return (

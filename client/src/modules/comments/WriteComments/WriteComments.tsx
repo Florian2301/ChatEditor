@@ -1,12 +1,15 @@
-import React, { useRef, useState, Suspense } from 'react'
 import './WriteComments.css'
+
+import {Comments, StateChat, StateUser} from '../../../redux/interfaces/interfaces'
+import React, { Suspense, useRef, useState } from 'react'
+
+import Button from '../../../elements/Button/Button.js'
+import { updateChatDetails } from '../../../redux/actions/chat/chat.js'
 import { useDispatch } from 'react-redux'
 import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
 import { writeComment } from '../../../redux/actions/user/user.js'
-import { updateChatDetails } from '../../../redux/actions/chat/chat.js'
 import { writeMessage } from '../../../redux/actions/draft/draft.js'
-import {StateChat, StateUser, Comments } from '../../../redux/interfaces/interfaces'
-import Button from '../../../elements/Button/Button.js'
+
 //import EmojiPicker from '../../../elements/Emoji/EmojiPicker.js'
 
 

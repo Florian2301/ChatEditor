@@ -1,17 +1,18 @@
-import React, { useRef, useEffect, useState } from 'react'
 import '../Chatbox.css'
-import { v4 as uuidv4 } from 'uuid'
-import { useDispatch } from 'react-redux'
-import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
-import { saveTitle, publishTitle } from '../../../redux/actions/title/title.js'
-import { StateChat, StateUser, StateDraft, StateTitle, ChatboxMessages } from '../../../redux/interfaces/interfaces'
-import { Container, ListGroup } from 'react-bootstrap'
+
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
-import useDynamicRefs from 'use-dynamic-refs'
+import { ChatboxMessages, StateChat, StateDraft, StateTitle, StateUser } from '../../../redux/interfaces/interfaces'
+import { Container, ListGroup } from 'react-bootstrap'
+import React, { useEffect, useRef, useState } from 'react'
+import { publishTitle, saveTitle } from '../../../redux/actions/title/title.js'
+
 import Message from '../../messages/Message/Message.js'
 import Panel from '../../../elements/Panel/Panel.js'
 import WriteMessage from '../../messages/WriteMessage/WriteMessage.js'
-
+import { useDispatch } from 'react-redux'
+import useDynamicRefs from 'use-dynamic-refs'
+import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
+import { v4 as uuidv4 } from 'uuid'
 
 const ChatboxMobile: React.FC = () => {
   // state
