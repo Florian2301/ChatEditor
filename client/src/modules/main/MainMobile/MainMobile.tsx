@@ -2,11 +2,10 @@ import '../Main.css'
 
 import {Chat, StateChat, StateDraft, StateTitle, StateUser, UserDrafts, UserTitles} from '../../../redux/interfaces/interfaces'
 import { Container, Tab, Tabs } from 'react-bootstrap'
-import React, { useEffect } from 'react'
+import React, { Suspense, useEffect } from 'react'
 
 import AboutEng from '../../about/Eng/AboutEng.js'
 import AboutGer from '../../about/Ger/AboutGer.js'
-import Authorization from '../../../authorization/Authorization.js'
 import ChatList from '../../tables/ChatList/ChatList.js'
 import ChatboxCommentsMobile from '../../chatbox/MobileComments/ChatboxCommentsMobile.js'
 import ChatboxMobile from '../../chatbox/Mobile/ChatboxMobile.js'
@@ -22,6 +21,23 @@ import { setKeyL } from '../../../redux/actions/user/user.js'
 import { useDispatch } from 'react-redux'
 import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
 
+//import Authorization from '../../../authorization/Authorization.js'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const Authorization = React.lazy(() => import('../../../authorization/Authorization.js'))
 // Lazy Load
 /*
 const ChatList = React.lazy(() => import ('../../tables/ChatList/ChatList.js'))
@@ -160,6 +176,7 @@ const MainMobile: React.FC = (props: any) => {
         ) : null}
 
         <Tab eventKey="login" title={user.loggedIn ? 'Profile' : 'Login'}>
+          <Suspense fallback={<div>Loading...</div>}>
           <Authorization
             auto={props.auto}
             desktop={props.desktop}
@@ -167,6 +184,7 @@ const MainMobile: React.FC = (props: any) => {
             mobile={props.mobile}
             id="viewmobile"
           />
+          </Suspense>
         </Tab>
 
         {!user.loggedIn ? (

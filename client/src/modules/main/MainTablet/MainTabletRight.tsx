@@ -1,14 +1,13 @@
 import '../Main.css'
 
 import { Container, Tab, Tabs } from 'react-bootstrap'
+import React, { Suspense } from 'react'
 import {StateChat, StateDraft, StateUser} from '../../../redux/interfaces/interfaces'
 
 import AboutEng from '../../about/Eng/AboutEng.js'
 import AboutGer from '../../about/Ger/AboutGer.js'
-import Authorization from '../../../authorization/Authorization.js'
 import EditChats from '../../edit/EditChats/EditChats.js'
 import EditDrafts from '../../edit/EditDrafts/EditDrafts.js'
-import React from 'react'
 import Settings from '../../settings/Settings/Settings.js'
 import StartDraft from '../../edit/StartDraft/StartDraft.js'
 import Title from '../../title/Title.js'
@@ -16,6 +15,18 @@ import { setKeyR } from '../../../redux/actions/user/user.js'
 import { useDispatch } from 'react-redux'
 import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
 
+//import Authorization from '../../../authorization/Authorization.js'
+
+
+
+
+
+
+
+
+
+
+const Authorization = React.lazy(() => import('../../../authorization/Authorization.js'))
 // Lazy Load
 /*
 const EditChats = React.lazy(() => import ('../../edit/EditChats/EditChats.js'))
@@ -73,6 +84,7 @@ const MainTabletRight: React.FC = (props: any) => {
 
         {user.loggedIn ? (
           <Tab eventKey="login" title={user.loggedIn ? 'Profile' : 'Login'}>
+            <Suspense fallback={<div>Loading...</div>}>
             <Authorization
               auto={props.auto}
               desktop={props.desktop}
@@ -80,6 +92,7 @@ const MainTabletRight: React.FC = (props: any) => {
               mobile={props.mobile}
               id="viewtablet"
             />
+            </Suspense>
           </Tab>
         ) : (
           <Tab eventKey="settings" title="Settings">
