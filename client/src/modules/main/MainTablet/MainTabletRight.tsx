@@ -1,25 +1,27 @@
-import React, { Suspense } from 'react'
 import '../Main.css'
+
 import { Container, Tab, Tabs } from 'react-bootstrap'
-import { useDispatch } from 'react-redux'
-import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
-import { setKeyR } from '../../../redux/actions/user/user.js'
-import {StateChat, StateUser, StateDraft } from '../../../redux/interfaces/interfaces'
+import {StateChat, StateDraft, StateUser} from '../../../redux/interfaces/interfaces'
+
 import AboutEng from '../../about/Eng/AboutEng.js'
 import AboutGer from '../../about/Ger/AboutGer.js'
 import Authorization from '../../../authorization/Authorization.js'
+import EditChats from '../../edit/EditChats/EditChats.js'
+import EditDrafts from '../../edit/EditDrafts/EditDrafts.js'
+import React from 'react'
 import Settings from '../../settings/Settings/Settings.js'
+import StartDraft from '../../edit/StartDraft/StartDraft.js'
 import Title from '../../title/Title.js'
-//import EditChats from '../../edit/EditChats/EditChats.js'
-//import EditDrafts from '../../edit/EditDrafts/EditDrafts.js'
-//import StartDraft from '../../edit/StartDraft/StartDraft.js'
-
+import { setKeyR } from '../../../redux/actions/user/user.js'
+import { useDispatch } from 'react-redux'
+import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
 
 // Lazy Load
+/*
 const EditChats = React.lazy(() => import ('../../edit/EditChats/EditChats.js'))
 const EditDrafts = React.lazy(() => import ('../../edit/EditDrafts/EditDrafts.js'))
 const StartDraft = React.lazy(() => import ('../../edit/StartDraft/StartDraft.js'))
-
+*/
 
 const MainTabletRight: React.FC = (props: any) => {
   // state
@@ -49,9 +51,7 @@ const MainTabletRight: React.FC = (props: any) => {
             eventKey="about"
             title={draft.draftEditmode ? 'Edit Draft' : 'Start Draft'}
           >
-            <Suspense fallback={<div>Loading...</div>}>
               {draft.draftEditmode ? <EditDrafts /> : <StartDraft />}
-            </Suspense>
           </Tab>
         ) : (
           <Tab eventKey="about" title="About">
@@ -67,9 +67,7 @@ const MainTabletRight: React.FC = (props: any) => {
 
         {user.loggedIn ? (
           <Tab eventKey="chats" title="Edit Chat">
-            <Suspense fallback={<div>Loading...</div>}>
               <EditChats />
-            </Suspense>
           </Tab>
         ) : null}
 

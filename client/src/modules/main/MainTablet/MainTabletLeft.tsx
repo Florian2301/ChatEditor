@@ -1,22 +1,24 @@
-import React, { useEffect, Suspense } from 'react'
 import '../Main.css'
+
+import {Chat, StateChat, StateDraft, StateTitle, StateUser, UserDrafts, UserTitles} from '../../../redux/interfaces/interfaces'
 import { Container, Tab, Tabs } from 'react-bootstrap'
-import { useDispatch } from 'react-redux'
-import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
-import { setKeyL } from '../../../redux/actions/user/user.js'
-import { getAllTitles } from '../../../redux/actions/title/title.js'
-import {StateChat, StateUser, StateDraft, StateTitle, UserTitles, Chat, UserDrafts} from '../../../redux/interfaces/interfaces'
+import React, { useEffect } from 'react'
+
+import ChatList from '../../tables/ChatList/ChatList.js'
 import ChatboxCommentsTablet from '../../chatbox/TabletComments/ChatboxCommentsTablet.js'
 import ChatboxTablet from '../../chatbox/Tablet/ChatboxTablet.js'
+import DraftList from '../../tables/DraftList/DraftList.js'
 import UserChats from '../../tables/UserChats/UserChats.js'
-//import DraftList from '../../tables/DraftList/DraftList.js'
-//import ChatList from '../../tables/ChatList/ChatList.js'
-
+import { getAllTitles } from '../../../redux/actions/title/title.js'
+import { setKeyL } from '../../../redux/actions/user/user.js'
+import { useDispatch } from 'react-redux'
+import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
 
 // Lazy Load
+/*
 const ChatList = React.lazy(() => import ('../../tables/ChatList/ChatList.js'))
 const DraftList = React.lazy(() => import ('../../tables/DraftList/DraftList.js'))
-
+*/
 const MainTabletLeft: React.FC = () => {
   // State
   const dispatch = useDispatch()
@@ -77,9 +79,7 @@ const MainTabletLeft: React.FC = () => {
       >
         {!user.loggedIn ? null : (
           <Tab eventKey="userchats" title={`Draftlist (${draftList.length})`}>
-            <Suspense fallback={<div>Loading...</div>}>
               <DraftList />
-            </Suspense>
           </Tab>
         )}
 
@@ -91,9 +91,7 @@ const MainTabletLeft: React.FC = () => {
           </Tab>
         ) : (
           <Tab eventKey="chatlist" title={`Chatlist (${chatList.length})`}>
-            <Suspense fallback={<div>Loading...</div>}>
               <ChatList />
-            </Suspense>
           </Tab>
         )}
 

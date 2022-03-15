@@ -1,33 +1,35 @@
-import React, { useEffect, Suspense } from 'react'
 import '../Main.css'
+
+import {Chat, StateChat, StateDraft, StateTitle, StateUser, UserDrafts, UserTitles} from '../../../redux/interfaces/interfaces'
 import { Container, Tab, Tabs } from 'react-bootstrap'
-import { useDispatch } from 'react-redux'
-import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
-import { setKeyL } from '../../../redux/actions/user/user.js'
-import { getAllTitles } from '../../../redux/actions/title/title.js'
-import {StateChat, StateUser, StateDraft, StateTitle, UserTitles, Chat, UserDrafts} from '../../../redux/interfaces/interfaces'
+import React, { useEffect } from 'react'
+
 import AboutEng from '../../about/Eng/AboutEng.js'
 import AboutGer from '../../about/Ger/AboutGer.js'
 import Authorization from '../../../authorization/Authorization.js'
+import ChatList from '../../tables/ChatList/ChatList.js'
 import ChatboxCommentsMobile from '../../chatbox/MobileComments/ChatboxCommentsMobile.js'
 import ChatboxMobile from '../../chatbox/Mobile/ChatboxMobile.js'
+import DraftList from '../../tables/DraftList/DraftList.js'
+import EditChats from '../../edit/EditChats/EditChats.js'
+import EditDrafts from '../../edit/EditDrafts/EditDrafts.js'
 import Settings from '../../settings/Settings/Settings.js'
+import StartDraft from '../../edit/StartDraft/StartDraft.js'
 import Title from '../../title/Title.js'
 import UserChats from '../../tables/UserChats/UserChats.js'
-//import EditChats from '../../edit/EditChats/EditChats.js'
-//import ChatList from '../../tables/ChatList/ChatList.js'
-//import StartDraft from '../../edit/StartDraft/StartDraft.js'
-//import EditDrafts from '../../edit/EditDrafts/EditDrafts.js'
-//import DraftList from '../../tables/DraftList/DraftList.js'
-
+import { getAllTitles } from '../../../redux/actions/title/title.js'
+import { setKeyL } from '../../../redux/actions/user/user.js'
+import { useDispatch } from 'react-redux'
+import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
 
 // Lazy Load
+/*
 const ChatList = React.lazy(() => import ('../../tables/ChatList/ChatList.js'))
 const DraftList = React.lazy(() => import ('../../tables/DraftList/DraftList.js'))
 const EditChats = React.lazy(() => import ('../../edit/EditChats/EditChats.js'))
 const EditDrafts = React.lazy(() => import ('../../edit/EditDrafts/EditDrafts.js'))
 const StartDraft = React.lazy(() => import ('../../edit/StartDraft/StartDraft.js'))
-
+*/
 
 // mobile version
 const MainMobile: React.FC = (props: any) => {
@@ -95,17 +97,13 @@ const MainMobile: React.FC = (props: any) => {
 
         {user.loggedIn ? (
           <Tab eventKey="draftlist" title={`Draftlist (${draftList.length})`}>
-            <Suspense fallback={<div>Loading...</div>}>
               <DraftList />
-            </Suspense>
           </Tab>
         ) : null}
 
         {user.loggedIn ? (
           <Tab eventKey="chatlist" title={`Chatlist (${chatList.length})`}>
-            <Suspense fallback={<div>Loading...</div>}>
               <ChatList />
-            </Suspense>
           </Tab>
         ) : null}
 
@@ -115,17 +113,13 @@ const MainMobile: React.FC = (props: any) => {
             eventKey="userchats"
             title={draft.draftEditmode ? 'Edit Draft' : 'Start Draft'}
           >
-            <Suspense fallback={<div>Loading...</div>}>
               {draft.draftEditmode ? <EditDrafts /> : <StartDraft />}
-            </Suspense>
           </Tab>
         ) : null}
 
         {user.loggedIn ? (
           <Tab eventKey="editchats" title="Edit chats">
-            <Suspense fallback={<div>Loading...</div>}>
               <EditChats />
-            </Suspense>
           </Tab>
         ) : null}
 

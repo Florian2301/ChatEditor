@@ -1,29 +1,31 @@
-import React, { useEffect, Suspense } from 'react';
 import '../Main.css';
 import { Container, Tab, Tabs } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
-import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js';
-import { setKeyL } from '../../../redux/actions/user/user.js';
-import { getAllTitles } from '../../../redux/actions/title/title.js';
+import React, { useEffect } from 'react';
 import AboutEng from '../../about/Eng/AboutEng.js';
 import AboutGer from '../../about/Ger/AboutGer.js';
 import Authorization from '../../../authorization/Authorization.js';
+import ChatList from '../../tables/ChatList/ChatList.js';
 import ChatboxCommentsMobile from '../../chatbox/MobileComments/ChatboxCommentsMobile.js';
 import ChatboxMobile from '../../chatbox/Mobile/ChatboxMobile.js';
+import DraftList from '../../tables/DraftList/DraftList.js';
+import EditChats from '../../edit/EditChats/EditChats.js';
+import EditDrafts from '../../edit/EditDrafts/EditDrafts.js';
 import Settings from '../../settings/Settings/Settings.js';
+import StartDraft from '../../edit/StartDraft/StartDraft.js';
 import Title from '../../title/Title.js';
 import UserChats from '../../tables/UserChats/UserChats.js';
-//import EditChats from '../../edit/EditChats/EditChats.js'
-//import ChatList from '../../tables/ChatList/ChatList.js'
-//import StartDraft from '../../edit/StartDraft/StartDraft.js'
-//import EditDrafts from '../../edit/EditDrafts/EditDrafts.js'
-//import DraftList from '../../tables/DraftList/DraftList.js'
+import { getAllTitles } from '../../../redux/actions/title/title.js';
+import { setKeyL } from '../../../redux/actions/user/user.js';
+import { useDispatch } from 'react-redux';
+import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js';
 // Lazy Load
-const ChatList = React.lazy(() => import('../../tables/ChatList/ChatList.js'));
-const DraftList = React.lazy(() => import('../../tables/DraftList/DraftList.js'));
-const EditChats = React.lazy(() => import('../../edit/EditChats/EditChats.js'));
-const EditDrafts = React.lazy(() => import('../../edit/EditDrafts/EditDrafts.js'));
-const StartDraft = React.lazy(() => import('../../edit/StartDraft/StartDraft.js'));
+/*
+const ChatList = React.lazy(() => import ('../../tables/ChatList/ChatList.js'))
+const DraftList = React.lazy(() => import ('../../tables/DraftList/DraftList.js'))
+const EditChats = React.lazy(() => import ('../../edit/EditChats/EditChats.js'))
+const EditDrafts = React.lazy(() => import ('../../edit/EditDrafts/EditDrafts.js'))
+const StartDraft = React.lazy(() => import ('../../edit/StartDraft/StartDraft.js'))
+*/
 // mobile version
 const MainMobile = (props) => {
     // State
@@ -73,18 +75,14 @@ const MainMobile = (props) => {
             !user.loggedIn ? (React.createElement(Tab, { eventKey: "userchats", title: `Chats (${userTitle.length})` },
                 React.createElement(UserChats, null))) : null,
             user.loggedIn ? (React.createElement(Tab, { eventKey: "draftlist", title: `Draftlist (${draftList.length})` },
-                React.createElement(Suspense, { fallback: React.createElement("div", null, "Loading...") },
-                    React.createElement(DraftList, null)))) : null,
+                React.createElement(DraftList, null))) : null,
             user.loggedIn ? (React.createElement(Tab, { eventKey: "chatlist", title: `Chatlist (${chatList.length})` },
-                React.createElement(Suspense, { fallback: React.createElement("div", null, "Loading...") },
-                    React.createElement(ChatList, null)))) : null,
+                React.createElement(ChatList, null))) : null,
             user.loggedIn ? (
             /* eventKey = adminchats because initial state is adminchats when page is refreshed */
-            React.createElement(Tab, { eventKey: "userchats", title: draft.draftEditmode ? 'Edit Draft' : 'Start Draft' },
-                React.createElement(Suspense, { fallback: React.createElement("div", null, "Loading...") }, draft.draftEditmode ? React.createElement(EditDrafts, null) : React.createElement(StartDraft, null)))) : null,
+            React.createElement(Tab, { eventKey: "userchats", title: draft.draftEditmode ? 'Edit Draft' : 'Start Draft' }, draft.draftEditmode ? React.createElement(EditDrafts, null) : React.createElement(StartDraft, null))) : null,
             user.loggedIn ? (React.createElement(Tab, { eventKey: "editchats", title: "Edit chats" },
-                React.createElement(Suspense, { fallback: React.createElement("div", null, "Loading...") },
-                    React.createElement(EditChats, null)))) : null,
+                React.createElement(EditChats, null))) : null,
             React.createElement(Tab, { eventKey: "chatbox", title: !user.loggedIn
                     ? 'Chatbox'
                     : `Chatbox (${draft.draftEditmode
