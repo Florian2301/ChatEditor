@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react'
-import '../Chatbox.css'
+import '../ChatboxComments.css'
 import { v4 as uuidv4 } from 'uuid'
 import { useDispatch } from 'react-redux'
 import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
