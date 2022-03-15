@@ -1,24 +1,5 @@
 /* box where the chat does appear*/
 /* Panel */
-.panel {
-  border-radius: 0.6rem;
-  margin-bottom: 0.5rem;
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-.panel-title {
-  border-color: dodgerblue;
-  border-bottom-width: thin;
-  border-bottom-style: solid;
-  border-radius: 0.6rem;
-  border-bottom-left-radius: 0rem;
-  border-bottom-right-radius: 0rem;
-  font-size: 1.5rem;
-  padding: 0.8rem;
-  color: lightgray;
-  min-height: 3rem;
-  max-height: 6rem;
-}
 
 #chatbox-comments {
   background-color: rgba(0, 0, 0, 0.3);

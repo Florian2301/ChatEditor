@@ -7,7 +7,13 @@ module.exports = {
       zlib: require.resolve('browserify-zlib'),
     },
   },
-  plugins: [new NodePolyfillPlugin()],
+  plugins: [
+    new NodePolyfillPlugin(),
+    new MiniCssExtractPlugin({
+      // ......
+      ignoreOrder: true,
+    }),
+  ],
   mode: 'development',
   target: 'node',
   module: {
