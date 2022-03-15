@@ -44,9 +44,9 @@ const ChatboxComments: React.FC = () => {
   //---- return ---------------------------------------------------------------------------------------------------
 
   return (
-    <Panel title={title} id="chatbox">
+    <Panel title={title} id="chatbox-comments">
       <Container
-        className={user.writeComment ? 'commentchatbox' : 'chatbox'}
+        className={user.writeComment ? 'commentchatbox' : 'chatbox-default'}
       >
         {chat.chatEditmode ? (
           <ListGroup>

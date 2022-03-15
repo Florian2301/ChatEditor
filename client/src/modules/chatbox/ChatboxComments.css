@@ -1,11 +1,11 @@
 /* box where the chat does appear*/
 /* Panel */
-#chatbox {
+#chatbox-comments {
   background-color: rgba(0, 0, 0, 0.3);
   margin-top: 1.5rem;
 }
 
-#chatbox-mobile {
+#chatbox-comments-mobile {
   background-color: rgba(0, 0, 0, 0.3);
   margin-top: 1.5rem;
   margin-bottom: 2rem;
@@ -14,7 +14,7 @@
 
 /*-------------------*/
 
-.chatbox {
+.chatbox-default {
   height: 75vh;
   width: 30vw;
   overflow: auto;
@@ -24,8 +24,9 @@
   flex-direction: column;
 }
 
-.editchatbox {
-  height: 48.5vh;
+/* comments */
+.commentchatbox {
+  height: 53.5vh;
   width: 30vw;
   overflow: auto;
   border-radius: 0.6rem;
@@ -34,8 +35,13 @@
   flex-direction: column;
 }
 
+.comments-info {
+  text-align: center;
+  margin-top: 10%;
+}
+
 /* tablet */
-.chatbox-tablet {
+.chatbox-comments-tablet {
   height: 60vh;
   width: 100%;
   overflow: auto;
@@ -45,8 +51,8 @@
   flex-direction: column;
 }
 
-.editchatbox-tablet {
-  height: 25vh;
+.commentchatbox-tablet {
+  height: 30vh;
   width: 100%;
   overflow: auto;
   border-radius: 0.6rem;
@@ -55,8 +61,13 @@
   flex-direction: column;
 }
 
+.comments-info-tablet {
+  text-align: center;
+  margin-top: 10%;
+}
+
 /* mobile */
-.chatbox-mobile {
+.chatbox-comments-mobile {
   height: 70vh;
   width: 100%;
   overflow: auto;
@@ -66,8 +77,8 @@
   flex-direction: column;
 }
 
-.editchatbox-mobile {
-  height: 20vh;
+.commentchatbox-mobile {
+  height: 25vh;
   width: 100%;
   overflow: auto;
   border-radius: 0.6rem;
@@ -76,37 +87,13 @@
   flex-direction: column;
 }
 
+.comments-info-mobile {
+  text-align: center;
+  margin-top: 10%;
+}
+
 /* ul of chatmessages */
-.listgroup-edit {
-  margin-left: -4rem;
-}
-
-.messages-editmode {
-  margin-top: 1rem;
-}
-
-.listgroup-chat {
+.listgroup-chat-comments {
   background-color: transparent;
   border-style: none;
-}
-
-/*
-.listgroup-chat-comments:nth-child(even) {
-  margin-left: 20%;
-}*/
-
-/*transition of messages*/
-.transition-message-enter {
-  opacity: 0;
-}
-.transition-message-enter-active {
-  opacity: 1;
-  transition: opacity 500ms ease-in;
-}
-.transition-message-exit {
-  opacity: 1;
-}
-.transition-message-exit-active {
-  opacity: 0;
-  transition: opacity 500ms ease-in;
 }

@@ -44,10 +44,10 @@ const ChatboxComments: React.FC = () => {
   //---- return ---------------------------------------------------------------------------------------------------
 
   return (
-    <Panel title={title} id="chatbox-mobile">
+    <Panel title={title} id="chatbox-comments-mobile">
       <Container
         className={
-          user.writeComment ? 'commentchatbox-tablet' : 'chatbox-tablet'
+          user.writeComment ? 'commentchatbox-tablet' : 'chatbox-comments-tablet'
         }
       >
         {chat.chatEditmode ? (

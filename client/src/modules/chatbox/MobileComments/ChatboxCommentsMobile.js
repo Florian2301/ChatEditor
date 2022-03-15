@@ -35,8 +35,8 @@ const ChatboxComments = () => {
         title = chat.title;
     }
     //---- return ---------------------------------------------------------------------------------------------------
-    return (React.createElement(Panel, { title: title, id: "chatbox-mobile" },
-        React.createElement(Container, { className: user.writeComment ? 'commentchatbox-mobile' : 'chatbox-mobile' },
+    return (React.createElement(Panel, { title: title, id: "chatbox-comments-mobile" },
+        React.createElement(Container, { className: user.writeComment ? 'commentchatbox-mobile' : 'chatbox-comments-mobile' },
             chat.chatEditmode ? (React.createElement(ListGroup, null, chat.comments.map((c) => {
                 return (React.createElement(ListGroup.Item, { className: "listgroup-chat-comments", key: uuidv4() },
                     React.createElement(Comments, { key: uuidv4(), name: c.name, date: c.date, text: c.text, author: c.author, id: c._id, commentRef: scrollToCommentRef })));
