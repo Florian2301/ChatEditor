@@ -1,4 +1,5 @@
 import { Action, ActionType } from '../../actionTypes/user/actionTypesUser.js'
+
 import { AllUser } from '../../interfaces/interfaces.js'
 
 interface InitialState {
@@ -82,10 +83,10 @@ function users(state = initialState, action: Action) {
     case ActionType.LOGOUT:
       return {
         ...state,
-        userId: [],
-        username: [],
-        email: [],
-        date: [],
+        userId: '',
+        username: '',
+        email: '',
+        date: '',
         allUsers: [],
         admin: false,
         loggedIn: false,
@@ -95,6 +96,7 @@ function users(state = initialState, action: Action) {
         delete: false,
         keyL: 'userchats',
         keyR: 'about',
+        
       }
     case ActionType.SET_KEY_L:
       return { ...state, keyL: action.payload }

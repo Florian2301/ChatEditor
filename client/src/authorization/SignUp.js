@@ -1,194 +1,127 @@
-import React, { useRef, useState } from 'react'
-import { Form, Alert, Col, Row } from 'react-bootstrap'
-import { useAuth } from './AuthContext'
-import { Link, useNavigate } from 'react-router-dom'
-import Panel from '../elements/Panel/Panel'
-import Button from '../elements/Button/Button'
-import { connect } from 'react-redux'
-import { addUserToDB, getUser } from '../redux/actions/user/user'
-
-export function SignUp(props) {
-  const usernameRef = useRef()
-  const emailRef = useRef()
-  const passwordRef = useRef()
-  const passwordConfirmRef = useRef()
-  const { signup } = useAuth()
-  const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
-  const history = useNavigate()
-
-  // check if username or useremail already exist in database
-  let checkName
-  let checkMail
-
-  function inputName(e) {
-    checkName = e.target.value // get user input
-    return checkName
-  }
-
-  function inputMail(e) {
-    checkMail = e.target.value // get user input
-    return checkMail
-  }
-
-  // submit data to create profile in firebase + database
-  async function handleSubmit(e) {
-    e.preventDefault()
-
-    let newName = usernameRef.current.value
-    props.user.allUsers.map(({ username }) => {
-      // get username from all users in database
-      if (username === checkName) {
-        // check if username already exists
-        newName = false
-        return newName
-      }
-      return newName
-    })
-    if (!newName) {
-      return setError(newName + ' does already exists')
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+import { Alert, Col, Form, Row } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
+import React, { useRef, useState } from 'react';
+import { addUserToDB } from '../redux/actions/user/user';
+import Button from '../elements/Button/Button';
+import Panel from '../elements/Panel/Panel';
+import { useAuth } from './AuthContext';
+import { useDispatch } from 'react-redux';
+import { useTypedSelector } from '../redux/hooks/useTypeSelector.js';
+export function SignUp() {
+    // state
+    const dispatch = useDispatch();
+    const user = useTypedSelector((state) => state.user);
+    // ref
+    const usernameRef = useRef(null);
+    const emailRef = useRef(null);
+    const passwordRef = useRef(null);
+    const passwordConfirmRef = useRef(null);
+    // firebase
+    const { signup } = useAuth();
+    // useState
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
+    // router dom
+    const history = useNavigate();
+    // check if username or useremail already exist in database
+    let checkName;
+    let checkMail;
+    function inputName(e) {
+        checkName = e.currentTarget.value; // get user input
+        return checkName;
     }
-
-    let newEmail = emailRef.current.value
-    props.user.allUsers.map(({ email }) => {
-      // get useremail from all users in database
-      if (email === checkMail) {
-        // check if useremail already exists
-        newEmail = false
-        return newEmail
-      }
-      return newEmail
-    })
-    if (!newEmail) {
-      return setError(newEmail + ' does already exists')
+    function inputMail(e) {
+        checkMail = e.currentTarget.value; // get user input
+        return checkMail;
     }
-
-    const password = passwordRef.current.value
-    if (password !== passwordConfirmRef.current.value) {
-      // check if passwords match
-      return setError('Passwords do not match')
+    // submit data to create profile in firebase + database
+    function handleSubmit(e) {
+        return __awaiter(this, void 0, void 0, function* () {
+            e.preventDefault();
+            let newName = usernameRef.current ? usernameRef.current.value : null;
+            user.allUsers.map((u) => {
+                // get username from all users in database
+                if (u.username === checkName) {
+                    // check if username already exists
+                    newName = null;
+                    return newName;
+                }
+                return newName;
+            });
+            if (!newName) {
+                return setError(newName + ' does already exists');
+            }
+            let newEmail = emailRef.current ? emailRef.current.value : null;
+            user.allUsers.map((u) => {
+                // get useremail from all users in database
+                if (u.email === checkMail) {
+                    // check if useremail already exists
+                    newEmail = null;
+                    return newEmail;
+                }
+                return newEmail;
+            });
+            if (!newEmail) {
+                return setError(newEmail + ' does already exists');
+            }
+            const password = passwordRef.current ? passwordRef.current.value : null;
+            const passwordConfirm = passwordConfirmRef.current ? passwordConfirmRef.current.value : null;
+            if (password !== passwordConfirm) {
+                // check if passwords match
+                return setError('Passwords do not match');
+            }
+            if (!error) {
+                // check if error is set by check username/email/password
+                try {
+                    setError('');
+                    setLoading(true);
+                    yield signup(newName, newEmail, password); // create profile in firebase
+                    dispatch(addUserToDB(newName, newEmail)); // create profile in database
+                    history('/');
+                }
+                catch (_a) {
+                    setError('Failed to create an account');
+                }
+            }
+            else {
+                history('/');
+            }
+            setLoading(false);
+        });
     }
-    if (!error) {
-      // check if error is set by check username/email/password
-      try {
-        setError('')
-        setLoading(true)
-        await signup(newName, newEmail, password) // create profile in firebase
-        props.addUserToDB(newName, newEmail) // create profile in database
-        history('/login')
-      } catch {
-        setError('Failed to create an account')
-      }
-    } else {
-      history('/login')
-    }
-    setLoading(false)
-  }
-
-  // ---------------------------------- RETURN ------------------------------------------------------------------------------------
-
-  return (
-    <Panel id="auth" title="Sign up">
-      <div className="text-center mb-4">
-        {error && (
-          <Alert className="auth-alert" variant="danger">
-            {error}
-          </Alert>
-        )}
-      </div>
-
-      <Form onSubmit={handleSubmit}>
-        <Form.Group id="signup" as={Row}>
-          <Form.Label column sm="3">
-            Username:
-          </Form.Label>
-          <Col>
-            <Form.Control
-              id="auth-input"
-              type="name"
-              ref={usernameRef}
-              required
-              autoFocus
-              onChange={inputName}
-              placeholder="Username"
-            />
-          </Col>
-        </Form.Group>
-
-        <Form.Group as={Row}>
-          <Form.Label column sm="3">
-            Email:
-          </Form.Label>
-          <Col>
-            <Form.Control
-              id="auth-input"
-              type="email"
-              ref={emailRef}
-              required
-              onChange={inputMail}
-              placeholder="Email"
-            />
-          </Col>
-        </Form.Group>
-
-        <Form.Group as={Row}>
-          <Form.Label column sm="3">
-            Password:
-          </Form.Label>
-          <Col>
-            <Form.Control
-              id="auth-input"
-              type="password"
-              ref={passwordRef}
-              required
-              placeholder="Password"
-            />
-          </Col>
-        </Form.Group>
-
-        <Form.Group as={Row}>
-          <Form.Label column sm="3">
-            Confirm:
-          </Form.Label>
-          <Col>
-            <Form.Control
-              id="auth-input"
-              type="password"
-              ref={passwordConfirmRef}
-              required
-              placeholder="Confirm password"
-            />
-          </Col>
-        </Form.Group>
-
-        <div className="auth-actions-signup">
-          <Button
-            disabled={loading}
-            label="Sign up"
-            className="auth-btn"
-            type="submit"
-          ></Button>
-        </div>
-
-        <div className="auth-actions" id="login-link">
-          <Link className="auth-link" to="/login">
-            Log in
-          </Link>
-        </div>
-      </Form>
-    </Panel>
-  )
+    // ---------------------------------- RETURN ------------------------------------------------------------------------------------
+    return (React.createElement(Panel, { id: "auth", title: "Sign up" },
+        React.createElement("div", { className: "text-center mb-4" }, error && (React.createElement(Alert, { className: "auth-alert", variant: "danger" }, error))),
+        React.createElement(Form, { onSubmit: handleSubmit },
+            React.createElement(Form.Group, { id: "signup", as: Row },
+                React.createElement(Form.Label, { column: true, sm: "3" }, "Username:"),
+                React.createElement(Col, null,
+                    React.createElement(Form.Control, { id: "auth-input", type: "name", ref: usernameRef, required: true, autoFocus: true, onChange: inputName, placeholder: "Username" }))),
+            React.createElement(Form.Group, { as: Row },
+                React.createElement(Form.Label, { column: true, sm: "3" }, "Email:"),
+                React.createElement(Col, null,
+                    React.createElement(Form.Control, { id: "auth-input", type: "email", ref: emailRef, required: true, onChange: inputMail, placeholder: "Email" }))),
+            React.createElement(Form.Group, { as: Row },
+                React.createElement(Form.Label, { column: true, sm: "3" }, "Password:"),
+                React.createElement(Col, null,
+                    React.createElement(Form.Control, { id: "auth-input", type: "password", ref: passwordRef, required: true, placeholder: "Password" }))),
+            React.createElement(Form.Group, { as: Row },
+                React.createElement(Form.Label, { column: true, sm: "3" }, "Confirm:"),
+                React.createElement(Col, null,
+                    React.createElement(Form.Control, { id: "auth-input", type: "password", ref: passwordConfirmRef, required: true, placeholder: "Confirm password" }))),
+            React.createElement("div", { className: "auth-actions-signup" },
+                React.createElement(Button, { disabled: loading, label: "Sign up", className: "auth-btn", type: "submit" })),
+            React.createElement("div", { className: "auth-actions", id: "login-link" },
+                React.createElement(Link, { className: "auth-link", to: "/" }, "Log in")))));
 }
-
-// --------------------------------------- REDUX ---------------------------------------------------------------------
-
-const mapStateToProps = (state) => ({
-  user: state.user,
-})
-
-const mapActionsToProps = {
-  addUserToDB: addUserToDB,
-  getUser: getUser,
-}
-
-export default connect(mapStateToProps, mapActionsToProps)(SignUp)
+export default SignUp;
+//# sourceMappingURL=SignUp.js.map

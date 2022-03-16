@@ -1,5 +1,5 @@
-import axios from 'axios';
 import { ActionType } from '../../actionTypes/user/actionTypesUser.js';
+import axios from 'axios';
 // clears chat window
 export function clearDisplay() {
     return { type: ActionType.CLEAR_DISPLAY };
@@ -13,7 +13,7 @@ export function cancel() {
     return { type: ActionType.CANCEL };
 }
 // sets back user.state at logout
-export function logout() {
+export function logOut() {
     return { type: ActionType.LOGOUT };
 }
 // changes eventkey for mobile and tablet navigation

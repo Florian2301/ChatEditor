@@ -108,11 +108,6 @@
     "./client/craco.config.js",
     "./client/src/App.js",
     "./client/src/index.js",
-    "./client/src/authorization/**/*.js",
-    "./client/src/authorization/**",
-    "authorization",
-    "**/authorization",
-    "**/authorization/**",
     "./client/node_modules",
     "./client/src/modules/about/contact.js",
   ]

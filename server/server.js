@@ -1,18 +1,17 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-// Use Routes
 import chatRouter from './routes/api/userChats/userChats.js';
 import draftRouter from './routes/api/UserDrafts/userDrafts.js';
+import mongoURI from './config/keys.js';
 import mongoose from 'mongoose';
 import path from 'path';
 import titleRouter from './routes/api/userTitle/userTitle.js';
 import userRouter from './routes/api/users/users.js';
-//import mongoURI from './config/keys.js'
 const app = express();
 // BodyParser Middleware
 app.use(bodyParser.json());
 // DB Config
-const db = process.env.mongoURI; //|| mongoURI
+const db = process.env.mongoURI || mongoURI;
 // Connect to MongoDB
 mongoose
     .connect(db)

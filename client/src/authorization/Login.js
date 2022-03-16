@@ -1,178 +1,125 @@
-import React, { useRef, useState } from 'react'
-import { Form, Alert, Col, Row } from 'react-bootstrap'
-import { useAuth } from './AuthContext'
-import { Link, useNavigate } from 'react-router-dom'
-import Panel from '../elements/Panel/Panel'
-import Button from '../elements/Button/Button'
-import firebase from 'firebase/compat/app'
-import 'firebase/compat/auth'
-import { connect } from 'react-redux'
-import { getUser, welcome } from '../redux/actions/user/user'
-
-export function Login(props) {
-  const emailRef = useRef()
-  const passwordRef = useRef()
-  const { login } = useAuth()
-  const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
-  const history = useNavigate()
-  const verify = 'Please check your inbox to verify your email address'
-  const goodbye = 'Your profile has been deleted successfully'
-  const Email = require('./Testuser').TestuserEmail
-  const PW = require('./Testuser').TestuserPW
-
-  // submit data to login through firebase + get userdata from database
-  async function handleSubmit(e) {
-    e.preventDefault()
-    try {
-      setError('')
-      setLoading(true)
-      await login(emailRef.current.value, passwordRef.current.value) // log in firebase
-    } catch {
-      setError('Failed to log in')
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+import 'firebase/compat/auth';
+import { Alert, Col, Form, Row } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
+import React, { useRef, useState } from 'react';
+import { getUser, welcome } from '../redux/actions/user/user';
+import Button from '../elements/Button/Button';
+import Panel from '../elements/Panel/Panel';
+import firebase from 'firebase/compat/app';
+import { useAuth } from './AuthContext';
+import { useDispatch } from 'react-redux';
+import { useTypedSelector } from '../redux/hooks/useTypeSelector.js';
+export function Login() {
+    // state
+    const dispatch = useDispatch();
+    const user = useTypedSelector((state) => state.user);
+    // ref
+    const emailRef = useRef(null);
+    const passwordRef = useRef(null);
+    // firebase
+    const { login } = useAuth();
+    // useState
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
+    // router-dom
+    const history = useNavigate();
+    // variables
+    const verify = 'Please check your inbox to verify your email address';
+    const goodbye = 'Your profile has been deleted successfully';
+    const Email = require('./Testuser').TestuserEmail;
+    const PW = require('./Testuser').TestuserPW;
+    // submit data to login through firebase + get userdata from database
+    function handleSubmit(e) {
+        return __awaiter(this, void 0, void 0, function* () {
+            e.preventDefault();
+            try {
+                setError('');
+                setLoading(true);
+                yield login(emailRef.current ? emailRef.current.value : null, passwordRef.current ? passwordRef.current.value : null); // log in firebase
+            }
+            catch (_a) {
+                setError('Failed to log in');
+            }
+            setLoading(false);
+            dispatch(welcome()); // for welcome-message
+            let userFirebase = firebase.auth().currentUser; // get currentUser from firebase
+            if (userFirebase) {
+                userFirebase.emailVerified ? history('/dashboard') : history('/'); // check if mailaddress is verified
+                dispatch(getUser(userFirebase.displayName !== null ? userFirebase.displayName : '')); // get currentUser from database
+            }
+            else {
+                history('/');
+            }
+        });
     }
-    setLoading(false)
-    props.welcome() // for welcome-message
-    var user = firebase.auth().currentUser // get currentUser from firebase
-    if (user) {
-      user.emailVerified ? history('/') : history('/login') // check if mailaddress is verified
-      props.getUser(user.displayName) // get currentUser from database
-    } else {
-      history('/login')
+    // submit data to login through firebase + get userdata from database
+    function handleSubmitTestuser(e) {
+        return __awaiter(this, void 0, void 0, function* () {
+            e.preventDefault();
+            try {
+                setError('');
+                setLoading(true);
+                yield login(Email, PW); // log in firebase as testuser
+            }
+            catch (_a) {
+                setError('Failed to log in');
+            }
+            setLoading(false);
+            dispatch(welcome()); // for welcome-message
+            let userFirebase = firebase.auth().currentUser; // get currentUser from firebase
+            if (userFirebase) {
+                userFirebase.emailVerified ? history('/dashboard') : history('/'); // check if mailaddress is verified
+                dispatch(getUser(userFirebase.displayName !== null ? userFirebase.displayName : '')); // get currentUser from database
+            }
+            else {
+                history('/');
+            }
+        });
     }
-  }
-
-  // submit data to login through firebase + get userdata from database
-  async function handleSubmitTestuser(e) {
-    e.preventDefault()
-    try {
-      setError('')
-      setLoading(true)
-      await login(Email, PW) // log in firebase as testuser
-    } catch {
-      setError('Failed to log in')
+    // get all users when "sign up" is clicked
+    // to check during sign up process if username/email already exists
+    function getUsers() {
+        dispatch(getUser());
     }
-    setLoading(false)
-    props.welcome() // for welcome-message
-    var user = firebase.auth().currentUser // get currentUser from firebase
-    if (user) {
-      user.emailVerified ? history('/') : history('/login') // check if mailaddress is verified
-      props.getUser(user.displayName) // get currentUser from database
-    } else {
-      history('/login')
-    }
-  }
-
-  // get all users when "sign up" is clicked
-  // to check during sign up process if username/email already exists
-  function getUsers() {
-    props.getUser()
-  }
-
-  // ------------------------------------------ RETURN ---------------------------------------------------------------------
-
-  return (
-    <Panel id="auth" title="Log in to your account">
-      <div className="text-center mb-4">
-        {error && <Alert variant="danger">{error}</Alert>}
-        {props.user.signUp ? (
-          <Alert className="auth-alert" variant="success">
-            {verify}
-          </Alert>
-        ) : null}
-        {props.user.delete ? (
-          <Alert className="auth-alert" variant="success">
-            {goodbye}
-          </Alert>
-        ) : null}
-      </div>
-
-      <Form onSubmit={handleSubmit}>
-        <Form.Group id="email-login" as={Row}>
-          <Form.Label id="auth-email" column sm="3">
-            Email:{' '}
-          </Form.Label>
-
-          <Col>
-            <Form.Control
-              id="auth-input"
-              type="email"
-              ref={emailRef}
-              required
-              placeholder="Enter email"
-              defaultValue=""
-            />
-          </Col>
-        </Form.Group>
-
-        <Form.Group as={Row}>
-          <Form.Label column sm="3">
-            Password:
-          </Form.Label>
-          <Col>
-            <Form.Control
-              id="auth-input"
-              type="password"
-              ref={passwordRef}
-              required
-              placeholder="Enter password"
-              defaultValue=""
-            />
-          </Col>
-        </Form.Group>
-
-        <div className="auth-actions">
-          <Button
-            disabled={loading}
-            label="Log in"
-            className="auth-btn"
-            type="submit"
-          ></Button>
-        </div>
-
-        <div className="auth-actions">
-          <Link className="auth-link" to="/signup" onClick={getUsers}>
-            Sign Up
-          </Link>
-        </div>
-
-        <div className="auth-actions" id="forgotpassword-link">
-          <Link className="auth-link" to="/forgot-password">
-            Forgot Password?
-          </Link>
-        </div>
-      </Form>
-      <div className="testuser-border">{''}</div>
-
-      <Form onSubmit={handleSubmitTestuser}>
-        <p className="testuser-info">
-          You can also log in as a testuser and try out to write a chat!
-        </p>
-        <p className="testuser-info">Just click on the button below:</p>
-
-        <div className="auth-actions">
-          <Button
-            disabled={loading}
-            label="Testuser"
-            className="auth-btn"
-            type="submit"
-          ></Button>
-        </div>
-      </Form>
-      <br />
-    </Panel>
-  )
+    // ------------------------------------------ RETURN ---------------------------------------------------------------------
+    return (React.createElement(Panel, { id: "auth", title: "Log in to your account" },
+        React.createElement("div", { className: "text-center mb-4" },
+            error && React.createElement(Alert, { variant: "danger" }, error),
+            user.signUp ? (React.createElement(Alert, { className: "auth-alert", variant: "success" }, verify)) : null,
+            user.delete ? (React.createElement(Alert, { className: "auth-alert", variant: "success" }, goodbye)) : null),
+        React.createElement(Form, { onSubmit: handleSubmit },
+            React.createElement(Form.Group, { id: "email-login", as: Row },
+                React.createElement(Form.Label, { id: "auth-email", column: true, sm: "3" },
+                    "Email:",
+                    ' '),
+                React.createElement(Col, null,
+                    React.createElement(Form.Control, { id: "auth-input", type: "email", ref: emailRef, required: true, placeholder: "Enter email", defaultValue: "" }))),
+            React.createElement(Form.Group, { as: Row },
+                React.createElement(Form.Label, { column: true, sm: "3" }, "Password:"),
+                React.createElement(Col, null,
+                    React.createElement(Form.Control, { id: "auth-input", type: "password", ref: passwordRef, required: true, placeholder: "Enter password", defaultValue: "" }))),
+            React.createElement("div", { className: "auth-actions" },
+                React.createElement(Button, { disabled: loading, label: "Log in", className: "auth-btn", type: "submit" })),
+            React.createElement("div", { className: "auth-actions" },
+                React.createElement(Link, { className: "auth-link", to: "/signup", onClick: getUsers }, "Sign Up")),
+            React.createElement("div", { className: "auth-actions", id: "forgotpassword-link" },
+                React.createElement(Link, { className: "auth-link", to: "/forgot-password" }, "Forgot Password?"))),
+        React.createElement("div", { className: "testuser-border" }, ''),
+        React.createElement(Form, { onSubmit: handleSubmitTestuser },
+            React.createElement("p", { className: "testuser-info" }, "You can also log in as a testuser and try out to write a chat!"),
+            React.createElement("p", { className: "testuser-info" }, "Just click on the button below:"),
+            React.createElement("div", { className: "auth-actions" },
+                React.createElement(Button, { disabled: loading, label: "Testuser", className: "auth-btn", type: "submit" }))),
+        React.createElement("br", null)));
 }
-
-// ----------------------- REDUX ---------------------------------------------------------------------------------------
-
-const mapStateToProps = (state) => ({
-  user: state.user,
-})
-
-const mapActionsToProps = {
-  getUser: getUser,
-  welcome: welcome,
-}
-
-export default connect(mapStateToProps, mapActionsToProps)(Login)
+export default Login;
+//# sourceMappingURL=Login.js.map

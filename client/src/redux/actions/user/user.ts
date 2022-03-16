@@ -1,6 +1,7 @@
-import axios from 'axios'
+import { Action, ActionType } from '../../actionTypes/user/actionTypesUser.js'
+
 import { Dispatch } from 'redux'
-import { ActionType, Action } from '../../actionTypes/user/actionTypesUser.js'
+import axios from 'axios'
 
 // clears chat window
 export function clearDisplay() {
@@ -18,7 +19,7 @@ export function cancel() {
 }
 
 // sets back user.state at logout
-export function logout() {
+export function logOut() {
   return { type: ActionType.LOGOUT }
 }
 
@@ -64,7 +65,7 @@ export const addUserToDB = (userName: string, userEmail: string) => (dispatch: D
 }
 
 // get 1 user by username or all users
-export const getUser = (username: string) => (dispatch: Dispatch<Action>) => {
+export const getUser = (username?: string) => (dispatch: Dispatch<Action>) => {
   if (username) {
     axios
       .get('/api/users/', { params: { username: username } })
@@ -93,7 +94,7 @@ export const getUser = (username: string) => (dispatch: Dispatch<Action>) => {
 }
 
 // update Profile
-export const updateUserDB = (id: string, username: string, email: string, chats: string) => (dispatch: Dispatch<Action>) => {
+export const updateUserDB = (id: string, username: string, email: string, chats?: string) => (dispatch: Dispatch<Action>) => {
   axios
     .patch(`/api/users/${id}`, { username, email, chats })
     .then((res) => dispatch({ type: ActionType.UPDATE_USER }))

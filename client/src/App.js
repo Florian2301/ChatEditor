@@ -1,14 +1,12 @@
-import React, { useState, Suspense } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
-import { store } from './store.js'
-import { Provider } from 'react-redux'
-import { useMediaQuery } from 'react-responsive'
+
+import React, { Suspense, useState } from 'react'
+
 import { Container } from 'react-bootstrap'
-//import MainDesktop from './modules/main/MainDesktop/MainDesktop'
-//import MainMobile from './modules/main/MainMobile/MainMobile'
-//import MainTabletLeft from './modules/main/MainTablet/MainTabletLeft'
-//import MainTabletRight from './modules/main/MainTablet/MainTabletRight'
+import { Provider } from 'react-redux'
+import { store } from './store.js'
+import { useMediaQuery } from 'react-responsive'
 
 const MainDesktop = React.lazy(() =>
   import('./modules/main/MainDesktop/MainDesktop')

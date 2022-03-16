@@ -18,14 +18,6 @@ import { getAllTitles } from '../../../redux/actions/title/title.js';
 import { setKeyL } from '../../../redux/actions/user/user.js';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js';
-// Lazy Load
-/*
-const ChatList = React.lazy(() => import ('../../tables/ChatList/ChatList.js'))
-const DraftList = React.lazy(() => import ('../../tables/DraftList/DraftList.js'))
-const EditChats = React.lazy(() => import ('../../edit/EditChats/EditChats.js'))
-const EditDrafts = React.lazy(() => import ('../../edit/EditDrafts/EditDrafts.js'))
-const StartDraft = React.lazy(() => import ('../../edit/StartDraft/StartDraft.js'))
-*/
 // mobile version
 const MainMobile = (props) => {
     // State

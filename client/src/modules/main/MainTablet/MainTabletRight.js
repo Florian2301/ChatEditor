@@ -12,12 +12,6 @@ import Title from '../../title/Title.js';
 import { setKeyR } from '../../../redux/actions/user/user.js';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js';
-// Lazy Load
-/*
-const EditChats = React.lazy(() => import ('../../edit/EditChats/EditChats.js'))
-const EditDrafts = React.lazy(() => import ('../../edit/EditDrafts/EditDrafts.js'))
-const StartDraft = React.lazy(() => import ('../../edit/StartDraft/StartDraft.js'))
-*/
 const MainTabletRight = (props) => {
     // state
     const dispatch = useDispatch();

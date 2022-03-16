@@ -41,7 +41,7 @@ function users(state = initialState, action) {
         case ActionType.CANCEL:
             return Object.assign(Object.assign({}, state), { update: false, welcome: false });
         case ActionType.LOGOUT:
-            return Object.assign(Object.assign({}, state), { userId: [], username: [], email: [], date: [], allUsers: [], admin: false, loggedIn: false, welcome: false, signUp: false, update: false, delete: false, keyL: 'userchats', keyR: 'about' });
+            return Object.assign(Object.assign({}, state), { userId: '', username: '', email: '', date: '', allUsers: [], admin: false, loggedIn: false, welcome: false, signUp: false, update: false, delete: false, keyL: 'userchats', keyR: 'about' });
         case ActionType.SET_KEY_L:
             return Object.assign(Object.assign({}, state), { keyL: action.payload });
         case ActionType.SET_KEY_R:
