@@ -3,7 +3,7 @@ import express, { Request, Response } from 'express'
 import bodyParser from 'body-parser'
 import chatRouter from './routes/api/userChats/userChats.js'
 import draftRouter from './routes/api/UserDrafts/userDrafts.js'
-import mongoURI from './config/keys.js'
+//import mongoURI from './config/keys.js'
 import mongoose from 'mongoose'
 import path from 'path'
 import titleRouter from './routes/api/userTitle/userTitle.js'
@@ -15,7 +15,7 @@ const app = express()
 app.use(bodyParser.json())
 
 // DB Config
-const db = process.env.mongoURI || mongoURI
+const db = process.env.mongoURI //|| mongoURI
 
 // Connect to MongoDB
 mongoose
