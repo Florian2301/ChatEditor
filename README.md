@@ -16,6 +16,7 @@ This chat editor has been developed with the MERN stack, i.e. MongoDB as the dat
 
 - MERN (MongoDB, Express, React, Nodejs)
 - Javascript
+- Typescript
 - Redux
 - React-Bootstrap and CSS
 - Firebase
