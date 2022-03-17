@@ -15,7 +15,7 @@ const app = express()
 app.use(bodyParser.json())
 
 // DB Config
-const db = process.env.mongoURI //|| mongoURI
+const db: any = process.env.mongoURI //|| mongoURI
 
 // Connect to MongoDB
 mongoose
