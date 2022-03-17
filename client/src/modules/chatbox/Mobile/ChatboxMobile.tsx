@@ -24,7 +24,7 @@ const ChatboxMobile: React.FC = () => {
 
   // refs
   const scrollRef = useRef<HTMLDivElement>(null)
-  const [getRef, setRef] = useDynamicRefs() // not sure which type to use here
+  const [getRef, setRef]: any = useDynamicRefs() // not sure which type to use here
   
   // useState
   const [scroll, setScroll] = useState<boolean | number>(false)

@@ -37,7 +37,7 @@ const UserChats: React.FC = () => {
         <div className="thead-userchats-1">User</div>
         <div className="thead-userchats-2">#</div>
         <div className="thead-userchats-3">Title</div>
-        <div className="thead-userchats-4">Date</div>
+        <div className="thead-userchats-4">Date / Info</div>
       </div>
       <div
         className={

@@ -29,7 +29,7 @@ const UserChats = () => {
             React.createElement("div", { className: "thead-userchats-1" }, "User"),
             React.createElement("div", { className: "thead-userchats-2" }, "#"),
             React.createElement("div", { className: "thead-userchats-3" }, "Title"),
-            React.createElement("div", { className: "thead-userchats-4" }, "Date")),
+            React.createElement("div", { className: "thead-userchats-4" }, "Date / Info")),
         React.createElement("div", { className: window.innerWidth <= 1000
                 ? 'userchats-scroll-mobile'
                 : 'userchats-scroll' }, (usertitles = title.allTitles.map((t) => {

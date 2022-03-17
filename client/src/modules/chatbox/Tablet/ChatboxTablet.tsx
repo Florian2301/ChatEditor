@@ -24,7 +24,7 @@ const ChatboxTablet: React.FC = () => {
 
   // refs
   const scrollRef = useRef<HTMLDivElement>(null)
-  const [getRef, setRef] = useDynamicRefs() // not sure which type to use here
+  const [getRef, setRef]: any = useDynamicRefs() // not sure which type to use here
   
   // useState
   const [scroll, setScroll] = useState<boolean | number>(false)
@@ -54,6 +54,7 @@ const ChatboxTablet: React.FC = () => {
     scrollTo(number.toString())
   }
 
+  
   useEffect(() => {
     // after sending a message, new message will be scrolled into view or when chat is loaded
     // check if draft/chat is active, "scroll" is for scrolling to a replied message (set in component writeMessage)
