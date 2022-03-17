@@ -3,15 +3,15 @@ import 'firebase/compat/auth'
 import { Alert, Col, Form, Row } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import React, { useRef, useState } from 'react'
-import { getUser, welcome } from '../redux/actions/user/user'
+import { getUser, welcome } from '../../redux/actions/user/user'
 
-import Button from '../elements/Button/Button'
-import Panel from '../elements/Panel/Panel'
-import { StateUser } from '../redux/interfaces/interfaces'
+import Button from '../../elements/Button/Button'
+import Panel from '../../elements/Panel/Panel'
+import { StateUser } from '../../redux/interfaces/interfaces'
 import firebase from 'firebase/compat/app'
-import { useAuth } from './AuthContext'
+import { useAuth } from '../authcontext/AuthContext'
 import { useDispatch } from 'react-redux'
-import { useTypedSelector } from '../redux/hooks/useTypeSelector.js'
+import { useTypedSelector } from '../../redux/hooks/useTypeSelector.js'
 
 export function Login() {
   // state
@@ -35,8 +35,8 @@ export function Login() {
   // variables
   const verify: string = 'Please check your inbox to verify your email address'
   const goodbye: string = 'Your profile has been deleted successfully'
-  const Email: string = require('./Testuser').TestuserEmail
-  const PW: string = require('./Testuser').TestuserPW
+  const Email: string = require('../testuser/Testuser').TestuserEmail
+  const PW: string = require('../testuser/Testuser').TestuserPW
 
   // submit data to login through firebase + get userdata from database
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {

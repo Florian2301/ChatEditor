@@ -3,7 +3,7 @@ import { Container, Tab, Tabs } from 'react-bootstrap';
 import React, { useEffect } from 'react';
 import AboutEng from '../../about/Eng/AboutEng.js';
 import AboutGer from '../../about/Ger/AboutGer.js';
-import Authorization from '../../../authorization/Authorization.js';
+import Authorization from '../../../authorization/authorization/Authorization.js';
 import ChatList from '../../tables/ChatList/ChatList.js';
 import ChatboxCommentsMobile from '../../chatbox/MobileComments/ChatboxCommentsMobile.js';
 import ChatboxMobile from '../../chatbox/Mobile/ChatboxMobile.js';

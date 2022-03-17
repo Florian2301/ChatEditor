@@ -8,18 +8,18 @@ import {
   logOut,
   setKeyL,
   setKeyR,
-} from '../redux/actions/user/user'
+} from '../../redux/actions/user/user'
 
 import { Alert } from 'react-bootstrap'
-import Button from '../elements/Button/Button'
-import Language from '../modules/settings/Language/Language'
-import Panel from '../elements/Panel/Panel'
-import SelectView from '../modules/settings/SelectView/SelectView'
-import { StateUser } from '../redux/interfaces/interfaces'
+import Button from '../../elements/Button/Button'
+import Language from '../../modules/settings/Language/Language'
+import Panel from '../../elements/Panel/Panel'
+import SelectView from '../../modules/settings/SelectView/SelectView'
+import { StateUser } from '../../redux/interfaces/interfaces'
 import firebase from 'firebase/compat/app'
-import { useAuth } from './AuthContext'
+import { useAuth } from '../authcontext/AuthContext'
 import { useDispatch } from 'react-redux'
-import { useTypedSelector } from '../redux/hooks/useTypeSelector.js'
+import { useTypedSelector } from '../../redux/hooks/useTypeSelector.js'
 
 export function Dashboard(props: any) {
   // state

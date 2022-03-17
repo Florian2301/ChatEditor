@@ -2,9 +2,9 @@ import { Alert, Col, Form, Row } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import React, { useRef, useState } from 'react'
 
-import Button from '../elements/Button/Button'
-import Panel from '../elements/Panel/Panel'
-import { useAuth } from './AuthContext'
+import Button from '../../elements/Button/Button'
+import Panel from '../../elements/Panel/Panel'
+import { useAuth } from '../authcontext/AuthContext'
 
 export default function ForgotPassword() {
   // ref

@@ -4,16 +4,15 @@ import React, { useRef, useState } from 'react'
 import {
   cancel,
   deleteUserDB,
-  getUser,
   updateUserDB,
-} from '../redux/actions/user/user'
+} from '../../redux/actions/user/user'
 
-import Button from '../elements/Button/Button'
-import Panel from '../elements/Panel/Panel'
-import { StateUser } from '../redux/interfaces/interfaces'
-import { useAuth } from './AuthContext'
+import Button from '../../elements/Button/Button'
+import Panel from '../../elements/Panel/Panel'
+import { StateUser } from '../../redux/interfaces/interfaces'
+import { useAuth } from '../authcontext/AuthContext'
 import { useDispatch } from 'react-redux'
-import { useTypedSelector } from '../redux/hooks/useTypeSelector.js'
+import { useTypedSelector } from '../../redux/hooks/useTypeSelector.js'
 
 export function UpdateProfile() {
    // state
@@ -144,7 +143,7 @@ export function UpdateProfile() {
     }
   }
 
-  function cancel() {
+  function cancelAction() {
     dispatch(cancel()) // makes sure, alerts are turned off
   }
 
@@ -239,7 +238,7 @@ export function UpdateProfile() {
         </div>
 
         <div className="auth-actions" id="cancel">
-          <Link className="auth-link" id="auth-link" to="/dashboard" onClick={cancel}>
+          <Link className="auth-link" id="auth-link" to="/dashboard" onClick={cancelAction}>
             Cancel
           </Link>
         </div>

@@ -1,14 +1,14 @@
 import { Alert, Col, Form, Row } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import React, { useRef, useState } from 'react'
-import { addUserToDB, getUser } from '../redux/actions/user/user'
 
-import Button from '../elements/Button/Button'
-import Panel from '../elements/Panel/Panel'
-import { StateUser } from '../redux/interfaces/interfaces'
-import { useAuth } from './AuthContext'
+import Button from '../../elements/Button/Button'
+import Panel from '../../elements/Panel/Panel'
+import { StateUser } from '../../redux/interfaces/interfaces'
+import { addUserToDB } from '../../redux/actions/user/user'
+import { useAuth } from '../authcontext/AuthContext'
 import { useDispatch } from 'react-redux'
-import { useTypedSelector } from '../redux/hooks/useTypeSelector.js'
+import { useTypedSelector } from '../../redux/hooks/useTypeSelector.js'
 
 export function SignUp() {
    // state

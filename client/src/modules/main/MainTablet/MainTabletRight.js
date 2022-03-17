@@ -2,7 +2,7 @@ import '../Main.css';
 import { Container, Tab, Tabs } from 'react-bootstrap';
 import AboutEng from '../../about/Eng/AboutEng.js';
 import AboutGer from '../../about/Ger/AboutGer.js';
-import Authorization from '../../../authorization/Authorization.js';
+import Authorization from '../../../authorization/authorization/Authorization.js';
 import EditChats from '../../edit/EditChats/EditChats.js';
 import EditDrafts from '../../edit/EditDrafts/EditDrafts.js';
 import React from 'react';

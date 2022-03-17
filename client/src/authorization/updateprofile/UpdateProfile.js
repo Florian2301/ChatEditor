@@ -1,12 +1,12 @@
 import { Alert, Col, Form, Row } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useRef, useState } from 'react';
-import { deleteUserDB, updateUserDB, } from '../redux/actions/user/user';
-import Button from '../elements/Button/Button';
-import Panel from '../elements/Panel/Panel';
-import { useAuth } from './AuthContext';
+import { cancel, deleteUserDB, updateUserDB, } from '../../redux/actions/user/user';
+import Button from '../../elements/Button/Button';
+import Panel from '../../elements/Panel/Panel';
+import { useAuth } from '../authcontext/AuthContext';
 import { useDispatch } from 'react-redux';
-import { useTypedSelector } from '../redux/hooks/useTypeSelector.js';
+import { useTypedSelector } from '../../redux/hooks/useTypeSelector.js';
 export function UpdateProfile() {
     // state
     const dispatch = useDispatch();
@@ -119,7 +119,7 @@ export function UpdateProfile() {
             return;
         }
     }
-    function cancel() {
+    function cancelAction() {
         dispatch(cancel()); // makes sure, alerts are turned off
     }
     // --------------------------- RETURN ----------------------------------------------------------------------
@@ -147,7 +147,7 @@ export function UpdateProfile() {
             React.createElement("div", { className: "auth-actions" },
                 React.createElement(Link, { className: "auth-link", id: "auth-link-delete", to: "/", onClick: deleteProfile }, "Delete profile")),
             React.createElement("div", { className: "auth-actions", id: "cancel" },
-                React.createElement(Link, { className: "auth-link", id: "auth-link", to: "/dashboard", onClick: cancel }, "Cancel")))));
+                React.createElement(Link, { className: "auth-link", id: "auth-link", to: "/dashboard", onClick: cancelAction }, "Cancel")))));
 }
 export default UpdateProfile;
 //# sourceMappingURL=UpdateProfile.js.map

@@ -10,12 +10,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import { Alert, Col, Form, Row } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useRef, useState } from 'react';
-import { addUserToDB } from '../redux/actions/user/user';
-import Button from '../elements/Button/Button';
-import Panel from '../elements/Panel/Panel';
-import { useAuth } from './AuthContext';
+import Button from '../../elements/Button/Button';
+import Panel from '../../elements/Panel/Panel';
+import { addUserToDB } from '../../redux/actions/user/user';
+import { useAuth } from '../authcontext/AuthContext';
 import { useDispatch } from 'react-redux';
-import { useTypedSelector } from '../redux/hooks/useTypeSelector.js';
+import { useTypedSelector } from '../../redux/hooks/useTypeSelector.js';
 export function SignUp() {
     // state
     const dispatch = useDispatch();

@@ -7,7 +7,7 @@ import { setKeyL, setKeyR } from '../../../redux/actions/user/user.js'
 
 import AboutEng from '../../about/Eng/AboutEng.js'
 import AboutGer from '../../about/Ger/AboutGer.js'
-import Authorization from '../../../authorization/Authorization.js'
+import Authorization from '../../../authorization/authorization/Authorization.js'
 import ChatList from '../../tables/ChatList/ChatList.js'
 import ChatboxCommentsDesktop from '../../chatbox/DesktopComments/ChatboxCommentsDesktop.js'
 import ChatboxDesktop from '../../chatbox/Desktop/ChatboxDesktop.js'

@@ -1,16 +1,16 @@
-import './Authorization.css'
+import '../Authorization.css'
 
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 
-import { AuthProvider } from './AuthContext'
+import { AuthProvider } from '../authcontext/AuthContext'
 import { Container } from 'react-bootstrap'
-import Dashboard from './Dashboard'
-import ForgotPassword from './ForgotPassword'
-import Login from './Login'
-import PrivateRoute from './PrivateRoute'
+import Dashboard from '../dashboard/Dashboard'
+import ForgotPassword from '../forgotpassword/ForgotPassword'
+import Login from '../login/Login'
+import PrivateRoute from '../privateroute/PrivateRoute'
 import React from 'react'
-import SignUp from './SignUp'
-import UpdateProfile from './UpdateProfile'
+import SignUp from '../signup/SignUp'
+import UpdateProfile from '../updateprofile/UpdateProfile'
 
 export default function Authorization(props: {auto: any, desktop: any, tablet: any, mobile: any, id: string}) {
   return (
