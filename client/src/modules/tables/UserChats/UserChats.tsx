@@ -1,17 +1,18 @@
-import React from 'react'
 import './UserChats.css'
-import { v4 as uuidv4 } from 'uuid'
+
+import { StateTitle, StateUser, UserChats } from '../../../redux/interfaces/interfaces'
+import { clearDisplay, setKeyL, setKeyR } from '../../../redux/actions/user/user'
+
+import Popover from '../../../elements/Popover/Popover'
+import React from 'react'
+import { getOneChat } from '../../../redux/actions/chat/chat'
+import { getOneTitle } from '../../../redux/actions/title/title'
 import { useDispatch } from 'react-redux'
-import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
-import { clearDisplay, setKeyL, setKeyR } from '../../../redux/actions/user/user.js'
-import { getOneChat } from '../../../redux/actions/chat/chat.js'
-import { getOneTitle } from '../../../redux/actions/title/title.js'
-import { writeMessage } from '../../../redux/actions/draft/draft.js'
-import { StateUser, StateTitle, UserChats } from '../../../redux/interfaces/interfaces'
-import Popover from '../../../elements/Popover/Popover.js'
+import { useTypedSelector } from '../../../redux/hooks/useTypeSelector'
+import { v4 as uuidv4 } from 'uuid'
+import { writeMessage } from '../../../redux/actions/draft/draft'
 
-
-const UserChats: React.FC = () => {
+const UserChatsComponent: React.FC = () => {
   // state
   const dispatch = useDispatch()
   const title: StateTitle = useTypedSelector((state) => state.title)
@@ -77,4 +78,4 @@ const UserChats: React.FC = () => {
   )
 }
 
-export default UserChats
+export default UserChatsComponent

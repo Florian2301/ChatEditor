@@ -4,21 +4,16 @@ import {Chat, StateChat, StateDraft, StateTitle, StateUser, UserDrafts, UserTitl
 import { Container, Tab, Tabs } from 'react-bootstrap'
 import React, { useEffect } from 'react'
 
-import ChatList from '../../tables/ChatList/ChatList.js'
-import ChatboxCommentsTablet from '../../chatbox/TabletComments/ChatboxCommentsTablet.js'
-import ChatboxTablet from '../../chatbox/Tablet/ChatboxTablet.js'
-import DraftList from '../../tables/DraftList/DraftList.js'
-import UserChats from '../../tables/UserChats/UserChats.js'
-import { getAllTitles } from '../../../redux/actions/title/title.js'
-import { setKeyL } from '../../../redux/actions/user/user.js'
+import ChatList from '../../tables/ChatList/ChatList'
+import ChatboxCommentsTablet from '../../chatbox/TabletComments/ChatboxCommentsTablet'
+import ChatboxTablet from '../../chatbox/Tablet/ChatboxTablet'
+import DraftList from '../../tables/DraftList/DraftList'
+import UserChats from '../../tables/UserChats/UserChats'
+import { getAllTitles } from '../../../redux/actions/title/title'
+import { setKeyL } from '../../../redux/actions/user/user'
 import { useDispatch } from 'react-redux'
-import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
+import { useTypedSelector } from '../../../redux/hooks/useTypeSelector'
 
-// Lazy Load
-/*
-const ChatList = React.lazy(() => import ('../../tables/ChatList/ChatList.js'))
-const DraftList = React.lazy(() => import ('../../tables/DraftList/DraftList.js'))
-*/
 const MainTabletLeft: React.FC = () => {
   // State
   const dispatch = useDispatch()

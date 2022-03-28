@@ -1,5 +1,5 @@
-import { Philosopher, Messages, Comments, UserChats } from '../../interfaces/interfaces.js'
-import { Action, ActionType } from '../../actionTypes/chat/actionTypesChat.js'
+import { Action, ActionType } from '../../actionTypes/chat/actionTypesChat'
+import { Comments, Messages, Philosopher, UserChats } from '../../interfaces/interfaces'
 
 interface InitialState {
   chatId: string,

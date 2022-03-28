@@ -1,17 +1,16 @@
-import React, { useRef, useState, Suspense } from 'react'
 import './WriteMessage.css'
-import { v4 as uuidv4 } from 'uuid'
+
+import {Messages, Philosopher, StateDraft, StateUser} from '../../../redux/interfaces/interfaces'
+import React, { Suspense, useRef, useState } from 'react'
+import { updateDraft, writeMessage } from '../../../redux/actions/draft/draft'
+
+import Button from '../../../elements/Button/Button'
 import { useDispatch } from 'react-redux'
-import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
-import { updateDraft, writeMessage } from '../../../redux/actions/draft/draft.js'
-import {StateUser, StateDraft, Philosopher, Messages} from '../../../redux/interfaces/interfaces'
-
-import Button from '../../../elements/Button/Button.js'
-//import EmojiPicker from '../../../elements/Emoji/EmojiPicker.js'
-
+import { useTypedSelector } from '../../../redux/hooks/useTypeSelector'
+import { v4 as uuidv4 } from 'uuid'
 
 //React.lazy
-const EmojiPicker = React.lazy(() => import('../../../elements/Emoji/EmojiPicker.js'))
+const EmojiPicker = React.lazy(() => import('../../../elements/Emoji/EmojiPicker'))
 
 const WriteMessage = (props: {scrollTo: any, defaultScroll: any}) => {
   // state

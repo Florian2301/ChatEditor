@@ -1,6 +1,7 @@
-import  {createStore, applyMiddleware } from 'redux';
+import  {applyMiddleware, createStore} from 'redux';
+
+import reducers from './redux/reducers/reducer/reducers';
 import thunk from 'redux-thunk';
-import reducers from './redux/reducers/reducer/reducers.js';
 
 const initialState = {};
 

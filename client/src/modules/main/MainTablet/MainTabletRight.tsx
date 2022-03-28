@@ -3,20 +3,28 @@ import '../Main.css'
 import { Container, Tab, Tabs } from 'react-bootstrap'
 import {StateChat, StateDraft, StateUser} from '../../../redux/interfaces/interfaces'
 
-import AboutEng from '../../about/Eng/AboutEng.js'
-import AboutGer from '../../about/Ger/AboutGer.js'
-import Authorization from '../../../authorization/authorization/Authorization.js'
-import EditChats from '../../edit/EditChats/EditChats.js'
-import EditDrafts from '../../edit/EditDrafts/EditDrafts.js'
+import AboutEng from '../../about/Eng/AboutEng'
+import AboutGer from '../../about/Ger/AboutGer'
+import Authorization from '../../../authorization/authorization/Authorization'
+import EditChats from '../../edit/EditChats/EditChats'
+import EditDrafts from '../../edit/EditDrafts/EditDrafts'
 import React from 'react'
-import Settings from '../../settings/Settings/Settings.js'
-import StartDraft from '../../edit/StartDraft/StartDraft.js'
-import Title from '../../title/Title.js'
-import { setKeyR } from '../../../redux/actions/user/user.js'
+import Settings from '../../settings/Settings/Settings'
+import StartDraft from '../../edit/StartDraft/StartDraft'
+import Title from '../../title/Title'
+import { setKeyR } from '../../../redux/actions/user/user'
 import { useDispatch } from 'react-redux'
-import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
+import { useTypedSelector } from '../../../redux/hooks/useTypeSelector'
 
-const MainTabletRight: React.FC = (props: any) => {
+interface Select {
+  auto: any,
+  desktop: any,
+  tablet: any,
+  mobile: any,
+  id: string
+}
+
+const MainTabletRight: React.FC<Select> = (props: any) => {
   // state
   const dispatch = useDispatch()
   const chat: StateChat = useTypedSelector((state) => state.chat)

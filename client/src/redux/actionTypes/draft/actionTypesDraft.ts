@@ -1,4 +1,4 @@
-import { Draft, UserDrafts } from '../../interfaces/interfaces.js'
+import { Draft, UserDrafts } from '../../interfaces/interfaces'
 
 export enum ActionType {
     ADD_PHIL = 'ADD_PHIL',

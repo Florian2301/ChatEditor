@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react'
 import './ChatList.css'
-import { v4 as uuidv4 } from 'uuid'
-import { useDispatch } from 'react-redux'
-import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
-import { getUserChats, getOneChat } from '../../../redux/actions/chat/chat.js'
-import { getUserTitles, getOneTitle } from '../../../redux/actions/title/title.js'
-import { clearDisplay, setKeyL, setKeyR } from '../../../redux/actions/user/user.js'
-import { StateChat, StateUser, StateTitle, UserChats } from '../../../redux/interfaces/interfaces'
 
+import React, { useEffect, useState } from 'react'
+import { StateChat, StateTitle, StateUser, UserChats } from '../../../redux/interfaces/interfaces'
+import { clearDisplay, setKeyL, setKeyR } from '../../../redux/actions/user/user'
+import { getOneChat, getUserChats } from '../../../redux/actions/chat/chat'
+import { getOneTitle, getUserTitles } from '../../../redux/actions/title/title'
+
+import { useDispatch } from 'react-redux'
+import { useTypedSelector } from '../../../redux/hooks/useTypeSelector'
+import { v4 as uuidv4 } from 'uuid'
 
 const ChatList: React.FC = () => {
   // state

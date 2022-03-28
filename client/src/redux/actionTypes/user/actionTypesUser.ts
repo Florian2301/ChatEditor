@@ -1,4 +1,4 @@
-import { User, AllUser } from '../../interfaces/interfaces.js'
+import { AllUser, User } from '../../interfaces/interfaces'
 
 export enum ActionType {
     CLEAR_DISPLAY = 'CLEAR_DISPLAY',

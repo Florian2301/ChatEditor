@@ -19,7 +19,7 @@ import { StateUser } from '../../redux/interfaces/interfaces'
 import firebase from 'firebase/compat/app'
 import { useAuth } from '../authcontext/AuthContext'
 import { useDispatch } from 'react-redux'
-import { useTypedSelector } from '../../redux/hooks/useTypeSelector.js'
+import { useTypedSelector } from '../../redux/hooks/useTypeSelector'
 
 export function Dashboard(props: any) {
   // state

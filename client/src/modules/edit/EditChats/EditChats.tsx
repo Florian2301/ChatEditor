@@ -1,28 +1,29 @@
-import React, { useRef, useState } from 'react'
 import './EditChats.css'
-import { v4 as uuidv4 } from 'uuid'
-import { Form, Alert, Col, Row, Spinner } from 'react-bootstrap'
-import { useDispatch } from 'react-redux'
-import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
-import { saveDraft, getDrafts } from '../../../redux/actions/draft/draft.js'
-import {
-  updateTitle,
-  getUserTitles,
-  deleteTitle,
-} from '../../../redux/actions/title/title.js'
-import {
-  getOneChat,
-  updateChatDetails,
-  getUserChats,
-  deleteChat,
-} from '../../../redux/actions/chat/chat.js'
-import { clearDisplay } from '../../../redux/actions/user/user.js'
-import {StateChat, StateTitle, StateUser} from '../../../redux/interfaces/interfaces'
-import Button from '../../../elements/Button/Button.js'
-import Panel from '../../../elements/Panel/Panel.js'
-import PDF from '../../../elements/PDF/PDF.js'
-import { PDFDownloadLink } from '@react-pdf/renderer'
 
+import { Alert, Col, Form, Row, Spinner } from 'react-bootstrap'
+import React, { useRef, useState } from 'react'
+import {StateChat, StateTitle, StateUser} from '../../../redux/interfaces/interfaces'
+import {
+  deleteChat,
+  getOneChat,
+  getUserChats,
+  updateChatDetails,
+} from '../../../redux/actions/chat/chat'
+import {
+  deleteTitle,
+  getUserTitles,
+  updateTitle,
+} from '../../../redux/actions/title/title'
+import { getDrafts, saveDraft } from '../../../redux/actions/draft/draft'
+
+import Button from '../../../elements/Button/Button'
+import PDF from '../../../elements/PDF/PDF'
+import { PDFDownloadLink } from '@react-pdf/renderer'
+import Panel from '../../../elements/Panel/Panel'
+import { clearDisplay } from '../../../redux/actions/user/user'
+import { useDispatch } from 'react-redux'
+import { useTypedSelector } from '../../../redux/hooks/useTypeSelector'
+import { v4 as uuidv4 } from 'uuid'
 
 const EditChats: React.FC = () => {
   // state

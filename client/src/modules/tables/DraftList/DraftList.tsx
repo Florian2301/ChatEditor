@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react'
 import './DraftList.css'
-import { v4 as uuidv4 } from 'uuid'
-import { useDispatch } from 'react-redux'
-import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
-import { getDrafts, getOneDraft } from '../../../redux/actions/draft/draft'
-import { clearDisplay, setKeyL, setKeyR } from '../../../redux/actions/user/user'
-import { StateDraft, StateUser, UserDrafts } from '../../../redux/interfaces/interfaces'
 
+import React, { useEffect, useState } from 'react'
+import { StateDraft, StateUser, UserDrafts } from '../../../redux/interfaces/interfaces'
+import { clearDisplay, setKeyL, setKeyR } from '../../../redux/actions/user/user'
+import { getDrafts, getOneDraft } from '../../../redux/actions/draft/draft'
+
+import { useDispatch } from 'react-redux'
+import { useTypedSelector } from '../../../redux/hooks/useTypeSelector'
+import { v4 as uuidv4 } from 'uuid'
 
 const DraftList: React.FC = () => {
   // state

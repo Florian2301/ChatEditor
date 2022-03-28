@@ -15,7 +15,7 @@
 /*-------------------*/
 
 .chatbox {
-  height: 75vh;
+  height: 83vh;
   width: 30vw;
   overflow: auto;
   border-radius: 0.6rem;
@@ -25,7 +25,7 @@
 }
 
 .editchatbox {
-  height: 48.5vh;
+  height: 56.5vh;
   width: 30vw;
   overflow: auto;
   border-radius: 0.6rem;

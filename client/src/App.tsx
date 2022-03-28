@@ -5,7 +5,7 @@ import React, { Suspense, useState } from 'react'
 
 import { Container } from 'react-bootstrap'
 import { Provider } from 'react-redux'
-import { store } from './store.js'
+import { store } from './store'
 import { useMediaQuery } from 'react-responsive'
 
 const MainDesktop = React.lazy(() =>
@@ -22,8 +22,8 @@ const MainTabletRight = React.lazy(() =>
 )
 
 export default function App() {
-  const [bigScreen, setBigScreen] = useState(1400) // 1200
-  const [mediumScreen, setMediumScreen] = useState(1000) //768
+  const [bigScreen, setBigScreen] = useState<number>(1400) // 1200
+  const [mediumScreen, setMediumScreen] = useState<number>(1000) //768
 
   const viewAuto = () => {
     setBigScreen(1400) // 1200
@@ -45,12 +45,12 @@ export default function App() {
     setMediumScreen(3000) // 2991
   }
 
-  const DesktopScreen = ({ children }) => {
+  const DesktopScreen = ({ children } : { children: any }) => {
     const isDesktop = useMediaQuery({ minWidth: bigScreen })
     return isDesktop ? children : null
   }
 
-  const TabletScreen = ({ children }) => {
+  const TabletScreen = ({ children } : { children: any }) => {
     const isTablet = useMediaQuery({
       minWidth: mediumScreen,
       maxWidth: bigScreen,
@@ -58,7 +58,7 @@ export default function App() {
     return isTablet ? children : null
   }
 
-  const MobileScreen = ({ children }) => {
+  const MobileScreen = ({ children } : { children: any }) => {
     const isMobile = useMediaQuery({ maxWidth: mediumScreen })
     return isMobile ? children : null
   }

@@ -4,26 +4,34 @@ import {Chat, StateChat, StateDraft, StateTitle, StateUser, UserDrafts, UserTitl
 import { Container, Tab, Tabs } from 'react-bootstrap'
 import React, { useEffect } from 'react'
 
-import AboutEng from '../../about/Eng/AboutEng.js'
-import AboutGer from '../../about/Ger/AboutGer.js'
-import Authorization from '../../../authorization/authorization/Authorization.js'
-import ChatList from '../../tables/ChatList/ChatList.js'
-import ChatboxCommentsMobile from '../../chatbox/MobileComments/ChatboxCommentsMobile.js'
-import ChatboxMobile from '../../chatbox/Mobile/ChatboxMobile.js'
-import DraftList from '../../tables/DraftList/DraftList.js'
-import EditChats from '../../edit/EditChats/EditChats.js'
-import EditDrafts from '../../edit/EditDrafts/EditDrafts.js'
-import Settings from '../../settings/Settings/Settings.js'
-import StartDraft from '../../edit/StartDraft/StartDraft.js'
-import Title from '../../title/Title.js'
-import UserChats from '../../tables/UserChats/UserChats.js'
-import { getAllTitles } from '../../../redux/actions/title/title.js'
-import { setKeyL } from '../../../redux/actions/user/user.js'
+import AboutEng from '../../about/Eng/AboutEng'
+import AboutGer from '../../about/Ger/AboutGer'
+import Authorization from '../../../authorization/authorization/Authorization'
+import ChatList from '../../tables/ChatList/ChatList'
+import ChatboxCommentsMobile from '../../chatbox/MobileComments/ChatboxCommentsMobile'
+import ChatboxMobile from '../../chatbox/Mobile/ChatboxMobile'
+import DraftList from '../../tables/DraftList/DraftList'
+import EditChats from '../../edit/EditChats/EditChats'
+import EditDrafts from '../../edit/EditDrafts/EditDrafts'
+import Settings from '../../settings/Settings/Settings'
+import StartDraft from '../../edit/StartDraft/StartDraft'
+import Title from '../../title/Title'
+import UserChats from '../../tables/UserChats/UserChats'
+import { getAllTitles } from '../../../redux/actions/title/title'
+import { setKeyL } from '../../../redux/actions/user/user'
 import { useDispatch } from 'react-redux'
-import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
+import { useTypedSelector } from '../../../redux/hooks/useTypeSelector'
+
+interface Select {
+  auto: any,
+  desktop: any,
+  tablet: any,
+  mobile: any,
+  id: string
+}
 
 // mobile version
-const MainMobile: React.FC = (props: any) => {
+const MainMobile: React.FC<Select> = (props: any) => {
   // State
   const dispatch = useDispatch()
   const title: StateTitle = useTypedSelector((state) => state.title)

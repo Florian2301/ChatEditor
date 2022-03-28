@@ -1,7 +1,8 @@
-import axios from 'axios'
+import { Action, ActionType } from '../../actionTypes/draft/actionTypesDraft'
+import { Messages, Philosopher } from '../../interfaces/interfaces'
+
 import { Dispatch } from 'redux'
-import { ActionType, Action } from '../../actionTypes/draft/actionTypesDraft.js'
-import { Philosopher, Messages } from '../../interfaces/interfaces.js'
+import axios from 'axios'
 
 export function addPhil(names: Philosopher[]) {
   return { type: ActionType.ADD_PHIL, 

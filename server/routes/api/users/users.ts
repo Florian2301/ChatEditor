@@ -1,6 +1,7 @@
-import {Router, Request, NextFunction } from 'express'
-import { UserResponse } from '../routeInterface.js'
+import {NextFunction, Request, Router} from 'express'
+
 import User from '../../../models/user/User.js'
+import { UserResponse } from '../routeInterface.js'
 
 const userRouter = Router()
 

@@ -1,25 +1,26 @@
-import React, { useRef, useState, useEffect } from 'react'
 import './EditDrafts.css'
-import { v4 as uuidv4 } from 'uuid'
-import { Form, Alert, Col, Row, Spinner } from 'react-bootstrap'
-import { useDispatch } from 'react-redux'
-import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
+
+import { Alert, Col, Form, Row, Spinner } from 'react-bootstrap'
+import {Comments, Messages, Philosopher, StateChat, StateDraft, StateUser, UserChats} from '../../../redux/interfaces/interfaces'
+import React, { useEffect, useRef, useState } from 'react'
 import {
   addPhil,
-  getDrafts,
-  updateDraft,
-  selectColor,
   deleteDraft,
-} from '../../../redux/actions/draft/draft.js'
-import { clearDisplay } from '../../../redux/actions/user/user.js'
-import { saveChat, getUserChats } from '../../../redux/actions/chat/chat.js'
-import { publishTitle } from '../../../redux/actions/title/title.js'
-import {StateChat, StateUser, StateDraft, Philosopher, Messages, UserChats, Comments} from '../../../redux/interfaces/interfaces'
-import Button from '../../../elements/Button/Button.js'
-import Panel from '../../../elements/Panel/Panel.js'
-import PDF from '../../../elements/PDF/PDF.js'
-import { PDFDownloadLink } from '@react-pdf/renderer'
+  getDrafts,
+  selectColor,
+  updateDraft,
+} from '../../../redux/actions/draft/draft'
+import { getUserChats, saveChat } from '../../../redux/actions/chat/chat'
 
+import Button from '../../../elements/Button/Button'
+import PDF from '../../../elements/PDF/PDF'
+import { PDFDownloadLink } from '@react-pdf/renderer'
+import Panel from '../../../elements/Panel/Panel'
+import { clearDisplay } from '../../../redux/actions/user/user'
+import { publishTitle } from '../../../redux/actions/title/title'
+import { useDispatch } from 'react-redux'
+import { useTypedSelector } from '../../../redux/hooks/useTypeSelector'
+import { v4 as uuidv4 } from 'uuid'
 
 const EditDrafts: React.FC = () => {
   // state

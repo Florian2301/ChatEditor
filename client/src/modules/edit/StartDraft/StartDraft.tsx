@@ -1,20 +1,22 @@
-import React, { useRef, useState } from 'react'
 import './StartDraft.css'
-import { v4 as uuidv4 } from 'uuid'
-import { Form, Alert, Col, Row, Spinner } from 'react-bootstrap'
-import { useDispatch } from 'react-redux'
-import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
+
+import { Alert, Col, Form, Row, Spinner } from 'react-bootstrap'
+import {Philosopher, StateDraft, StateUser} from '../../../redux/interfaces/interfaces'
+import React, { useRef, useState } from 'react'
 import {
-  addPhil,
-  saveDraft,
-  getDrafts,
-  selectColor,
   addColor,
-} from '../../../redux/actions/draft/draft.js'
-import { clearDisplay } from '../../../redux/actions/user/user.js'
-import {StateDraft, StateUser, Philosopher} from '../../../redux/interfaces/interfaces'
-import Button from '../../../elements/Button/Button.js'
-import Panel from '../../../elements/Panel/Panel.js'
+  addPhil,
+  getDrafts,
+  saveDraft,
+  selectColor,
+} from '../../../redux/actions/draft/draft'
+
+import Button from '../../../elements/Button/Button'
+import Panel from '../../../elements/Panel/Panel'
+import { clearDisplay } from '../../../redux/actions/user/user'
+import { useDispatch } from 'react-redux'
+import { useTypedSelector } from '../../../redux/hooks/useTypeSelector'
+import { v4 as uuidv4 } from 'uuid'
 
 const StartDraft: React.FC = () => {
   // state

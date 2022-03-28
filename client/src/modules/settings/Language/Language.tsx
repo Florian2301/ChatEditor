@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
-import { v4 as uuidv4 } from 'uuid'
 import { Form, Row } from 'react-bootstrap'
-import { useDispatch } from 'react-redux'
-import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
-import { selectLanguage } from '../../../redux/actions/user/user.js'
+import React, { useState } from 'react'
+
 import { StateUser } from '../../../redux/interfaces/interfaces'
+import { selectLanguage } from '../../../redux/actions/user/user'
+import { useDispatch } from 'react-redux'
+import { useTypedSelector } from '../../../redux/hooks/useTypeSelector'
+import { v4 as uuidv4 } from 'uuid'
 
 const Language = () => {
   // useState

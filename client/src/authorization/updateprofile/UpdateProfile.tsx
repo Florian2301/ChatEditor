@@ -12,7 +12,7 @@ import Panel from '../../elements/Panel/Panel'
 import { StateUser } from '../../redux/interfaces/interfaces'
 import { useAuth } from '../authcontext/AuthContext'
 import { useDispatch } from 'react-redux'
-import { useTypedSelector } from '../../redux/hooks/useTypeSelector.js'
+import { useTypedSelector } from '../../redux/hooks/useTypeSelector'
 
 export function UpdateProfile() {
    // state

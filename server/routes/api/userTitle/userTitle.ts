@@ -1,6 +1,7 @@
-import { Router, Request, Response, NextFunction } from 'express'
-import { TitleResponse } from '../routeInterface.js'
+import { NextFunction, Request, Response, Router } from 'express'
+
 import Title from '../../../models/title/Title.js'
+import { TitleResponse } from '../routeInterface.js'
 
 const titleRouter = Router()
 

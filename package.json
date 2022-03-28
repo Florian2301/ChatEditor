@@ -2,15 +2,25 @@
   "name": "chat-editor",
   "version": "1.0.0",
   "description": "server-side chat-editor",
-  "main": "./server/server.js",
+  "main": "./server/dist/server.js",
   "type": "module",
   "scripts": {
-    "client-install": "npm install --prefix client",
-    "start": "node ./server/server.js",
+    "client-install": "npm install --legacy-peer-deps --prefix client",
+    "start": "node ./server/server.js", 
     "server": "nodemon ./server/server.js",
     "client": "npm start --prefix client",
+    
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "@dev": "run server and client for development",
+    
+    "postinstall": "tsc",
+    "@postinstall": "for deployment on heroku",
+    
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "@heroku-postbuild": "for deployment on heroku",
+    
+    "watch": "concurrently \"npm run watch --prefix server\" \"npm run watch --prefix client\"",
+    "@watch": "automatic compiling of all .ts-files on server and client side during development"
   },
   "repository": {
     "type": "git",

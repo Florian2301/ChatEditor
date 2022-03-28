@@ -1,5 +1,6 @@
-import {Router, Request, NextFunction } from 'express'
 import { ChatResponse, Messages, Philosopher } from '../routeInterface.js'
+import {NextFunction, Request, Router} from 'express'
+
 import Chat from '../../../models/chat/Chat.js'
 
 const chatRouter = Router()

@@ -1,5 +1,5 @@
-import { AllTitles, UserTitles } from '../../interfaces/interfaces.js'
-import { Action, ActionType } from '../../actionTypes/title/actionTypesTitle.js'
+import { Action, ActionType } from '../../actionTypes/title/actionTypesTitle'
+import { AllTitles, UserTitles } from '../../interfaces/interfaces'
 
 interface InitialState {
   titleId: string,

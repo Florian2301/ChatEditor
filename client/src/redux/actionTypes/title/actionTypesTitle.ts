@@ -1,4 +1,4 @@
-import { Title, UserTitles, AllTitles } from '../../interfaces/interfaces.js'
+import { AllTitles, Title, UserTitles } from '../../interfaces/interfaces'
 
 export enum ActionType {
     PUBLISH = 'PUBLISH',

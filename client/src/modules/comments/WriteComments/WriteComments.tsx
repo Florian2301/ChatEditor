@@ -3,18 +3,15 @@ import './WriteComments.css'
 import {Comments, StateChat, StateUser} from '../../../redux/interfaces/interfaces'
 import React, { Suspense, useRef, useState } from 'react'
 
-import Button from '../../../elements/Button/Button.js'
-import { updateChatDetails } from '../../../redux/actions/chat/chat.js'
+import Button from '../../../elements/Button/Button'
+import { updateChatDetails } from '../../../redux/actions/chat/chat'
 import { useDispatch } from 'react-redux'
-import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
-import { writeComment } from '../../../redux/actions/user/user.js'
-import { writeMessage } from '../../../redux/actions/draft/draft.js'
-
-//import EmojiPicker from '../../../elements/Emoji/EmojiPicker.js'
-
+import { useTypedSelector } from '../../../redux/hooks/useTypeSelector'
+import { writeComment } from '../../../redux/actions/user/user'
+import { writeMessage } from '../../../redux/actions/draft/draft'
 
 // React.lazy
-const EmojiPicker = React.lazy(() => import('../../../elements/Emoji/EmojiPicker.js'))
+const EmojiPicker = React.lazy(() => import('../../../elements/Emoji/EmojiPicker'))
 
 const WriteComments: React.FC = () => {
   // state

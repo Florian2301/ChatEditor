@@ -1,4 +1,4 @@
-import { Action, ActionType } from '../../actionTypes/user/actionTypesUser.js'
+import { Action, ActionType } from '../../actionTypes/user/actionTypesUser'
 
 import { Dispatch } from 'redux'
 import axios from 'axios'

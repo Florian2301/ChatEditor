@@ -1,7 +1,8 @@
-import axios from 'axios'
+import { Action, ActionType } from '../../actionTypes/chat/actionTypesChat'
+import { Comments, Messages, Philosopher } from '../../interfaces/interfaces'
+
 import { Dispatch } from 'redux'
-import { ActionType, Action } from '../../actionTypes/chat/actionTypesChat.js'
-import { Philosopher, Messages, Comments } from '../../interfaces/interfaces.js'
+import axios from 'axios'
 
 // save as chat
 export const saveChat =

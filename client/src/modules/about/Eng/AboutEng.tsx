@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
 import '../About.css'
-import { v4 as uuidv4 } from 'uuid'
-import Panel from '../../../elements/Panel/Panel.js'
-import { Collapse } from 'react-bootstrap'
+
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import React, { useState } from 'react'
+
+import { Collapse } from 'react-bootstrap'
+import Panel from '../../../elements/Panel/Panel'
+import { v4 as uuidv4 } from 'uuid'
 
 const About: React.FC = () => {
   // useState
@@ -25,7 +27,7 @@ const About: React.FC = () => {
   }
 
   function getEmail() {
-    const Email: string = require('../Contact.js').ContactEmail
+    const Email: string = require('../Contact').ContactEmail
     setEmail(Email)
     setTimeout(() => {
       setEmail(false)

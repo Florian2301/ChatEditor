@@ -1,8 +1,8 @@
+import chats from '../chat/reducerChat'
 import { combineReducers } from 'redux'
-import title from '../title/reducerTitle.js'
-import chats from '../chat/reducerChat.js'
-import drafts from '../draft/reducerDraft.js'
-import user from '../user/reducerUser.js'
+import drafts from '../draft/reducerDraft'
+import title from '../title/reducerTitle'
+import user from '../user/reducerUser'
 
 /**
  * main reducer document

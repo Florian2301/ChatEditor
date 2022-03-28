@@ -1,6 +1,7 @@
-import axios from 'axios'
+import { Action, ActionType } from '../../actionTypes/title/actionTypesTitle'
+
 import { Dispatch } from 'redux'
-import { ActionType, Action } from '../../actionTypes/title/actionTypesTitle.js'
+import axios from 'axios'
 
 export function publishTitle(publish: boolean | number) {
   return { type: ActionType.PUBLISH, 

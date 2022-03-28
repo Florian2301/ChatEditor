@@ -8,7 +8,7 @@ import { StateUser } from '../../redux/interfaces/interfaces'
 import { addUserToDB } from '../../redux/actions/user/user'
 import { useAuth } from '../authcontext/AuthContext'
 import { useDispatch } from 'react-redux'
-import { useTypedSelector } from '../../redux/hooks/useTypeSelector.js'
+import { useTypedSelector } from '../../redux/hooks/useTypeSelector'
 
 export function SignUp() {
    // state

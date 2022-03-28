@@ -1,4 +1,4 @@
-import { Chat, UserChats } from '../../interfaces/interfaces.js'
+import { Chat, UserChats } from '../../interfaces/interfaces'
 
 export enum ActionType {
     GET_CHAT = 'GET_CHAT',

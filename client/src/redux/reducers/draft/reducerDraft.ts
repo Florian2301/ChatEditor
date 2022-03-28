@@ -1,5 +1,5 @@
-import { Philosopher, Messages, UserDrafts } from '../../interfaces/interfaces.js'
-import { Action, ActionType } from '../../actionTypes/draft/actionTypesDraft.js'
+import { Action, ActionType } from '../../actionTypes/draft/actionTypesDraft'
+import { Messages, Philosopher, UserDrafts } from '../../interfaces/interfaces'
 
 interface InitialState {
   draftId: string, 

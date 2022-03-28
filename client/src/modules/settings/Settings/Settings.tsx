@@ -1,13 +1,13 @@
-import React from 'react'
 import './Settings.css'
+
+import { setKeyL, setKeyR } from '../../../redux/actions/user/user'
+
+import Language from '../Language/Language'
+import Panel from '../../../elements/Panel/Panel'
+import React from 'react'
+import SelectView from '../SelectView/SelectView'
+import { clearDisplay } from '../../../redux/actions/user/user'
 import { useDispatch } from 'react-redux'
-import { clearDisplay } from '../../../redux/actions/user/user.js'
-import { setKeyR, setKeyL } from '../../../redux/actions/user/user.js'
-import Language from '../Language/Language.js'
-import Panel from '../../../elements/Panel/Panel.js'
-import SelectView from '../SelectView/SelectView.js'
-
-
 
 const Settings = (props: {auto: any, desktop: any, tablet: any, mobile: any, id: string}) => {
   const dispatch = useDispatch()

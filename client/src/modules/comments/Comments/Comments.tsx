@@ -1,12 +1,13 @@
-import React from 'react'
 import './Comments.css'
+
+import {Comments, StateChat, StateUser} from '../../../redux/interfaces/interfaces'
+
+import React from 'react'
+import { updateChatDetails } from '../../../redux/actions/chat/chat'
 import { useDispatch } from 'react-redux'
-import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
-import { updateChatDetails } from '../../../redux/actions/chat/chat.js'
-import {StateChat, StateUser, Comments } from '../../../redux/interfaces/interfaces'
+import { useTypedSelector } from '../../../redux/hooks/useTypeSelector'
 
-
-const Comments = (props: {author: boolean, commentRef: any, name: string, date: string, text: string, id: string}) => {
+const CommentsComponent = (props: {author: boolean, commentRef: any, name: string, date: string, text: string, id: string}) => {
   // state
   const dispatch = useDispatch()
   const chat: StateChat = useTypedSelector((state) => state.chat)
@@ -63,4 +64,4 @@ const Comments = (props: {author: boolean, commentRef: any, name: string, date: 
   )
 }
 
-export default Comments
+export default CommentsComponent

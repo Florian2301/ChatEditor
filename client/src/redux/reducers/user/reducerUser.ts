@@ -1,6 +1,6 @@
-import { Action, ActionType } from '../../actionTypes/user/actionTypesUser.js'
+import { Action, ActionType } from '../../actionTypes/user/actionTypesUser'
 
-import { AllUser } from '../../interfaces/interfaces.js'
+import { AllUser } from '../../interfaces/interfaces'
 
 interface InitialState {
   userId: string,

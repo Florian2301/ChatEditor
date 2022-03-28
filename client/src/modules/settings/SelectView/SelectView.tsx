@@ -1,10 +1,10 @@
-import React from 'react'
-import { Form } from 'react-bootstrap'
-import { useDispatch } from 'react-redux'
-import { useTypedSelector } from '../../../redux/hooks/useTypeSelector.js'
-import { changeModus, setKeyL, setKeyR } from '../../../redux/actions/user/user.js'
-import { StateUser } from '../../../redux/interfaces/interfaces'
+import { changeModus, setKeyL, setKeyR } from '../../../redux/actions/user/user'
 
+import { Form } from 'react-bootstrap'
+import React from 'react'
+import { StateUser } from '../../../redux/interfaces/interfaces'
+import { useDispatch } from 'react-redux'
+import { useTypedSelector } from '../../../redux/hooks/useTypeSelector'
 
 const SelectView = (props: {auto: any, desktop: any, tablet: any, mobile: any, id: string}) => {
   // state
