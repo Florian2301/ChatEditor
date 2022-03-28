@@ -3,7 +3,7 @@ import express, { Request, Response } from 'express'
 import bodyParser from 'body-parser'
 import chatRouter from './dist/routes/api/userChats/userChats.js'
 import draftRouter from './dist/routes/api/UserDrafts/userDrafts.js'
-import mongoURI from './dist/config/keys.js' // comment out for deployment on heroku
+//import mongoURI from './dist/config/keys.js' // comment out for deployment on heroku
 import mongoose from 'mongoose'
 import path from 'path'
 import titleRouter from './dist/routes/api/userTitle/userTitle.js'
@@ -15,7 +15,7 @@ const app = express()
 app.use(bodyParser.json())
 
 // DB Config
-const db: any = process.env.mongoURI || mongoURI
+const db: any = process.env.mongoURI //|| mongoURI
 
 // Connect to MongoDB
 mongoose
