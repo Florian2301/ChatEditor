@@ -1,0 +1,55 @@
+import { Action } from '../../actionTypes/chat/actionTypesChat';
+import { Comments, Messages, Philosopher, UserChats } from '../../interfaces/interfaces';
+interface InitialState {
+    chatId: string;
+    userId: string;
+    admin: boolean;
+    chatnumber: number;
+    title: string;
+    author: string;
+    date: string;
+    language: string;
+    tags: string[];
+    description: string;
+    philosopher: Philosopher[];
+    messages: Messages[];
+    userChats: UserChats[];
+    chatEditmode: boolean;
+    comments: Comments[];
+}
+declare function chats(state: InitialState | undefined, action: Action): InitialState | {
+    chatId: string;
+    userId: string;
+    user: string;
+    admin: boolean;
+    chatnumber: number;
+    title: string;
+    author: string;
+    date: string;
+    language: string;
+    tags: string[];
+    description: string;
+    philosopher: Philosopher[];
+    messages: Messages[];
+    chatEditmode: boolean;
+    comments: Comments[];
+    userChats: UserChats[];
+} | {
+    chatId: string;
+    userId: string;
+    user: string;
+    admin: boolean;
+    chatnumber: string;
+    title: string;
+    author: string;
+    date: string;
+    language: string;
+    tags: never[];
+    description: string;
+    philosopher: never[];
+    messages: never[];
+    chatEditmode: boolean;
+    comments: never[];
+    userChats: UserChats[];
+};
+export default chats;
