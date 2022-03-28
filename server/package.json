@@ -5,6 +5,7 @@
   "main": "./dist/server.js",
   "type": "module",
   "scripts": {
+    "start": "node ./dist/server.js",
     "watch": "tsc --w",
     "@watch": "automatic compiling of all .ts-files on server side during development"
   },
