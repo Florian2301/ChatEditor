@@ -2,7 +2,7 @@
   "name": "chat-editor",
   "version": "1.0.0",
   "description": "script for automatic typescript compiling",
-  "main": "./server/dist/server.js",
+  "main": "./dist/server.js",
   "type": "module",
   "scripts": {
     "watch": "tsc --w",

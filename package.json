@@ -16,6 +16,7 @@
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
     "@heroku-postbuild": "for deployment on heroku",
     "tsc": "tsc",
+    "@tsc": "for deployment on heroku, to run postinstall",
     "watch": "concurrently \"npm run watch --prefix server\" \"npm run watch --prefix client\"",
     "@watch": "automatic compiling of all .ts-files on server and client side during development"
   },
