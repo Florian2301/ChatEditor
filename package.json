@@ -2,7 +2,7 @@
   "name": "chat-editor",
   "version": "1.0.0",
   "description": "server-side chat-editor",
-  "main": "./server/dist/server.js",
+  "main": "./server/server.js",
   "type": "module",
   "scripts": {
     "client-install": "npm install --legacy-peer-deps --prefix client",
