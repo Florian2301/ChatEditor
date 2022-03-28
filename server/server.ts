@@ -1,13 +1,13 @@
 import express, { Request, Response } from 'express'
 
 import bodyParser from 'body-parser'
-import chatRouter from './routes/api/userChats/userChats.js'
-import draftRouter from './routes/api/UserDrafts/userDrafts.js'
-import mongoURI from './config/keys.js' // comment out for deployment on heroku
+import chatRouter from './dist/routes/api/userChats/userChats.js'
+import draftRouter from './dist/routes/api/UserDrafts/userDrafts.js'
+import mongoURI from './dist/config/keys.js' // comment out for deployment on heroku
 import mongoose from 'mongoose'
 import path from 'path'
-import titleRouter from './routes/api/userTitle/userTitle.js'
-import userRouter from './routes/api/users/users.js'
+import titleRouter from './dist/routes/api/userTitle/userTitle.js'
+import userRouter from './dist/routes/api/users/users.js'
 
 const app = express()
 
