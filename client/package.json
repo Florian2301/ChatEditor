@@ -2,7 +2,7 @@
   "name": "client",
   "version": "1.0.0",
   "description": "client-side chat-editor",
-  "main": "index.js",
+  "main": "./dist/src/index.js",
   "scripts": {
     "start": "craco start",
     "@start": "craco - create react app configuration override - solved build failure after update package.json dependencies in 01/2022",
