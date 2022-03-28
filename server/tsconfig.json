@@ -106,12 +106,12 @@
     "config/**/*",
     "models/**/*",
     "routes/**/*",
+    "server.ts"
   ],
   "exclude": [
     "node_modules",
     "client",
     "dist",
     "**/*.d.ts",
-    "server.ts"
   ]
 }
