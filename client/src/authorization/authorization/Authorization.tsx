@@ -23,7 +23,15 @@ export default function Authorization(props: {auto: any, desktop: any, tablet: a
         <Router>
           <AuthProvider>
             <Routes>
-              <Route path="/" element={<Login />} />
+              <Route path="/" element={user.loggedIn? <PrivateRoute>
+                    <Dashboard
+                      auto={props.auto}
+                      desktop={props.desktop}
+                      tablet={props.tablet}
+                      mobile={props.mobile}
+                      id={props.id}
+                    />
+                  </PrivateRoute> : <Login />} />
               <Route
                 path="/dashboard"
                 element={
