@@ -23,7 +23,7 @@ export default function Authorization(props: {auto: any, desktop: any, tablet: a
         <Router>
           <AuthProvider>
             <Routes>
-              <Route path="/" element={user.loggedIn? <PrivateRoute>
+              <Route path="/" element={user.loggedIn?
                     <Dashboard
                       auto={props.auto}
                       desktop={props.desktop}
@@ -31,7 +31,7 @@ export default function Authorization(props: {auto: any, desktop: any, tablet: a
                       mobile={props.mobile}
                       id={props.id}
                     />
-                  </PrivateRoute> : <Login />} />
+                 : <Login />} />
               <Route
                 path="/dashboard"
                 element={
