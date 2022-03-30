@@ -253,6 +253,7 @@ const EditChats: React.FC = () => {
       </div>
 
       <Form onSubmit={handleSubmit}>
+{/* edit chat-details */}
         {edit ? (
           <div
             className={
@@ -261,6 +262,7 @@ const EditChats: React.FC = () => {
                 : 'edit-chat-scroll'
             }
           >
+{/* chatnumber */}
             <Form.Group as={Row}>
               <Form.Label className="edit-chat-number" column sm="3">
                 Chatnumber:
@@ -276,7 +278,8 @@ const EditChats: React.FC = () => {
                 />
               </Col>
             </Form.Group>
-
+        
+{/* title */}
             <Form.Group as={Row}>
               <Form.Label className="edit-chat-title" column sm="3">
                 Title:
@@ -294,6 +297,7 @@ const EditChats: React.FC = () => {
               </Col>
             </Form.Group>
 
+{/* description */}
             <Form.Group className="edit-chat-top" as={Row}>
               <Form.Label className="edit-chat-description" column sm="3">
                 Description:
@@ -311,6 +315,7 @@ const EditChats: React.FC = () => {
               </Col>
             </Form.Group>
 
+{/* tags */}
             <Form.Group className="edit-chat-top" as={Row}>
               <Form.Label className="edit-chat-tags" column sm="3">
                 Tags:{' '}
@@ -328,6 +333,7 @@ const EditChats: React.FC = () => {
               </Col>
             </Form.Group>
 
+{/* author: f user is admin, he can change name of author */}
             {user.admin ? (
               <Form.Group className="edit-chat-top" as={Row}>
                 <Form.Label className="edit-chat-author" column sm="3">
@@ -344,6 +350,7 @@ const EditChats: React.FC = () => {
               </Form.Group>
             ) : null}
 
+{/* status: if user is admin, he can switch between "admin" and "user" status -> important for future versions of the chat-editor */}
             {user.admin ? (
               <Form.Group as={Row}>
                 <Form.Label className="edit-chat-admin" column sm="3">
@@ -368,6 +375,7 @@ const EditChats: React.FC = () => {
               </Form.Group>
             ) : null}
 
+{/* language */}
             <Form.Group as={Row}>
               <Form.Label className="edit-chat-language" column sm="3">
                 Language:
@@ -389,6 +397,7 @@ const EditChats: React.FC = () => {
               </Col>
             </Form.Group>
 
+{/* date of publish */}
             <Form.Group as={Row}>
               <Form.Label className="edit-chat-date" column sm="3">
                 Published:
@@ -406,6 +415,7 @@ const EditChats: React.FC = () => {
             <br />
           </div>
         ) : (
+/* readonly chat details */
           <div
             className={
               window.innerWidth <= 1000
@@ -523,12 +533,14 @@ const EditChats: React.FC = () => {
             </div>
           </div>
         )}
+{/* ---------------------- border ---------------------------- */}
         <div className="edit-chat-border">{''}</div>
         <div className="edit-chat-spinner">
           {spinner ? (
             <Spinner animation="border" role="status"></Spinner>
           ) : null}
         </div>
+{/* buttons */}
         <div className="edit-chat-actions">
           {!edit ? (
             <Button

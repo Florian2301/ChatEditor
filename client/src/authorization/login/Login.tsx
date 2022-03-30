@@ -59,7 +59,7 @@ export function Login() {
     }
   }
 
-  // submit data to login through firebase + get userdata from database
+  // Testuser: submit data to login through firebase + get userdata from database
   async function handleSubmitTestuser(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     try {
@@ -104,6 +104,7 @@ export function Login() {
         ) : null}
       </div>
 
+  {/* login user*/}
       <Form onSubmit={handleSubmit}>
         <Form.Group id="email-login" as={Row}>
           <Form.Label id="auth-email" column sm="3">
@@ -159,8 +160,10 @@ export function Login() {
           </Link>
         </div>
       </Form>
+{/* ---------------------- border -------------------------------- */}
       <div className="testuser-border">{''}</div>
 
+  {/* Testuser login for demo purpose */}
       <Form onSubmit={handleSubmitTestuser}>
         <p className="testuser-info">
           You can also log in as a testuser and try out to write a chat!

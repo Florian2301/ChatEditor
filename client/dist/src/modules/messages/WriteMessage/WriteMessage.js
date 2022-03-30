@@ -1,5 +1,6 @@
 import './WriteMessage.css';
 import React, { Suspense, useRef, useState } from 'react';
+import { insertToNewPosition, repliedMessage } from './Functions';
 import { updateDraft, writeMessage } from '../../../redux/actions/draft/draft';
 import Button from '../../../elements/Button/Button';
 import { useDispatch } from 'react-redux';
@@ -47,6 +48,8 @@ const WriteMessage = (props) => {
             messageRef.current !== null ? messageRef.current.value = '' : null;
             numberRef.current !== null ? numberRef.current.value = '' : null;
             setReply(false);
+            setWrite(false);
+            dispatch(writeMessage(false));
         }
     }
     // function to send a new message (with new number or insert in between other messages)
@@ -60,6 +63,7 @@ const WriteMessage = (props) => {
         //for message content
         const allMessages = draft.messages;
         const sendMessage = messageRef.current !== null ? messageRef.current.value : '';
+        const newMessage = messageRef.current !== null ? messageRef.current.value : '';
         let newMessagesArray;
         //for message position
         const philosopher = draft.philosopher;
@@ -99,52 +103,9 @@ const WriteMessage = (props) => {
             props.scrollTo(false);
         }
         else {
-            // user select number
-            // array to store new order of messages
-            newMessagesArray = [];
-            // push message with new number into the rest of messages
-            allMessages.map((message) => {
-                // find all messages below the replacing one and store it in array
-                if (message.messagenumber < replaceMessageNumber) {
-                    newMessagesArray.push(message);
-                }
-                // create new message with new number and find replaced message and set a new number for this one
-                if (message.messagenumber === replaceMessageNumber) {
-                    const newMessage = messageRef.current !== null ? messageRef.current.value : '';
-                    newMessagesArray.push(
-                    // new message
-                    {
-                        messagenumber: replaceMessageNumber,
-                        name: name,
-                        text: newMessage,
-                        color: color,
-                        position: positionPhil,
-                        repliedmessage: [],
-                    }, 
-                    // set new number for replaced message
-                    {
-                        messagenumber: replaceMessageNumber + 1,
-                        name: message.name,
-                        text: message.text,
-                        color: message.color,
-                        position: message.position,
-                        repliedmessage: message.repliedmessage,
-                    });
-                }
-                // get the rest of the messages and set new numbers to them
-                if (message.messagenumber >= sortMessage) {
-                    sortMessage++;
-                    newMessagesArray.push({
-                        messagenumber: sortMessage,
-                        name: message.name,
-                        text: message.text,
-                        color: message.color,
-                        position: message.position,
-                        repliedmessage: message.repliedmessage,
-                    });
-                }
-                return newMessagesArray;
-            });
+            // function to insert message to a new position in chatflow
+            const Insert = insertToNewPosition(allMessages, newMessage, sortMessage, replaceMessageNumber, positionPhil, name, color);
+            newMessagesArray = Insert;
             props.scrollTo(replaceMessageNumber);
         }
         // update draft with default number/new numbers and new message
@@ -172,31 +133,11 @@ const WriteMessage = (props) => {
         // find message to reply to and save as repliedmessage
         const numberRefValue = numberRef.current !== null ? numberRef.current.value : '0';
         const messagenumber = parseInt(numberRefValue);
-        let replyToMessage = [];
-        draft.messages.map((message) => {
-            if (message.messagenumber === messagenumber) {
-                replyToMessage = [
-                    message.messagenumber.toString(),
-                    message.color,
-                    message.name,
-                    message.text
-                ];
-            }
-            return replyToMessage;
-        });
-        //for message content
         const allMessages = draft.messages;
         const sendMessage = messageRef.current !== null ? messageRef.current.value : '';
-        allMessages.push({
-            messagenumber: number,
-            name: name,
-            text: sendMessage,
-            color: color,
-            position: positionPhil,
-            repliedmessage: replyToMessage,
-        });
+        const messagesWithReply = repliedMessage(allMessages, messagenumber, sendMessage, number, positionPhil, name, color);
         // update draft with new message and replied message
-        dispatch(updateDraft(draft.draftId, draft.title, draft.author, draft.published, draft.date, draft.language, draft.tags, draft.description, draft.philosopher, allMessages, user.admin));
+        dispatch(updateDraft(draft.draftId, draft.title, draft.author, draft.published, draft.date, draft.language, draft.tags, draft.description, draft.philosopher, messagesWithReply, user.admin));
         // to scroll to message with new number
         props.defaultScroll();
         // clear data
@@ -217,7 +158,9 @@ const WriteMessage = (props) => {
                 "reply to #",
                 React.createElement("select", { className: "write-message-select-number", defaultValue: draft.messages.length, ref: numberRef }, draft.messages.map((message) => {
                     return (React.createElement("option", { value: message.messagenumber, key: uuidv4() }, message.messagenumber));
-                })))) : (React.createElement("label", { className: "label-select-number" },
+                })))) : (
+            /* either send as latest message or insert to a new position in the chatflow */
+            React.createElement("label", { className: "label-select-number" },
                 React.createElement("span", { id: "replytomessage", onClick: () => setReply(!reply) }, "reply to #"),
                 "insert as #",
                 React.createElement("select", { ref: numberRef, className: "write-message-select-number", defaultValue: draft.messages.length + 1 },

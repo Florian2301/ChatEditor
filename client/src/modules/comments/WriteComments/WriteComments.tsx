@@ -143,6 +143,7 @@ const WriteComments: React.FC = () => {
                 onKeyDown={keyEventTextarea}
                 rows={window.innerWidth <= 1000 ? 4 : 5}
               />
+              {/* third party api -> seperate in chunks for deployment */}
               <Suspense fallback={<div>Loading...</div>}>
                 <EmojiPicker getEmoji={addEmoji} />
               </Suspense>

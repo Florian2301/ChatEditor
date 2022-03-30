@@ -8,6 +8,7 @@ import {
   updateDraft,
 } from '../../../redux/actions/draft/draft'
 
+import {selectNewNumberAndSortMessages} from "./Functions"
 import { updateChat } from '../../../redux/actions/chat/chat'
 import { useDispatch } from 'react-redux'
 import { useTypedSelector } from '../../../redux/hooks/useTypeSelector'
@@ -30,6 +31,7 @@ const Message = (props: {position?: string, positionedit?: string, color?: strin
 
   // editmode variable
   const draftEditMode: boolean = draft.draftEditmode
+  const chatEditmode: boolean = chat.chatEditmode
 
   // sets editmode to edit message and scrolls message into view
   function clickEdit() {
@@ -57,186 +59,83 @@ const Message = (props: {position?: string, positionedit?: string, color?: strin
 
   // function save changes of message
   function editMessage() {
-    const message = messageRef.current? messageRef.current.value : null
-    const number = props.number
-    const chatId = props.chatid
+    const message: string | null = messageRef.current? messageRef.current.value : null
+    const number: number = props.number
+    const chatId: string = props.chatid
 
     let selectedNumber: number = 0
+    
+    // check if draftmode then get number select element
     if (draftEditMode) {
       selectedNumber = parseInt(numberRef.current? numberRef.current.value : '0')
     }
 
-    // message must have a content
+    // check: message must have a content
     if (!message || message === null) {
       alert('Message cannot be blank')
       return
     }
-    // check if draft and update only text
+
+    // check if draftmode and update only text if messagenumber has not been changed
     if (draft.draftEditmode && selectedNumber === number) {
       dispatch(editDraft(chatId, number, message))
       props.scrollTo(number)
     }
-    // check if draft and update message and selected number
+
+    // check if draftmode and update message if a new messagenumber has been selected
     if (draft.draftEditmode && selectedNumber !== number) {
-      setNewNumberAndEditDraft(selectedNumber, message)
-    }
-    if (chat.chatEditmode) {
-      // check if chat and update only text
+      const newMessageNumber: number = selectedNumber
+      const oldMessageNumber: number = props.number
+      let messages: Messages[] = draft.messages
+      let shiftMessage: Messages = draft.messages[0] // variable has to be implemented
+      let changeMessage: Messages = draft.messages[0] // variable has to be implemented
+      let findIndexShift: Messages = draft.messages[0] // variable has to be implemented
+      let findIndexChange: Messages = draft.messages[0] // variable has to be implemented
+
+      // function to set a new number to a message and change text if text has been changed
+      // and sort messages in new order
+      const newMessages = selectNewNumberAndSortMessages(
+          message, 
+          newMessageNumber, 
+          oldMessageNumber, 
+          shiftMessage,
+          changeMessage, 
+          messages,
+          findIndexShift,
+          findIndexChange
+          )
+      
+      // update draft in database
+      dispatch(updateDraft(
+        draft.draftId,
+        draft.title,
+        draft.author,
+        draft.published,
+        draft.date,
+        draft.language,
+        draft.tags,
+        draft.description,
+        draft.philosopher,
+        newMessages,
+        draft.admin
+      ))
+      
+      // to scroll to message with new number
+      setTimeout(() => {
+        props.scrollTo(newMessageNumber)
+      }, 1000)
+    
+      // clear data
+      messageRef.current? messageRef.current.value = '' : null
+      numberRef.current? numberRef.current.value = '' : null
+      setEditmode(!editmode)
+      }
+
+    // check if chatmode and update only text of message
+    if (chatEditmode) {
       dispatch(updateChat(chatId, number, message))
       props.scrollTo(number)
     }
-  }
-
-  // find messages and change the messagenumber
-  function setNewNumberAndEditDraft(selectednumber: number, editedMessage: string) {
-    const newMessageNumber: number = selectednumber
-    const oldMessageNumber: number = props.number
-    let shiftMessage: Messages = draft.messages[0] // variable has te be implemented
-    let changeMessage: Messages = draft.messages[0] // variable has te be implemented
-    let messages: Messages[] = draft.messages
-    let indexShift: number = 0
-    let indexChange: number = 0
-    let findIndexShift: Messages = draft.messages[0] // variable has te be implemented
-    let findIndexChange: Messages = draft.messages[0] // variable has te be implemented
-
-    //changing messagenumber descending
-    if (oldMessageNumber > newMessageNumber) {
-      messages.map((message: Messages) => {
-        //find old message, which will be shifted
-        if (message.messagenumber === newMessageNumber) {
-          findIndexShift = message
-          shiftMessage = {
-            _id: message._id,
-            messagenumber: newMessageNumber + 1,
-            name: message.name,
-            text: message.text,
-            time: message.time,
-            color: message.color,
-            tags: message.tags,
-            position: message.position,
-            repliedmessage: message.repliedmessage,
-          }
-        }
-        // find message to be changed and set new number
-        if (message.messagenumber === oldMessageNumber) {
-          findIndexChange = message
-          changeMessage = {
-            _id: message._id,
-            messagenumber: newMessageNumber,
-            name: message.name,
-            text: editedMessage,
-            time: message.time,
-            color: message.color,
-            tags: message.tags,
-            position: message.position,
-            repliedmessage: message.repliedmessage,
-          }
-        }
-        return { findIndexShift, findIndexChange, shiftMessage, changeMessage }
-      })
-    }
-    //changing messagenumber ascending
-    if (oldMessageNumber < newMessageNumber) {
-      messages.map((message: Messages) => {
-        //find old message, which will be shifted
-        if (message.messagenumber === newMessageNumber) {
-          findIndexShift = message
-          shiftMessage = {
-            _id: message._id,
-            messagenumber: newMessageNumber - 1,
-            name: message.name,
-            text: message.text,
-            time: message.time,
-            color: message.color,
-            tags: message.tags,
-            position: message.position,
-            repliedmessage: message.repliedmessage,
-          }
-        }
-        // find message to be changed and set new number
-        if (message.messagenumber === oldMessageNumber) {
-          findIndexChange = message
-          changeMessage = {
-            _id: message._id,
-            messagenumber: newMessageNumber,
-            name: message.name,
-            text: editedMessage,
-            time: message.time,
-            color: message.color,
-            tags: message.tags,
-            position: message.position,
-            repliedmessage: message.repliedmessage,
-          }
-        }
-        return { findIndexShift, findIndexChange, shiftMessage, changeMessage }
-      })
-    }
-    // find index of shifted and changed message
-    indexShift = messages.indexOf(findIndexShift)
-    indexChange = messages.indexOf(findIndexChange)
-    // replace shifted and changed message
-    messages.splice(indexShift, 1, shiftMessage)
-    messages.splice(indexChange, 1, changeMessage)
-    // function to sort the messages by number and set back input "change number"
-    sortMessagesNewNumber(messages, newMessageNumber)
-  }
-
-  //function to sort all message and give them a new number in order
-  function sortMessagesNewNumber(messages: Messages[], newMessageNumber: number) {
-    let number: number = 1
-    let newNumbers: Messages
-    let newMessages: Messages[] = []
-    // function to compare messagenumbers
-    function compare(a: any, b: any) {
-      if (a.messagenumber < b.messagenumber) {
-        return -1
-      }
-      if (a.messagenumber > b.messagenumber) {
-        return 1
-      }
-      return 0
-    }
-    //sort result from "setNewNumber()"
-    messages.sort(compare)
-    //set new number ascending to all messages
-    messages.map((message: Messages) => {
-      newNumbers = {
-        _id: message._id,
-        messagenumber: number++,
-        name: message.name,
-        text: message.text,
-        time: message.time,
-        color: message.color,
-        tags: message.tags,
-        position: message.position,
-        repliedmessage: message.repliedmessage,
-      }
-      newMessages.push(newNumbers)
-      return newMessages
-    })
-    //update draft in database
-    dispatch(updateDraft(
-      draft.draftId,
-      draft.title,
-      draft.author,
-      draft.published,
-      draft.date,
-      draft.language,
-      draft.tags,
-      draft.description,
-      draft.philosopher,
-      newMessages,
-      draft.admin
-    ))
-    // to scroll to message with new number
-    setTimeout(() => {
-      props.scrollTo(newMessageNumber)
-    }, 1000)
-
-    // clear data
-    messageRef.current? messageRef.current.value = '' : null
-    numberRef.current? numberRef.current.value = '' : null
-    setEditmode(!editmode)
   }
 
   //delete a single message
@@ -281,38 +180,41 @@ const Message = (props: {position?: string, positionedit?: string, color?: strin
     <div
       className={`message ${
         user.loggedIn ? props.positionedit : props.position
-      }`}
+      }`}/* "positionedit" and "position" have different parameters bc "position" is in a formatted listgroup in chatbox component*/
       id={props.messageId}
-      ref={props.scroll}
+      ref={props.scroll} /* "props.scroll" is a ref from chatbox component, either scroll to the end when a draft is loaded,
+      or scroll to a new messages when its sent */
     >
-      {props.repliedmessage[0] ? (
+      {/* section replied message */}
+      {props.repliedmessage[0] ? ( // check if there is a replied message connected with the current message
         <div className="repliedmessage">
           <p className="replydetails">
             <span
               className="replyspan"
               id="replyspan-number"
-              onClick={() => props.replyTo(props.repliedmessage[0])}
+              onClick={() => props.replyTo(props.repliedmessage[0])} // click to scroll to replied message
             >
-              # {props.repliedmessage[0]}
+              # {props.repliedmessage[0]} {/* message number of replied message*/}
             </span>{' '}
             from{' '}
-            <span className={`replyspan color-${props.repliedmessage[1]}`}>
-              {props.repliedmessage[2]}
+            <span className={`replyspan color-${props.repliedmessage[1]}`} /* color of name */>
+              {props.repliedmessage[2]} {/* name */}
             </span>
             :
           </p>
-          <p className="replytext">{props.repliedmessage[3]}</p>
+          <p className="replytext">{props.repliedmessage[3]}{/* text of replied message */}</p>
         </div>
       ) : null}
+      {/* section current message */}
       <div className={'message-header'}>
         <p
           className={`message-name ${
-            user.loggedIn ? props.coloredit : props.color
-          }`}
+            props.color
+          }`} // color of name
         >
           {props.name}:
         </p>
-        {user.userId === props.userid ? (
+        {/* only authors are able to edit their own messages*/user.userId === props.userid ? (
           !editmode ? (
             <p
               className={`edit-message-dropdown ${
@@ -333,7 +235,7 @@ const Message = (props: {position?: string, positionedit?: string, color?: strin
             </p>
           )
         ) : null}
-        {user.userId === props.userid && draft.draftEditmode ? (
+        {/* only messages of drafts can be deleted*/ user.userId === props.userid && draft.draftEditmode ? (
           <p className="edit-message-delete" onClick={deleteMessage}>
             Delete
           </p>
@@ -342,7 +244,7 @@ const Message = (props: {position?: string, positionedit?: string, color?: strin
       </div>
       {editmode ? (
         <div className="edit-message">
-          {draft.draftEditmode ? (
+          {/* only in draftmode position of message can be changed */draft.draftEditmode ? (
             <div className="edit-number">
               <label className="label-edit-number">change to #</label>
               <select
@@ -361,7 +263,7 @@ const Message = (props: {position?: string, positionedit?: string, color?: strin
               </select>
             </div>
           ) : null}
-
+          {/* textarea to edit text of message */}
           <textarea
             className="edit-message-textarea"
             ref={messageRef}
@@ -371,7 +273,7 @@ const Message = (props: {position?: string, positionedit?: string, color?: strin
         </div>
       ) : null}
       <div>
-        <div ref={editRef} className="message-text">
+        <div ref={editRef} className="message-text" /* editRef to scroll message into view when editting*/ >
           {props.text}
         </div>
       </div>

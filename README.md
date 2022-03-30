@@ -1,4 +1,4 @@
-Note: To deploy this app on heroku, the package.json file has to be outside of the server folder.
+Note: To deploy this app on heroku, the package.json file has to be outside of the server folder and the dist-folders has to be uploaded too.
 
 See live demo version on heroku:
 

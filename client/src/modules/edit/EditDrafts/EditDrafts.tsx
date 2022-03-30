@@ -18,6 +18,7 @@ import { PDFDownloadLink } from '@react-pdf/renderer'
 import Panel from '../../../elements/Panel/Panel'
 import { clearDisplay } from '../../../redux/actions/user/user'
 import { publishTitle } from '../../../redux/actions/title/title'
+import { setNewName } from './Functions'
 import { useDispatch } from 'react-redux'
 import { useTypedSelector } from '../../../redux/hooks/useTypeSelector'
 import { v4 as uuidv4 } from 'uuid'
@@ -154,9 +155,8 @@ const EditDrafts: React.FC = () => {
       if (!title) {
         return setError('Please insert a title')
       }
-      // all messages and empty variable for index
+      // all messages to set new name / change existing name
       const messages: Messages[] = draft.messages
-      let indexOfMessage: number
 
       // 1. change name in messages
       // 2. save name and color of philosophers
@@ -165,24 +165,7 @@ const EditDrafts: React.FC = () => {
       if (phil1) {
         const editPhil1 = editPhilRef1.current? editPhilRef1.current.value : 'no name'
         if (phil1.name !== editPhil1) {
-          messages.map((m: Messages) => {
-            if (phil1.name === m.name) {
-              indexOfMessage = messages.indexOf(m)
-              messages.splice(indexOfMessage, 1, {
-                _id: m._id,
-                messagenumber: m.messagenumber,
-                name: editPhil1,
-                text: m.text,
-                time: m.time,
-                color: m.color,
-                position: m.position,
-                tags: m.tags,
-                repliedmessage: m.repliedmessage
-              })
-              return messages
-            }
-            return messages
-          })
+          setNewName(messages, phil1, editPhil1)
         }
         philosopher.push({
           id: editPhil1,
@@ -194,24 +177,7 @@ const EditDrafts: React.FC = () => {
       if (phil2) {
         const editPhil2 = editPhilRef2.current? editPhilRef2.current.value : 'no name'
         if (phil2.name !== editPhil2) {
-          messages.map((m: Messages) => {
-            if (phil2.name === m.name) {
-              indexOfMessage = messages.indexOf(m)
-              messages.splice(indexOfMessage, 1, {
-                _id: m._id,
-                messagenumber: m.messagenumber,
-                name: editPhil2,
-                text: m.text,
-                time: m.time,
-                color: m.color,
-                position: m.position,
-                tags: m.tags,
-                repliedmessage: m.repliedmessage
-              })
-              return messages
-            }
-            return messages
-          })
+          setNewName(messages, phil2, editPhil2)
         }
         philosopher.push({
           id: editPhil2,
@@ -223,24 +189,7 @@ const EditDrafts: React.FC = () => {
       if (phil3) {
         const editPhil3 = editPhilRef3.current? editPhilRef3.current.value : 'no name'
         if (phil3.name !== editPhil3) {
-          messages.map((m: Messages) => {
-            if (phil3.name === m.name) {
-              indexOfMessage = messages.indexOf(m)
-              messages.splice(indexOfMessage, 1, {
-                _id: m._id,
-                messagenumber: m.messagenumber,
-                name: editPhil3,
-                text: m.text,
-                time: m.time,
-                color: m.color,
-                position: m.position,
-                tags: m.tags,
-                repliedmessage: m.repliedmessage
-              })
-              return messages
-            }
-            return messages
-          })
+          setNewName(messages, phil3, editPhil3)
         }
         philosopher.push({
           id: editPhil3,
@@ -252,24 +201,7 @@ const EditDrafts: React.FC = () => {
       if (phil4) {
         const editPhil4 = editPhilRef4.current? editPhilRef4.current.value : 'no name'
         if (phil4.name !== editPhil4) {
-          messages.map((m: any) => {
-            if (phil4.name === m.name) {
-              indexOfMessage = messages.indexOf(m)
-              messages.splice(indexOfMessage, 1, {
-                _id: m._id,
-                messagenumber: m.messagenumber,
-                name: editPhil4,
-                text: m.text,
-                time: m.time,
-                color: m.color,
-                position: m.position,
-                tags: m.tags,
-                repliedmessage: m.repliedmessage
-              })
-              return messages
-            }
-            return messages
-          })
+          setNewName(messages, phil4, editPhil4)
         }
         philosopher.push({
           id: editPhil4,
@@ -281,24 +213,7 @@ const EditDrafts: React.FC = () => {
       if (phil5) {
         const editPhil5 = editPhilRef5.current? editPhilRef5.current.value : 'no name'
         if (phil5.name !== editPhil5) {
-          messages.map((m: any) => {
-            if (phil5.name === m.name) {
-              indexOfMessage = messages.indexOf(m)
-              messages.splice(indexOfMessage, 1, {
-                _id: m._id,
-                messagenumber: m.messagenumber,
-                name: editPhil5,
-                text: m.text,
-                time: m.time,
-                color: m.color,
-                position: m.position,
-                tags: m.tags,
-                repliedmessage: m.repliedmessage
-              })
-              return messages
-            }
-            return messages
-          })
+          setNewName(messages, phil5, editPhil5)
         }
         philosopher.push({
           id: editPhil5,
@@ -310,24 +225,7 @@ const EditDrafts: React.FC = () => {
       if (phil6) {
         const editPhil6 = editPhilRef6.current? editPhilRef6.current.value : 'no name'
         if (phil6.name !== editPhil6) {
-          messages.map((m: any) => {
-            if (phil6.name === m.name) {
-              indexOfMessage = messages.indexOf(m)
-              messages.splice(indexOfMessage, 1, {
-                _id: m._id,
-                messagenumber: m.messagenumber,
-                name: editPhil6,
-                text: m.text,
-                time: m.time,
-                color: m.color,
-                position: m.position,
-                tags: m.tags,
-                repliedmessage: m.repliedmessage
-              })
-              return messages
-            }
-            return messages
-          })
+          setNewName(messages, phil6, editPhil6)
         }
         philosopher.push({
           id: editPhil6,
@@ -521,6 +419,7 @@ const EditDrafts: React.FC = () => {
       </div>
 
       <Form onSubmit={handleSubmit}>
+{/* edit draft-details */}
         {edit ? (
           <div
             className={
@@ -529,6 +428,7 @@ const EditDrafts: React.FC = () => {
                 : 'edit-draft-scroll'
             }
           >
+{/* title */}
             <Form.Group as={Row} className="edit-draft-top">
               <Form.Label className="edit-draft-title" column sm="3">
                 Title:
@@ -547,6 +447,7 @@ const EditDrafts: React.FC = () => {
               </Col>
             </Form.Group>
 
+{/* name 1 */}
             {phil1 ? (
               <Form.Group as={Row} className="edit-draft-top">
                 <Form.Label className="edit-draft-name" column sm="3">
@@ -563,6 +464,7 @@ const EditDrafts: React.FC = () => {
               </Form.Group>
             ) : null}
 
+{/* name 2 */}
             {phil2 ? (
               <Form.Group as={Row} className="edit-draft-top">
                 <Form.Label className="edit-draft-name" column sm="3">
@@ -579,6 +481,7 @@ const EditDrafts: React.FC = () => {
               </Form.Group>
             ) : null}
 
+{/* name 3 */}
             {phil3 ? (
               <Form.Group as={Row} className="edit-draft-top-2">
                 <Form.Label className="edit-draft-name" column sm="3">
@@ -595,6 +498,7 @@ const EditDrafts: React.FC = () => {
               </Form.Group>
             ) : null}
 
+{/* name 4 */}
             {phil4 ? (
               <Form.Group as={Row} className="edit-draft-top-2">
                 <Form.Label className="edit-draft-name" column sm="3">
@@ -611,6 +515,7 @@ const EditDrafts: React.FC = () => {
               </Form.Group>
             ) : null}
 
+{/* name 5 */}
             {phil5 ? (
               <Form.Group as={Row} className="edit-draft-top-2">
                 <Form.Label className="edit-draft-name" column sm="3">
@@ -627,6 +532,7 @@ const EditDrafts: React.FC = () => {
               </Form.Group>
             ) : null}
 
+{/* name 6 */}
             {phil6 ? (
               <Form.Group as={Row} className="edit-draft-top-2">
                 <Form.Label className="edit-draft-name" column sm="3">
@@ -643,6 +549,7 @@ const EditDrafts: React.FC = () => {
               </Form.Group>
             ) : null}
 
+{/* add name: if less than 6 names, then user is able to add a new name to the list */}
             {phil6 ? null : (
               <Form.Group as={Row} className="edit-draft-top-2">
                 <Form.Label className="edit-draft-add-name" column sm="3">
@@ -660,6 +567,7 @@ const EditDrafts: React.FC = () => {
               </Form.Group>
             )}
 
+{/* color: set color for new name */}
             {phil6 ? null : (
               <Form.Group as={Row} className="edit-draft-top">
                 <Col>
@@ -688,6 +596,7 @@ const EditDrafts: React.FC = () => {
               </Form.Group>
             )}
 
+{/* description */}
             <Form.Group as={Row} className="edit-draft-top-2">
               <Form.Label className="edit-draft-description" column sm="3">
                 Description:
@@ -705,6 +614,7 @@ const EditDrafts: React.FC = () => {
               </Col>
             </Form.Group>
 
+{/* tags */}
             <Form.Group as={Row} className="edit-draft-top-2">
               <Form.Label className="edit-draft-tags" column sm="3">
                 Tags:{' '}
@@ -722,6 +632,7 @@ const EditDrafts: React.FC = () => {
               </Col>
             </Form.Group>
 
+{/* author: if user is admin, he can change name of the author */}
             {user.admin ? (
               <Form.Group as={Row} className="edit-draft-top">
                 <Form.Label className="edit-draft-author" column sm="3">
@@ -738,6 +649,7 @@ const EditDrafts: React.FC = () => {
               </Form.Group>
             ) : null}
 
+{/* status: if user is admin, he can switch between "admin" and "user" status -> important for future versions of the chat-editor */}
             {user.admin ? (
               <Form.Group as={Row}>
                 <Form.Label className="edit-draft-admin" column sm="3">
@@ -762,6 +674,7 @@ const EditDrafts: React.FC = () => {
               </Form.Group>
             ) : null}
 
+{/* language */}
             <Form.Group as={Row} className="edit-draft-top-3">
               <Form.Label className="edit-draft-language" column sm="3">
                 Language:
@@ -784,6 +697,7 @@ const EditDrafts: React.FC = () => {
             </Form.Group>
           </div>
         ) : (
+/* readonly draft details */
           <div
             className={
               window.innerWidth <= 1000
@@ -899,7 +813,7 @@ const EditDrafts: React.FC = () => {
             </div>
           </div>
         )}
-
+{/* ---------------------- border ---------------------------- */}
         <div className="draft-details-border">{''}</div>
         <div className="draft-details-spinner">
           {spinner ? (
@@ -907,6 +821,7 @@ const EditDrafts: React.FC = () => {
           ) : null}
         </div>
 
+{/* buttons */}
         <div className="draft-details-actions">
           {!edit ? (
             <Button

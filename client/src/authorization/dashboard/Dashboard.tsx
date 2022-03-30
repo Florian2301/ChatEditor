@@ -105,6 +105,7 @@ export function Dashboard(props: any) {
 
   return (
     <Panel id="auth" title="Your profile">
+    {/* settings section */}
       <div className="options">
         <h3 className="dashboard-settings">Settings</h3>
         <br />
@@ -130,8 +131,10 @@ export function Dashboard(props: any) {
         </p>
       </div>
 
+{/* ---------------------- border -------------------------------- */}
       <div className="dasboard-border">{''}</div>
 
+    {/* profile of user */}
       <div className="text-center mb-4">
         {error && (
           <Alert className="auth-alert" variant="danger">
@@ -156,7 +159,9 @@ export function Dashboard(props: any) {
         {currentUser.email}
       </div>
 
+{/* ---------------------- border -------------------------------- */}
       <div className="dasboard-border">{''}</div>
+
       <div className="auth-actions" id="auth-actions-logout">
         <Button
           handleClick={handleLogout}

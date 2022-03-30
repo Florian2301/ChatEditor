@@ -9,13 +9,16 @@ import PrivateRoute from '../privateroute/PrivateRoute';
 import React from 'react';
 import SignUp from '../signup/SignUp';
 import UpdateProfile from '../updateprofile/UpdateProfile';
+import { useTypedSelector } from '../../redux/hooks/useTypeSelector';
 export default function Authorization(props) {
+    const user = useTypedSelector((state) => state.user);
     return (React.createElement(Container, { className: "d-flex" },
         React.createElement("div", { className: "w-100" },
             React.createElement(Router, null,
                 React.createElement(AuthProvider, null,
                     React.createElement(Routes, null,
-                        React.createElement(Route, { path: "/", element: React.createElement(Login, null) }),
+                        React.createElement(Route, { path: "/", element: user.loggedIn ? React.createElement(PrivateRoute, null,
+                                React.createElement(Dashboard, { auto: props.auto, desktop: props.desktop, tablet: props.tablet, mobile: props.mobile, id: props.id })) : React.createElement(Login, null) }),
                         React.createElement(Route, { path: "/dashboard", element: React.createElement(PrivateRoute, null,
                                 React.createElement(Dashboard, { auto: props.auto, desktop: props.desktop, tablet: props.tablet, mobile: props.mobile, id: props.id })) }),
                         React.createElement(Route, { path: "/update-profile", element: React.createElement(PrivateRoute, null,

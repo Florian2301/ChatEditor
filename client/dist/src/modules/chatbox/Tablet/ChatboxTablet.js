@@ -101,7 +101,7 @@ const ChatboxTablet = () => {
                         React.createElement(Message, { position: 'position-' + m.position, color: 'color-' + m.color, key: uuidv4(), number: m.messagenumber, name: m.name, text: m.text, chatid: chatId, chatnumber: chatnumber, messageId: m._id, userid: userId, scroll: scrollRef, repliedmessage: m.repliedmessage, replyTo: scrollTo, scrollTo: scrollToReplace }))));
             })))) : (React.createElement("ul", { className: "listgroup-edit" }, currentMessages.map((m) => {
             return (React.createElement("div", { ref: setRef(m._id), key: uuidv4() },
-                React.createElement(Message, { positionedit: 'position-' + m.position + '-edit', coloredit: 'color-' + m.color + '-edit', key: uuidv4(), number: m.messagenumber, name: m.name, text: m.text, chatid: chatId, chatnumber: chatnumber, messageId: m._id, userid: userId, scroll: scrollRef, repliedmessage: m.repliedmessage, replyTo: scrollTo, scrollTo: scrollToReplace })));
+                React.createElement(Message, { positionedit: 'position-' + m.position + '-edit', color: 'color-' + m.color, key: uuidv4(), number: m.messagenumber, name: m.name, text: m.text, chatid: chatId, chatnumber: chatnumber, messageId: m._id, userid: userId, scroll: scrollRef, repliedmessage: m.repliedmessage, replyTo: scrollTo, scrollTo: scrollToReplace })));
         })))),
         draft.draftEditmode ? (React.createElement(WriteMessage, { scrollTo: scrollToReplace, defaultScroll: () => setScroll(false) })) : null));
 };

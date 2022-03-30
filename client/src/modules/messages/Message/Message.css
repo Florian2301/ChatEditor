@@ -70,7 +70,7 @@
   margin-top: 1rem;
 }
 
-/* index of name of phil-array is its color */
+/* color of name */
 .color-blue {
   color: blue;
 }
@@ -92,31 +92,6 @@
 }
 
 .color-green {
-  color: green;
-}
-
-/*user logged In => adjust margin-top */
-.color-blue-edit {
-  color: blue;
-}
-
-.color-pink-edit {
-  color: #cc66ff;
-}
-
-.color-orangered-edit {
-  color: orangered;
-}
-
-.color-brown-edit {
-  color: brown;
-}
-
-.color-darkorange-edit {
-  color: darkorange;
-}
-
-.color-green-edit {
   color: green;
 }
 

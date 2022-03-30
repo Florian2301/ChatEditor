@@ -2,6 +2,7 @@ import './WriteMessage.css'
 
 import {Messages, Philosopher, StateDraft, StateUser} from '../../../redux/interfaces/interfaces'
 import React, { Suspense, useRef, useState } from 'react'
+import { insertToNewPosition, repliedMessage } from './Functions'
 import { updateDraft, writeMessage } from '../../../redux/actions/draft/draft'
 
 import Button from '../../../elements/Button/Button'
@@ -56,6 +57,8 @@ const WriteMessage = (props: {scrollTo: any, defaultScroll: any}) => {
       messageRef.current !== null? messageRef.current.value = '' : null
       numberRef.current !== null? numberRef.current.value = '' : null
       setReply(false)
+      setWrite(false)
+      dispatch(writeMessage(false))
     }
   }
 
@@ -72,6 +75,7 @@ const WriteMessage = (props: {scrollTo: any, defaultScroll: any}) => {
     //for message content
     const allMessages: Messages[] = draft.messages
     const sendMessage: string = messageRef.current !== null? messageRef.current.value : ''
+    const newMessage: string = messageRef.current !== null? messageRef.current.value : ''
     let newMessagesArray: Messages[]
 
     //for message position
@@ -110,53 +114,16 @@ const WriteMessage = (props: {scrollTo: any, defaultScroll: any}) => {
       })
       props.scrollTo(false)
     } else {
-      // user select number
-      // array to store new order of messages
-      newMessagesArray = []
-      // push message with new number into the rest of messages
-      allMessages.map((message: Messages) => {
-        // find all messages below the replacing one and store it in array
-        if (message.messagenumber < replaceMessageNumber) {
-          newMessagesArray.push(message)
-        }
-        // create new message with new number and find replaced message and set a new number for this one
-        if (message.messagenumber === replaceMessageNumber) {
-          const newMessage: string = messageRef.current !== null? messageRef.current.value : ''
-          newMessagesArray.push(
-            // new message
-            {
-              messagenumber: replaceMessageNumber,
-              name: name,
-              text: newMessage,
-              color: color,
-              position: positionPhil,
-              repliedmessage: [],
-            },
-            // set new number for replaced message
-            {
-              messagenumber: replaceMessageNumber + 1,
-              name: message.name,
-              text: message.text,
-              color: message.color,
-              position: message.position,
-              repliedmessage: message.repliedmessage,
-            }
-          )
-        }
-        // get the rest of the messages and set new numbers to them
-        if (message.messagenumber >= sortMessage) {
-          sortMessage++
-          newMessagesArray.push({
-            messagenumber: sortMessage,
-            name: message.name,
-            text: message.text,
-            color: message.color,
-            position: message.position,
-            repliedmessage: message.repliedmessage,
-          })
-        }
-        return newMessagesArray
-      })
+      // function to insert message to a new position in chatflow
+      const Insert = insertToNewPosition(
+        allMessages, 
+        newMessage, 
+        sortMessage, 
+        replaceMessageNumber, 
+        positionPhil, 
+        name, 
+        color)
+      newMessagesArray = Insert
       props.scrollTo(replaceMessageNumber)
     }
 
@@ -190,7 +157,7 @@ const WriteMessage = (props: {scrollTo: any, defaultScroll: any}) => {
 
     //for message position
     const philosopher = draft.philosopher
-    let positionPhil
+    let positionPhil: number
     if (name === philosopher[0].name) {
       positionPhil = 1
     } else {
@@ -200,29 +167,17 @@ const WriteMessage = (props: {scrollTo: any, defaultScroll: any}) => {
     // find message to reply to and save as repliedmessage
     const numberRefValue = numberRef.current !== null? numberRef.current.value : '0'
     const messagenumber = parseInt(numberRefValue)
-    let replyToMessage: string[] = []
-    draft.messages.map((message: Messages) => {
-      if (message.messagenumber === messagenumber) {
-        replyToMessage = [
-          message.messagenumber.toString(), 
-          message.color, 
-          message.name, 
-          message.text]
-      }
-      return replyToMessage
-    })
-
-    //for message content
     const allMessages = draft.messages
     const sendMessage = messageRef.current !== null? messageRef.current.value : ''
-    allMessages.push({
-      messagenumber: number,
-      name: name,
-      text: sendMessage,
-      color: color,
-      position: positionPhil,
-      repliedmessage: replyToMessage,
-    })
+    
+    const messagesWithReply = repliedMessage(
+      allMessages, 
+      messagenumber, 
+      sendMessage, 
+      number,
+      positionPhil,
+      name,
+      color)
 
     // update draft with new message and replied message
     dispatch(updateDraft(
@@ -235,7 +190,7 @@ const WriteMessage = (props: {scrollTo: any, defaultScroll: any}) => {
       draft.tags,
       draft.description,
       draft.philosopher,
-      allMessages,
+      messagesWithReply,
       user.admin
     ))
 
@@ -267,7 +222,7 @@ const WriteMessage = (props: {scrollTo: any, defaultScroll: any}) => {
       <div>
         {write ? (
           <div className="number-textarea">
-            {reply ? (
+            {/* if user replies to a message */reply ? (
               <label className="label-select-number">
                 <span id="replytomessage" onClick={() => setReply(!reply)}>
                   insert as #
@@ -288,6 +243,7 @@ const WriteMessage = (props: {scrollTo: any, defaultScroll: any}) => {
                 </select>
               </label>
             ) : (
+              /* either send as latest message or insert to a new position in the chatflow */
               <label className="label-select-number">
                 <span id="replytomessage" onClick={() => setReply(!reply)}>
                   reply to #
@@ -314,6 +270,7 @@ const WriteMessage = (props: {scrollTo: any, defaultScroll: any}) => {
               onKeyDown={keyEventTextarea}
               rows={window.innerWidth <= 1000 ? 4 : 5}
             />
+            {/* third party api -> seperate in chunks for deployment */}
             <Suspense fallback={<div>Loading...</div>}>
               <EmojiPicker getEmoji={addEmoji} />
             </Suspense>

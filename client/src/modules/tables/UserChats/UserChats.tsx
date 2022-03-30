@@ -1,6 +1,6 @@
 import './UserChats.css'
 
-import { StateTitle, StateUser, UserChats } from '../../../redux/interfaces/interfaces'
+import { StateTitle, StateUser } from '../../../redux/interfaces/interfaces'
 import { clearDisplay, setKeyL, setKeyR } from '../../../redux/actions/user/user'
 
 import Popover from '../../../elements/Popover/Popover'

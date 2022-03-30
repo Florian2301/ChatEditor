@@ -61,7 +61,7 @@ export function Login() {
             }
         });
     }
-    // submit data to login through firebase + get userdata from database
+    // Testuser: submit data to login through firebase + get userdata from database
     function handleSubmitTestuser(e) {
         return __awaiter(this, void 0, void 0, function* () {
             e.preventDefault();

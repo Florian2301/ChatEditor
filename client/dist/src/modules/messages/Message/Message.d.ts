@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import './Message.css';
 declare const Message: (props: {
     position?: string;

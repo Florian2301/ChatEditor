@@ -9,6 +9,7 @@ import { PDFDownloadLink } from '@react-pdf/renderer';
 import Panel from '../../../elements/Panel/Panel';
 import { clearDisplay } from '../../../redux/actions/user/user';
 import { publishTitle } from '../../../redux/actions/title/title';
+import { setNewName } from './Functions';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../../redux/hooks/useTypeSelector';
 import { v4 as uuidv4 } from 'uuid';
@@ -133,9 +134,8 @@ const EditDrafts = () => {
             if (!title) {
                 return setError('Please insert a title');
             }
-            // all messages and empty variable for index
+            // all messages to set new name / change existing name
             const messages = draft.messages;
-            let indexOfMessage;
             // 1. change name in messages
             // 2. save name and color of philosophers
             let philosopher = [];
@@ -143,24 +143,7 @@ const EditDrafts = () => {
             if (phil1) {
                 const editPhil1 = editPhilRef1.current ? editPhilRef1.current.value : 'no name';
                 if (phil1.name !== editPhil1) {
-                    messages.map((m) => {
-                        if (phil1.name === m.name) {
-                            indexOfMessage = messages.indexOf(m);
-                            messages.splice(indexOfMessage, 1, {
-                                _id: m._id,
-                                messagenumber: m.messagenumber,
-                                name: editPhil1,
-                                text: m.text,
-                                time: m.time,
-                                color: m.color,
-                                position: m.position,
-                                tags: m.tags,
-                                repliedmessage: m.repliedmessage
-                            });
-                            return messages;
-                        }
-                        return messages;
-                    });
+                    setNewName(messages, phil1, editPhil1);
                 }
                 philosopher.push({
                     id: editPhil1,
@@ -172,24 +155,7 @@ const EditDrafts = () => {
             if (phil2) {
                 const editPhil2 = editPhilRef2.current ? editPhilRef2.current.value : 'no name';
                 if (phil2.name !== editPhil2) {
-                    messages.map((m) => {
-                        if (phil2.name === m.name) {
-                            indexOfMessage = messages.indexOf(m);
-                            messages.splice(indexOfMessage, 1, {
-                                _id: m._id,
-                                messagenumber: m.messagenumber,
-                                name: editPhil2,
-                                text: m.text,
-                                time: m.time,
-                                color: m.color,
-                                position: m.position,
-                                tags: m.tags,
-                                repliedmessage: m.repliedmessage
-                            });
-                            return messages;
-                        }
-                        return messages;
-                    });
+                    setNewName(messages, phil2, editPhil2);
                 }
                 philosopher.push({
                     id: editPhil2,
@@ -201,24 +167,7 @@ const EditDrafts = () => {
             if (phil3) {
                 const editPhil3 = editPhilRef3.current ? editPhilRef3.current.value : 'no name';
                 if (phil3.name !== editPhil3) {
-                    messages.map((m) => {
-                        if (phil3.name === m.name) {
-                            indexOfMessage = messages.indexOf(m);
-                            messages.splice(indexOfMessage, 1, {
-                                _id: m._id,
-                                messagenumber: m.messagenumber,
-                                name: editPhil3,
-                                text: m.text,
-                                time: m.time,
-                                color: m.color,
-                                position: m.position,
-                                tags: m.tags,
-                                repliedmessage: m.repliedmessage
-                            });
-                            return messages;
-                        }
-                        return messages;
-                    });
+                    setNewName(messages, phil3, editPhil3);
                 }
                 philosopher.push({
                     id: editPhil3,
@@ -230,24 +179,7 @@ const EditDrafts = () => {
             if (phil4) {
                 const editPhil4 = editPhilRef4.current ? editPhilRef4.current.value : 'no name';
                 if (phil4.name !== editPhil4) {
-                    messages.map((m) => {
-                        if (phil4.name === m.name) {
-                            indexOfMessage = messages.indexOf(m);
-                            messages.splice(indexOfMessage, 1, {
-                                _id: m._id,
-                                messagenumber: m.messagenumber,
-                                name: editPhil4,
-                                text: m.text,
-                                time: m.time,
-                                color: m.color,
-                                position: m.position,
-                                tags: m.tags,
-                                repliedmessage: m.repliedmessage
-                            });
-                            return messages;
-                        }
-                        return messages;
-                    });
+                    setNewName(messages, phil4, editPhil4);
                 }
                 philosopher.push({
                     id: editPhil4,
@@ -259,24 +191,7 @@ const EditDrafts = () => {
             if (phil5) {
                 const editPhil5 = editPhilRef5.current ? editPhilRef5.current.value : 'no name';
                 if (phil5.name !== editPhil5) {
-                    messages.map((m) => {
-                        if (phil5.name === m.name) {
-                            indexOfMessage = messages.indexOf(m);
-                            messages.splice(indexOfMessage, 1, {
-                                _id: m._id,
-                                messagenumber: m.messagenumber,
-                                name: editPhil5,
-                                text: m.text,
-                                time: m.time,
-                                color: m.color,
-                                position: m.position,
-                                tags: m.tags,
-                                repliedmessage: m.repliedmessage
-                            });
-                            return messages;
-                        }
-                        return messages;
-                    });
+                    setNewName(messages, phil5, editPhil5);
                 }
                 philosopher.push({
                     id: editPhil5,
@@ -288,24 +203,7 @@ const EditDrafts = () => {
             if (phil6) {
                 const editPhil6 = editPhilRef6.current ? editPhilRef6.current.value : 'no name';
                 if (phil6.name !== editPhil6) {
-                    messages.map((m) => {
-                        if (phil6.name === m.name) {
-                            indexOfMessage = messages.indexOf(m);
-                            messages.splice(indexOfMessage, 1, {
-                                _id: m._id,
-                                messagenumber: m.messagenumber,
-                                name: editPhil6,
-                                text: m.text,
-                                time: m.time,
-                                color: m.color,
-                                position: m.position,
-                                tags: m.tags,
-                                repliedmessage: m.repliedmessage
-                            });
-                            return messages;
-                        }
-                        return messages;
-                    });
+                    setNewName(messages, phil6, editPhil6);
                 }
                 philosopher.push({
                     id: editPhil6,
@@ -510,7 +408,9 @@ const EditDrafts = () => {
                     React.createElement(Col, null,
                         React.createElement("select", { className: "edit-draft-language-select", value: draftLanguage, onChange: changeLanguage }, user.selectLanguage.map((lang) => {
                             return (React.createElement("option", { value: lang, key: uuidv4() }, lang));
-                        })))))) : (React.createElement("div", { className: window.innerWidth <= 1000
+                        })))))) : (
+            /* readonly draft details */
+            React.createElement("div", { className: window.innerWidth <= 1000
                     ? 'edit-draft-scroll-mobile'
                     : 'edit-draft-scroll' },
                 React.createElement("div", { className: "draft-details" },

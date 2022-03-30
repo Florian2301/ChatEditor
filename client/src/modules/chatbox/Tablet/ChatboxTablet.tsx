@@ -175,7 +175,7 @@ const ChatboxTablet: React.FC = () => {
                 <div ref={setRef(m._id)} key={uuidv4()}>
                   <Message
                     positionedit={'position-' + m.position + '-edit'}
-                    coloredit={'color-' + m.color + '-edit'}
+                    color={'color-' + m.color}
                     key={uuidv4()}
                     number={m.messagenumber}
                     name={m.name}

@@ -221,7 +221,9 @@ const EditChats = () => {
                     React.createElement(Form.Label, { className: "edit-chat-date", column: true, sm: "3" }, "Published:"),
                     React.createElement(Col, null,
                         React.createElement(Form.Control, { className: "edit-chat-input-date", type: "text", ref: dateRef, placeholder: "yyyy-mm-dd", defaultValue: chat.date }))),
-                React.createElement("br", null))) : (React.createElement("div", { className: window.innerWidth <= 1000
+                React.createElement("br", null))) : (
+            /* readonly chat details */
+            React.createElement("div", { className: window.innerWidth <= 1000
                     ? 'edit-chat-scroll-mobile'
                     : 'edit-chat-scroll' },
                 React.createElement("div", { className: "chat-details" },

@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import './WriteMessage.css';
 declare const WriteMessage: (props: {
     scrollTo: any;
