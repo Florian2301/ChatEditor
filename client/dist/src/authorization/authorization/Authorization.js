@@ -17,8 +17,9 @@ export default function Authorization(props) {
             React.createElement(Router, null,
                 React.createElement(AuthProvider, null,
                     React.createElement(Routes, null,
-                        React.createElement(Route, { path: "/", element: user.loggedIn ? React.createElement(PrivateRoute, null,
-                                React.createElement(Dashboard, { auto: props.auto, desktop: props.desktop, tablet: props.tablet, mobile: props.mobile, id: props.id })) : React.createElement(Login, null) }),
+                        React.createElement(Route, { path: "/", element: user.loggedIn ?
+                                React.createElement(Dashboard, { auto: props.auto, desktop: props.desktop, tablet: props.tablet, mobile: props.mobile, id: props.id })
+                                : React.createElement(Login, null) }),
                         React.createElement(Route, { path: "/dashboard", element: React.createElement(PrivateRoute, null,
                                 React.createElement(Dashboard, { auto: props.auto, desktop: props.desktop, tablet: props.tablet, mobile: props.mobile, id: props.id })) }),
                         React.createElement(Route, { path: "/update-profile", element: React.createElement(PrivateRoute, null,
