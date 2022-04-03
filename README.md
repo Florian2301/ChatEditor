@@ -4,7 +4,7 @@ See live demo version on heroku:
 
 https://chat-editor.herokuapp.com
 
-About the chat editor
+About the chat editor:
 
 This chat editor is a platform on which you can create a dialogue for up to six characters that converse with each other within one chat group.
 
@@ -21,7 +21,7 @@ This chat editor has been developed with the MERN stack, i.e. MongoDB as the dat
 - React-Bootstrap and CSS
 - Firebase
 
-Concept and Development
+Concept and Development:
 
 This is my first extensive web application, conceptualised and developed as part of self-study. The project has grown organically, with major adjustments and changes in the course of development as I have enhanced my technical knowledge.
 
