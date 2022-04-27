@@ -2,7 +2,7 @@ Note: To deploy this app on heroku, the package.json file has to be outside of t
 
 See live demo version on heroku:
 
-https://chat-editor.herokuapp.com
+https://chat-editor.de
 
 About the chat editor:
 
